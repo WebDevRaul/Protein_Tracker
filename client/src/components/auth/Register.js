@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// Components
+import TextFieldGroup from '../common/TextFieldGroup';
+
 class Register extends Component {
   constructor() {
     super();
@@ -10,7 +13,7 @@ class Register extends Component {
 
   onSubmit=(e) => {
     e.preventDefault();
-    
+
   }
 
   render() {
@@ -28,8 +31,14 @@ class Register extends Component {
                   <div className="card-body">
                     <form noValidate onSubmit={this.onSubmit}>
                       <div class="form-group">
-                        <label for="first_name">First Name</label>
                         <input type="text" name="first_name" class="form-control" required />
+                      </div>
+                      <div>
+                        <label for="first_name">First Name</label>
+                        <TextFieldGroup 
+                          name='first_name'
+                          placeholder='First Name'
+                        />
                       </div>
                       <div class="form-group">
                         <label for="last_name">Last Name</label>
