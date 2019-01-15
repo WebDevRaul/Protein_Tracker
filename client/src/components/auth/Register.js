@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
-export default class Register extends Component {
+class Register extends Component {
+  constructor() {
+    super();
+    this.state = {
+
+    }
+  }
+
+  onSubmit=(e) => {
+    e.preventDefault();
+    
+  }
+
   render() {
     return (
       <div>
@@ -14,7 +26,7 @@ export default class Register extends Component {
                       <i className="fas fa-user-plus"></i> Register</h4>
                   </div>
                   <div className="card-body">
-                    <form action="index.html">
+                    <form noValidate onSubmit={this.onSubmit}>
                       <div class="form-group">
                         <label for="first_name">First Name</label>
                         <input type="text" name="first_name" class="form-control" required />
@@ -51,3 +63,5 @@ export default class Register extends Component {
     )
   }
 }
+
+export default Register;
