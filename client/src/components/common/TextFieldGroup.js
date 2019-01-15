@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 
 const TextFieldGroup = ({
+  text,
   name,
   placeholder,
   value,
@@ -15,6 +16,7 @@ const TextFieldGroup = ({
 }) => {
   return (
     <div className='form-group'>
+      <label for={name}>{text}</label>
       <input
         type={type}
         className={classnames('form-control form-control-lg', {'is-invalid' : error})}
@@ -31,6 +33,7 @@ const TextFieldGroup = ({
 };
 
 TextFieldGroup.propTypes = {
+  text: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,

@@ -30,36 +30,33 @@ class Register extends Component {
                   </div>
                   <div className="card-body">
                     <form noValidate onSubmit={this.onSubmit}>
-                      <div class="form-group">
-                        <input type="text" name="first_name" class="form-control" required />
-                      </div>
-                      <div>
-                        <label for="first_name">First Name</label>
-                        <TextFieldGroup 
-                          name='first_name'
-                          placeholder='First Name'
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" name="last_name" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="password2">Password</label>
-                        <input type="password" name="password" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Confirm Password</label>
-                        <input type="password" name="password2" class="form-control" required />
-                      </div>
+                      <TextFieldGroup 
+                        text='First Name'
+                        name='first_name'
+                      />
+                      <TextFieldGroup
+                        text='Last Name'
+                        name='last_name'
+                      />
+                      <TextFieldGroup
+                        text='Username'
+                        name='username'
+                      />
+                      <TextFieldGroup
+                        text='Email'
+                        name='email'
+                        type='email'
+                      />
+                      <TextFieldGroup
+                        text='Password'
+                        name='password'
+                        type='password'
+                      />
+                      <TextFieldGroup
+                        text='Confirm Password'
+                        name='password2'
+                        type='password'
+                      />
                       <input type="submit" value="Register" class="btn btn-secondary btn-block" />
                     </form>
                   </div>
