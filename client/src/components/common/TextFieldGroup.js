@@ -16,7 +16,7 @@ const TextFieldGroup = ({
 }) => {
   return (
     <div className='form-group'>
-      <label for={name}>{text}</label>
+      <label htmlFor={name}>{text}</label>
       <input
         type={type}
         className={classnames('form-control form-control-lg', {'is-invalid' : error})}
