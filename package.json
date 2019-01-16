@@ -1,0 +1,27 @@
+{
+  "name": "proteint__tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TextError/Protein_Tracker.git"
+  },
+  "author": "Savin Raul Calin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TextError/Protein_Tracker/issues"
+  },
+  "homepage": "https://github.com/TextError/Protein_Tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  }
+}
