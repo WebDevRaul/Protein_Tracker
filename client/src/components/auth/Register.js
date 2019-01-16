@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import PropTpyes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 
 // Components
 import TextFieldGroup from '../common/TextFieldGroup';
+
+// Redux
+import { connect } from 'react-redux';
+import { registerUser } from '../../redux/actions/register_user';
 
 class Register extends Component {
   constructor() {
@@ -30,7 +37,7 @@ class Register extends Component {
       password: this.state.password,
       password2: this.state.password2
     }
-    console.log(user);
+    this.props.registerUser(user, this.props.history)
   }
 
   render() {
@@ -97,6 +104,15 @@ class Register extends Component {
       </div>
     )
   }
+};
+
+Register.propTypes = {
+  errors: PropTpyes.object.isRequired,
+  registerUser: PropTpyes.func.isRequired,
 }
 
-export default Register;
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect( mapStateToProps, { registerUser } )(withRouter(Register));
