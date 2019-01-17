@@ -12,7 +12,10 @@ export default function(state=initialState, action) {
         errors: action.payload
       }
     case GET_CLEAR_ERROR:
-      return {}
+      return {
+        ...state,
+        errors: {}
+      }
     default:
       return state
   }

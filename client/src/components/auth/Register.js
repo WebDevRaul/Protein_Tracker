@@ -39,13 +39,16 @@ class Register extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { errors } = this.state;
+
+    // This way we dont need to call ComponentWillUnmount
+    // to reset the setTimeout();
     if (!isEmpty(errors)) {
       setTimeout(() => { this.props.clearError() }, 3000);
     }
+    console.log(prevProps.errors)
   }
   
 
-  
 
 
   onChange=(e) => {
