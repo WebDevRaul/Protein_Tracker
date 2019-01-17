@@ -2,14 +2,27 @@ const express = require('express')
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
 
-//Load User Model
+// Load User Model
 const User = require('../../models/User');
+
+// Load Register Validation
+const validateRegisterInput = require('../../validation/register');
 
 
 // @route   POST api/users/register
 // @desc    Register user
 // @access  Public
 router.post('/register', (req, res) => {
+
+  // Validation //
+
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  };
+
   User.findOne({ email: req.body.email })
   .then(user => {
     // Check for user
