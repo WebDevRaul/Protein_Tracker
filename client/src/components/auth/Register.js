@@ -6,9 +6,13 @@ import { withRouter } from 'react-router-dom';
 // Components
 import TextFieldGroup from '../common/TextFieldGroup';
 
+// Common
+import isEmpty from '../common/isEmpty';
+
 // Redux
 import { connect } from 'react-redux';
 import { registerUser } from '../../redux/actions/register_user';
+import { clearError } from '../../redux/actions/commonAction';
 
 class Register extends Component {
   constructor() {
@@ -32,6 +36,17 @@ class Register extends Component {
     }
    else return null;
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { errors } = this.state;
+    if (!isEmpty(errors)) {
+      setTimeout(() => { this.props.clearError() }, 3000);
+    }
+  }
+  
+
+  
+
 
   onChange=(e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -127,6 +142,7 @@ class Register extends Component {
 
 Register.propTypes = {
   errors: PropTpyes.object.isRequired,
+  clearError: PropTpyes.func.isRequired,
   registerUser: PropTpyes.func.isRequired,
 }
 
@@ -134,4 +150,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect( mapStateToProps, { registerUser } )(withRouter(Register));
+export default connect( mapStateToProps, { registerUser, clearError } )(withRouter(Register));
