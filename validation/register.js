@@ -25,6 +25,38 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.first_name)) {
     errors.first_name = 'First Name field is required';
   }
+  if (Validator.isEmpty(data.last_name)) {
+    errors.last_name = 'Last Name field is required';
+  }
+  if (Validator.isEmpty(data.username)) {
+    errors.username = 'Username field is required';
+  }
+
+  // Validate email
+  if (Validator.isEmpty(data.email)) {
+    errors.email = 'Email field is required';
+  }
+  if (!Validator.isEmail(data.email)) {
+    errors.email = 'Email is invalid';
+  }
+
+  // Validate password and password2
+  if (!Validator.isLength(data.password, {min:6, max: 30})) {
+    errors.password = 'Password must be at least 6 characters';
+  }
+  
+  if (Validator.isEmpty(data.password)) {
+    errors.password = 'Password field is required';
+  }
+  if (Validator.isEmpty(data.password2)) {
+    errors.password2 = 'Confirm Password field is required';
+  }
+
+
+  if (!Validator.equals(data.password, data.password2)) {
+    errors.password2 = 'Passwords must match';
+  }
+
 
   return {
     errors,

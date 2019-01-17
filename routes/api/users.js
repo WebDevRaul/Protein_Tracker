@@ -23,6 +23,8 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   };
 
+  // Fetch User
+
   User.findOne({ email: req.body.email })
   .then(user => {
     // Check for user
@@ -40,6 +42,9 @@ router.post('/register', (req, res) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
+
+          // Save User To DB
+
           newUser
             .save()
             .then(user => res.json(user))
