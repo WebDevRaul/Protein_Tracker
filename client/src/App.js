@@ -14,6 +14,9 @@ import Register from './components/auth/Register';
 import store from './store';
 import { Provider } from 'react-redux';
 
+// CSS
+import './css/App.css';
+
 
 class App extends Component {
   render() {

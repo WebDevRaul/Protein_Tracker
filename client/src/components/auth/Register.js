@@ -45,7 +45,6 @@ class Register extends Component {
     if (!isEmpty(errors)) {
       setTimeout(() => { this.props.clearError() }, 3000);
     }
-    console.log(prevProps.errors)
   }
   
 
