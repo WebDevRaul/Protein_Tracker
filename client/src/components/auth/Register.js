@@ -23,6 +23,16 @@ class Register extends Component {
     }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { errors } = nextProps.errors;
+    if( errors !== prevState.errors ) {
+      return { 
+        errors: nextProps.errors.errors,
+      };
+    }
+   else return null;
+  };
+
   onChange=(e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -41,6 +51,9 @@ class Register extends Component {
   }
 
   render() {
+
+    const { errors } = this.state;
+
     return (
       <div>
         <section id="register" className="bg-light py-5">
@@ -59,18 +72,21 @@ class Register extends Component {
                         name='first_name'
                         value={this.state.first_name}
                         onChange={this.onChange}
+                        error={errors.first_name}
                       />
                       <TextFieldGroup
                         text='Last Name'
                         name='last_name'
                         value={this.state.last_name}
                         onChange={this.onChange}
+                        error={errors.last_name}
                       />
                       <TextFieldGroup
                         text='Username'
                         name='username'
                         value={this.state.username}
                         onChange={this.onChange}
+                        error={errors.username}
                       />
                       <TextFieldGroup
                         text='Email'
@@ -78,6 +94,7 @@ class Register extends Component {
                         type='email'
                         value={this.state.email}
                         onChange={this.onChange}
+                        error={errors.email}
                       />
                       <TextFieldGroup
                         text='Password'
@@ -85,6 +102,7 @@ class Register extends Component {
                         type='password'
                         value={this.state.password}
                         onChange={this.onChange}
+                        error={errors.password}
                       />
                       <TextFieldGroup
                         text='Confirm Password'
@@ -92,6 +110,7 @@ class Register extends Component {
                         type='password'
                         value={this.state.password2}
                         onChange={this.onChange}
+                        error={errors.password2}
                       />
                       <input type="submit" value="Register" className="btn btn-secondary btn-block bg-primary" />
                     </form>
