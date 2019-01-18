@@ -29,6 +29,15 @@ class Login extends Component {
     }
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const { isAuthenticated } = this.props.auth;
+    if (isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
+  }
+
+
+
 
 
   onChange = (e) => {
@@ -99,6 +108,7 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
   errors: state.errors,
+  auth: state.auth
 });
 
 export default connect( mapStateToProps, { loginUser })(withRouter(Login))
