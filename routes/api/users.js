@@ -55,4 +55,24 @@ router.post('/register', (req, res) => {
   })
 });
 
+// @route   GET api/users/login
+// @desc    Login User / Returning JWT Token
+// @access  Public
+router.post('/login', (req, res) => {
+  // Validation to do
+  
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // Find User by email
+  User.findOne({ email })
+    .then(user => {
+      // Check for user
+      if (!user) {
+        err
+      }
+    })
+});
+
 module.exports = router;
