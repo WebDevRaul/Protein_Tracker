@@ -98,7 +98,7 @@ Login.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect( mapStateToProps, { loginUser })(withRouter(Login))
