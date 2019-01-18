@@ -7,6 +7,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
+import { loginUser } from '../../redux/actions/login_user';
 
 class Login extends Component {
   constructor() {
@@ -38,12 +39,12 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const credentials = {
+    const userData = {
       email: this.state.email,
       password: this.state.password
     }
 
-    console.log(credentials);
+    this.props.loginUser(userData)
   };
 
   render() {
@@ -100,4 +101,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect( mapStateToProps, {})(withRouter(Login))
+export default connect( mapStateToProps, { loginUser })(withRouter(Login))
