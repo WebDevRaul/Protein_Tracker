@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // Components
 import TextFieldGroup from '../common/TextFieldGroup';
 
-export default class Login extends Component {
+// Redux
+import { connect } from 'react-redux';
+
+class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
       password: ''
+    }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { errors } = nextProps.errors;
+    if (errors !== prevState.errors) {
+      return {
+        errors: nextProps.errors.errors
+      }
+    } else {
+      return null;
     }
   };
 
@@ -31,6 +47,9 @@ export default class Login extends Component {
   };
 
   render() {
+
+    const { errors } = this.state;
+
     return (
       <div>
         <section id="login" className="bg-light py-5">
@@ -50,6 +69,7 @@ export default class Login extends Component {
                         name='email'
                         onChange={this.onChange}
                         value={this.state.email}
+                        error={errors.email}
                       />
                       <TextFieldGroup
                         text='Password'
@@ -57,6 +77,7 @@ export default class Login extends Component {
                         name='password'
                         onChange={this.onChange}
                         value={this.state.password}
+                        error={errors.password}
                       />
                       <input type="submit" value="Login" className="btn btn-secondary btn-block bg-primary" />
                     </form>
@@ -70,3 +91,13 @@ export default class Login extends Component {
     )
   }
 };
+
+Login.propTypes = {
+  errors: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect( mapStateToProps, {})(withRouter(Login))
