@@ -5,8 +5,12 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <Link to='/Protein-Tracker'>
-          button
+        <Link to='/register'>
+          register
+        </Link>
+        <br />
+        <Link to='/login'>
+          login
         </Link>
       </div>
     )
