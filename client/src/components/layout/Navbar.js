@@ -25,6 +25,20 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item active mr-3 mt-3">
           <Link 
+            to='/home' 
+            className='nav-link'
+            onClick={this.onClick}
+          ><span>Home</span></Link>
+        </li>
+        <li className="nav-item active mr-3 mt-3">
+          <Link 
+            to='/about' 
+            className='nav-link'
+            onClick={this.onClick}
+          ><span>About</span></Link>
+        </li>
+        <li className="nav-item active mr-3 mt-3">
+          <Link 
             to='/dashboard' 
             className='nav-link'
             onClick={this.onClick}
@@ -45,6 +59,23 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item active mr-3 mt-3">
           <Link 
+            to='/home' 
+            className='nav-link'
+            onClick={this.onClick}
+          ><span>Home</span></Link>
+        </li>
+        <li className="nav-item active mr-3 mt-3">
+          <Link 
+            to='/about' 
+            className='nav-link'
+            onClick={this.onClick}
+          ><span>About</span></Link>
+        </li>
+        <li className="nav-item  mr-3 mt-3">
+          <span className='nav-link'>|</span>
+        </li>
+        <li className="nav-item active mr-3 mt-3">
+          <Link 
             to='/register' 
             className='nav-link'
             onClick={this.onClick}
@@ -59,7 +90,7 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-    
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
         <button

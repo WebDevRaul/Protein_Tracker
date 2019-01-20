@@ -5,13 +5,10 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <Link to='/register'>
-          register
+        <Link to='/home'>
+          continue
         </Link>
         <br />
-        <Link to='/login'>
-          login
-        </Link>
       </div>
     )
   }

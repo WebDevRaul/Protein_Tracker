@@ -7,13 +7,13 @@ import setAuthToken from './components/auth/utils/setAuthToken';
 import { setCurrentUser } from './redux/actions/login_user';
  
 // Components
-import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
-import ProteinTracker from './components/protein_tracker/ProteinTracker';
+import Landing from './components/layout/Landing';
+import Home from './components/layout/Home';
 import About from './components/layout/About';
-import Footer from './components/layout/Footer';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Footer from './components/layout/Footer';
 
 // Redux
 import store from './store';
@@ -43,7 +43,7 @@ class App extends Component {
             <Router>
               <div className='container'>
                 <Navbar />
-                <Route exact path='/protein-tracker' component={ProteinTracker} />
+                <Route exact path='/home' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
