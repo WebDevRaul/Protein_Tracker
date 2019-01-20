@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classnames  from 'classnames';
 import { Link } from 'react-router-dom';
 
+// Components
+import Logo from './Logo';
+
 // Redux
 import { connect } from 'react-redux'
 
@@ -20,36 +23,44 @@ class Navbar extends Component {
     const { show } = this.state;
     const { isAuthenticated, user } = this.props.auth;
 
+    // Basic Links
+    const home = (
+      <li className="nav-item active mr-3 mt-3">
+        <Link 
+          to='/home' 
+          className='nav-link'
+          onClick={this.onClick}
+          ><span>Home</span></Link>
+      </li>
+    );
+    const about = (
+      <li className="nav-item active mr-3 mt-3">
+        <Link 
+          to='/about' 
+          className='nav-link'
+          onClick={this.onClick}
+          ><span>About</span></Link>
+      </li>
+    );
+
     // authenticated users
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
-        <li className="nav-item active mr-3 mt-3">
-          <Link 
-            to='/home' 
-            className='nav-link'
-            onClick={this.onClick}
-          ><span>Home</span></Link>
-        </li>
-        <li className="nav-item active mr-3 mt-3">
-          <Link 
-            to='/about' 
-            className='nav-link'
-            onClick={this.onClick}
-          ><span>About</span></Link>
-        </li>
+        {home}
+        {about}
         <li className="nav-item active mr-3 mt-3">
           <Link 
             to='/dashboard' 
             className='nav-link'
             onClick={this.onClick}
-          ><span>Dashboard</span></Link>
+            ><span>Dashboard</span></Link>
         </li>
         <li className="nav-item active mr-3 mt-3">
           <Link 
             to='/logout' 
             className='nav-link'
             onClick={this.onClick}
-          ><span>Logout</span></Link>
+            ><span>Logout</span></Link>
         </li>
       </ul>
     );
@@ -57,20 +68,8 @@ class Navbar extends Component {
     // guest users
     const guestLinks = (
       <ul className="navbar-nav ml-auto mr-5">
-        <li className="nav-item active mr-3 mt-3">
-          <Link 
-            to='/home' 
-            className='nav-link'
-            onClick={this.onClick}
-          ><span>Home</span></Link>
-        </li>
-        <li className="nav-item active mr-3 mt-3">
-          <Link 
-            to='/about' 
-            className='nav-link'
-            onClick={this.onClick}
-          ><span>About</span></Link>
-        </li>
+        {home}
+        {about}
         <li className="nav-item active mr-3 mt-3">
           <Link 
             to='/register' 
@@ -90,6 +89,7 @@ class Navbar extends Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
+        <Logo />
         <button
           className="navbar-toggler" 
           type="button"
