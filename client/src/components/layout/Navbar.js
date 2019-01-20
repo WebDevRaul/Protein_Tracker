@@ -71,9 +71,6 @@ class Navbar extends Component {
             onClick={this.onClick}
           ><span>About</span></Link>
         </li>
-        <li className="nav-item  mr-3 mt-3">
-          <span className='nav-link'>|</span>
-        </li>
         <li className="nav-item active mr-3 mt-3">
           <Link 
             to='/register' 

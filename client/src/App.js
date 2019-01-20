@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Set authentification
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './components/auth/utils/setAuthToken';
-import { setCurrentUser } from './redux/actions/login_user';
+import { setCurrentUser } from './redux/actions/login_user';  
+
+// Private Route
+import PrivateRoute from './components/common/privateRoute';
  
 // Components
 import Navbar from './components/layout/Navbar';
@@ -14,6 +17,7 @@ import About from './components/layout/About';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
+import dashboard from './components/protein_tracker/dashboard';
 
 // Redux
 import store from './store';
@@ -47,6 +51,13 @@ class App extends Component {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
+
+                {/* private routes */}
+
+                <Switch>
+                  <PrivateRoute exact path='/dashboard' component={dashboard} />
+                </Switch>
+                
                 <Footer />
               </div>
             </Router>
