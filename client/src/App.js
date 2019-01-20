@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// Set authentification
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './components/auth/utils/setAuthToken';
+import { setCurrentUser } from './redux/actions/login_user';
+ 
 // Components
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
@@ -17,6 +22,16 @@ import { Provider } from 'react-redux';
 // CSS
 import './css/App.css';
 
+// Check for token
+if (localStorage.jwtToken) {
+    // Set auth token header auth
+    setAuthToken(localStorage.jwtToken);
+    // Decode token and get user info and exp
+    const decoded = jwt_decode(localStorage.jwtToken);
+    // Set user and isAuthenticated
+    store.dispatch(setCurrentUser(decoded));
+}
+
 
 class App extends Component {
   render() {
@@ -28,7 +43,7 @@ class App extends Component {
             <Router>
               <div className='container'>
                 <Navbar />
-                <Route exact path='/Protein-Tracker' component={ProteinTracker} />
+                <Route exact path='/protein-tracker' component={ProteinTracker} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
