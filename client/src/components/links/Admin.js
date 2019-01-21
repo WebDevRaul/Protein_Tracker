@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class dashboard extends Component {
+export default class Admin extends Component {
   render() {
     return (
       <div>
-        dashboard
+        admin
       </div>
     )
   }

@@ -12,12 +12,13 @@ import PrivateRoute from './components/common/privateRoute';
 // Components
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Home from './components/layout/Home';
-import About from './components/layout/About';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
-import dashboard from './components/protein_tracker/dashboard';
+import Home from './components/links/Home';
+import About from './components/links/About';
+import Dashboard from './components/links/Dashboard';
+import Admin from './components/links/Admin';
 
 // Redux
 import store from './store';
@@ -55,7 +56,10 @@ class App extends Component {
                 {/* private routes */}
 
                 <Switch>
-                  <PrivateRoute exact path='/dashboard' component={dashboard} />
+                  <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/admin' component={Admin} />
                 </Switch>
                 
                 <Footer />
