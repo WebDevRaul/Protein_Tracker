@@ -1,8 +1,9 @@
-import { CLEAR_CURRENT_PROFILE } from './types';
+import setAuthToken from '../../components/auth/utils/setAuthToken';
 
-// Clear profile
-export const clearCurrentProfile = () => {
-  return {
-    type: CLEAR_CURRENT_PROFILE
-  };
+// Sign out user
+export const logoutUser = () => dispatch => {
+  // Remove token from localstorage
+  localStorage.removeItem('jwtToken');
+  // Remove auth header for future requests
+  setAuthToken(false);
 };

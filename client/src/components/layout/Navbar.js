@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames  from 'classnames';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Components
 import Logo from './Logo';
 
 // Redux
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { logoutUser } from '../../redux/actions/signOut';
 
 class Navbar extends Component {
   constructor() {
@@ -20,13 +22,14 @@ class Navbar extends Component {
   onClick = () => { this.setState({ show: !this.state.show }); };
 
   // Sign Out user
-  onSignOut = (e) => {
-    e.preventDefualt();
+  onSignOut = () => {
+    this.props.logoutUser();
+    this.props.history.push('/home')
   }
 
   render() {
     const { show } = this.state;
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     // Basic Links
     const home = (
@@ -61,11 +64,10 @@ class Navbar extends Component {
             ><span>Dashboard</span></Link>
         </li>
         <li className="nav-item active mr-3 mt-3">
-          <Link 
-            to='/home' 
+          <span
             className='nav-link'
             onClick={this.onSignOut}
-            ><span>Sign Out</span></Link>
+            ><span>Sign Out</span></span>
         </li>
       </ul>
     );
@@ -112,7 +114,8 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   errors: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -120,4 +123,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {})(Navbar);
+export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
