@@ -19,6 +19,11 @@ class Navbar extends Component {
 
   onClick = () => { this.setState({ show: !this.state.show }); };
 
+  // Sign Out user
+  onSignOut = (e) => {
+    e.preventDefualt();
+  }
+
   render() {
     const { show } = this.state;
     const { isAuthenticated, user } = this.props.auth;
@@ -57,10 +62,10 @@ class Navbar extends Component {
         </li>
         <li className="nav-item active mr-3 mt-3">
           <Link 
-            to='/logout' 
+            to='/home' 
             className='nav-link'
-            onClick={this.onClick}
-            ><span>Logout</span></Link>
+            onClick={this.onSignOut}
+            ><span>Sign Out</span></Link>
         </li>
       </ul>
     );
@@ -82,7 +87,7 @@ class Navbar extends Component {
             to='/login' 
             className='nav-link'
             onClick={this.onClick}
-          ><span>Login</span></Link>
+          ><span>Sign in</span></Link>
         </li>
       </ul>
     );

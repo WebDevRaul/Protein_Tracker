@@ -5,9 +5,13 @@ import { withRouter } from 'react-router-dom';
 // Components
 import TextFieldGroup from '../common/TextFieldGroup';
 
+// Common
+import isEmpty from '../common/isEmpty';
+
 // Redux
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/login_user';
+import { clearError } from '../../redux/actions/commonAction';
 
 class Login extends Component {
   constructor() {
@@ -31,8 +35,14 @@ class Login extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { isAuthenticated } = this.props.auth;
+    const { errors } = this.props.errors
+    // Redirect when if authenticated
     if (isAuthenticated) {
       this.props.history.push('/dashboard')
+    };
+    // Clear errors
+    if (!isEmpty(errors)) {
+      setTimeout(() => { this.props.clearError() }, 3000);
     }
   }
 
@@ -69,7 +79,7 @@ class Login extends Component {
                 <div className="card">
                   <div className="card-header bg-primary text-white">
                     <h4>
-                      <i className="fas fa-sign-in-alt"></i> Login</h4>
+                      <i className="fas fa-sign-in-alt"></i> Sign in</h4>
                   </div>
                   <div className="card-body">
                     <form noValidate onSubmit={this.onSubmit}>
@@ -89,7 +99,7 @@ class Login extends Component {
                         value={this.state.password}
                         error={errors.password}
                       />
-                      <input type="submit" value="Login" className="btn btn-secondary btn-block bg-primary" />
+                      <input type="submit" value="Sign in" className="btn btn-secondary btn-block bg-primary" />
                     </form>
                   </div>
                 </div>
@@ -105,7 +115,8 @@ class Login extends Component {
 Login.propTypes = {
   errors: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  clearError: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -113,4 +124,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProps, { loginUser })(withRouter(Login))
+export default connect( mapStateToProps, { loginUser, clearError })(withRouter(Login))
