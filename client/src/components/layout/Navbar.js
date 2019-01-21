@@ -17,14 +17,13 @@ class Navbar extends Component {
     this.state={
       show: false
     }
-  }
+  };
 
   onClick = () => { this.setState({ show: !this.state.show }); };
 
   // Sign Out user
   onSignOut = () => {
     this.props.logoutUser();
-    this.props.history.push('/home')
   }
 
   render() {
