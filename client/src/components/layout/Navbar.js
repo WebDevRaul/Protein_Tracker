@@ -24,6 +24,8 @@ class Navbar extends Component {
   // Sign Out user
   onSignOut = () => {
     this.props.logoutUser();
+    this.onClick();
+    this.props.history.push('/home');
   }
 
   render() {
@@ -57,7 +59,7 @@ class Navbar extends Component {
         {about}
         <li className="nav-item active mr-3 mt-3">
           <Link 
-            to='/dashboard' 
+            to='/dashboard'
             className='nav-link'
             onClick={this.onClick}
             ><span>Dashboard</span></Link>
