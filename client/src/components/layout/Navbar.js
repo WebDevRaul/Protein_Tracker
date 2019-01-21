@@ -30,7 +30,7 @@ class Navbar extends Component {
 
   render() {
     const { show } = this.state;
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     // authenticated users
     const authLinks = (
