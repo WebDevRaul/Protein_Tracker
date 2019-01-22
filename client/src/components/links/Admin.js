@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 // Components
 import CardFieldGroup from '../common/CardFieldGroup';
 
+//Scss
+import '../../css/admin.css';
+
 // Redux
 import { connect } from 'react-redux';
 
@@ -55,9 +58,53 @@ class Admin extends Component {
                       </div>
                       <div className="card-body">
                         <form noValidate onSubmit={this.onSubmit}>
-                          <ul>
-                            
+                          <div className='admin-form'>
+                            <ul className="navbar list-inline">
+                              <li className="list-inline-item">Product name
+                                <CardFieldGroup
+                                  name='product_name'
+                                  value={this.state.product_name}
+                                  onChange={this.onChange}
+                                  error={errors.product_name}
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                          <ul className="navbar list-inline">
+                            <li className="list-inline-item">Calories
+                              <CardFieldGroup
+                                name='calories'
+                                value={this.state.calories}
+                                onChange={this.onChange}
+                                error={errors.calories}
+                              />
+                            </li>
+                            <li className="list-inline-item">Protein
+                              <CardFieldGroup
+                                name='protein'
+                                value={this.state.protein}
+                                onChange={this.onChange}
+                                error={errors.protein}
+                              />
+                            </li>
+                            <li className="list-inline-item">Fat
+                              <CardFieldGroup
+                                name='fat'
+                                value={this.state.fat}
+                                onChange={this.onChange}
+                                error={errors.fat}
+                              />
+                            </li>
+                            <li className="list-inline-item">Carbohydrates
+                              <CardFieldGroup
+                                name='calories'
+                                value={this.state.carbohydrates}
+                                onChange={this.onChange}
+                                error={errors.carbohydrates}
+                              />
+                            </li>
                           </ul>
+                            <input type="submit" value="Save" className="btn btn-secondary btn-block bg-primary" />
                         </form>
                       </div>
                     </div>

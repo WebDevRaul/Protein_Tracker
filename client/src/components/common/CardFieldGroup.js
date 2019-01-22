@@ -19,7 +19,7 @@ const TextFieldGroup = ({
       <label htmlFor={name}>{text}</label>
       <input
         type={type}
-        className={classnames('form-control form-control-lg', {'is-invalid' : error})}
+        className={classnames('form-control form-control-xsm', {'is-invalid' : error})}
         placeholder={placeholder}
         name={name}
         value={value}
