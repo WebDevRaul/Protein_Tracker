@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Components
 import CardFieldGroup from '../common/CardFieldGroup';
 
-//Scss
+//Css
 import '../../css/admin.css';
 
 // Redux
@@ -18,7 +18,7 @@ class Admin extends Component {
       protein: '',
       carbohydrates: '',
       fat: '',
-      calories: ''
+      calories: '',
     }
   }
 
