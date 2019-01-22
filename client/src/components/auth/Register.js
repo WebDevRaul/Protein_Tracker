@@ -86,6 +86,7 @@ class Register extends Component {
                     <form noValidate onSubmit={this.onSubmit}>
                       <TextFieldGroup 
                         text='First Name'
+                        icon='fas fa-user'
                         name='first_name'
                         value={this.state.first_name}
                         onChange={this.onChange}
@@ -94,6 +95,7 @@ class Register extends Component {
                       <TextFieldGroup
                         text='Last Name'
                         name='last_name'
+                        icon='fas fa-user'
                         value={this.state.last_name}
                         onChange={this.onChange}
                         error={errors.last_name}
@@ -101,6 +103,7 @@ class Register extends Component {
                       <TextFieldGroup
                         text='Username'
                         name='username'
+                        icon='fas fa-user'
                         value={this.state.username}
                         onChange={this.onChange}
                         error={errors.username}
@@ -108,6 +111,7 @@ class Register extends Component {
                       <TextFieldGroup
                         text='Email'
                         name='email'
+                        icon='fas fa-envelope'
                         type='email'
                         value={this.state.email}
                         onChange={this.onChange}
@@ -116,6 +120,7 @@ class Register extends Component {
                       <TextFieldGroup
                         text='Password'
                         name='password'
+                        icon='fas fa-lock'
                         type='password'
                         value={this.state.password}
                         onChange={this.onChange}
@@ -124,6 +129,7 @@ class Register extends Component {
                       <TextFieldGroup
                         text='Confirm Password'
                         name='password2'
+                        icon='fas fa-lock'
                         type='password'
                         value={this.state.password2}
                         onChange={this.onChange}

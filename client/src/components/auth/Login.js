@@ -86,6 +86,7 @@ class Login extends Component {
                       <TextFieldGroup
                         text='Email'
                         type='email'
+                        icon='fas fa-envelope'
                         name='email'
                         onChange={this.onChange}
                         value={this.state.email}
@@ -94,6 +95,7 @@ class Login extends Component {
                       <TextFieldGroup
                         text='Password'
                         type='password'
+                        icon='fas fa-lock'
                         name='password'
                         onChange={this.onChange}
                         value={this.state.password}
