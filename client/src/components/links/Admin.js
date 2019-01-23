@@ -31,12 +31,33 @@ class Admin extends Component {
     } else {
       return null;
     }
-  }
+  };
 
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
-  } 
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const item = {
+      product_name: this.state.product_name,
+      protein: this.state.protein,
+      carbohydrates: this.state.carbohydrates,
+      fat: this.state.fat,
+      calories: this.state.calories
+    };
+
+    // Clear the form
+    this.setState({
+      product_name: '',
+      protein: '',
+      carbohydrates: '',
+      fat: '',
+      calories: ''
+    });
+    console.log(item)
+  };
 
   render() {
     const errors = this.state;
@@ -97,7 +118,7 @@ class Admin extends Component {
                             </li>
                             <li className="list-inline-item">Carbohydrates
                               <CardFieldGroup
-                                name='calories'
+                                name='carbohydrates'
                                 value={this.state.carbohydrates}
                                 onChange={this.onChange}
                                 error={errors.carbohydrates}
