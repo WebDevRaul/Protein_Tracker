@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Create Item schema
 const ItemSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
+  },
   product_name: {
     type: String,
     required: true
