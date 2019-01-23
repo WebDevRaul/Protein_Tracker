@@ -6,18 +6,25 @@ const passport = require('passport');
 const Item = require('../../models/Item');
 
 
-// Validate
+// Validation
+const validateItemInput = require('../../validation/item');
 
 // @route   POST api/items
 // @desc    Create item
 // @access  Private
 router
-  .post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+  .post('/', (req, res) => {
     // Validation
+    const { errors, isValid } = validateItemInput(req.body);
+
+    // Check Validation
+    if (!isValid) {
+      // If any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
 
     // Create the item
     const item = new Item({
-      user: req.user.id,
       product_name: req.body.product_name,
       protein: req.body.protein,
       carbohydrates: req.body.carbohydrates,

@@ -4,7 +4,7 @@ const initialState = {
   item: {}
 };
 
-export default function(initialState=state, action) {
+export default function(state=initialState, action) {
   switch(action.type) {
     case GET_ITEM:
       return {

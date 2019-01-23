@@ -50,6 +50,7 @@ class Admin extends Component {
       fat: this.state.fat,
       calories: this.state.calories
     };
+    this.props.saveItem(item);
 
     // Clear the form
     this.setState({
@@ -59,11 +60,10 @@ class Admin extends Component {
       fat: '',
       calories: ''
     });
-    this.props.saveItem(item);
   };
 
   render() {
-    const errors = this.state;
+    const { errors } = this.state;
     return (
       <div>
          <section id="login" className="bg-light py-5">
@@ -89,7 +89,7 @@ class Admin extends Component {
                                   name='product_name'
                                   value={this.state.product_name}
                                   onChange={this.onChange}
-                                  error={errors.product_name}
+                                  
                                 />
                               </li>
                             </ul>
@@ -100,7 +100,7 @@ class Admin extends Component {
                                 name='calories'
                                 value={this.state.calories}
                                 onChange={this.onChange}
-                                error={errors.calories}
+                                
                               />
                             </li>
                             <li className="list-inline-item">Protein
@@ -108,7 +108,7 @@ class Admin extends Component {
                                 name='protein'
                                 value={this.state.protein}
                                 onChange={this.onChange}
-                                error={errors.protein}
+                                
                               />
                             </li>
                             <li className="list-inline-item">Fat
@@ -116,7 +116,7 @@ class Admin extends Component {
                                 name='fat'
                                 value={this.state.fat}
                                 onChange={this.onChange}
-                                error={errors.fat}
+                                
                               />
                             </li>
                             <li className="list-inline-item">Carbohydrates
@@ -124,7 +124,7 @@ class Admin extends Component {
                                 name='carbohydrates'
                                 value={this.state.carbohydrates}
                                 onChange={this.onChange}
-                                error={errors.carbohydrates}
+                               
                               />
                             </li>
                           </ul>
