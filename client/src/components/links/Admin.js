@@ -158,7 +158,9 @@ class Admin extends Component {
 
 Admin.propTypes = {
   errors: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  saveItem: PropTypes.func.isRequired,
+  clearError: PropTypes.func.isRequired
 };
 
 const mapStateToProp = state => ({
