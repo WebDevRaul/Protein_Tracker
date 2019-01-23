@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 // Components
 import CardFieldGroup from '../common/CardFieldGroup';
 
-//Css
-import '../../css/admin.css';
-
 // Redux
 import { connect } from 'react-redux';
 import { saveItem } from '../../redux/actions/save_item';
+import { clearError } from '../../redux/actions/commonAction';
+
+// Common
+import isEmpty from '../common/isEmpty';
+
+//Css
+import '../../css/admin.css';
 
 class Admin extends Component {
   constructor(){
@@ -23,16 +27,25 @@ class Admin extends Component {
     }
   }
 
-  static getDerivatedStatefromProps(nextProps, prevState) {
-    const {errors} = nextProps.errors;
-    if (errors !== prevState.errors) {
-      return {
-        errors: nextProps.errors.errors
-      }
-    } else {
-      return null;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { errors } = nextProps.errors;
+    if( errors !== prevState.errors ) {
+      return { 
+        errors: nextProps.errors.errors,
+      };
     }
+   else return null;
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { errors } = this.state;
+
+    // This way we dont need to call ComponentWillUnmount
+    // to reset the setTimeout();
+    if (!isEmpty(errors)) {
+      setTimeout(() => { this.props.clearError() }, 3000);
+    }
+  }
 
 
   onChange = (e) => {
@@ -89,7 +102,7 @@ class Admin extends Component {
                                   name='product_name'
                                   value={this.state.product_name}
                                   onChange={this.onChange}
-                                  
+                                  error={errors.product_name}
                                 />
                               </li>
                             </ul>
@@ -100,7 +113,7 @@ class Admin extends Component {
                                 name='calories'
                                 value={this.state.calories}
                                 onChange={this.onChange}
-                                
+                                error={errors.calories}
                               />
                             </li>
                             <li className="list-inline-item">Protein
@@ -108,7 +121,7 @@ class Admin extends Component {
                                 name='protein'
                                 value={this.state.protein}
                                 onChange={this.onChange}
-                                
+                                error={errors.protein}
                               />
                             </li>
                             <li className="list-inline-item">Fat
@@ -116,7 +129,7 @@ class Admin extends Component {
                                 name='fat'
                                 value={this.state.fat}
                                 onChange={this.onChange}
-                                
+                                error={errors.fat}
                               />
                             </li>
                             <li className="list-inline-item">Carbohydrates
@@ -124,7 +137,7 @@ class Admin extends Component {
                                 name='carbohydrates'
                                 value={this.state.carbohydrates}
                                 onChange={this.onChange}
-                               
+                                error={errors.carbohydrates}
                               />
                             </li>
                           </ul>
@@ -153,4 +166,4 @@ const mapStateToProp = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProp, { saveItem } )(Admin);
+export default connect( mapStateToProp, { saveItem, clearError } )(Admin);
