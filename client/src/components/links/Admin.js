@@ -9,6 +9,7 @@ import '../../css/admin.css';
 
 // Redux
 import { connect } from 'react-redux';
+import { saveItem } from '../../redux/actions/save_item';
 
 class Admin extends Component {
   constructor(){
@@ -39,8 +40,10 @@ class Admin extends Component {
   };
 
   onSubmit = (e) => {
+    const {user} = this.props.auth
     e.preventDefault();
     const item = {
+      user: user,
       product_name: this.state.product_name,
       protein: this.state.protein,
       carbohydrates: this.state.carbohydrates,
@@ -56,7 +59,7 @@ class Admin extends Component {
       fat: '',
       calories: ''
     });
-    console.log(item)
+    this.props.saveItem(item);
   };
 
   render() {
@@ -150,4 +153,4 @@ const mapStateToProp = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProp, {} )(Admin);
+export default connect( mapStateToProp, { saveItem } )(Admin);
