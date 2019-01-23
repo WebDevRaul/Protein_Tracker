@@ -32,6 +32,18 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+    // if you use Model.id as your idAttribute maybe you'd want
+    // done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 
 // Routes
 app.use('/api/users', users);

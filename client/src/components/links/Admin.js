@@ -56,7 +56,7 @@ class Admin extends Component {
     const {user} = this.props.auth
     e.preventDefault();
     const item = {
-      user: user,
+      user: user.id,
       product_name: this.state.product_name,
       protein: this.state.protein,
       carbohydrates: this.state.carbohydrates,

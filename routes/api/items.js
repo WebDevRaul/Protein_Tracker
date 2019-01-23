@@ -13,7 +13,7 @@ const validateItemInput = require('../../validation/item');
 // @desc    Create item
 // @access  Private
 router
-  .post('/', (req, res) => {
+  .post('/', passport.authenticate('jwt'), (req, res) => {
     // Validation
     const { errors, isValid } = validateItemInput(req.body);
 
@@ -25,6 +25,7 @@ router
 
     // Create the item
     const item = new Item({
+      user: req.body.user,
       product_name: req.body.product_name,
       protein: req.body.protein,
       carbohydrates: req.body.carbohydrates,
