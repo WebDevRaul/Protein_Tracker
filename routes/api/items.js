@@ -37,6 +37,16 @@ router
     item.save().then(item => res.json(item));
   });
 
+// @route   GET api/items
+// @desc    Get items by user
+// @access  Private
+router
+.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Item.find({ user: req.user.id })
+    .then(items => res.json(items))
+    .catch(err => res.status(404).json({ noItemFound: 'No products found' }));
+  });
+
 
 
 module.exports = router;

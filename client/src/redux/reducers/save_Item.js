@@ -1,4 +1,4 @@
-import { GET_ITEM } from '../actions/types';
+import { SAVE_ITEM } from '../actions/types';
 
 const initialState = {
   item: {}
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function(state=initialState, action) {
   switch(action.type) {
-    case GET_ITEM:
+    case SAVE_ITEM:
       return {
         ...state,
         item: action.payload

@@ -8,6 +8,7 @@ import CardFieldGroup from '../common/CardFieldGroup';
 import { connect } from 'react-redux';
 import { saveItem } from '../../redux/actions/save_item';
 import { clearError } from '../../redux/actions/commonAction';
+import { findItems } from '../../redux/actions/find_items';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -37,6 +38,15 @@ class Admin extends Component {
    else return null;
   };
 
+  componentDidMount(){
+    const { isAuthenticated } = this.props.auth;
+
+    // Fetch items
+    if (isAuthenticated) {
+      this.props.findItems(this.props.auth.user.id)
+    }
+  }
+  
   componentDidUpdate(prevProps, prevState) {
     const { errors } = this.state;
 
@@ -168,4 +178,4 @@ const mapStateToProp = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProp, { saveItem, clearError } )(Admin);
+export default connect( mapStateToProp, { saveItem, findItems, clearError } )(Admin);
