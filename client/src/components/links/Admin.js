@@ -170,7 +170,8 @@ Admin.propTypes = {
   errors: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   saveItem: PropTypes.func.isRequired,
-  clearError: PropTypes.func.isRequired
+  clearError: PropTypes.func.isRequired,
+  findItems: PropTypes.func.isRequired
 };
 
 const mapStateToProp = state => ({
