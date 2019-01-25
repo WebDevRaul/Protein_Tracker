@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,13 +15,24 @@ class ItemName extends Component {
     // Check for empty items
     if (!isEmpty(items)) {
       item = items[0].map(i => 
-        <div key={i.product_name}>
-          <p>{i.product_name}</p>
-          <p>{i.fat}</p>
-        </div>);
+        <ul key={i.product_name} className='navbar list-inline'>
+          <li className='list-inline-item'>{i.product_name}</li>
+          <li className='list-inline-item'>{i.calories}</li>
+          <li className='list-inline-item'>{i.protein}</li>
+          <li className='list-inline-item'>{i.fat}</li>
+          <li className='list-inline-item'>{i.carbohydrates}</li>
+        </ul>
+      )
     }
     return (
       <div>
+        <ul className='navbar list-inline'>
+          <li className='list-inline-item'>Product Name: </li>
+          <li className='list-inline-item'>Calories</li>
+          <li className='list-inline-item'>Proteins</li>
+          <li className='list-inline-item'>Fat</li>
+          <li className='list-inline-item'>Carbohydrates</li>
+        </ul>
         {item}
       </div>
     )
