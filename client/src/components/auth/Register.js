@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 
 // Components
-import TextFieldGroup from '../common/TextFieldGroup';
+import TextFieldGroup from '../common/components/TextFieldGroup';
 
 // Common
 import isEmpty from '../common/isEmpty';

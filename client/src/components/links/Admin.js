@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import CardFieldGroup from '../common/CardFieldGroup';
+import CardFieldGroup from '../common/components/CardFieldGroup';
+import ItemName from '../Item_name';
 
 // Redux
 import { connect } from 'react-redux';
@@ -63,7 +64,7 @@ class Admin extends Component {
   };
 
   onSubmit = (e) => {
-    const {user} = this.props.auth
+    const {user} = this.props.auth;
     e.preventDefault();
     const item = {
       user: user.id,
@@ -73,6 +74,7 @@ class Admin extends Component {
       fat: this.state.fat,
       calories: this.state.calories
     };
+
     this.props.saveItem(item);
 
     // Clear the form
@@ -89,7 +91,7 @@ class Admin extends Component {
     const { errors } = this.state;
     return (
       <div>
-         <section id="login" className="bg-light py-5">
+         <section className="bg-light py-5">
           <div className="container">
             <div className="row">
               <div className="col-md-8 mx-auto">
@@ -161,6 +163,9 @@ class Admin extends Component {
             </div>
           </div>
         </section>
+        <section className="bg-light py-5">
+          <ItemName />
+        </section>
       </div>
     )
   }
@@ -169,6 +174,7 @@ class Admin extends Component {
 Admin.propTypes = {
   errors: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
   saveItem: PropTypes.func.isRequired,
   clearError: PropTypes.func.isRequired,
   findItems: PropTypes.func.isRequired
@@ -176,7 +182,8 @@ Admin.propTypes = {
 
 const mapStateToProp = state => ({
   errors: state.errors,
-  auth: state.auth
+  auth: state.auth,
+  item: state.item
 });
 
 export default connect( mapStateToProp, { saveItem, findItems, clearError } )(Admin);
