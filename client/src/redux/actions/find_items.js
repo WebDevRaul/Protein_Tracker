@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { GET_ERRORS, FIND_ITEMS } from './types';
 
+
+// Find Items
 export const findItems = data => dispatch => {
   axios
     .get(`/api/items/${data}`)

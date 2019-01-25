@@ -1,5 +1,6 @@
 import setAuthToken from '../../components/auth/utils/setAuthToken';
 import { setCurrentUser } from './login_user';
+import { clearItems } from './commonAction';
 
 // Sign out user
 export const logoutUser = () => dispatch => {
@@ -9,4 +10,6 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // Clear user (Redux)
   dispatch(setCurrentUser({}));
+  // Clear Items (Redux)
+  dispatch(clearItems());
 };

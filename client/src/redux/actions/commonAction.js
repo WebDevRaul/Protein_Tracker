@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CLEAR_ERROR } from './types';
+import { GET_ERRORS, GET_CLEAR_ERROR, CLEAR_ITEMS } from './types';
 
 // Set custom error
 export const setError = data => {
@@ -12,5 +12,12 @@ export const setError = data => {
 export const clearError = () => {
   return { 
     type: GET_CLEAR_ERROR
+  };
+};
+
+// Clear Items
+export const clearItems = () => {
+  return {
+    type: CLEAR_ITEMS,
   };
 };

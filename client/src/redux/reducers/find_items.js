@@ -1,4 +1,4 @@
-import { FIND_ITEMS } from '../actions/types';
+import { FIND_ITEMS, CLEAR_ITEMS } from '../actions/types';
 
 const initialState = {
   items: []
@@ -11,7 +11,12 @@ export default function(state=initialState, action) {
         ...state,
         items: [action.payload, ...state.items]
       };
+    case CLEAR_ITEMS:
+      return {
+        ...state,
+        items: []
+      }
     default:
       return state;
-  };
+  }
 };
