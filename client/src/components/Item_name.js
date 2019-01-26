@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
+import { deleteItem } from '../redux/actions/commonAction';
 
 // Common
 import isEmpty from './common/isEmpty';
@@ -11,7 +12,7 @@ import isEmpty from './common/isEmpty';
 class ItemName extends Component {
 
   onClick = data => () => {
-    console.log(data)
+    this.props.deleteItem(data)
   }
   render() {
     let item;
@@ -54,4 +55,4 @@ const mapStateToProps = state => ({
   items: state.items
 });
 
-export default connect( mapStateToProps, {} )(ItemName);
+export default connect( mapStateToProps, { deleteItem } )(ItemName);
