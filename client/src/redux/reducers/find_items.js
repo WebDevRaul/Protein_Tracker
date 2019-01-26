@@ -2,7 +2,6 @@ import { FIND_ITEMS, DELETE_ITEM, CLEAR_ITEMS } from '../actions/types';
 
 const initialState = {
   items: [],
-  item: []
 };
 
 export default function(state=initialState, action) {
@@ -15,7 +14,7 @@ export default function(state=initialState, action) {
     case DELETE_ITEM:
       return {
         ...state,
-        item: state.items[0].filter(item => item._id !== action.payload)
+        items: state.items[0].filter(item => item._id !== action.payload)
       }
     case CLEAR_ITEMS:
       return {

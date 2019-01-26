@@ -4,6 +4,7 @@ const passport = require('passport');
 
 // Item Model
 const Item = require('../../models/Item');
+const User = require('../../models/User');
 
 
 // Validation
@@ -48,6 +49,21 @@ router
     .then(items => res.json(items))
     .catch(err => res.status(404).json({ noItemFound: 'No products found' }));
   });
+
+// @route   DELETE api/item/:id
+// @desc    Delete item by id
+// @access  Private
+router
+  .get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // Check for User
+    User.findOne({ user: req.user.id })
+      .then(user => {
+        // Find item
+        Item.findById(req.params.id)
+      })
+      .catch(err => res.status(404).json({ ItemNotFound: 'No Item found' }));
+  });
+
 
 
 

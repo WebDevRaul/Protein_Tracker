@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteItem } from '../redux/actions/commonAction';
+import { deleteItem } from '../redux/actions/delete_item';
 
 // Common
 import isEmpty from './common/isEmpty';
