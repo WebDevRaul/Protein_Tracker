@@ -31,9 +31,11 @@ class Admin extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const { errors } = nextProps.errors;
-    if( errors !== prevState.errors ) {
+    const { item } = nextProps.item;
+    if( errors !== prevState.errors || item !== prevState.item) {
       return { 
         errors: nextProps.errors.errors,
+        item: nextProps.item,
       };
     }
    else return null;
@@ -50,11 +52,15 @@ class Admin extends Component {
   
   componentDidUpdate(prevProps, prevState) {
     const { errors } = this.state;
+    const { item } = this.props.item
 
     // This way we dont need to call ComponentWillUnmount
     // to reset the setTimeout();
     if (!isEmpty(errors)) {
       setTimeout(() => { this.props.clearError() }, 3000);
+    }
+    if (!isEmpty(item) && isEmpty(errors)) {
+      this.props.findItems(this.props.auth.user.id)
     }
   }
 

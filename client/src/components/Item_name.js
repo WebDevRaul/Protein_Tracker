@@ -14,6 +14,8 @@ class ItemName extends Component {
   onClick = data => () => {
     this.props.deleteItem(data)
   }
+
+  
   render() {
     let item;
     const { items } = this.props.items;

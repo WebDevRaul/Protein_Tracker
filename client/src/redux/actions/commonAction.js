@@ -15,7 +15,7 @@ export const clearError = () => {
   };
 };
 
-// Clear Items
+// Clear Items on signOut
 export const clearItems = () => {
   return {
     type: CLEAR_ITEMS,
