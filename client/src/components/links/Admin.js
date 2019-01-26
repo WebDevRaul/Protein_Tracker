@@ -59,8 +59,12 @@ class Admin extends Component {
     if (!isEmpty(errors)) {
       setTimeout(() => { this.props.clearError() }, 3000);
     }
-    if (!isEmpty(item) && isEmpty(errors)) {
-      this.props.findItems(this.props.auth.user.id)
+    
+    // Render if new item
+    if (!isEmpty(item)) {
+      if (item !== prevProps.item.item) {
+        this.props.findItems(this.props.auth.user.id)
+      }
     }
   }
 
