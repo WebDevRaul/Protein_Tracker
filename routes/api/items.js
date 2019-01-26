@@ -57,7 +57,11 @@ router
   .delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     Item.findById(req.params.id)
       .then(item => {
-        item.remove().then(() => res.json({ success: true }))
+        item.remove()
+            .then(Item.find({ user: req.user.id })
+              .then(items => res.json(items))
+              .catch(err => res.status(404).json({ noItemFound: 'No products found' }))
+            )
       })
       .catch(err => res.status(404).json({ ItemNotFound: 'No Produc found' }));
   });
