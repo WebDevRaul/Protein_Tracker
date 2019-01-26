@@ -9,19 +9,26 @@ import { connect } from 'react-redux';
 import isEmpty from './common/isEmpty';
 
 class ItemName extends Component {
+
+  onClick = data => () => {
+    console.log(data)
+  }
   render() {
     let item;
     const { items } = this.props.items;
     // Check for empty items
     if (!isEmpty(items)) {
       item = items[0].map(i => 
-        <ul key={i.product_name} className='navbar list-inline'>
-          <li className='list-inline-item'>{i.product_name}</li>
-          <li className='list-inline-item'>{i.calories}</li>
-          <li className='list-inline-item'>{i.protein}</li>
-          <li className='list-inline-item'>{i.fat}</li>
-          <li className='list-inline-item'>{i.carbohydrates}</li>
-        </ul>
+        <div key={i._id}>
+          <ul className='navbar list-inline'>
+            <li className='list-inline-item'>{i.product_name}</li>
+            <li className='list-inline-item'>{i.calories}</li>
+            <li className='list-inline-item'>{i.protein}</li>
+            <li className='list-inline-item'>{i.fat}</li>
+            <li className='list-inline-item'>{i.carbohydrates}</li>
+            <span onClick={this.onClick(i._id)} >X</span>
+          </ul>
+        </div>
       )
     }
     return (
