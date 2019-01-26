@@ -54,14 +54,12 @@ router
 // @desc    Delete item by id
 // @access  Private
 router
-  .get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    // Check for User
-    User.findOne({ user: req.user.id })
-      .then(user => {
-        // Find item
-        Item.findById(req.params.id)
+  .delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Item.findById(req.params.id)
+      .then(item => {
+        item.remove().then(() => res.json({ success: true }))
       })
-      .catch(err => res.status(404).json({ ItemNotFound: 'No Item found' }));
+      .catch(err => res.status(404).json({ ItemNotFound: 'No Produc found' }));
   });
 
 
