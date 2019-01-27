@@ -2,7 +2,7 @@ const express = require('express')
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys_dev')
+const keys = require('../../config/keys')
 
 // Load User Model
 const User = require('../../models/User');
