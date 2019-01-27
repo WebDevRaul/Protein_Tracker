@@ -23,6 +23,7 @@ import Admin from './components/links/Admin';
 // Redux
 import store from './store';
 import { Provider } from 'react-redux';
+import { logoutUser } from './redux/actions/signOut';
 
 // CSS
 import './css/App.css';
@@ -35,6 +36,15 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(localStorage.jwtToken);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+
+  // Check for expire token
+  const currentTiem = Date.now / 1000;
+  if (decoded < currentTiem) {
+    // SignOut user
+    store.dispatch(logoutUser());
+    // Redirect to login
+    window.location.href = '/login';
+  }
 }
 
 
