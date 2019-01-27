@@ -1,17 +1,13 @@
 import axios from 'axios';
-import { GET_ERRORS, FIND_ITEMS } from './types';
-
-// Clear items
-import { clearItems } from './commonAction';
+import { GET_ERRORS, DELETE_ITEM } from './types';
 
 // Delete item
 export const deleteItem = data => dispatch => {
-  dispatch(clearItems({}));
   axios
     .delete(`/api/items/${data}`)
     .then(res => dispatch({
-      type: FIND_ITEMS,
-      payload: res.data
+      type: DELETE_ITEM,
+      payload: data
     }))
     .catch(err => dispatch({
       type: GET_ERRORS,

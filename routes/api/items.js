@@ -53,18 +53,24 @@ router
 // @route   DELETE api/item/:id
 // @desc    Delete item by id
 // @access  Private
-router
-  .delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Item.findById(req.params.id)
-      .then(item => {
-        item.remove()
-            .then(Item.find({ user: req.user.id })
-              .then(items => res.json(items))
-              .catch(err => res.status(404).json({ noItemFound: 'No products found' }))
-            )
-      })
-      .catch(err => res.status(404).json({ ItemNotFound: 'No Produc found' }));
-  });
+router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findOne({ user: req.user.id }).then(user => {
+      Item.findById(req.params.id)
+        .then(item => {
+          // Check for item owner
+          if (item.user.toString() !== req.user.id) {
+            return res
+              .status(401)
+              .json({ notauthorized: 'User not authorized' });
+          }
+
+          // Delete
+          item.remove().then(() => res.json({ success: true }));
+        })
+        .catch(err => res.status(404).json({ postnotfound: 'No product found' }));
+    });
+  }
+);
 
 
 
