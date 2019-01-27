@@ -5,4 +5,3 @@ export const CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
 export const SAVE_ITEM = 'SAVE_ITEM';
 export const FIND_ITEMS = 'FIND_ITEMS';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
-export const DELETE_ITEM = 'DELETE_ITEM';

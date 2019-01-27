@@ -9,7 +9,7 @@ export default function(state=initialState, action) {
     case FIND_ITEMS:
       return {
         ...state,
-        items: [action.payload, ...state.items]
+        items: [...state.items, action.payload]
       };
     case CLEAR_ITEMS:
       return {
