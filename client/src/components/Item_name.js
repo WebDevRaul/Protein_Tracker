@@ -11,8 +11,8 @@ import isEmpty from './common/isEmpty';
 
 class ItemName extends Component {
 
-  onClick = data => () => {
-    this.props.deleteItem(data)
+  onClick = id => () => {
+    this.props.deleteItem(id)
   }
 
   
@@ -21,7 +21,7 @@ class ItemName extends Component {
     const { items } = this.props.items;
     // Check for empty items
     if (!isEmpty(items)) {
-      item = items[0].map(i => 
+      item = items.map(i => 
         <div key={i._id}>
           <ul className='navbar list-inline'>
             <li className='list-inline-item'>{i.product_name}</li>
