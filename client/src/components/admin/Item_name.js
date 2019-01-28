@@ -29,7 +29,15 @@ class ItemName extends Component {
 };
 
 ItemName.propTypes = {
-  
+  errors: PropTypes.object.isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  product_name: PropTypes.string.isRequired,
+  calories: PropTypes.string.isRequired,
+  protein: PropTypes.string.isRequired,
+  fat: PropTypes.string.isRequired,
+  carbohydrates: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  text: PropTypes.string
 };
 
 const mapStateToProps = state => ({
