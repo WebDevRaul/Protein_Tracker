@@ -97,18 +97,18 @@ class Admin extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div>
-         <section className="bg-light py-5">
-          <div className="container">
+      <div className='admin'>
+         <section className="admin-section-one">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-md-8 mx-auto">
-                <div className="card">
+                <div className="special-card">
                   <div className="card-header bg-primary text-white">
                     <h4>
                       <i></i>Admin</h4>
                   </div>
-                  <div className="card-body">
-                    <div className="card">
+                  <div className="card-body no-bg">
+                    <div className="spacial-card text-white text-uppercase font-weight-bold">
                       <div className="card-header">
                         add product
                       </div>
@@ -116,7 +116,7 @@ class Admin extends Component {
                         <form noValidate onSubmit={this.onSubmit}>
                           <div className='admin-form'>
                             <ul className="navbar list-inline">
-                              <li className="list-inline-item">Product name
+                              <li className="list-inline-item"><h5>Product name</h5>
                                 <CardFieldGroup
                                   name='product_name'
                                   value={this.state.product_name}
@@ -127,7 +127,7 @@ class Admin extends Component {
                             </ul>
                           </div>
                           <ul className="navbar list-inline">
-                            <li className="list-inline-item">Calories
+                            <li className="list-inline-item"><h5>Calories</h5>
                               <CardFieldGroup
                                 name='calories'
                                 value={this.state.calories}
@@ -135,7 +135,7 @@ class Admin extends Component {
                                 error={errors.calories}
                               />
                             </li>
-                            <li className="list-inline-item">Protein
+                            <li className="list-inline-item"><h5>Protein</h5>
                               <CardFieldGroup
                                 name='protein'
                                 value={this.state.protein}
@@ -143,7 +143,7 @@ class Admin extends Component {
                                 error={errors.protein}
                               />
                             </li>
-                            <li className="list-inline-item">Fat
+                            <li className="list-inline-item"><h5>Fat</h5>
                               <CardFieldGroup
                                 name='fat'
                                 value={this.state.fat}
@@ -151,7 +151,7 @@ class Admin extends Component {
                                 error={errors.fat}
                               />
                             </li>
-                            <li className="list-inline-item">Carbohydrates
+                            <li className="list-inline-item"><h5>Carbohydrates</h5>
                               <CardFieldGroup
                                 name='carbohydrates'
                                 value={this.state.carbohydrates}

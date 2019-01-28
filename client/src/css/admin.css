@@ -1,6 +1,23 @@
 .admin-form ul{
   display: block !important;
 }
+
 .admin-form ul li {
   display: block !important;
+}
+
+.admin-section-one {
+  background-image: url('../img/admin.jpeg');
+}
+
+.special-card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: none;
+  border-radius: .25rem;
 }
