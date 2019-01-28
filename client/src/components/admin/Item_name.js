@@ -15,7 +15,7 @@ class ItemName extends Component {
   render() {
     return (
       <div key={this.props.key}>
-        <ul className='navbar list-inline'>
+        <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{this.props.product_name}</li>
           <li className='list-inline-item'>{this.props.calories}</li>
           <li className='list-inline-item'>{this.props.protein}</li>

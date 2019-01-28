@@ -30,15 +30,17 @@ class ItemsName extends Component {
       )
     }
     return (
-      <div>
-        <ItemName
-          product_name= 'Product Name:'
-          calories= 'Calories'
-          protein= 'Proteins'
-          fat='Fat'
-          carbohydrates= 'Carbohydrates'
-        />
-        {item}
+      <div className='items-name mt-5 mb-5'>
+        <div className='container'>
+          <ItemName
+            product_name= 'Product Name:'
+            calories= 'Calories'
+            protein= 'Proteins'
+            fat='Fat'
+            carbohydrates= 'Carbohydrates'
+          />
+          {item}
+        </div>
       </div>
     )
   }

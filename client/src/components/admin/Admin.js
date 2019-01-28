@@ -169,7 +169,7 @@ class Admin extends Component {
             </div>
           </div>
         </section>
-        <section className="bg-light py-5">
+        <section className="admin-section-two">
           <ItemsName />
         </section>
       </div>
