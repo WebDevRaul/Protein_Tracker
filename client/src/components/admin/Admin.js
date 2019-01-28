@@ -101,16 +101,15 @@ class Admin extends Component {
          <section className="admin-section-one">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-8 mx-auto">
+              <div className="col-md-6 mx-auto">
                 <div className="special-card">
-                  <div className="card-header bg-primary text-white">
-                    <h4>
-                      <i></i>Admin</h4>
+                  <div className="special-card-header mb-5 pb-5 text-white">
+                    <h3><i className='card-header-h4'>Admin</i></h3>
                   </div>
-                  <div className="card-body no-bg">
-                    <div className="spacial-card text-white text-uppercase font-weight-bold">
-                      <div className="card-header">
-                        add product
+                  <div className="card-body">
+                    <div className="spacial-card text-white text-capitalize font-weight-bold">
+                      <div className="special-card-header mt-5 text-center">
+                        <h3>add product</h3>
                       </div>
                       <div className="card-body">
                         <form noValidate onSubmit={this.onSubmit}>
@@ -160,7 +159,7 @@ class Admin extends Component {
                               />
                             </li>
                           </ul>
-                            <input type="submit" value="Save" className="btn btn-secondary btn-block bg-primary" />
+                            <input type="submit" value="Save" className="font-weight-bold btn btn-secondary btn-block bg-primary" />
                         </form>
                       </div>
                     </div>
