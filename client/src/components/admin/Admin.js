@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import CardFieldGroup from '../common/components/CardFieldGroup';
-import ItemName from '../Item_name';
+import ItemsName from './Items_name';
 
 // Redux
 import { connect } from 'react-redux';
@@ -171,7 +171,7 @@ class Admin extends Component {
           </div>
         </section>
         <section className="bg-light py-5">
-          <ItemName />
+          <ItemsName />
         </section>
       </div>
     )

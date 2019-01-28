@@ -18,7 +18,7 @@ import Footer from './components/layout/Footer';
 import Home from './components/links/Home';
 import About from './components/links/About';
 import Dashboard from './components/links/Dashboard';
-import Admin from './components/links/Admin';
+import Admin from './components/admin/Admin';
 
 // Redux
 import store from './store';
