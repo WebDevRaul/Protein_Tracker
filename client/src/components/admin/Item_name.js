@@ -21,7 +21,7 @@ class ItemName extends Component {
           <li className='list-inline-item'>{this.props.protein}</li>
           <li className='list-inline-item'>{this.props.fat}</li>
           <li className='list-inline-item'>{this.props.carbohydrates}</li>
-          <span onClick={this.onClick(this.props.Id)} >{this.props.text}</span>
+          <span className='hover' onClick={this.onClick(this.props.Id)} ><i className={this.props.class}></i></span>
         </ul>
       </div>
     )
@@ -37,7 +37,7 @@ ItemName.propTypes = {
   fat: PropTypes.string.isRequired,
   carbohydrates: PropTypes.string.isRequired,
   id: PropTypes.string,
-  text: PropTypes.string
+  class: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

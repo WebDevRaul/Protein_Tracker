@@ -25,7 +25,7 @@ class ItemsName extends Component {
           fat={i.fat}
           carbohydrates={i.carbohydrates}
           Id={i._id}
-          text='x'
+          class='far fa-times-circle fa-red'
         />
       )
     }
