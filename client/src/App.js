@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './components/auth/utils/setAuthToken';
 import { setCurrentUser } from './redux/actions/login_user';  
+import { logoutUser } from './redux/actions/signOut';
 
 // Private Route
 import PrivateRoute from './components/common/privateRoute';
@@ -17,18 +18,17 @@ import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import Home from './components/links/Home';
 import About from './components/links/About';
-import Dashboard from './components/links/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import Admin from './components/admin/Admin';
 
 // Redux
 import store from './store';
 import { Provider } from 'react-redux';
-import { logoutUser } from './redux/actions/signOut';
 
 // CSS
 import './css/App.css';
 
-// Check for token
+// Check Token
 if (localStorage.jwtToken) {
   // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
@@ -37,10 +37,10 @@ if (localStorage.jwtToken) {
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
-  // Check for expire token
-  const currentTiem = Date.now / 1000;
-  if (decoded < currentTiem) {
-    // SignOut user
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout user
     store.dispatch(logoutUser());
     // Redirect to login
     window.location.href = '/login';
