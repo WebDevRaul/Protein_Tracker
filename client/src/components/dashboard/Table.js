@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 import TableFieldGroup from '../common/components/TableFieldGroup';
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
-export default class Table extends Component {
+// Redux
+import { connect } from 'react-redux';
+
+class Table extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,8 +23,8 @@ export default class Table extends Component {
   render() {
     return (
       <div>
-        <div class="card">
-          <div class="card-header">
+        <div className="card">
+          <div className="card-header">
             Table
           </div>
           <div className='card-body'>
@@ -28,9 +32,10 @@ export default class Table extends Component {
               name='productList'
               value={this.state.productVal}
               onChange={this.onChange}
+              items={this.props.items}
             />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <ul>
               <li>
                 <ul className='navbar list-inline'>
@@ -42,11 +47,22 @@ export default class Table extends Component {
                   <li className='list-inline-item'>Carbohydrates</li>
                 </ul>
               </li>
-              <li><TableFieldGroup /></li>
+              {/* <li><TableFieldGroup /></li> */}
             </ul>
           </div>
         </div>
       </div>
     )
   }
+};
+
+Table.propTypes = {
+  items: PropTypes.object.isRequired
 }
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+  items: state.items
+})
+
+export default connect( mapStateToProps, {  })(Table)

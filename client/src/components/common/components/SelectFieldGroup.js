@@ -4,22 +4,26 @@ import PropTypes from 'prop-types';
 const SelectListGroup = ({
   name,
   value,
-  onChange
+  onChange,
+  items,
 }) => {
+  // const selectOptions = items.map(option => (
+  //   <option key={option.label} value={option.value}>
+  //     {option.label}
+  //   </option>
+  // ));
+  console.log(items)
   return (
-    <div class="input-group">
-      <select class="custom-select"
+    <div className="input-group">
+      <select className="custom-select"
         name={name}
         value={value}
         onChange={onChange}
       >
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        {/* {selectOptions} */}
       </select>
-      <div class="input-group-append">
-        <label class="input-group-text" htmlFor={name}>Add</label>
+      <div className="input-group-append">
+        <label className="input-group-text" htmlFor={name}>Add</label>
       </div>
     </div>
   );
