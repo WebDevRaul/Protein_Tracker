@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import TableFieldGroup from '../common/components/TableFieldGroup';
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
 // Redux
@@ -18,6 +17,11 @@ class Table extends Component {
 
   onChange = (e) => {
     this.setState({ productVal: e.target.value })
+  };
+
+  onClick = () => {
+    console.log('click')
+    // send to table
   }
 
   render() {
@@ -33,22 +37,19 @@ class Table extends Component {
               value={this.state.productVal}
               onChange={this.onChange}
               items={this.props.items}
+              onClick={this.onClick}
             />
           </div>
           <div className="card-body">
-            <ul>
-              <li>
-                <ul className='navbar list-inline'>
-                  <li className='list-inline-item'>Quantity</li>
-                  <li className='list-inline-item'>Product</li>
-                  <li className='list-inline-item'>Calories</li>
-                  <li className='list-inline-item'>Proteins</li>
-                  <li className='list-inline-item'>Fat</li>
-                  <li className='list-inline-item'>Carbohydrates</li>
-                </ul>
-              </li>
-              {/* <li><TableFieldGroup /></li> */}
+            <ul className='navbar list-inline'>
+              <li className='list-inline-item'>Quantity</li>
+              <li className='list-inline-item'>Product</li>
+              <li className='list-inline-item'>Calories</li>
+              <li className='list-inline-item'>Proteins</li>
+              <li className='list-inline-item'>Fat</li>
+              <li className='list-inline-item'>Carbohydrates</li>
             </ul>
+              {/* <li><TableFieldGroup /></li> */}
           </div>
         </div>
       </div>

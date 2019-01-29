@@ -6,6 +6,7 @@ const SelectListGroup = ({
   value,
   onChange,
   items,
+  onClick
 }) => {
   const selectOptions = items.items.map(item => (
     <option key={item._id} value={item.product_name}>
@@ -22,7 +23,12 @@ const SelectListGroup = ({
         {selectOptions}
       </select>
       <div className="input-group-append">
-        <label className="input-group-text" htmlFor={name}>Add</label>
+        <label 
+          className="input-group-text" 
+          htmlFor={name}
+          onClick={onClick}
+        >Add
+        </label>
       </div>
     </div>
   );
@@ -31,8 +37,9 @@ const SelectListGroup = ({
 SelectListGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  items: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  items: PropTypes.object.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default SelectListGroup;
