@@ -7,12 +7,11 @@ const SelectListGroup = ({
   onChange,
   items,
 }) => {
-  // const selectOptions = items.map(option => (
-  //   <option key={option.label} value={option.value}>
-  //     {option.label}
-  //   </option>
-  // ));
-  console.log(items)
+  const selectOptions = items.items.map(item => (
+    <option key={item._id} value={item.product_name}>
+      {item.product_name}
+    </option>
+  ));
   return (
     <div className="input-group">
       <select className="custom-select"
@@ -20,7 +19,7 @@ const SelectListGroup = ({
         value={value}
         onChange={onChange}
       >
-        {/* {selectOptions} */}
+        {selectOptions}
       </select>
       <div className="input-group-append">
         <label className="input-group-text" htmlFor={name}>Add</label>
@@ -32,7 +31,8 @@ const SelectListGroup = ({
 SelectListGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  items: PropTypes.object.isRequired
 };
 
 export default SelectListGroup;
