@@ -9,13 +9,13 @@ export default class Table extends Component {
       <div>
         <ul>
           <li>
-            <ul>
-              <li>Quantity</li>
-              <li>Product</li>
-              <li>Calories</li>
-              <li>Proteins</li>
-              <li>Fat</li>
-              <li>Carbohydrates</li>
+            <ul className='navbar list-inline'>
+              <li className='list-inline-item'>Quantity</li>
+              <li className='list-inline-item'>Product</li>
+              <li className='list-inline-item'>Calories</li>
+              <li className='list-inline-item'>Proteins</li>
+              <li className='list-inline-item'>Fat</li>
+              <li className='list-inline-item'>Carbohydrates</li>
             </ul>
           </li>
           <li><TableFieldGroup /></li>
