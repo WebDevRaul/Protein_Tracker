@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 
 // Components
 import TableFieldGroup from '../common/components/TableFieldGroup';
-import TextFieldGroup from '../common/components/TextFieldGroup';
+import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
 export default class Table extends Component {
+  constructor() {
+    super();
+    this.state = {
+      productVal: ''
+    }
+  };
+
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     return (
       <div>
@@ -13,8 +24,10 @@ export default class Table extends Component {
             Table
           </div>
           <div className='card-body'>
-            <TextFieldGroup
-              
+            <SelectFieldGroup
+              name='productList'
+              value={this.state.productVal}
+              onChange={this.onChange}
             />
           </div>
           <div class="card-body">
