@@ -20,8 +20,11 @@ class Table extends Component {
   };
 
   onClick = () => {
-    console.log('click')
-    // send to table
+    const { items } = this.props.items;
+    const { productVal } = this.state;
+    const item = item => item.product_name === productVal;
+    console.log(items) 
+    console.log(items.find(item))
   }
 
   render() {
