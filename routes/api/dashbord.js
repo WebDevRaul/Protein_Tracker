@@ -3,7 +3,7 @@ const router  = express.Router();
 const passport = require('passport');
 
 // Item Model
-const Item = require('../../models/Item');
+const Table = require('../../models/Table');
 
 // @route   POST api/dashboard
 // @desc    Save item
@@ -12,7 +12,7 @@ router
   .post('/', passport.authenticate('jwt', {session:false}), (req, res) => {
     // Make Validation
 
-    const item = new Item({
+    const item = new Table({
       table_id: req.body.table_id,
       user: req.body.user,
       product_name: req.body.product_name,

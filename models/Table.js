@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Item schema
-const ItemSchema = new Schema({
+// Create Table schema
+const TableSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
@@ -27,6 +27,9 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
+  table_id: {
+    type: String,
+  },
 });
 
-module.exports = Item = mongoose.model('items', ItemSchema);
+module.exports = Table = mongoose.model('tables', TableSchema);
