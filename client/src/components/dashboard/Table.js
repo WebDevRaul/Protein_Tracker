@@ -22,6 +22,7 @@ class Table extends Component {
   onClick = () => {
     const { items } = this.props.items;
     const { productVal } = this.state;
+    const { id } = this.props;
     const item = item => item.product_name === productVal;
     console.log(items) 
     console.log(items.find(item))

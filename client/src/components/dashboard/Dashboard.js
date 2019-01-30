@@ -9,6 +9,12 @@ import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/find_items';
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      id: 1
+    }
+  }
 
   componentDidMount(){
     const { isAuthenticated } = this.props.auth;
@@ -18,11 +24,19 @@ class Dashboard extends Component {
       this.props.findItems(this.props.auth.user.id)
     }
   }
+
+  onClick = () => {
+    this.setState({ id: this.state.id + 1 })
+  }
   
   render() {
+    const { id } = this.state;
     return (
       <div className='container'>
-        <Table />
+        <Table
+          id={id}
+        />
+        <button onClick={this.onClick} >add table</button>
       </div>
     )
   }
