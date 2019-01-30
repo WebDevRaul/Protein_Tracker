@@ -6,6 +6,7 @@ import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
+import { addItem } from '../../redux/actions/dashboard';
 
 class Table extends Component {
   constructor() {
@@ -20,12 +21,13 @@ class Table extends Component {
   };
 
   onClick = () => {
-    const { items } = this.props.items;
+    const { items } = this.props.admin;
     const { productVal } = this.state;
-    const { id } = this.props;
-    const item = item => item.product_name === productVal;
-    console.log(items) 
-    console.log(items.find(item))
+    const table_id = this.props.id.toString();
+    const itemFunc = item => item.product_name === productVal;
+    const item = items.find(itemFunc);
+    const product = Object.assign({ table_id }, item);
+    this.props.addItem(product);
   }
 
   render() {
@@ -63,7 +65,8 @@ class Table extends Component {
 };
 
 Table.propTypes = {
-  admin: PropTypes.object.isRequired
+  admin: PropTypes.object.isRequired,
+  addItem: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -71,4 +74,4 @@ const mapStateToProps = state => ({
   admin: state.admin
 })
 
-export default connect( mapStateToProps, {  })(Table)
+export default connect( mapStateToProps, { addItem })(Table)
