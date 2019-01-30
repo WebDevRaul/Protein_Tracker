@@ -7,3 +7,4 @@ export const FIND_ITEMS = 'FIND_ITEMS';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_ITEM_DASHBOARD = 'ADD_ITEM_DASHBOARD';
+export const FIND_PRODUCTS = 'FIND_PRODUCTS';
