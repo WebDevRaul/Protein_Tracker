@@ -26,16 +26,16 @@ class Dashboard extends Component {
   }
 
   onClick = () => {
-    this.setState({ id: this.state.id + 1 })
+    this.setState({ id: this.state.id + 1 });
   }
   
   render() {
     const { id } = this.state;
     return (
       <div className='container'>
-        <Table
-          id={id}
-        />
+        {
+          [...Array(id)].map((key, i) => <Table key={i} id={i} />)
+        }
         <button onClick={this.onClick} >add table</button>
       </div>
     )
