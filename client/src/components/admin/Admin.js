@@ -49,7 +49,7 @@ class Admin extends Component {
   
   componentDidUpdate(prevProps, prevState) {
     const { errors } = this.state;
-    const { item } = this.props.item
+    const { item } = this.props.admin
 
     // Reset the errors
     if (!isEmpty(errors)) {
@@ -58,7 +58,7 @@ class Admin extends Component {
     
     // Render if new item
     if (!isEmpty(item)) {
-      if (item !== prevProps.item.item) {
+      if (item !== prevProps.admin.item) {
         this.props.findItems(this.props.auth.user.id)
       }
     }
@@ -179,7 +179,7 @@ class Admin extends Component {
 Admin.propTypes = {
   errors: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired,
+  admin: PropTypes.object.isRequired,
   saveItem: PropTypes.func.isRequired,
   clearError: PropTypes.func.isRequired,
   findItems: PropTypes.func.isRequired
@@ -188,7 +188,7 @@ Admin.propTypes = {
 const mapStateToProp = state => ({
   errors: state.errors,
   auth: state.auth,
-  item: state.item
+  admin: state.admin
 });
 
 export default connect( mapStateToProp, { saveItem, findItems, clearError } )(Admin);

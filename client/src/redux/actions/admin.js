@@ -5,7 +5,7 @@ import { GET_ERRORS, SAVE_ITEM, FIND_ITEMS, DELETE_ITEM } from './types';
 // Save item
 export const saveItem = item => dispatch => {
   axios
-    .post('/api/items', item)
+    .post('/api/admin', item)
     .then(res => dispatch({
       type: SAVE_ITEM,
       payload: res.data
@@ -19,7 +19,7 @@ export const saveItem = item => dispatch => {
 // Find Items
 export const findItems = data => dispatch => {
   axios
-    .get(`/api/items/${data}`)
+    .get(`/api/admin/${data}`)
     .then(res => dispatch({
       type: FIND_ITEMS,
       payload: res.data
@@ -33,7 +33,7 @@ export const findItems = data => dispatch => {
 // Delete item
 export const deleteItem = data => dispatch => {
   axios
-    .delete(`/api/items/${data}`)
+    .delete(`/api/admin/${data}`)
     .then(res => dispatch({
       type: DELETE_ITEM,
       payload: data

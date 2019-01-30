@@ -67,11 +67,11 @@ class Table extends Component {
 Table.propTypes = {
   admin: PropTypes.object.isRequired,
   addItem: PropTypes.func.isRequired,
-}
+};
 
 const mapStateToProps = state => ({
   errors: state.errors,
   admin: state.admin
-})
+});
 
-export default connect( mapStateToProps, { addItem })(Table)
+export default connect( mapStateToProps, { addItem })(Table);

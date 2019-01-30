@@ -31,7 +31,6 @@ class Dashboard extends Component {
   
   render() {
     const { id } = this.state;
-    console.log(id)
     return (
       <div className='container'>
         <Table

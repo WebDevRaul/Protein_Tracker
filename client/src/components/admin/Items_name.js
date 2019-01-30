@@ -13,7 +13,7 @@ import isEmpty from '../common/isEmpty';
 class ItemsName extends Component {
   render() {
     let item;
-    const { items } = this.props.items;
+    const { items } = this.props.admin;
     // Check for empty items
     if (!isEmpty(items)) {
       item = items.map(i => 
@@ -47,11 +47,11 @@ class ItemsName extends Component {
 };
 
 ItemsName.propTypes = {
-  items: PropTypes.object.isRequired,
+  admin: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-  items: state.items
+  admin: state.admin
 });
 
 export default connect( mapStateToProps, {} )(ItemsName);
