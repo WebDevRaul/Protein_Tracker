@@ -8,7 +8,7 @@ const SelectListGroup = ({
   items,
   onClick
 }) => {
-  const selectOptions = items.items.map(item => (
+  const selectOptions = items.map(item => (
     <option key={item._id} value={item.product_name}>
       {item.product_name}
     </option>
@@ -37,7 +37,7 @@ const SelectListGroup = ({
 SelectListGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  items: PropTypes.object.isRequired,
+  items: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired
 };

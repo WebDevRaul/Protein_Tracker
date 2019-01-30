@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteItem } from '../../redux/actions/delete_item';
+import { deleteItem } from '../../redux/actions/admin';
 
 class ItemName extends Component {
 

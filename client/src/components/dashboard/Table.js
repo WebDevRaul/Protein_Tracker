@@ -29,6 +29,7 @@ class Table extends Component {
   }
 
   render() {
+    const { items } = this.props.admin
     return (
       <div>
         <div className="card">
@@ -40,7 +41,7 @@ class Table extends Component {
               name='productList'
               value={this.state.productVal}
               onChange={this.onChange}
-              items={this.props.items}
+              items={items}
               onClick={this.onClick}
             />
           </div>
@@ -62,12 +63,12 @@ class Table extends Component {
 };
 
 Table.propTypes = {
-  items: PropTypes.object.isRequired
+  admin: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
   errors: state.errors,
-  items: state.items
+  admin: state.admin
 })
 
 export default connect( mapStateToProps, {  })(Table)

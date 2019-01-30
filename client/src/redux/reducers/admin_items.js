@@ -1,11 +1,17 @@
-import { FIND_ITEMS, CLEAR_ITEMS, DELETE_ITEM } from '../actions/types';
+import { FIND_ITEMS, CLEAR_ITEMS, DELETE_ITEM, SAVE_ITEM } from '../actions/types';
 
 const initialState = {
-  items: [],
+  item: {},
+  items: []
 };
 
 export default function(state=initialState, action) {
   switch(action.type) {
+    case SAVE_ITEM:
+      return {
+        ...state,
+        item: action.payload
+      }
     case FIND_ITEMS:
       return {
         ...state,

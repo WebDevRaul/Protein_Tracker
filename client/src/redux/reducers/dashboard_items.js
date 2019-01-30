@@ -1,12 +1,13 @@
-import { SAVE_ITEM } from '../actions/types';
+import { ADD_ITEM_DASHBOARD } from '../actions/types';
 
 const initialState = {
-  item: {}
+  item: {},
+  items: []
 };
 
 export default function(state=initialState, action) {
   switch(action.type) {
-    case SAVE_ITEM:
+    case ADD_ITEM_DASHBOARD:
       return {
         ...state,
         item: action.payload

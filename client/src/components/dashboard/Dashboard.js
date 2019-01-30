@@ -6,7 +6,7 @@ import Table from './Table';
 
 // Redux
 import { connect } from 'react-redux';
-import { findItems } from '../../redux/actions/find_items';
+import { findItems } from '../../redux/actions/admin';
 
 class Dashboard extends Component {
   constructor() {

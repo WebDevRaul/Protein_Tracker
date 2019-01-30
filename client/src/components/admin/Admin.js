@@ -7,9 +7,8 @@ import ItemsName from './Items_name';
 
 // Redux
 import { connect } from 'react-redux';
-import { saveItem } from '../../redux/actions/save_item';
+import { saveItem, findItems } from '../../redux/actions/admin';
 import { clearError } from '../../redux/actions/commonAction';
-import { findItems } from '../../redux/actions/find_items';
 
 // Common
 import isEmpty from '../common/isEmpty';
