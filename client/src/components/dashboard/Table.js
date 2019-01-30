@@ -27,6 +27,7 @@ class Table extends Component {
     const itemFunc = item => item.product_name === productVal;
     const item = items.find(itemFunc);
     const product = Object.assign({ table_id }, item);
+    delete product._id;
     this.props.addItem(product);
   }
 

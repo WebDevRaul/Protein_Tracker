@@ -7,6 +7,7 @@ const path = require('path')
 // routes
 const users = require('./routes/api/users');
 const admin = require('./routes/api/admin');
+const dashboard = require('./routes/api/dashbord');
 
 const app = express();
 
@@ -49,6 +50,7 @@ passport.deserializeUser(function(id, done) {
 // Routes
 app.use('/api/users', users);
 app.use('/api/admin', admin);
+app.use('/api/dashboard', dashboard);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

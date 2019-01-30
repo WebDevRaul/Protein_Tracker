@@ -26,7 +26,10 @@ const ItemSchema = new Schema({
   calories: {
     type: String,
     required: true
-  }
+  },
+  table_id: {
+    type: String,
+  },
 });
 
 module.exports = Item = mongoose.model('items', ItemSchema);
