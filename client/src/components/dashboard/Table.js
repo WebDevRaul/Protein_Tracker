@@ -8,6 +8,9 @@ import SelectFieldGroup from '../common/components/SelectFieldGroup';
 import { connect } from 'react-redux';
 import { addProduct, findProducts } from '../../redux/actions/dashboard';
 
+// Common
+import isEmpty from '../common/isEmpty';
+
 class Table extends Component {
   constructor() {
     super();
@@ -24,6 +27,20 @@ class Table extends Component {
       this.props.findProducts(this.props.auth.user.id)
     }
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { item } = this.props.dashboard;
+    
+    // Render if new item
+    if (!isEmpty(item)) {
+      if (item !== prevProps.dashboard.item) {
+        this.props.findProducts(this.props.auth.user.id)
+      }
+    }
+  }
+
+
+
 
   onChange = (e) => {
     this.setState({ productVal: e.target.value })
@@ -91,6 +108,7 @@ const mapStateToProps = state => ({
   errors: state.errors,
   auth: state.auth,
   admin: state.admin,
+  dashboard: state.dashboard
 });
 
 export default connect( mapStateToProps, { addProduct, findProducts })(Table);
