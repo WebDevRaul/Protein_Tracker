@@ -2,8 +2,9 @@ const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
 
-// Item Model
+// Models
 const Table = require('../../models/Table');
+
 
 // @route   POST api/dashboard
 // @desc    Save item
@@ -24,6 +25,16 @@ router
 
     // Save
     item.save().then(item => res.json(item));
+  });
+
+// @route   GET api/dashboard
+// @desc    Find products by user
+// @access  Private
+router
+  .get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Table.find({ user: req.user.id })
+    .then(prod => res.json(prod))
+    .catch(err => res.status(404).json({ noProductsFound: 'No products found' }));
   });
 
 

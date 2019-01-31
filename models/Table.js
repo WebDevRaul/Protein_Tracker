@@ -29,6 +29,7 @@ const TableSchema = new Schema({
   },
   table_id: {
     type: String,
+    required: true
   },
 });
 
