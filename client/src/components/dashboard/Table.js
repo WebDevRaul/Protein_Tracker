@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
+import TableFieldGroup from '../common/components/TableFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
@@ -62,8 +63,28 @@ class Table extends Component {
     this.props.addProduct(product);
   }
 
+
   render() {
-    const { items } = this.props.admin
+    const { items } = this.props.admin;
+    const prodItem = this.props.dashboard.items;
+    let productItem;
+
+    // Check for empty prodItem
+    if (!isEmpty(prodItem)) {
+      // Map prodItem
+      productItem = prodItem.map(i => 
+        <TableFieldGroup
+          key={i._id}
+          product_name={i.product_name}
+          calories={i.calories}
+          protein={i.protein}
+          fat={i.fat}
+          carbohydrates={i.carbohydrates}
+          quantity={'1'}
+        />
+      )
+    }
+
     return (
       <div>
         <div className="card">
@@ -88,7 +109,7 @@ class Table extends Component {
               <li className='list-inline-item'>Fat</li>
               <li className='list-inline-item'>Carbohydrates</li>
             </ul>
-              {/* <li><TableFieldGroup /></li> */}
+            {productItem}
           </div>
         </div>
       </div>
