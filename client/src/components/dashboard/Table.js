@@ -6,7 +6,7 @@ import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
-import { addProduct } from '../../redux/actions/dashboard';
+import { addProduct, findProducts } from '../../redux/actions/dashboard';
 
 class Table extends Component {
   constructor() {
@@ -15,6 +15,15 @@ class Table extends Component {
       productVal: ''
     }
   };
+
+  componentDidMount(){
+    const { isAuthenticated } = this.props.auth;
+
+    // Fetch items
+    if (isAuthenticated) {
+      this.props.findProducts(this.props.auth.user.id)
+    }
+  }
 
   onChange = (e) => {
     this.setState({ productVal: e.target.value })
@@ -71,13 +80,17 @@ class Table extends Component {
 };
 
 Table.propTypes = {
+  errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   admin: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
+  findProducts: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
-  admin: state.admin
+  auth: state.auth,
+  admin: state.admin,
 });
 
-export default connect( mapStateToProps, { addProduct })(Table);
+export default connect( mapStateToProps, { addProduct, findProducts })(Table);

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ADD_ITEM_DASHBOARD, FIND_PRODUCTS, GET_ERRORS } from './types';
+import { ADD_PRODUCT, FIND_PRODUCTS, GET_ERRORS } from './types';
 
 // Add item to TableFieldGroup
 export const addProduct = data => dispatch => {
   axios
     .post('/api/dashboard', data)
     .then(res => dispatch({
-      type: ADD_ITEM_DASHBOARD,
+      type: ADD_PRODUCT,
       payload: res.data
     }))
     .catch(err => dispatch({

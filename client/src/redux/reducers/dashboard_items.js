@@ -1,4 +1,4 @@
-import { ADD_ITEM_DASHBOARD, FIND_PRODUCTS } from '../actions/types';
+import { ADD_PRODUCT, FIND_PRODUCTS } from '../actions/types';
 
 const initialState = {
   item: {},
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function(state=initialState, action) {
   switch(action.type) {
-    case ADD_ITEM_DASHBOARD:
+    case ADD_PRODUCT:
       return {
         ...state,
         item: action.payload
