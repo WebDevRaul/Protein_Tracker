@@ -66,24 +66,42 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
-    const prodItem = this.props.dashboard.items;
-    let productItem;
+    const prodItem = Object.values(this.props.dashboard.items);
+    const { id } = this.props;
+
+  // Filter by table_id
+  if (!isEmpty(prodItem)) {
+  const filterByID = item => {
+    if (item.table_id === id.toString()) {
+      return true
+    };
+  };
+
+  console.log(prodItem.filter(filterByID))
+}
+
+
+// Number of Invalid Entries = 5
+    // console.log(prodItem)
 
     // Check for empty prodItem
-    if (!isEmpty(prodItem)) {
-      // Map prodItem
-      productItem = prodItem.map(i => 
-        <TableFieldGroup
-          key={i._id}
-          product_name={i.product_name}
-          calories={i.calories}
-          protein={i.protein}
-          fat={i.fat}
-          carbohydrates={i.carbohydrates}
-          quantity={'1'}
-        />
-      )
-    }
+    // if (!isEmpty(prodItem)) {
+    //   // Map prodItem
+    //   productItem = prodItem.map(i => 
+    //     <TableFieldGroup
+    //       table_id={i.table_id}
+    //       key={i._id}
+    //       product_name={i.product_name}
+    //       calories={i.calories}
+    //       protein={i.protein}
+    //       fat={i.fat}
+    //       carbohydrates={i.carbohydrates}
+    //       quantity={'1'}
+    //     />
+    //   )
+    // }
+
+
 
     return (
       <div>
@@ -109,7 +127,7 @@ class Table extends Component {
               <li className='list-inline-item'>Fat</li>
               <li className='list-inline-item'>Carbohydrates</li>
             </ul>
-            {productItem}
+            {/* {productItem} */}
           </div>
         </div>
       </div>
