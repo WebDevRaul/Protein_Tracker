@@ -13,6 +13,10 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      breakfast: false,
+      lunch: false,
+      diner: false,
+      snack: false,
       id: 1,
       table: '',
     }
@@ -36,7 +40,9 @@ class Dashboard extends Component {
   };
 
   onClickSelect = (e) => {
-
+    const { table } = this.state;
+    const update = data => this.setState({ [data]: true });
+    update(table);
   }
 
   
