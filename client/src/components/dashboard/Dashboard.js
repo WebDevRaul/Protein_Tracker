@@ -25,18 +25,22 @@ class Dashboard extends Component {
 
   componentDidMount(){
     const { isAuthenticated } = this.props.auth;
-    const { breakfast } = this.state;
+    const { breakfast } = this.props.dashboard;
 
     // Fetch items
     if (isAuthenticated) {
       this.props.findItems(this.props.auth.user.id);
       this.props.findProducts(this.props.auth.user.id);
     };
-
-    if (!isEmpty(breakfast) && breakfast === false ) {
-      this.setState({ breakfast: true })
-    }
   };
+
+  componentDidUpdate() {
+    const { breakfast } = this.props.dashboard;
+    console.log(breakfast)
+    if (!isEmpty(breakfast) && breakfast === false ) {
+      this.setState({ breakfast: true });
+    }
+  }
 
   onClick = () => {
     this.setState({ id: this.state.id + 1 });
@@ -54,6 +58,7 @@ class Dashboard extends Component {
 
   
   render() {
+    console.log(this.state.breakfast)
     const { breakfast, diner, snack, lunch } = this.state;
     const table = [
       {product_name: 'breakfast', _id: 'breakfast'},
@@ -90,6 +95,7 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   errors: state.errors,
   auth: state.auth,
+  dashboard: state.dashboard
 });
 
 export default connect( mapStateToProps, { findItems, findProducts } )(Dashboard);
