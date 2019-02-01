@@ -25,8 +25,8 @@ class Table extends Component {
 
     // Fetch items
     if (isAuthenticated) {
-      this.props.findProducts(this.props.auth.user.id)
-    }
+      this.props.findProducts(this.props.auth.user.id);
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,8 +76,7 @@ class Table extends Component {
       return true
     };
   };
-
-  console.log(prodItem.filter(filterByID))
+  // console.log(prodItem.filter(filterByID))
 }
 
 
