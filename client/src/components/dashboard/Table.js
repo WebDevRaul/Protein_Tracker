@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
-import TableFieldGroup from '../common/components/TableFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
 import { addProduct, findProducts } from '../../redux/actions/dashboard';
 
-// Common
-import isEmpty from '../common/isEmpty';
 
 class Table extends Component {
   constructor() {
@@ -44,31 +41,7 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
-    const { id } = this.props;
-
-
-// Number of Invalid Entries = 5
-    // console.log(prodItem)
-
-    // Check for empty prodItem
-    // if (!isEmpty(prodItem)) {
-    //   // Map prodItem
-    //   productItem = prodItem.map(i => 
-    //     <TableFieldGroup
-    //       table_id={i.table_id}
-    //       key={i._id}
-    //       product_name={i.product_name}
-    //       calories={i.calories}
-    //       protein={i.protein}
-    //       fat={i.fat}
-    //       carbohydrates={i.carbohydrates}
-    //       quantity={'1'}
-    //     />
-    //   )
-    // }
-
-
-
+    
     return (
       <div>
         <div className="card">

@@ -45,8 +45,8 @@ class Dashboard extends Component {
     // Update states && show table
     this.updateState(breakfast, breakfastState, 'breakfast');
     this.updateState(lunch, lunchState, 'lunch');
-    this.updateState(diner, lunchState, 'diner');
-    this.updateState(snack, lunchState, 'snack');
+    this.updateState(diner, dinerState, 'diner');
+    this.updateState(snack, snackState, 'snack');
   };
   
   updateState = (prop, state, update) => {
@@ -66,6 +66,8 @@ class Dashboard extends Component {
   
   render() {
     const { breakfast, diner, snack, lunch } = this.state;
+
+    // Object for SelectListGoup
     const table = [
       {product_name: 'breakfast', _id: 'breakfast'},
       {product_name: 'lunch', _id: 'lunch'},
