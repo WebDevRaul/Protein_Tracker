@@ -9,6 +9,8 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
 import { findProducts } from '../../redux/actions/dashboard';
+
+// Common
 import isEmpty from '../common/isEmpty';
 
 class Dashboard extends Component {
@@ -25,7 +27,6 @@ class Dashboard extends Component {
 
   componentDidMount(){
     const { isAuthenticated } = this.props.auth;
-    const { breakfast } = this.props.dashboard;
 
     // Fetch items
     if (isAuthenticated) {
@@ -35,15 +36,13 @@ class Dashboard extends Component {
   };
 
   componentDidUpdate() {
-    const { breakfast } = this.props.dashboard;
-    console.log(breakfast)
-    if (!isEmpty(breakfast) && breakfast === false ) {
-      this.setState({ breakfast: true });
-    }
-  }
+    const { breakfast, lunch, diner, snack} = this.props.dashboard;
+    const breakfastState = this.state.breakfast;
 
-  onClick = () => {
-    this.setState({ id: this.state.id + 1 });
+    // Update breakfast state && show breakfast table
+    if (!isEmpty(breakfast) && breakfastState === false) {
+      this.setState({ breakfast: true })
+    };
   };
 
   onChangeSelect = (e) => {
@@ -58,7 +57,6 @@ class Dashboard extends Component {
 
   
   render() {
-    console.log(this.state.breakfast)
     const { breakfast, diner, snack, lunch } = this.state;
     const table = [
       {product_name: 'breakfast', _id: 'breakfast'},
@@ -89,7 +87,9 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   auth: PropTypes.object.isRequired,
+  dashboard: PropTypes.object.isRequired,
   findItems: PropTypes.func.isRequired,
+  findProducts: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
