@@ -19,29 +19,7 @@ class Table extends Component {
       productVal: ''
     }
   };
-
-  componentDidMount(){
-    const { isAuthenticated } = this.props.auth;
-
-    // Fetch items
-    if (isAuthenticated) {
-      this.props.findProducts(this.props.auth.user.id);
-    };
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { item } = this.props.dashboard;
-    
-    // Render if new item
-    if (!isEmpty(item)) {
-      if (item !== prevProps.dashboard.item) {
-        this.props.findProducts(this.props.auth.user.id)
-      }
-    }
-  }
-
-
-
+  
 
   onChange = (e) => {
     this.setState({ productVal: e.target.value })

@@ -1,12 +1,11 @@
 import { ADD_PRODUCT, FIND_PRODUCTS } from '../actions/types';
-import isEmpty from '../../components/common/isEmpty';
 
 const initialState = {
   item: {},
   breakfast: [],
-  lunch: [],
   diner: [],
-  snack: []
+  snack: [],
+  lunch: []
 };
 
 export default function(state=initialState, action) {
@@ -28,10 +27,10 @@ export default function(state=initialState, action) {
     case FIND_PRODUCTS:
       return {
         ...state,
-        breakfast: action.payload.filter(filterByID('0')),
-        lunch : action.payload.filter(filterByID('1')),
+        breakfast: action.payload.filter(filterByID('breakfast')),
         diner: action.payload.filter(filterByID('diner')),
         snack: action.payload.filter(filterByID('snack')),
+        lunch: action.payload.filter(filterByID('lunch')),
       }
     default:
       return state;
