@@ -6,10 +6,11 @@ const SelectListGroup = ({
   value,
   onChange,
   items,
-  onClick
+  onClick,
+  option,
 }) => {
   const selectOptions = items.map(item => (
-    <option key={item._id} value={item.product_name}>
+    <option key={item._id} value={item.product_name} >
       {item.product_name}
     </option>
   ));
@@ -20,6 +21,7 @@ const SelectListGroup = ({
         value={value}
         onChange={onChange}
       >
+        <option>{option}</option>
         {selectOptions}
       </select>
       <div className="input-group-append">
@@ -39,7 +41,8 @@ SelectListGroup.propTypes = {
   value: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  option: PropTypes.string.isRequired
 };
 
 export default SelectListGroup;

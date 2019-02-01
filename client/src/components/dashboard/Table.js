@@ -95,7 +95,7 @@ class Table extends Component {
       <div>
         <div className="card">
           <div className="card-header">
-            Table
+            Table {this.props.id}
           </div>
           <div className='card-body'>
             <SelectFieldGroup
@@ -104,6 +104,7 @@ class Table extends Component {
               onChange={this.onChange}
               items={items}
               onClick={this.onClick}
+              option='Pick a product'
             />
           </div>
           <div className="card-body">

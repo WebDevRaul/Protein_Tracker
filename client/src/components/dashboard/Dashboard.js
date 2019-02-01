@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 // Components
 import Table from './Table';
+import SelectListGroup from '../common/components/SelectFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import SelectListGroup from '../common/components/SelectFieldGroup';
 
 class Dashboard extends Component {
   constructor() {
@@ -17,7 +17,6 @@ class Dashboard extends Component {
       lunch: false,
       diner: false,
       snack: false,
-      id: 1,
       table: '',
     }
   }
@@ -47,7 +46,7 @@ class Dashboard extends Component {
 
   
   render() {
-    const { id } = this.state;
+    const { breakfast, lunch, diner, snack } = this.state;
     const table = [
       {product_name: 'breakfast', _id: 'breakfast'},
       {product_name: 'lunch', _id: 'lunch'},
@@ -62,11 +61,12 @@ class Dashboard extends Component {
           onChange={this.onChangeSelect}
           onClick={this.onClickSelect}
           items={table}
+          option='Select Table'
         />
-        {
-          [...Array(id)].map((key, i) => <Table key={i} id={i} />)
-        }
-        <button onClick={this.onClick} >add table</button>
+        { breakfast ? <Table id={'breakfast'} /> : null }
+        { diner ? <Table id={'diner'} /> : null }
+        { lunch ? <Table id={'lunch'} /> : null }
+        { snack ? <Table id={'snack'} /> : null }
       </div>
     )
   }
