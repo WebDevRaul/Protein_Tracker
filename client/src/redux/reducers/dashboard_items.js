@@ -3,7 +3,6 @@ import isEmpty from '../../components/common/isEmpty';
 
 const initialState = {
   item: {},
-  items: [],
   breakfast: [],
   lunch: [],
   diner: [],
@@ -29,7 +28,6 @@ export default function(state=initialState, action) {
     case FIND_PRODUCTS:
       return {
         ...state,
-        items: action.payload,
         breakfast: action.payload.filter(filterByID('0')),
         lunch : action.payload.filter(filterByID('1')),
         diner: action.payload.filter(filterByID('diner')),

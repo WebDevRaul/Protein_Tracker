@@ -66,18 +66,7 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
-    const prodItem = Object.values(this.props.dashboard.items);
     const { id } = this.props;
-
-  // Filter by table_id
-  if (!isEmpty(prodItem)) {
-  const filterByID = item => {
-    if (item.table_id === id.toString()) {
-      return true
-    };
-  };
-  // console.log(prodItem.filter(filterByID))
-}
 
 
 // Number of Invalid Entries = 5

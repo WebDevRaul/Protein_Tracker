@@ -7,12 +7,14 @@ import Table from './Table';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
+import SelectListGroup from '../common/components/SelectFieldGroup';
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      id: 1
+      id: 1,
+      table: '',
     }
   }
 
@@ -27,12 +29,34 @@ class Dashboard extends Component {
 
   onClick = () => {
     this.setState({ id: this.state.id + 1 });
+  };
+
+  onChangeSelect = (e) => {
+    this.setState({ table: e.target.value })
+  };
+
+  onClickSelect = (e) => {
+
   }
+
   
   render() {
     const { id } = this.state;
+    const table = [
+      {product_name: 'breakfast', _id: 'breakfast'},
+      {product_name: 'lunch', _id: 'lunch'},
+      {product_name: 'diner', _id: 'diner'},
+      {product_name: 'snack', _id: 'snack'},
+    ]
     return (
       <div className='container'>
+        <SelectListGroup
+          name='selectTable'
+          value={this.state.table}
+          onChange={this.onChangeSelect}
+          onClick={this.onClickSelect}
+          items={table}
+        />
         {
           [...Array(id)].map((key, i) => <Table key={i} id={i} />)
         }
