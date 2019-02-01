@@ -38,11 +38,19 @@ class Dashboard extends Component {
   componentDidUpdate() {
     const { breakfast, lunch, diner, snack} = this.props.dashboard;
     const breakfastState = this.state.breakfast;
+    const lunchState = this.state.lunch;
+    const dinerState = this.state.diner;
+    const snackState = this.state.snack;
 
-    // Update breakfast state && show breakfast table
-    if (!isEmpty(breakfast) && breakfastState === false) {
-      this.setState({ breakfast: true })
-    };
+    // Update states && show table
+    this.updateState(breakfast, breakfastState, 'breakfast');
+    this.updateState(lunch, lunchState, 'lunch');
+    this.updateState(diner, lunchState, 'diner');
+    this.updateState(snack, lunchState, 'snack');
+  };
+  
+  updateState = (prop, state, update) => {
+    if (!isEmpty(prop) && state === false) {this.setState({ [update]: true })}
   };
 
   onChangeSelect = (e) => {
