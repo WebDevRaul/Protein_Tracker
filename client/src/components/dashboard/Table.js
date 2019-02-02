@@ -34,12 +34,17 @@ class Table extends Component {
     const product = Object.assign({ table_id }, item);
     delete product._id;
     this.props.addProduct(product);
+  };
+
+  onDelete=(data)=> {
+    console.log(data)
   }
 
 
   render() {
     const { items } = this.props.admin;
     const { data }  = this.props;
+    console.log(data);
 
     const productItems = data.map(i => 
       <Item 
@@ -51,8 +56,9 @@ class Table extends Component {
         protein={i.protein}
         fat={i.fat}
         carbohydrates={i.carbohydrates}
-        Id={i._id}
+        id={i._id}
         class='far fa-times-circle fa-red'
+        onClickFunc={this.onDelete}
        />
     )
 

@@ -6,6 +6,7 @@ import {
   ADD_LUNCH_OFFLINE, 
   ADD_DINER_OFFLINE, 
   ADD_SNACK_OFFLINE, 
+  DELETE_PRODUCT,
   GET_ERRORS
     } from './types';
 
@@ -68,3 +69,8 @@ export const addProductOffline = (data) => {
     }
   }
 };
+
+// Delete item
+export const deleteItem = data => {
+
+}

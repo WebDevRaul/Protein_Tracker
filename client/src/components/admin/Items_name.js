@@ -6,11 +6,17 @@ import Item from '../common/components/Item';
 
 // Redux
 import { connect } from 'react-redux';
+import { deleteItem  } from '../../redux/actions/admin';
 
 // Common
 import isEmpty from '../common/isEmpty';
 
 class ItemsName extends Component {
+
+  onDelete=(id)=> {
+    this.props.deleteItem(id)
+  };
+
   render() {
     let item;
     const { items } = this.props.admin;
@@ -26,8 +32,9 @@ class ItemsName extends Component {
           protein={i.protein}
           fat={i.fat}
           carbohydrates={i.carbohydrates}
-          Id={i._id}
+          id={i._id}
           class='far fa-times-circle fa-red'
+          onClickFunc={this.onDelete}
         />
       )
     }
@@ -57,4 +64,4 @@ const mapStateToProps = state => ({
   admin: state.admin
 });
 
-export default connect( mapStateToProps, {} )(ItemsName);
+export default connect( mapStateToProps, { deleteItem  } )(ItemsName);
