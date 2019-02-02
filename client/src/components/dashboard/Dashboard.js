@@ -64,6 +64,9 @@ class Dashboard extends Component {
     }
   };
   
+
+
+  
   updateState = (prop, state, update) => {
     if (!isEmpty(prop) && state === false) {this.setState({ [update]: true })}
   };
@@ -81,6 +84,7 @@ class Dashboard extends Component {
   
   render() {
     const { breakfast, diner, snack, lunch } = this.state;
+
 
     // Object for SelectListGoup
     const table = [
@@ -101,10 +105,10 @@ class Dashboard extends Component {
           items={table}
           option='Select Table'
         />
-        { breakfast ? <Table id={'breakfast'} /> : null }
-        { lunch ? <Table id={'lunch'} /> : null }
-        { diner ? <Table id={'diner'} /> : null }
-        { snack ? <Table id={'snack'} /> : null }
+        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} /> : null }
+        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} /> : null }
+        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} /> : null }
+        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} /> : null }
       </div>
     )
   }
@@ -115,12 +119,13 @@ Dashboard.propTypes = {
   dashboard: PropTypes.object.isRequired,
   findItems: PropTypes.func.isRequired,
   findProducts: PropTypes.func.isRequired,
+  addProductOffline: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
   auth: state.auth,
-  dashboard: state.dashboard
+  dashboard: state.dashboard,
 });
 
 export default connect( mapStateToProps, { findItems, findProducts, addProductOffline } )(Dashboard);

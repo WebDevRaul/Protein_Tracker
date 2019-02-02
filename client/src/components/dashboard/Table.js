@@ -6,7 +6,7 @@ import SelectFieldGroup from '../common/components/SelectFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
-import { addProduct, findProducts } from '../../redux/actions/dashboard';
+import { addProduct } from '../../redux/actions/dashboard';
 
 
 class Table extends Component {
@@ -40,7 +40,6 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
-    
     return (
       <div>
         <div className="card">
@@ -76,17 +75,14 @@ class Table extends Component {
 
 Table.propTypes = {
   errors: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
   admin: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
-  findProducts: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
-  auth: state.auth,
   admin: state.admin,
   dashboard: state.dashboard
 });
 
-export default connect( mapStateToProps, { addProduct, findProducts })(Table);
+export default connect( mapStateToProps, { addProduct })(Table);
