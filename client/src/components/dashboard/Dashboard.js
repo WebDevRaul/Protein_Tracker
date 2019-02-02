@@ -94,7 +94,6 @@ class Dashboard extends Component {
       {product_name: 'snack', _id: 'snack'},
     ];
 
-
     return (
       <div className='container'>
         <SelectListGroup

@@ -17,6 +17,8 @@ router
       table_id: req.body.table_id,
       user: req.body.user,
       product_name: req.body.product_name,
+      quantity: req.body.quantity,
+      type: req.body.type,
       protein: req.body.protein,
       calories: req.body.calories,
       carbohydrates: req.body.carbohydrates,

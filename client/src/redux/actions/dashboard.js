@@ -46,18 +46,21 @@ export const addProductOffline = (data) => {
       payload: data
     }
   }
+  // Lunch
   if (data.table_id === 'lunch') {
     return {
       type: ADD_LUNCH_OFFLINE,
       payload: data
     }
   }
+  // Diner
   if (data.table_id === 'diner') {
     return {
       type: ADD_DINER_OFFLINE,
       payload: data
     }
   }
+  // Snack
   if (data.table_id === 'snack') {
     return {
       type: ADD_SNACK_OFFLINE,

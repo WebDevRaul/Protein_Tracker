@@ -33,7 +33,6 @@ class Table extends Component {
     // Add table_id to item
     const product = Object.assign({ table_id }, item);
     delete product._id;
-
     this.props.addProduct(product);
   }
 
@@ -44,8 +43,8 @@ class Table extends Component {
 
     const productItems = data.map(i => 
       <ul className='navbar list-inline' key={i._id}>
-        <li className='list-inline-item'>Quantity</li>
         <li className='list-inline-item'>{i.product_name}</li>
+        <li className='list-inline-item'>{i.quantity}{i.type}</li>
         <li className='list-inline-item'>{i.calories}</li>
         <li className='list-inline-item'>{i.protein}</li>
         <li className='list-inline-item'>{i.fat}</li>
@@ -72,8 +71,8 @@ class Table extends Component {
           </div>
           <div className="card-body">
             <ul className='navbar list-inline'>
-              <li className='list-inline-item'>Quantity</li>
               <li className='list-inline-item'>Product</li>
+              <li className='list-inline-item'>Quantity</li>
               <li className='list-inline-item'>Calories</li>
               <li className='list-inline-item'>Proteins</li>
               <li className='list-inline-item'>Fat</li>

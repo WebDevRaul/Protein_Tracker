@@ -15,7 +15,6 @@ import isEmpty from '../common/isEmpty';
 
 //Css
 import '../../css/admin.css';
-import SelectListGroup from '../common/components/SelectFieldGroup';
 
 class Admin extends Component {
   constructor(){
