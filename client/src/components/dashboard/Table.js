@@ -6,7 +6,7 @@ import SelectFieldGroup from '../common/components/SelectFieldGroup';
 import Item from '../common/components/Item';
 // Redux
 import { connect } from 'react-redux';
-import { addProduct } from '../../redux/actions/dashboard';
+import { addProduct, deleteProduct } from '../../redux/actions/dashboard';
 
 
 class Table extends Component {
@@ -36,8 +36,8 @@ class Table extends Component {
     this.props.addProduct(product);
   };
 
-  onDelete=(data)=> {
-    console.log(data)
+  onDelete=(id)=> {
+    this.props.deleteProduct(id)
   }
 
 
@@ -109,4 +109,4 @@ const mapStateToProps = state => ({
   dashboard: state.dashboard
 });
 
-export default connect( mapStateToProps, { addProduct })(Table);
+export default connect( mapStateToProps, { addProduct, deleteProduct })(Table);

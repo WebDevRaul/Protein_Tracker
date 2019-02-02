@@ -4,7 +4,8 @@ import {
   ADD_BREAKFAST_OFFLINE, 
   ADD_LUNCH_OFFLINE, 
   ADD_DINER_OFFLINE, 
-  ADD_SNACK_OFFLINE 
+  ADD_SNACK_OFFLINE,
+  DELETE_PRODUCT,
     } from '../actions/types';
 
 const initialState = {
@@ -57,6 +58,14 @@ export default function(state=initialState, action) {
       return {
         ...state,
         snack: [...state.snack, action.payload]
+      }
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        breakfast: state.breakfast.filter(item => item._id !== action.payload),
+        lunch: state.lunch.filter(item => item._id !== action.payload),
+        diner: state.diner.filter(item => item._id !== action.payload),
+        snack: state.snack.filter(item => item._id !== action.payload),
       }
     default:
       return state;
