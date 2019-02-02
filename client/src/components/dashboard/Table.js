@@ -17,7 +17,6 @@ class Table extends Component {
     }
   };
   
-
   onChange = (e) => {
     this.setState({ productVal: e.target.value })
   };

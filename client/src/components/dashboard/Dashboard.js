@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -25,6 +25,15 @@ class Dashboard extends Component {
     }
   }
 
+  static getDerivedStateFromProps(nextProps, prevState){
+    const { item } = nextProps.dashboard;
+
+    if( item !== prevState.item ) {
+      return { item };
+   }
+    else return null;
+ }
+
   componentDidMount(){
     const { isAuthenticated } = this.props.auth;
 
@@ -35,18 +44,24 @@ class Dashboard extends Component {
     };
   };
 
-  componentDidUpdate() {
-    const { breakfast, lunch, diner, snack} = this.props.dashboard;
+  componentDidUpdate(prevProps, prevState) {
+    const { breakfast, lunch, diner, snack, item} = this.props.dashboard;
     const breakfastState = this.state.breakfast;
     const lunchState = this.state.lunch;
     const dinerState = this.state.diner;
     const snackState = this.state.snack;
+    const itemState = this.state.item;
 
     // Update states && show table
     this.updateState(breakfast, breakfastState, 'breakfast');
     this.updateState(lunch, lunchState, 'lunch');
     this.updateState(diner, dinerState, 'diner');
     this.updateState(snack, snackState, 'snack');
+
+    // Update Dashboard Redux no DB call
+    if (prevProps.dashboard.item !== itemState) {
+      this.props.addProductOffline(item)
+    }
   };
   
   updateState = (prop, state, update) => {
@@ -108,4 +123,4 @@ const mapStateToProps = state => ({
   dashboard: state.dashboard
 });
 
-export default connect( mapStateToProps, { findItems, findProducts } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline } )(Dashboard);
