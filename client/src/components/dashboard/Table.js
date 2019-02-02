@@ -91,6 +91,7 @@ Table.propTypes = {
   errors: PropTypes.object.isRequired,
   admin: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

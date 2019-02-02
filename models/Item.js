@@ -11,6 +11,14 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
+  quantity: {
+    type: String,
+    required: true
+  },
+  type: {
+    type: String,
+    required: true
+  },
   protein: {
     type: String,
     required: true

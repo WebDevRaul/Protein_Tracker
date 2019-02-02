@@ -21,6 +21,8 @@ class Admin extends Component {
     super();
     this.state = {
       product_name: '',
+      quantity: '',
+      type: '',
       protein: '',
       carbohydrates: '',
       fat: '',
@@ -75,6 +77,8 @@ class Admin extends Component {
     const item = {
       user: user.id,
       product_name: this.state.product_name,
+      quantity: this.state.quantity,
+      type: this.state.type,
       protein: this.state.protein,
       carbohydrates: this.state.carbohydrates,
       fat: this.state.fat,
@@ -87,6 +91,8 @@ class Admin extends Component {
     this.setState({
       product_name: '',
       protein: '',
+      quantity: '',
+      type: '',
       carbohydrates: '',
       fat: '',
       calories: ''
@@ -112,19 +118,29 @@ class Admin extends Component {
                       </div>
                       <div className="card-body">
                         <form noValidate onSubmit={this.onSubmit}>
-                          <div className='admin-form'>
-                            <ul className="navbar list-inline">
-                              <li className="list-inline-item"><h5>Product name</h5>
-                                <CardFieldGroup
-                                  name='product_name'
-                                  value={this.state.product_name}
-                                  onChange={this.onChange}
-                                  error={errors.product_name}
-                                />
-                              </li>
-                            </ul>
-                          </div>
                           <ul className="navbar list-inline">
+                            <li className="list-inline-item"><h5>Product name</h5>
+                              <CardFieldGroup
+                                name='product_name'
+                                value={this.state.product_name}
+                                onChange={this.onChange}
+                                error={errors.product_name}
+                              />
+                            </li>
+                            <li className="list-inline-item"><h5>Quantity & type</h5>
+                              <CardFieldGroup
+                                name='quantity'
+                                value={this.state.quantity}
+                                onChange={this.onChange}
+                                error={errors.quantity}
+                              />
+                              <CardFieldGroup
+                                name='type'
+                                value={this.state.type}
+                                onChange={this.onChange}
+                                error={errors.quantity}
+                              />
+                            </li>
                             <li className="list-inline-item"><h5>Calories</h5>
                               <CardFieldGroup
                                 name='calories'

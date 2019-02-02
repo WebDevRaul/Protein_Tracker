@@ -29,6 +29,8 @@ router
     const item = new Item({
       user: req.body.user,
       product_name: req.body.product_name,
+      quantity: req.body.quantity,
+      type: req.body.type,
       protein: req.body.protein,
       carbohydrates: req.body.carbohydrates,
       fat: req.body.fat,
