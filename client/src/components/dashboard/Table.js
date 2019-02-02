@@ -44,7 +44,6 @@ class Table extends Component {
   render() {
     const { items } = this.props.admin;
     const { data }  = this.props;
-    console.log(data);
 
     const productItems = data.map(i => 
       <Item 
@@ -100,6 +99,7 @@ Table.propTypes = {
   errors: PropTypes.object.isRequired,
   admin: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired
 };
 

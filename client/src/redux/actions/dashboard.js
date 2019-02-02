@@ -71,22 +71,15 @@ export const addProductOffline = (data) => {
 };
 
 // Delete item
-// export const deleteProduct = data => dispatch => {
-//   axios
-//     .delete(`/api/dashboard/${data}`)
-//     .then(res => dispatch({
-//       type: DELETE_PRODUCT,
-//       payload: data
-//     }))
-//     .catch(err => dispatch({
-//       type: GET_ERRORS,
-//       payload: err.response.data
-//     }))
-// };
-
-export const deleteProduct = (data) => {
-  return { 
-    type: DELETE_PRODUCT,
-    payload: data
-  };
+export const deleteProduct = data => dispatch => {
+  axios
+    .delete(`/api/dashboard/${data}`)
+    .then(res => dispatch({
+      type: DELETE_PRODUCT,
+      payload: data
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
 };

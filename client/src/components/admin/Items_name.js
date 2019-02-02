@@ -58,6 +58,7 @@ class ItemsName extends Component {
 
 ItemsName.propTypes = {
   admin: PropTypes.object.isRequired,
+  deleteItem: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

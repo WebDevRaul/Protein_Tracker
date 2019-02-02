@@ -4,6 +4,7 @@ const passport = require('passport');
 
 // Models
 const Table = require('../../models/Table');
+const User = require('../../models/User');
 
 
 // @route   POST api/dashboard
@@ -39,5 +40,26 @@ router
     .catch(err => res.status(404).json({ noProductsFound: 'No products found' }));
   });
 
+// @route   Delete api/dashboard/:id
+// @desc    Find products by ID
+// @access  Private
+router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  User.findOne({ user: req.user.id }).then(user => {
+    Table.findById(req.params.id)
+      .then(item => {
+        // Check for item owner
+        if (item.user.toString() !== req.user.id) {
+          return res
+            .status(401)
+            .json({ notauthorized: 'User not authorized' });
+        }
+
+        // Delete
+        item.remove().then(() => res.json({ success: true }));
+      })
+      .catch(err => res.status(404).json({ postnotfound: 'No product found' }));
+  });
+}
+);
 
 module.exports = router;
