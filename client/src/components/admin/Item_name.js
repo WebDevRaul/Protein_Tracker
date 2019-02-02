@@ -17,6 +17,7 @@ class ItemName extends Component {
       <div key={this.props.key}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{this.props.product_name}</li>
+          <li className='list-inline-item'>{this.props.quantity}{this.props.type}</li>
           <li className='list-inline-item'>{this.props.calories}</li>
           <li className='list-inline-item'>{this.props.protein}</li>
           <li className='list-inline-item'>{this.props.fat}</li>
@@ -32,6 +33,8 @@ ItemName.propTypes = {
   errors: PropTypes.object.isRequired,
   deleteItem: PropTypes.func.isRequired,
   product_name: PropTypes.string.isRequired,
+  quantity: PropTypes.string.isRequired,
+  type: PropTypes.string,
   calories: PropTypes.string.isRequired,
   protein: PropTypes.string.isRequired,
   fat: PropTypes.string.isRequired,

@@ -15,6 +15,7 @@ import isEmpty from '../common/isEmpty';
 
 //Css
 import '../../css/admin.css';
+import SelectListGroup from '../common/components/SelectFieldGroup';
 
 class Admin extends Component {
   constructor(){
@@ -101,6 +102,15 @@ class Admin extends Component {
 
   render() {
     const { errors } = this.state;
+
+    // Type input
+    const select = [{id: ''},{id: 'gr.'},{id: 'pc.'},{id: 'ml.'}]
+    const selectOptions = select.map(i => (
+      <option key={i.id} value={i.id} >
+        {i.id}
+      </option>
+    ));
+
     return (
       <div className='admin'>
          <section className="admin-section-one">
@@ -128,18 +138,21 @@ class Admin extends Component {
                               />
                             </li>
                             <li className="list-inline-item"><h5>Quantity & type</h5>
-                              <CardFieldGroup
+                              <input 
+                                type='text'
                                 name='quantity'
                                 value={this.state.quantity}
                                 onChange={this.onChange}
                                 error={errors.quantity}
                               />
-                              <CardFieldGroup
+                              <select
                                 name='type'
                                 value={this.state.type}
                                 onChange={this.onChange}
-                                error={errors.quantity}
-                              />
+                                error={errors.type}
+                              >
+                                {selectOptions}
+                              </select>
                             </li>
                             <li className="list-inline-item"><h5>Calories</h5>
                               <CardFieldGroup

@@ -20,6 +20,8 @@ class ItemsName extends Component {
         <ItemName
           key={i._id}
           product_name={i.product_name}
+          quantity={i.quantity}
+          type={i.type}
           calories={i.calories}
           protein={i.protein}
           fat={i.fat}
@@ -34,6 +36,7 @@ class ItemsName extends Component {
         <div className='container'>
           <ItemName
             product_name= 'Product Name:'
+            quantity= 'Quantity'
             calories= 'Calories'
             protein= 'Proteins'
             fat='Fat'
