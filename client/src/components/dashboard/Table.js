@@ -37,7 +37,7 @@ class Table extends Component {
   };
 
   onDelete=(id)=> {
-    this.props.deleteProduct(id)
+    this.props.deleteProduct(id);
   }
 
 

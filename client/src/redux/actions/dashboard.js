@@ -7,6 +7,7 @@ import {
   ADD_DINER_OFFLINE, 
   ADD_SNACK_OFFLINE, 
   DELETE_PRODUCT,
+  DELETE_ALL,
   GET_ERRORS
     } from './types';
 
@@ -83,3 +84,16 @@ export const deleteProduct = data => dispatch => {
       payload: err.response.data
     }))
 };
+
+// Delete all items
+export const deleteAllOffline = userID => dispatch => {
+  axios
+    .delete(`/api/dashboard/deleteAll/${userID}`)
+    .then(res => dispatch({
+      type: DELETE_ALL,
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}

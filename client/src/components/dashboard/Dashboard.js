@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts, addProductOffline } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline, deleteAllOffline } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -61,7 +61,7 @@ class Dashboard extends Component {
     // Update Dashboard Redux no DB call
     if (prevProps.dashboard.item !== itemState) {
       this.props.addProductOffline(item)
-    }
+    };
   };
   
 
@@ -79,7 +79,17 @@ class Dashboard extends Component {
     const { table } = this.state;
     const update = data => this.setState({ [data]: true });
     update(table);
-  }
+  };
+
+  onClear = () => {
+    const { id } = this.props.auth.user;
+    this.props.deleteAllOffline(id);
+    this.setState({ 
+      breakfast: false,
+      diner: false,
+      snack: false,
+      lunch: false, })
+  };
 
   
   render() {
@@ -104,6 +114,7 @@ class Dashboard extends Component {
           items={table}
           option='Select Table'
         />
+        <button onClick={this.onClear}>Clear Tables</button>
         { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} /> : null }
         { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} /> : null }
         { diner ? <Table id={'diner'} data={this.props.dashboard.diner} /> : null }
@@ -127,4 +138,4 @@ const mapStateToProps = state => ({
   dashboard: state.dashboard,
 });
 
-export default connect( mapStateToProps, { findItems, findProducts, addProductOffline } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline } )(Dashboard);

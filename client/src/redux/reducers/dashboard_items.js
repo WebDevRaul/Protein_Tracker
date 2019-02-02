@@ -6,6 +6,7 @@ import {
   ADD_DINER_OFFLINE, 
   ADD_SNACK_OFFLINE,
   DELETE_PRODUCT,
+  DELETE_ALL,
     } from '../actions/types';
 
 const initialState = {
@@ -66,6 +67,13 @@ export default function(state=initialState, action) {
         lunch: state.lunch.filter(item => item._id !== action.payload),
         diner: state.diner.filter(item => item._id !== action.payload),
         snack: state.snack.filter(item => item._id !== action.payload),
+      }
+    case DELETE_ALL:
+      return {
+        breakfast: {},
+        lunch: {},
+        diner: {},
+        snack: {}
       }
     default:
       return state;

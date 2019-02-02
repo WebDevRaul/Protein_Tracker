@@ -62,4 +62,24 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 }
 );
 
+// @route   Delete api/dashboard/:id
+// @desc    Delete all table items
+// @access  Private
+router
+  .delete('/deleteAll/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id })
+      .then(res => {
+        // Check for item owner
+        if (res._id.toString() !== req.user.id) {
+          return res
+            .status(401)
+            .json({ notauthorized: 'User not authorized' });
+        }
+        // Clear table
+        
+      })
+      .catch(err => res.status(404).json({ noTablefound: 'No Table Found' }))
+  });
+
+
 module.exports = router;
