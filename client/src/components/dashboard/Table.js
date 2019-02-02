@@ -40,6 +40,20 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
+    const { data }  = this.props;
+
+    const productItems = data.map(i => 
+      <ul className='navbar list-inline' key={i._id}>
+        <li className='list-inline-item'>Quantity</li>
+        <li className='list-inline-item'>{i.product_name}</li>
+        <li className='list-inline-item'>{i.calories}</li>
+        <li className='list-inline-item'>{i.protein}</li>
+        <li className='list-inline-item'>{i.fat}</li>
+        <li className='list-inline-item'>{i.carbohydrates}</li>
+      </ul>
+    )
+
+
     return (
       <div>
         <div className="card">
@@ -65,7 +79,7 @@ class Table extends Component {
               <li className='list-inline-item'>Fat</li>
               <li className='list-inline-item'>Carbohydrates</li>
             </ul>
-            {/* {productItem} */}
+            {productItems}
           </div>
         </div>
       </div>
