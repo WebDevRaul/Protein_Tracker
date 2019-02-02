@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
-
+import Item from '../common/components/Item';
 // Redux
 import { connect } from 'react-redux';
 import { addProduct } from '../../redux/actions/dashboard';
@@ -42,14 +42,18 @@ class Table extends Component {
     const { data }  = this.props;
 
     const productItems = data.map(i => 
-      <ul className='navbar list-inline' key={i._id}>
-        <li className='list-inline-item'>{i.product_name}</li>
-        <li className='list-inline-item'>{i.quantity}{i.type}</li>
-        <li className='list-inline-item'>{i.calories}</li>
-        <li className='list-inline-item'>{i.protein}</li>
-        <li className='list-inline-item'>{i.fat}</li>
-        <li className='list-inline-item'>{i.carbohydrates}</li>
-      </ul>
+      <Item 
+        key={i._id}
+        product_name={i.product_name}
+        quantity={i.quantity}
+        type={i.type}
+        calories={i.calories}
+        protein={i.protein}
+        fat={i.fat}
+        carbohydrates={i.carbohydrates}
+        Id={i._id}
+        class='far fa-times-circle fa-red'
+       />
     )
 
 
@@ -70,14 +74,14 @@ class Table extends Component {
             />
           </div>
           <div className="card-body">
-            <ul className='navbar list-inline'>
-              <li className='list-inline-item'>Product</li>
-              <li className='list-inline-item'>Quantity</li>
-              <li className='list-inline-item'>Calories</li>
-              <li className='list-inline-item'>Proteins</li>
-              <li className='list-inline-item'>Fat</li>
-              <li className='list-inline-item'>Carbohydrates</li>
-            </ul>
+            <Item
+              product_name= 'Product Name:'
+              quantity= 'Quantity'
+              calories= 'Calories'
+              protein= 'Proteins'
+              fat='Fat'
+              carbohydrates= 'Carbohydrates'
+            />
             {productItems}
           </div>
         </div>

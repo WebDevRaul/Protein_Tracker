@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteItem } from '../../redux/actions/admin';
+import { deleteItem } from '../../../redux/actions/admin';
 
-class ItemName extends Component {
+class Item extends Component {
 
   onClick = id => () => {
     this.props.deleteItem(id)
@@ -29,7 +29,7 @@ class ItemName extends Component {
   }
 };
 
-ItemName.propTypes = {
+Item.propTypes = {
   errors: PropTypes.object.isRequired,
   deleteItem: PropTypes.func.isRequired,
   product_name: PropTypes.string.isRequired,
@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect( mapStateToProps, { deleteItem } )(ItemName);
+export default connect( mapStateToProps, { deleteItem } )(Item);

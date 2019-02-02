@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import ItemName from './Item_name';
+import Item from '../common/components/Item';
 
 // Redux
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ class ItemsName extends Component {
     // Check for empty items
     if (!isEmpty(items)) {
       item = items.map(i => 
-        <ItemName
+        <Item
           key={i._id}
           product_name={i.product_name}
           quantity={i.quantity}
@@ -34,7 +34,7 @@ class ItemsName extends Component {
     return (
       <div className='items-name mt-5 mb-5'>
         <div className='container'>
-          <ItemName
+          <Item
             product_name= 'Product Name:'
             quantity= 'Quantity'
             calories= 'Calories'
