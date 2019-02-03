@@ -76,7 +76,7 @@ router
             .json({ notauthorized: 'User not authorized' });
         }
         // Clear table
-        
+        Table.deleteMany({ user: req.user.id });
       })
       .catch(err => res.status(404).json({ noTablefound: 'No Table Found' }))
   });
