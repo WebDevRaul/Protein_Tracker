@@ -93,7 +93,7 @@ class Dashboard extends Component {
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
-    // console.log(this.totalFunc(1)(2))
+    console.log(this.totalFunc(1,2))
   };
 
   onClear = () => {
@@ -102,7 +102,19 @@ class Dashboard extends Component {
     this.setState({ breakfast: false, tableUpdate: false })
   };
 
-  totalFunc = a => b => a + b;
+  totalFunc = (a, b) => {
+    const { breakfast } = this.props.dashboard;
+    const calories = breakfast.map(i => i.calories);
+    console.log(calories)
+    let total;
+    for (let i = 0; i < calories.length; i++) {
+      total= calories[i];
+      
+    }
+    console.log(total);
+    const add = x => y => x + y;
+    return add(a)(b);
+  }
 
   
   
