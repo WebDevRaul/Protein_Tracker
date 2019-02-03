@@ -70,10 +70,10 @@ export default function(state=initialState, action) {
       }
     case DELETE_ALL:
       return {
-        breakfast: {},
-        lunch: {},
-        diner: {},
-        snack: {}
+        breakfast: [],
+        lunch: [],
+        diner: [],
+        snack: []
       }
     default:
       return state;

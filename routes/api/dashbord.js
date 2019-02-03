@@ -68,15 +68,17 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 router
   .delete('/deleteAll/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     User.findById({ _id: req.user._id })
-      .then(res => {
+      .then(user => {
         // Check for item owner
-        if (res._id.toString() !== req.user.id) {
+        if (user._id.toString() !== req.user.id) {
           return res
             .status(401)
             .json({ notauthorized: 'User not authorized' });
         }
         // Clear table
-        Table.deleteMany({ user: req.user.id });
+        Table.deleteMany({ user: req.user.id })
+          .then(item => res.json({ tableRemove: 'Items has been remove' }))
+          .catch(err => res.status(404).json({ noTablefound: 'No Items Found' }))
       })
       .catch(err => res.status(404).json({ noTablefound: 'No Table Found' }))
   });

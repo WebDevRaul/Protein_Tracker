@@ -21,6 +21,7 @@ class Dashboard extends Component {
       diner: false,
       snack: false,
       lunch: false,
+      tableUpdate: false,
       table: '',
     }
   }
@@ -51,24 +52,36 @@ class Dashboard extends Component {
     const dinerState = this.state.diner;
     const snackState = this.state.snack;
     const itemState = this.state.item;
+    const { tableUpdate } = this.state;
 
     // Update states && show table
-    this.updateState(breakfast, breakfastState, 'breakfast');
-    this.updateState(lunch, lunchState, 'lunch');
-    this.updateState(diner, dinerState, 'diner');
-    this.updateState(snack, snackState, 'snack');
+    this.updateStateTrue(breakfast, breakfastState, 'breakfast');
+    this.updateStateTrue(lunch, lunchState, 'lunch');
+    this.updateStateTrue(diner, dinerState, 'diner');
+    this.updateStateTrue(snack, snackState, 'snack');
+    // Update states && close table
+    this.updateStateFalse(breakfast, breakfastState, tableUpdate,  'breakfast');
+    this.updateStateFalse(lunch, lunchState, tableUpdate,  'lunch');
+    this.updateStateFalse(diner, dinerState, tableUpdate,  'diner');
+    this.updateStateFalse(snack, snackState, tableUpdate,  'snack');
 
     // Update Dashboard Redux no DB call
     if (prevProps.dashboard.item !== itemState) {
-      this.props.addProductOffline(item)
+      if (!isEmpty(item)) {
+        this.props.addProductOffline(item); 
+      };
     };
   };
   
 
 
   
-  updateState = (prop, state, update) => {
-    if (!isEmpty(prop) && state === false) {this.setState({ [update]: true })}
+  updateStateTrue = (prop, state, update) => {
+    if ( !isEmpty(prop) && state === false ) {this.setState({ [update]: true })}
+  };
+
+  updateStateFalse = (prop, state, tableUpdate, update) => {
+    if (isEmpty(prop) && state === true && tableUpdate === false) {this.setState({ [update]: false })}
   };
 
   onChangeSelect = (e) => {
@@ -79,22 +92,18 @@ class Dashboard extends Component {
     const { table } = this.state;
     const update = data => this.setState({ [data]: true });
     update(table);
+    this.setState({ tableUpdate: true })
   };
 
   onClear = () => {
     const { id } = this.props.auth.user;
     this.props.deleteAllOffline(id);
-    this.setState({ 
-      breakfast: false,
-      diner: false,
-      snack: false,
-      lunch: false, })
+    this.setState({ breakfast: false, tableUpdate: false })
   };
-
+  
   
   render() {
     const { breakfast, diner, snack, lunch } = this.state;
-
 
     // Object for SelectListGoup
     const table = [
