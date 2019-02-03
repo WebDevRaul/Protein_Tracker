@@ -92,7 +92,8 @@ class Dashboard extends Component {
     const { table } = this.state;
     const update = data => this.setState({ [data]: true });
     update(table);
-    this.setState({ tableUpdate: true })
+    this.setState({ tableUpdate: true });
+    // console.log(this.totalFunc(1)(2))
   };
 
   onClear = () => {
@@ -100,6 +101,9 @@ class Dashboard extends Component {
     this.props.deleteAllOffline(id);
     this.setState({ breakfast: false, tableUpdate: false })
   };
+
+  totalFunc = a => b => a + b;
+
   
   
   render() {
@@ -132,9 +136,9 @@ class Dashboard extends Component {
         />
         <button onClick={this.onClear}>Clear Tables</button>
         { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={total} /> : null }
-        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} /> : null }
-        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} /> : null }
-        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} /> : null }
+        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={total} /> : null }
+        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={total} /> : null }
+        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={total} /> : null }
       </div>
     )
   }
