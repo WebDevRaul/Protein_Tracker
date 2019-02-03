@@ -113,6 +113,13 @@ class Dashboard extends Component {
       {product_name: 'snack', _id: 'snack'},
     ];
 
+    const total = {
+      calories: '1',
+      protein: '1',
+      fat: '1',
+      carbohydrates: '1'
+    }
+
     return (
       <div className='container'>
         <SelectListGroup
@@ -124,7 +131,7 @@ class Dashboard extends Component {
           option='Select Table'
         />
         <button onClick={this.onClear}>Clear Tables</button>
-        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} /> : null }
+        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={total} /> : null }
         { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} /> : null }
         { diner ? <Table id={'diner'} data={this.props.dashboard.diner} /> : null }
         { snack ? <Table id={'snack'} data={this.props.dashboard.snack} /> : null }

@@ -43,8 +43,9 @@ class Table extends Component {
 
   render() {
     const { items } = this.props.admin;
-    const { data }  = this.props;
+    const { data, total }  = this.props;
 
+    // Items in dashboard
     const productItems = data.map(i => 
       <Item 
         key={i._id}
@@ -59,7 +60,17 @@ class Table extends Component {
         class='far fa-times-circle fa-red'
         onClickFunc={this.onDelete}
        />
-    )
+    );
+
+    // Total of val items
+    const totalItems = <Item
+      product_name='Total'
+      quantity='3'
+      calories={total.calories}
+      protein={total.protein}
+      fat={total.fat}
+      carbohydrates={total.carbohydrates}
+    />
 
 
     return (
@@ -88,8 +99,10 @@ class Table extends Component {
               carbohydrates= 'Carbohydrates'
             />
             {productItems}
+            {totalItems}
           </div>
         </div>
+        <br />
       </div>
     )
   }
@@ -100,7 +113,8 @@ Table.propTypes = {
   admin: PropTypes.object.isRequired,
   addProduct: PropTypes.func.isRequired,
   deleteProduct: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  total: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
