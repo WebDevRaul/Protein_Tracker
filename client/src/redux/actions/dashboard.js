@@ -8,7 +8,8 @@ import {
   ADD_SNACK_OFFLINE, 
   DELETE_PRODUCT,
   DELETE_ALL,
-  GET_ERRORS
+  GET_ERRORS,
+  COLLECT_SUM
     } from './types';
 
 // Add item to TableFieldGroup
@@ -97,3 +98,11 @@ export const deleteAllOffline = userID => dispatch => {
       payload: err.response.data
     }))
 }
+
+// Fetch total sum for table
+export const collectSum = (data) => {
+  return { 
+    type: COLLECT_SUM,
+    payload: data
+  };
+};

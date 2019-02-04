@@ -14,3 +14,4 @@ export const ADD_DINER_OFFLINE = 'ADD_DINER_OFFLINE';
 export const ADD_SNACK_OFFLINE = 'ADD_SNACK_OFFLINE';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const DELETE_ALL = 'DELETE_ALL';
+export const COLLECT_SUM = 'COLLECT_SUM';

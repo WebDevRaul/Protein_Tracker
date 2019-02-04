@@ -88,21 +88,15 @@ class Dashboard extends Component {
     this.setState({ table: e.target.value })
   };
 
+  // Select Table
   onClickSelect = (e) => {
     const { table } = this.state;
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
-
-    // const { lunch } = this.props.dashboard;
-    // const calories = lunch.map(i => Number(i.calories));
-    // console.log(calories)
-    // console.log(this.sumAll(...calories))
-    const { breakfast, lunch, diner, snack } = this.props.dashboard;
-    console.log(this.totalSum(breakfast));
-    console.log(this.totalSum(lunch));
   };
 
+  // Clear tables
   onClear = () => {
     const { id } = this.props.auth.user;
     this.props.deleteAllOffline(id);
@@ -182,6 +176,7 @@ Dashboard.propTypes = {
   findItems: PropTypes.func.isRequired,
   findProducts: PropTypes.func.isRequired,
   addProductOffline: PropTypes.func.isRequired,
+  deleteAllOffline: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
