@@ -93,10 +93,14 @@ class Dashboard extends Component {
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
-    const { lunch } = this.props.dashboard;
-    const calories = lunch.map(i => Number(i.calories));
-    console.log(calories)
-    console.log(this.sumAll(...calories))
+
+    // const { lunch } = this.props.dashboard;
+    // const calories = lunch.map(i => Number(i.calories));
+    // console.log(calories)
+    // console.log(this.sumAll(...calories))
+    const { breakfast, lunch, diner, snack } = this.props.dashboard;
+    console.log(this.totalSum(breakfast));
+    console.log(this.totalSum(lunch));
   };
 
   onClear = () => {
@@ -105,24 +109,30 @@ class Dashboard extends Component {
     this.setState({ breakfast: false, tableUpdate: false })
   };
 
-  // totalFunc = (a, b) => {
-  //   const { breakfast } = this.props.dashboard;
-  //   const calories = breakfast.map(i => i.calories);
-  //   console.log(calories)
-  //   let total;
-  //   for (let i = 0; i < calories.length; i++) {
-  //     total= calories[i];
-      
-  //   }
-  //   console.log(total);
-  //   const add = x => y => x + y;
-  //   return add(a)(b)
-  // }
-
+  // Sum up the prod vals
    sumAll = (...args) => {
     let sum = 0;
     for (let arg of args) sum += arg;
     return sum;
+  };
+
+  totalSum = (data) => {
+
+    const caloriesVals = data.map(i => Number(i.calories));
+    const proteinVals = data.map(i => Number(i.protein));
+    const fatVals = data.map(i => Number(i.fat));
+    const carbohydratesVals = data.map(i => Number(i.carbohydrates));
+
+    const calories = this.sumAll(...caloriesVals);
+    const protein = this.sumAll(...proteinVals);
+    const fat = this.sumAll(...fatVals);
+    const carbohydrates = this.sumAll(...carbohydratesVals);
+    return {
+      calories,
+      protein,
+      fat,
+      carbohydrates
+    }
   }
 
   
