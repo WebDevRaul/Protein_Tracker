@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts, addProductOffline, deleteAllOffline } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline, deleteAllOffline, collectSum } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -94,6 +94,10 @@ class Dashboard extends Component {
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
+    const { breakfast } = this.props.dashboard;
+    const data = this.totalSum(breakfast);
+    console.log(data);
+    this.props.collectSum();
   };
 
   // Clear tables
@@ -185,4 +189,4 @@ const mapStateToProps = state => ({
   dashboard: state.dashboard,
 });
 
-export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum } )(Dashboard);
