@@ -127,12 +127,13 @@ class Dashboard extends Component {
     const protein = this.sumAll(...proteinVals);
     const fat = this.sumAll(...fatVals);
     const carbohydrates = this.sumAll(...carbohydratesVals);
-    return {
-      calories,
-      protein,
-      fat,
-      carbohydrates
-    }
+    const totalSum = [
+      {calories},
+      {protein},
+      {fat},
+      {carbohydrates}
+    ];
+    return totalSum;
   }
 
   
