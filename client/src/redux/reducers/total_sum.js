@@ -1,4 +1,4 @@
-import { COLLECT_BREAKFAST, COLLECT_LUNCH, COLLECT_DINER, COLLECT_SNACK } from '../actions/types';
+import { COLLECT_BREAKFAST, COLLECT_LUNCH, COLLECT_DINER, COLLECT_SNACK, GET_CLEAR_TABLE } from '../actions/types';
 
 const initialState = {
   breakfast: {
@@ -68,6 +68,14 @@ export default function(state=initialState, action) {
           fat: action.payload[2].fat,
           carbohydrates: action.payload[3].carbohydrates
         }
+      }
+    case GET_CLEAR_TABLE:
+      return {
+        ...state,
+        breakfast: {},
+        lunch: {},
+        diner: {},
+        snack: {}
       }
     default:
       return state;

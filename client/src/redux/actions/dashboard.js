@@ -12,7 +12,8 @@ import {
   COLLECT_BREAKFAST,
   COLLECT_LUNCH,
   COLLECT_DINER,
-  COLLECT_SNACK
+  COLLECT_SNACK,
+  GET_CLEAR_TABLE,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -103,7 +104,7 @@ export const deleteAllOffline = userID => dispatch => {
 }
 
 // Fetch total sum for table
-export const collectSum = (data) => {
+export const collectSum = data => {
   if (data[4].table === 'breakfast') {
     return { 
       type: COLLECT_BREAKFAST,
@@ -128,4 +129,11 @@ export const collectSum = (data) => {
       payload: data
     };
   }
+};
+
+// Clear totalSum vals from redux on clear table
+export const clearTable = () => {
+  return { 
+    type: GET_CLEAR_TABLE
+  };
 };

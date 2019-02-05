@@ -66,10 +66,10 @@ class Table extends Component {
     const totalItems = <Item
       product_name='Total'
       quantity= {''}
-      calories={String(total.calories)}
-      protein={String(total.protein)}
-      fat={String(total.fat)}
-      carbohydrates={String(total.carbohydrates)}
+      calories={total.calories ? String(total.calories): '0'}
+      protein={total.protein ? String(total.protein) : '0'}
+      fat={total.fat ? String(total.fat) : '0'}
+      carbohydrates={total.carbohydrates ? String(total.carbohydrates) : '0'}
     />
 
 

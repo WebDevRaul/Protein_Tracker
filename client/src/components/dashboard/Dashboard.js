@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts, addProductOffline, deleteAllOffline, collectSum } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -76,25 +76,26 @@ class Dashboard extends Component {
     if (prevProps.dashboard.breakfast !== breakfast && !isEmpty(breakfast)) {
       const breakfastTable = this.totalSum(breakfast);
       this.props.collectSum(breakfastTable);
-    }
+    };
 
     // Lunch totalSum
     if (prevProps.dashboard.lunch !== lunch && !isEmpty(lunch)) {
       const lunchTable = this.totalSum(lunch);
       this.props.collectSum(lunchTable);
-    }
+    };
 
     // Diner totalSum
     if (prevProps.dashboard.diner !== diner && !isEmpty(diner)) {
       const dinerTable = this.totalSum(diner);
       this.props.collectSum(dinerTable);
-    }
+    };
 
     // Snak total
     if (prevProps.dashboard.snack !== snack && !isEmpty(snack)) {
       const snackTable = this.totalSum(snack);
       this.props.collectSum(snackTable);
-    }
+    };
+
   };
   
 
@@ -124,7 +125,8 @@ class Dashboard extends Component {
   onClear = () => {
     const { id } = this.props.auth.user;
     this.props.deleteAllOffline(id);
-    this.setState({ breakfast: false, tableUpdate: false })
+    this.setState({ breakfast: false, tableUpdate: false });
+    this.props.clearTable();
   };
 
   // Sum up the prod vals
@@ -196,6 +198,7 @@ Dashboard.propTypes = {
   addProductOffline: PropTypes.func.isRequired,
   deleteAllOffline: PropTypes.func.isRequired,
   collectSum: PropTypes.func.isRequired,
+  clearTable: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -205,4 +208,4 @@ const mapStateToProps = state => ({
   totalSum: state.totalSum,
 });
 
-export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable } )(Dashboard);
