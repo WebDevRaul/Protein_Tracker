@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts, addProductOffline, deleteAllOffline, collectBreackfast } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline, deleteAllOffline, collectSum } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -75,14 +75,25 @@ class Dashboard extends Component {
     // Breakfast totalSum
     if (prevProps.dashboard.breakfast !== breakfast && !isEmpty(breakfast)) {
       const breakfastTable = this.totalSum(breakfast);
-      this.props.collectBreackfast(breakfastTable);
+      this.props.collectSum(breakfastTable);
     }
 
     // Lunch totalSum
     if (prevProps.dashboard.lunch !== lunch && !isEmpty(lunch)) {
       const lunchTable = this.totalSum(lunch);
-      console.log(lunchTable)
-      this.props.collectBreackfast(lunchTable);
+      this.props.collectSum(lunchTable);
+    }
+
+    // Diner totalSum
+    if (prevProps.dashboard.diner !== diner && !isEmpty(diner)) {
+      const dinerTable = this.totalSum(diner);
+      this.props.collectSum(dinerTable);
+    }
+
+    // Snak total
+    if (prevProps.dashboard.snack !== snack && !isEmpty(snack)) {
+      const snackTable = this.totalSum(snack);
+      this.props.collectSum(snackTable);
     }
   };
   
@@ -184,7 +195,7 @@ Dashboard.propTypes = {
   findProducts: PropTypes.func.isRequired,
   addProductOffline: PropTypes.func.isRequired,
   deleteAllOffline: PropTypes.func.isRequired,
-  collectBreackfast: PropTypes.func.isRequired,
+  collectSum: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -194,4 +205,4 @@ const mapStateToProps = state => ({
   totalSum: state.totalSum,
 });
 
-export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectBreackfast } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum } )(Dashboard);
