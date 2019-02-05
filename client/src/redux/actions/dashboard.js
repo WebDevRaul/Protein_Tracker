@@ -9,7 +9,8 @@ import {
   DELETE_PRODUCT,
   DELETE_ALL,
   GET_ERRORS,
-  COLLECT_SUM
+  COLLECT_BREAKFAST,
+  COLLECT_LUNCH
     } from './types';
 
 // Add item to TableFieldGroup
@@ -100,9 +101,17 @@ export const deleteAllOffline = userID => dispatch => {
 }
 
 // Fetch total sum for table
-export const collectSum = (data) => {
-  return { 
-    type: COLLECT_SUM,
-    payload: data
-  };
+export const collectBreackfast = (data) => {
+  if (data[4].table === 'breakfast') {
+    return { 
+      type: COLLECT_BREAKFAST,
+      payload: data
+    };
+  }
+  if (data[4].table === 'lunch') {
+    return { 
+      type: COLLECT_LUNCH,
+      payload: data
+    };
+  }
 };
