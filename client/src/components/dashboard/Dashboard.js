@@ -8,7 +8,7 @@ import SelectListGroup from '../common/components/SelectFieldGroup';
 // Redux
 import { connect } from 'react-redux';
 import { findItems } from '../../redux/actions/admin';
-import { findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable } from '../../redux/actions/dashboard';
+import { findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable, clearLocalTable } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -96,6 +96,23 @@ class Dashboard extends Component {
       this.props.collectSum(snackTable);
     };
 
+    // Clear local Table
+    // Breakfast
+    if (prevProps.dashboard.breakfast !== breakfast && isEmpty(breakfast) && breakfastState === true) {
+      this.props.clearLocalTable('breakfast');
+    };
+    // Lunch
+    if (prevProps.dashboard.lunch !== lunch && isEmpty(lunch) && lunchState === true) {
+      this.props.clearLocalTable('lunch');
+    };
+    // Diner
+    if (prevProps.dashboard.diner !== diner && isEmpty(diner) && dinerState === true) {
+      this.props.clearLocalTable('diner');
+    };
+    // Snack
+    if (prevProps.dashboard.snack !== snack && isEmpty(snack) && snackState === true) {
+      this.props.clearLocalTable('snack');
+    };
   };
   
 
@@ -199,6 +216,7 @@ Dashboard.propTypes = {
   deleteAllOffline: PropTypes.func.isRequired,
   collectSum: PropTypes.func.isRequired,
   clearTable: PropTypes.func.isRequired,
+  clearLocalTable: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -208,4 +226,4 @@ const mapStateToProps = state => ({
   totalSum: state.totalSum,
 });
 
-export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable } )(Dashboard);
+export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable, clearLocalTable } )(Dashboard);

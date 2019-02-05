@@ -14,6 +14,10 @@ import {
   COLLECT_DINER,
   COLLECT_SNACK,
   GET_CLEAR_TABLE,
+  CLEAR_LOCAL_BREAKFAST,
+  CLEAR_LOCAL_LUNCH,
+  CLEAR_LOCAL_DINER,
+  CLEAR_LOCAL_SNACK,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -135,5 +139,29 @@ export const collectSum = data => {
 export const clearTable = () => {
   return { 
     type: GET_CLEAR_TABLE
+  };
+};
+
+// Clear totalSum vals from redux on clear table
+export const clearLocalTable = data => {
+  if (data === 'breakfast') {
+    return { 
+      type: CLEAR_LOCAL_BREAKFAST
+    };
+  };
+  if (data === 'lunch') {
+    return { 
+      type: CLEAR_LOCAL_LUNCH
+    };
+  };
+  if (data === 'diner') {
+    return { 
+      type: CLEAR_LOCAL_DINER
+    };
+  };
+  if (data === 'snack') {
+    return { 
+      type: CLEAR_LOCAL_SNACK
+    };
   };
 };
