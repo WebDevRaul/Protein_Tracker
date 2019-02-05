@@ -96,6 +96,7 @@ class Dashboard extends Component {
     this.setState({ tableUpdate: true });
 
 
+    // ----------------- //
     const { breakfast } = this.props.dashboard;
     const breakfastTable = this.totalSum(breakfast);
     this.props.collectSum(breakfastTable);
@@ -148,13 +149,6 @@ class Dashboard extends Component {
       {product_name: 'snack', _id: 'snack'},
     ];
 
-    const total = {
-      calories: '1',
-      protein: '1',
-      fat: '1',
-      carbohydrates: '1'
-    }
-
     return (
       <div className='container'>
         <SelectListGroup
@@ -166,10 +160,10 @@ class Dashboard extends Component {
           option='Select Table'
         />
         <button onClick={this.onClear}>Clear Tables</button>
-        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={total} /> : null }
-        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={total} /> : null }
-        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={total} /> : null }
-        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={total} /> : null }
+        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.totalSum.breakfast} /> : null }
+        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={this.props.totalSum.lunch} /> : null }
+        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={this.props.totalSum.diner} /> : null }
+        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={this.props.totalSum.snack} /> : null }
       </div>
     )
   }
@@ -182,12 +176,14 @@ Dashboard.propTypes = {
   findProducts: PropTypes.func.isRequired,
   addProductOffline: PropTypes.func.isRequired,
   deleteAllOffline: PropTypes.func.isRequired,
+  collectSum: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
   auth: state.auth,
   dashboard: state.dashboard,
+  totalSum: state.totalSum,
 });
 
 export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum } )(Dashboard);
