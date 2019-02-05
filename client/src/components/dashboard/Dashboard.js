@@ -68,9 +68,15 @@ class Dashboard extends Component {
     // Update Dashboard Redux no DB call
     if (prevProps.dashboard.item !== itemState) {
       if (!isEmpty(item)) {
-        this.props.addProductOffline(item); 
+        this.props.addProductOffline(item);
       };
     };
+    
+    // Breakfast totalSum
+    if (prevProps.dashboard.breakfast !== breakfast && !isEmpty(breakfast)) {
+      const breakfastTable = this.totalSum(breakfast);
+      this.props.collectSum(breakfastTable);
+    }
   };
   
 
@@ -94,12 +100,6 @@ class Dashboard extends Component {
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
-
-
-    // ----------------- //
-    const { breakfast } = this.props.dashboard;
-    const breakfastTable = this.totalSum(breakfast);
-    this.props.collectSum(breakfastTable);
   };
 
   // Clear tables

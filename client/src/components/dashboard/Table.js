@@ -65,11 +65,11 @@ class Table extends Component {
     // Total of val items
     const totalItems = <Item
       product_name='Total'
-      quantity='3'
-      calories={total.calories}
-      protein={total.protein}
-      fat={total.fat}
-      carbohydrates={total.carbohydrates}
+      quantity= {''}
+      calories={String(total.calories)}
+      protein={String(total.protein)}
+      fat={String(total.fat)}
+      carbohydrates={String(total.carbohydrates)}
     />
 
 
