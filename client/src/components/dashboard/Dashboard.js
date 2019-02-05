@@ -94,10 +94,11 @@ class Dashboard extends Component {
     const update = data => this.setState({ [data]: true });
     update(table);
     this.setState({ tableUpdate: true });
+
+
     const { breakfast } = this.props.dashboard;
-    const data = this.totalSum(breakfast);
-    console.log(data);
-    this.props.collectSum();
+    const breakfastTable = this.totalSum(breakfast);
+    this.props.collectSum(breakfastTable);
   };
 
   // Clear tables

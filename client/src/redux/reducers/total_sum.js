@@ -2,41 +2,26 @@ import { COLLECT_SUM } from '../actions/types';
 
 const initialState = {
   breakfast: {
-    calories: {},
-    proteins: {},
-    fat: {},
-    carbohidrates: {}
-  },
-  diner: {
-    calories: {},
-    proteins: {},
-    fat: {},
-    carbohidrates: {}
-  },
-  lunch: {
-    calories: {},
-    proteins: {},
-    fat: {},
-    carbohidrates: {}
-  },
-  snack: {
-    calories: {},
-    proteins: {},
-    fat: {},
-    carbohidrates: {}
+    calories: '',
+    protein: '',
+    fat: '',
+    carbohydrates: ''
   }
 };
 
 export default function(state=initialState, action) {
-  switch(action) {
+  switch(action.type) {
     case COLLECT_SUM:
       return {
+        ...state,
         breakfast: {
-          ...state,
-          calories: '1'
+          calories: action.payload[0].calories,
+          protein: action.payload[1].protein,
+          fat: action.payload[2].fat,
+          carbohydrates: action.payload[3].carbohydrates
         }
       }
     default:
       return state;
   }
-}
+};
