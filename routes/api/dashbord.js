@@ -84,4 +84,31 @@ router
   });
 
 
+// @route   Edit api/dashboard/edit/:id
+// @desc    Edit item
+// @access  Private
+router
+  .post('/edit/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id })
+      .then(user => {
+        // Check for item owner
+        if (user._id.toString() !== req.user.id) {
+          return res
+            .status(401)
+            .json({ notauthorized: 'User not authorized' });
+        }
+
+        // Update product by ID
+        Table.updateOne(
+          { _id: req.params.id },
+          { $set:{quantity: req.body.newQuantity} },
+          { new: true }
+        )
+          .then(item => res.status(200).json({ newQuantity: 'New quantity added' }))
+          .catch(err => res.status(404).json({ noProductFound: 'No product found' }))
+      })
+      .catch(err => res.status(404).json({ notauthorized: 'User not authorized' }))
+  })
+
+
 module.exports = router;

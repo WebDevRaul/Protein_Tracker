@@ -168,12 +168,12 @@ export const clearLocalTable = data => {
 };
 
 // Save newQuantity
-export const saveNewQuantity = (data, id) => dispatch =>{
+export const saveNewQuantity = data => dispatch =>{
   axios
-    .post(`/api/dashboard/edit/${id}`, data)
+    .post(`/api/dashboard/edit/${data.id}`, data)
     .then(res => dispatch({
       type: NEW_QUANTITY,
-      payload: res.data
+      payload: data
     }))
     .catch(err => dispatch({
       type: GET_ERRORS,

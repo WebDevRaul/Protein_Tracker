@@ -31,8 +31,9 @@ class ItemDashboard extends Component {
   onSave = () => {
     const { newQuantity } = this.state;
     const { id } = this.props;
+    const newQuantityData =  { newQuantity, id }
     this.setState({ edit: false });
-    this.props.saveNewQuantity(newQuantity, id);
+    this.props.saveNewQuantity(newQuantityData);
   };
 
 
@@ -80,7 +81,9 @@ ItemDashboard.propTypes = {
   onClickFunc: PropTypes.func
 };
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  error: state.errors
+})
 
 
 export default connect(mapStateToProps , { saveNewQuantity })(ItemDashboard);
