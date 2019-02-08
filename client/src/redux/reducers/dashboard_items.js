@@ -8,11 +8,12 @@ import {
   DELETE_PRODUCT,
   DELETE_ALL,
   NEW_QUANTITY,
+  UPDATE_OFFLINE,
     } from '../actions/types';
 
 const initialState = {
   item: {},
-  newQuantity: {},
+  newQuantityItem: {},
   breakfast: [],
   diner: [],
   snack: [],
@@ -80,7 +81,23 @@ export default function(state=initialState, action) {
     case NEW_QUANTITY:
       return {
         ...state,
-        newQuantity: action.payload
+        newQuantityItem: action.payload
+      }
+    case UPDATE_OFFLINE:
+      return {
+        ...state,
+        breakfast: state.breakfast.map(item => {
+          if (item._id === action.payload.id) {
+            return {
+              ...item,
+              quantity: action.payload.newQuantity
+            }
+          } else {
+            return {
+              ...item
+            }
+          }
+        })
       }
     default:
       return state;

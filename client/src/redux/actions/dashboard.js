@@ -19,6 +19,7 @@ import {
   CLEAR_LOCAL_DINER,
   CLEAR_LOCAL_SNACK,
   NEW_QUANTITY,
+  UPDATE_OFFLINE,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -179,4 +180,12 @@ export const saveNewQuantity = data => dispatch =>{
       type: GET_ERRORS,
       payload: err.response.data
     }))
+};
+
+// Update newQuantity on Item - [Redux]
+export const update_Offline = data => {
+  return {
+    type: UPDATE_OFFLINE,
+    payload: data
+  }
 };

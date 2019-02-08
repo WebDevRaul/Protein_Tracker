@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
-import { saveNewQuantity } from '../../redux/actions/dashboard';
-import isEmpty from '../common/isEmpty';
+import { saveNewQuantity, update_Offline } from '../../redux/actions/dashboard';
 
 class ItemDashboard extends Component {
   constructor() {
@@ -35,6 +34,7 @@ class ItemDashboard extends Component {
     const newQuantityData =  { id, newQuantity }
     this.setState({ edit: false });
     this.props.saveNewQuantity(newQuantityData);
+    this.props.update_Offline(newQuantityData)
   };
 
 
@@ -87,4 +87,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps , { saveNewQuantity })(ItemDashboard);
+export default connect(mapStateToProps , { saveNewQuantity, update_Offline })(ItemDashboard);
