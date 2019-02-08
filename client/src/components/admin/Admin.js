@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import CardFieldGroup from '../common/components/CardFieldGroup';
-import ItemsName from './Items_name';
+import ListAdmin from './List_Items';
 
 // Redux
 import { connect } from 'react-redux';
@@ -197,7 +197,7 @@ class Admin extends Component {
           </div>
         </section>
         <section className="admin-section-two">
-          <ItemsName />
+          <ListAdmin />
         </section>
       </div>
     )

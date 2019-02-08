@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
-import Item from '../common/components/Item';
+import ItemDashboard from './Item_Dashboard';
 // Redux
 import { connect } from 'react-redux';
 import { addProduct, deleteProduct } from '../../redux/actions/dashboard';
@@ -13,7 +13,8 @@ class Table extends Component {
   constructor() {
     super();
     this.state = {
-      productVal: ''
+      productVal: '',
+      edit: false,
     }
   };
   
@@ -40,18 +41,13 @@ class Table extends Component {
     this.props.deleteProduct(id);
   };
 
-  onEdit=(id)=> {
-    console.log(id) 
-  }
-
-
   render() {
     const { items } = this.props.admin;
     const { data, total }  = this.props;
 
     // Items in dashboard
     const productItems = data.map(i => 
-      <Item 
+      <ItemDashboard 
         key={i._id}
         product_name={i.product_name}
         quantity={i.quantity}
@@ -68,7 +64,7 @@ class Table extends Component {
     );
 
     // Total of val items
-    const totalItems = <Item
+    const totalItems = <ItemDashboard
       product_name='Total'
       quantity= {''}
       calories={total.calories ? String(total.calories): '0'}
@@ -95,7 +91,7 @@ class Table extends Component {
             />
           </div>
           <div className="card-body">
-            <Item
+            <ItemDashboard
               product_name= 'Product Name:'
               quantity= 'Quantity'
               calories= 'Calories'
