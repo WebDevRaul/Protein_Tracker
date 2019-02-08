@@ -5,14 +5,20 @@ class Item extends Component {
 
   onClick = id => () => {
     this.props.onClickFunc(id)
-  }
+  };
+
+  onEdit = id => () => {
+    this.props.onEditFunc(id)
+  };
 
   render() {
     return (
       <div key={this.props.id}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{this.props.product_name}</li>
-          <li className='list-inline-item'>{this.props.quantity}{this.props.type}</li>
+          <li className='list-inline-item'
+            onClick={this.onEdit(this.props.id)}
+          >{this.props.quantity}{this.props.type}</li>
           <li className='list-inline-item'>{this.props.calories}</li>
           <li className='list-inline-item'>{this.props.protein}</li>
           <li className='list-inline-item'>{this.props.fat}</li>

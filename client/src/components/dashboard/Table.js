@@ -38,6 +38,10 @@ class Table extends Component {
 
   onDelete=(id)=> {
     this.props.deleteProduct(id);
+  };
+
+  onEdit=(id)=> {
+    console.log(id) 
   }
 
 
@@ -59,6 +63,7 @@ class Table extends Component {
         id={i._id}
         class='far fa-times-circle fa-red'
         onClickFunc={this.onDelete}
+        onEditFunc={this.onEdit}
        />
     );
 
