@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
 import ItemDashboard from './Item_Dashboard';
+import ItemAdmin from '../admin/Item_Admin';
+
 // Redux
 import { connect } from 'react-redux';
 import { addProduct, deleteProduct } from '../../redux/actions/dashboard';
@@ -14,7 +16,6 @@ class Table extends Component {
     super();
     this.state = {
       productVal: '',
-      edit: false,
     }
   };
   
@@ -41,6 +42,8 @@ class Table extends Component {
     this.props.deleteProduct(id);
   };
 
+
+
   render() {
     const { items } = this.props.admin;
     const { data, total }  = this.props;
@@ -59,7 +62,6 @@ class Table extends Component {
         id={i._id}
         class='far fa-times-circle fa-red'
         onClickFunc={this.onDelete}
-        onEditFunc={this.onEdit}
        />
     );
 
@@ -91,7 +93,7 @@ class Table extends Component {
             />
           </div>
           <div className="card-body">
-            <ItemDashboard
+            <ItemAdmin
               product_name= 'Product Name:'
               quantity= 'Quantity'
               calories= 'Calories'
@@ -115,7 +117,7 @@ Table.propTypes = {
   addProduct: PropTypes.func.isRequired,
   deleteProduct: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  total: PropTypes.object.isRequired
+  total: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({

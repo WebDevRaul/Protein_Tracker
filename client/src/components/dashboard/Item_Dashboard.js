@@ -1,19 +1,57 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEmpty from '../common/isEmpty';
 
 class ItemDashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      edit: false,
+    }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    const {quantity} = nextProps;
+    if( quantity !== prevState.quantity ) {
+      return {quantity};
+    }
+    else return null;
+  }
+
+
 
   onClick = id => () => {
     this.props.onClickFunc(id)
-  }
+  };
+
+  onEdit = () => {
+    this.setState({ edit: !this.state.edit });
+    console.log(this.state.edit);
+    console.log(this.props.id);
+  };
+
+  onChange = () => {
+
+  };
 
   render() {
-    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { product_name, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { edit, quantity } = this.state;
+
+    const input = (
+      <input 
+        type = 'text'
+        value = { quantity }
+        onChange = {this.onChange}
+      />
+    )
     return (
       <div key={id}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{product_name}</li>
-          <li className='list-inline-item'>{quantity}{type}</li>
+          <li className='list-inline-item'
+            onClick={this.onEdit}
+          >{edit ? input : quantity}{type}</li>
           <li className='list-inline-item'>{calories}</li>
           <li className='list-inline-item'>{protein}</li>
           <li className='list-inline-item'>{fat}</li>
