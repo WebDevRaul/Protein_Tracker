@@ -86,18 +86,7 @@ export default function(state=initialState, action) {
     case UPDATE_OFFLINE:
       return {
         ...state,
-        breakfast: state.breakfast.map(item => {
-          if (item._id === action.payload.id) {
-            return {
-              ...item,
-              quantity: action.payload.newQuantity
-            }
-          } else {
-            return {
-              ...item
-            }
-          }
-        })
+        breakfast: state.breakfast.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
       }
     default:
       return state;
