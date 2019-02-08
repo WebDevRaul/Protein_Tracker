@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // Redux
 import { connect } from 'react-redux';
 import { saveNewQuantity } from '../../redux/actions/dashboard';
+import isEmpty from '../common/isEmpty';
 
 class ItemDashboard extends Component {
   constructor() {
@@ -31,7 +32,7 @@ class ItemDashboard extends Component {
   onSave = () => {
     const { newQuantity } = this.state;
     const { id } = this.props;
-    const newQuantityData =  { newQuantity, id }
+    const newQuantityData =  { id, newQuantity }
     this.setState({ edit: false });
     this.props.saveNewQuantity(newQuantityData);
   };
@@ -78,12 +79,12 @@ ItemDashboard.propTypes = {
   carbohydrates: PropTypes.string.isRequired,
   Id: PropTypes.string,
   class: PropTypes.string,
-  onClickFunc: PropTypes.func
+  onClickFunc: PropTypes.func,
+  saveNewQuantity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  error: state.errors
-})
+});
 
 
 export default connect(mapStateToProps , { saveNewQuantity })(ItemDashboard);

@@ -173,7 +173,7 @@ export const saveNewQuantity = data => dispatch =>{
     .post(`/api/dashboard/edit/${data.id}`, data)
     .then(res => dispatch({
       type: NEW_QUANTITY,
-      payload: data
+      payload: res.data
     }))
     .catch(err => dispatch({
       type: GET_ERRORS,

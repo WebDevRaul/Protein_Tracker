@@ -102,9 +102,12 @@ router
         Table.updateOne(
           { _id: req.params.id },
           { $set:{quantity: req.body.newQuantity} },
-          { new: true }
+          { new: true },
+          () => {
+            Table.findById(req.params.id)
+                .then(item => res.json(item))
+          }
         )
-          .then(item => res.status(200).json({ newQuantity: 'New quantity added' }))
           .catch(err => res.status(404).json({ noProductFound: 'No product found' }))
       })
       .catch(err => res.status(404).json({ notauthorized: 'User not authorized' }))
