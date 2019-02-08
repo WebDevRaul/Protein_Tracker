@@ -25,10 +25,14 @@ class ItemDashboard extends Component {
   };
 
   onEdit = () => {
-    this.setState({ edit: !this.state.edit });
+    this.setState({ edit: true });
     console.log(this.state.edit);
     console.log(this.props.id);
   };
+
+  onSave = () => {
+    this.setState({ edit: false })
+  }
 
   onChange = () => {
 
@@ -49,9 +53,10 @@ class ItemDashboard extends Component {
       <div key={id}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{product_name}</li>
-          <li className='list-inline-item'
-            onClick={this.onEdit}
-          >{edit ? input : quantity}{type}</li>
+          <li className='list-inline-item'>
+            <span onClick={this.onEdit}>{edit ? input : quantity} {type} </span>
+            <span onClick={this.onSave}>{edit ? <i className="fas fa-check"></i> : null}</span>
+          </li>
           <li className='list-inline-item'>{calories}</li>
           <li className='list-inline-item'>{protein}</li>
           <li className='list-inline-item'>{fat}</li>
