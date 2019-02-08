@@ -1,52 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isEmpty from '../common/isEmpty';
+
+// Redux
+import { connect } from 'react-redux';
+import { saveNewQuantity } from '../../redux/actions/dashboard';
 
 class ItemDashboard extends Component {
   constructor() {
     super();
     this.state = {
       edit: false,
+      newQuantity: '',
     }
   };
-
-  static getDerivedStateFromProps(nextProps, prevState){
-    const {quantity} = nextProps;
-    if( quantity !== prevState.quantity ) {
-      return {quantity};
-    }
-    else return null;
-  }
 
 
 
   onClick = id => () => {
-    this.props.onClickFunc(id)
+    this.props.onClickFunc(id);
   };
-
+  
+  onChange = (e) => {
+    this.setState({ newQuantity: e.target.value });
+  };
+  
   onEdit = () => {
     this.setState({ edit: true });
-    console.log(this.state.edit);
-    console.log(this.props.id);
   };
-
+  
   onSave = () => {
-    this.setState({ edit: false })
-  }
-
-  onChange = () => {
-
+    const { newQuantity } = this.state;
+    const { id } = this.props;
+    this.setState({ edit: false });
+    this.props.saveNewQuantity(newQuantity, id);
   };
+
 
   render() {
-    const { product_name, type, calories, protein, fat, carbohydrates, id } = this.props;
-    const { edit, quantity } = this.state;
+    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { edit, newQuantity } = this.state;
 
     const input = (
       <input 
         type = 'text'
-        value = { quantity }
+        value = { newQuantity }
         onChange = {this.onChange}
+        placeholder = {quantity}
       />
     )
     return (
@@ -81,5 +80,7 @@ ItemDashboard.propTypes = {
   onClickFunc: PropTypes.func
 };
 
+const mapStateToProps = state => ({})
 
-export default ItemDashboard;
+
+export default connect(mapStateToProps , { saveNewQuantity })(ItemDashboard);

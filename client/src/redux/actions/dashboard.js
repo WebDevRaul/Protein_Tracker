@@ -18,6 +18,7 @@ import {
   CLEAR_LOCAL_LUNCH,
   CLEAR_LOCAL_DINER,
   CLEAR_LOCAL_SNACK,
+  NEW_QUANTITY,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -164,4 +165,18 @@ export const clearLocalTable = data => {
       type: CLEAR_LOCAL_SNACK
     };
   };
+};
+
+// Save newQuantity
+export const saveNewQuantity = (data, id) => dispatch =>{
+  axios
+    .post(`/api/dashboard/edit/${id}`, data)
+    .then(res => dispatch({
+      type: NEW_QUANTITY,
+      payload: res.data
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
 };

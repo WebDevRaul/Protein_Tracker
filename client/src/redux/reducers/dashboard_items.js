@@ -7,10 +7,12 @@ import {
   ADD_SNACK_OFFLINE,
   DELETE_PRODUCT,
   DELETE_ALL,
+  NEW_QUANTITY,
     } from '../actions/types';
 
 const initialState = {
   item: {},
+  newQuantity: {},
   breakfast: [],
   diner: [],
   snack: [],
@@ -74,6 +76,11 @@ export default function(state=initialState, action) {
         lunch: [],
         diner: [],
         snack: []
+      }
+    case NEW_QUANTITY:
+      return {
+        ...state,
+        newQuantity: action.payload
       }
     default:
       return state;
