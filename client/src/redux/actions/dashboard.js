@@ -19,7 +19,10 @@ import {
   CLEAR_LOCAL_DINER,
   CLEAR_LOCAL_SNACK,
   NEW_QUANTITY,
-  UPDATE_OFFLINE,
+  UPDATE_BREAKFAST_OFFLINE,
+  UPDATE_LUNCH_OFFLINE,
+  UPDATE_DINER_OFFLINE,
+  UPDATE_SNACK_OFFLINE,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -184,8 +187,28 @@ export const saveNewQuantity = data => dispatch =>{
 
 // Update newQuantity on Item - [Redux]
 export const update_Offline = data => {
-  return {
-    type: UPDATE_OFFLINE,
-    payload: data
+  if (data.table_id === 'breakfast') {
+    return {
+      type: UPDATE_BREAKFAST_OFFLINE,
+      payload: data
+    }
+  }
+  if (data.table_id === 'lunch') {
+    return {
+      type: UPDATE_LUNCH_OFFLINE,
+      payload: data
+    }
+  }
+  if (data.table_id === 'diner') {
+    return {
+      type: UPDATE_DINER_OFFLINE,
+      payload: data
+    }
+  }
+  if (data.table_id === 'snack') {
+    return {
+      type: UPDATE_SNACK_OFFLINE,
+      payload: data
+    }
   }
 };

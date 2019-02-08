@@ -8,7 +8,10 @@ import {
   DELETE_PRODUCT,
   DELETE_ALL,
   NEW_QUANTITY,
-  UPDATE_OFFLINE,
+  UPDATE_BREAKFAST_OFFLINE,
+  UPDATE_LUNCH_OFFLINE,
+  UPDATE_DINER_OFFLINE,
+  UPDATE_SNACK_OFFLINE,
     } from '../actions/types';
 
 const initialState = {
@@ -16,8 +19,8 @@ const initialState = {
   newQuantityItem: {},
   breakfast: [],
   diner: [],
+  lunch: [],
   snack: [],
-  lunch: []
 };
 
 export default function(state=initialState, action) {
@@ -83,10 +86,25 @@ export default function(state=initialState, action) {
         ...state,
         newQuantityItem: action.payload
       }
-    case UPDATE_OFFLINE:
+    case UPDATE_BREAKFAST_OFFLINE:
       return {
         ...state,
         breakfast: state.breakfast.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+      }
+    case UPDATE_LUNCH_OFFLINE:
+      return {
+        ...state,
+        lunch: state.lunch.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+      }
+    case UPDATE_DINER_OFFLINE:
+      return {
+        ...state,
+        diner: state.diner.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+      }
+    case UPDATE_SNACK_OFFLINE:
+      return {
+        ...state,
+        snack: state.snack.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
       }
     default:
       return state;

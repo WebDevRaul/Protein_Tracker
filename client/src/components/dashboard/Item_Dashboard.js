@@ -30,8 +30,8 @@ class ItemDashboard extends Component {
   
   onSave = () => {
     const { newQuantity } = this.state;
-    const { id } = this.props;
-    const newQuantityData =  { id, newQuantity }
+    const { id, table_id } = this.props;
+    const newQuantityData =  { id, newQuantity, table_id }
     this.setState({ edit: false });
     this.props.saveNewQuantity(newQuantityData);
     this.props.update_Offline(newQuantityData)
@@ -71,6 +71,7 @@ class ItemDashboard extends Component {
 
 ItemDashboard.propTypes = {
   product_name: PropTypes.string.isRequired,
+  table_id: PropTypes.string,
   quantity: PropTypes.string.isRequired,
   type: PropTypes.string,
   calories: PropTypes.string.isRequired,
@@ -83,8 +84,7 @@ ItemDashboard.propTypes = {
   saveNewQuantity: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-});
+const mapStateToProps = state => ({});
 
 
 export default connect(mapStateToProps , { saveNewQuantity, update_Offline })(ItemDashboard);

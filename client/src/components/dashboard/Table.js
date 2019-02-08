@@ -53,6 +53,7 @@ class Table extends Component {
       <ItemDashboard 
         key={i._id}
         product_name={i.product_name}
+        table_id={i.table_id}
         quantity={i.quantity}
         type={i.type}
         calories={i.calories}
