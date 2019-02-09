@@ -34,7 +34,6 @@ class Table extends Component {
 
     // Add table_id to item
     const product = Object.assign({ table_id }, item);
-    delete product._id;
     this.props.addProduct(product);
   };
 

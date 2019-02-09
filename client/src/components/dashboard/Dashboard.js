@@ -46,7 +46,7 @@ class Dashboard extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { breakfast, lunch, diner, snack, item} = this.props.dashboard;
+    const { breakfast, lunch, diner, snack, item } = this.props.dashboard;
     const breakfastState = this.state.breakfast;
     const lunchState = this.state.lunch;
     const dinerState = this.state.diner;

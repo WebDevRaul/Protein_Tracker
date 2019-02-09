@@ -15,7 +15,6 @@ router
     // Make Validation
 
     const item = new Table({
-      table_id: req.body.table_id,
       user: req.body.user,
       product_name: req.body.product_name,
       quantity: req.body.quantity,
@@ -23,7 +22,8 @@ router
       protein: req.body.protein,
       calories: req.body.calories,
       carbohydrates: req.body.carbohydrates,
-      fat: req.body.fat
+      fat: req.body.fat,
+      table_id: req.body.table_id,
     });
 
     // Save
@@ -101,7 +101,13 @@ router
         // Update product by ID
         Table.updateOne(
           { _id: req.params.id },
-          { $set:{quantity: req.body.newQuantity} },
+          { $set:{
+            quantity: req.body.newQuantity,
+            calories: req.body.newCalories,
+            protein: req.body.newProtein,
+            fat: req.body.newFat,
+            catbohydrates: req.body.newCarbohydrates
+          } },
           { new: true },
           () => {
             Table.findById(req.params.id)

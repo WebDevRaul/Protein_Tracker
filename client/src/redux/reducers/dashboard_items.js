@@ -89,22 +89,22 @@ export default function(state=initialState, action) {
     case UPDATE_BREAKFAST_OFFLINE:
       return {
         ...state,
-        breakfast: state.breakfast.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+        breakfast: state.breakfast.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity, calories: action.payload.newCalories, protein: action.payload.newProtein, fat: action.payload.newFat, carbohydrates: action.payload.newCarbohydrates } : {...i} })
       }
     case UPDATE_LUNCH_OFFLINE:
       return {
         ...state,
-        lunch: state.lunch.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+        lunch: state.lunch.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity, calories: action.payload.newCalories, protein: action.payload.newProtein, fat: action.payload.newFat, carbohydrates: action.payload.newCarbohydrates } : {...i} })
       }
     case UPDATE_DINER_OFFLINE:
       return {
         ...state,
-        diner: state.diner.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+        diner: state.diner.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity, calories: action.payload.newCalories, protein: action.payload.newProtein, fat: action.payload.newFat, carbohydrates: action.payload.newCarbohydrates } : {...i} })
       }
     case UPDATE_SNACK_OFFLINE:
       return {
         ...state,
-        snack: state.snack.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity } : {...i} })
+        snack: state.snack.map(i => {return  i._id === action.payload.id ? {...i, quantity: action.payload.newQuantity, calories: action.payload.newCalories, protein: action.payload.newProtein, fat: action.payload.newFat, carbohydrates: action.payload.newCarbohydrates } : {...i} })
       }
     default:
       return state;
