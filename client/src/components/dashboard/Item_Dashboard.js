@@ -55,6 +55,7 @@ class ItemDashboard extends Component {
         value = { newQuantity }
         onChange = {this.onChange}
         placeholder = {quantity}
+        autoFocus
       />
     )
     return (

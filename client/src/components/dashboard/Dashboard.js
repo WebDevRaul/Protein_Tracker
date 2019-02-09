@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // Components
 import Table from './Table';
 import SelectListGroup from '../common/components/SelectFieldGroup';
+import Total_Tables from './Total_Tables';
 
 // Redux
 import { connect } from 'react-redux';
@@ -189,6 +190,7 @@ class Dashboard extends Component {
 
     return (
       <div className='container'>
+        <Total_Tables />
         <SelectListGroup
           name='selectTable'
           value={this.state.table}
