@@ -58,15 +58,15 @@ class Table extends Component {
         true_fat = {i.fat}
         true_carbohydrates = {i.carbohydrates}
         key={i._id}
-        product_name={i.product_name}
+        id={i._id}
         table_id={i.table_id}
+        product_name={i.product_name}
         quantity={i.quantity}
         type={i.type}
         calories={!isEmpty(i.temp_calories) ? i.temp_calories : i.calories}
         protein={!isEmpty(i.temp_protein) ? i.temp_protein : i.protein}
         fat={!isEmpty(i.temp_fat) ? i.temp_fat : i.fat}
         carbohydrates={!isEmpty(i.temp_carbohydrates) ? i.temp_carbohydrates : i.carbohydrates}
-        id={i._id}
         class='far fa-times-circle fa-red'
         onClickFunc={this.onDelete}
        />

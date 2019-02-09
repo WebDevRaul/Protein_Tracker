@@ -16,8 +16,8 @@ class ItemDashboard extends Component {
 
 
 
-  onClick = id => () => {
-    this.props.onClickFunc(id);
+  onClick = i => () => {
+    this.props.onClickFunc(i);
   };
   
   onChange = (e) => {
@@ -38,7 +38,7 @@ class ItemDashboard extends Component {
     const newFat= String(Number(true_fat) * Number(newQuantity));
     const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
 
-    const newQuantityData =  { id, newQuantity, table_id, newCalories, newProtein, newFat, newCarbohydrates };
+    const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates };
     this.setState({ edit: false });
     this.props.saveNewQuantity(newQuantityData);
     this.props.update_Offline(newQuantityData);
@@ -46,7 +46,7 @@ class ItemDashboard extends Component {
 
 
   render() {
-    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { product_name, quantity, type, calories, protein, fat, carbohydrates, i } = this.props;
     const { edit, newQuantity } = this.state;
 
     const input = (
@@ -58,7 +58,7 @@ class ItemDashboard extends Component {
       />
     )
     return (
-      <div key={id}>
+      <div key={i}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{product_name}</li>
           <li className='list-inline-item'>
@@ -69,7 +69,7 @@ class ItemDashboard extends Component {
           <li className='list-inline-item'>{protein}</li>
           <li className='list-inline-item'>{fat}</li>
           <li className='list-inline-item'>{carbohydrates}</li>
-          <span className='hover' onClick={this.onClick(id)} ><i className={this.props.class}></i></span>
+          <span className='hover' onClick={this.onClick(i)} ><i className={this.props.class}></i></span>
         </ul>
       </div>
     )
@@ -77,15 +77,19 @@ class ItemDashboard extends Component {
 };
 
 ItemDashboard.propTypes = {
+  true_calories: PropTypes.string,
+  true_protein: PropTypes.string,
+  true_fat: PropTypes.string,
+  true_carbohydrates: PropTypes.string,
   product_name: PropTypes.string.isRequired,
-  table_id: PropTypes.string,
+  table_i: PropTypes.string,
   quantity: PropTypes.string.isRequired,
   type: PropTypes.string,
   calories: PropTypes.string.isRequired,
   protein: PropTypes.string.isRequired,
   fat: PropTypes.string.isRequired,
   carbohydrates: PropTypes.string.isRequired,
-  Id: PropTypes.string,
+  id: PropTypes.string,
   class: PropTypes.string,
   onClickFunc: PropTypes.func,
   saveNewQuantity: PropTypes.func.isRequired,

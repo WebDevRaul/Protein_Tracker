@@ -155,10 +155,10 @@ class Dashboard extends Component {
 
   totalSum = (data) => {
 
-    const caloriesVals = data.map(i => Number(i.calories));
-    const proteinVals = data.map(i => Number(i.protein));
-    const fatVals = data.map(i => Number(i.fat));
-    const carbohydratesVals = data.map(i => Number(i.carbohydrates));
+    const caloriesVals = data.map(i => Number(!isEmpty(i.temp_calories) ? i.temp_calories : i.calories));
+    const proteinVals = data.map(i => Number(!isEmpty(i.temp_protein) ? i.temp_protein : i.protein));
+    const fatVals = data.map(i => Number(!isEmpty(i.temp_fat) ? i.temp_fat : i.fat));
+    const carbohydratesVals = data.map(i => Number(!isEmpty(i.temp_carbohydrates) ? i.temp_carbohydrates : i.carbohydrates));
 
     const calories = this.sumAll(...caloriesVals);
     const protein = this.sumAll(...proteinVals);
