@@ -39,6 +39,18 @@ const TableSchema = new Schema({
     type: String,
     required: true
   },
+  temp_protein: {
+    type: String
+  },
+  temp_calories: {
+    type: String
+  },
+  temp_fat: {
+    type: String
+  },
+  temp_carbohydrates: {
+    type: String
+  }
 });
 
 module.exports = Table = mongoose.model('tables', TableSchema);

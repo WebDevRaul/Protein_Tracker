@@ -103,10 +103,10 @@ router
           { _id: req.params.id },
           { $set:{
             quantity: req.body.newQuantity,
-            calories: req.body.newCalories,
-            protein: req.body.newProtein,
-            fat: req.body.newFat,
-            catbohydrates: req.body.newCarbohydrates
+            temp_calories: req.body.newCalories,
+            temp_protein: req.body.newProtein,
+            temp_fat: req.body.newFat,
+            temp_carbohydrates: req.body.newCarbohydrates
           } },
           { new: true },
           () => {

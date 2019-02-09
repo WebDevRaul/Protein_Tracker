@@ -10,6 +10,9 @@ import ItemAdmin from '../admin/Item_Admin';
 import { connect } from 'react-redux';
 import { addProduct, deleteProduct } from '../../redux/actions/dashboard';
 
+// Common
+import isEmpty from '../common/isEmpty';
+
 
 class Table extends Component {
   constructor() {
@@ -49,16 +52,20 @@ class Table extends Component {
 
     // Items in dashboard
     const productItems = data.map(i => 
-      <ItemDashboard 
+      <ItemDashboard
+        true_calories = {i.calories}
+        true_protein = {i.protein} 
+        true_fat = {i.fat}
+        true_carbohydrates = {i.carbohydrates}
         key={i._id}
         product_name={i.product_name}
         table_id={i.table_id}
         quantity={i.quantity}
         type={i.type}
-        calories={i.calories}
-        protein={i.protein}
-        fat={i.fat}
-        carbohydrates={i.carbohydrates}
+        calories={!isEmpty(i.temp_calories) ? i.temp_calories : i.calories}
+        protein={!isEmpty(i.temp_protein) ? i.temp_protein : i.protein}
+        fat={!isEmpty(i.temp_fat) ? i.temp_fat : i.fat}
+        carbohydrates={!isEmpty(i.temp_carbohydrates) ? i.temp_carbohydrates : i.carbohydrates}
         id={i._id}
         class='far fa-times-circle fa-red'
         onClickFunc={this.onDelete}

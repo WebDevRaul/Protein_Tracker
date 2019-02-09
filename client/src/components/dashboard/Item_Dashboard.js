@@ -30,14 +30,13 @@ class ItemDashboard extends Component {
   
   onSave = () => {
     const { newQuantity } = this.state;
-    const { id, table_id, calories, protein, fat, carbohydrates } = this.props;
+    const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates } = this.props;
 
-    
     // Update new values
-    const newCalories = String(Number(calories) * Number(newQuantity));
-    const newProtein = String(Number(protein) * Number(newQuantity));
-    const newFat= String(Number(fat) * Number(newQuantity));
-    const newCarbohydrates = String(Number(carbohydrates) * Number(newQuantity));
+    const newCalories = String(Number(true_calories) * Number(newQuantity));
+    const newProtein = String(Number(true_protein) * Number(newQuantity));
+    const newFat= String(Number(true_fat) * Number(newQuantity));
+    const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
 
     const newQuantityData =  { id, newQuantity, table_id, newCalories, newProtein, newFat, newCarbohydrates };
     this.setState({ edit: false });
