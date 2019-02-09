@@ -46,7 +46,7 @@ class ItemDashboard extends Component {
 
 
   render() {
-    const { product_name, quantity, type, calories, protein, fat, carbohydrates, i } = this.props;
+    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
     const { edit, newQuantity } = this.state;
 
     const input = (
@@ -58,7 +58,7 @@ class ItemDashboard extends Component {
       />
     )
     return (
-      <div key={i}>
+      <div key={id}>
         <ul className='navbar list-inline paper'>
           <li className='list-inline-item'>{product_name}</li>
           <li className='list-inline-item'>
@@ -69,7 +69,7 @@ class ItemDashboard extends Component {
           <li className='list-inline-item'>{protein}</li>
           <li className='list-inline-item'>{fat}</li>
           <li className='list-inline-item'>{carbohydrates}</li>
-          <span className='hover' onClick={this.onClick(i)} ><i className={this.props.class}></i></span>
+          <span className='hover' onClick={this.onClick(id)} ><i className={this.props.class}></i></span>
         </ul>
       </div>
     )
