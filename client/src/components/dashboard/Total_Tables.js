@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 // Redux
 import { connect } from 'react-redux';
 
-class Total_Tables extends Component {
+
+class TotalTables extends Component {
 
   // Sum up the prod vals
   sumAll = (...args) => {
@@ -15,41 +16,48 @@ class Total_Tables extends Component {
 
   totalFunc = () => {
     const { breakfast, lunch, diner, snack } = this.props.totalSum;
-    let calories = []; 
-    let protein = [];
-    let fat = [];
-    let carbohydrates = [];
+    let totalCalories = []; 
+    let totalProtein = [];
+    let totalFat = [];
+    let totalCarbohydrates = [];
 
     // Collect all data
-    calories.push(breakfast.calories, lunch.calories, diner.calories, snack.calories)
-    protein.push(breakfast.protein, lunch.protein, diner.protein, snack.protein)
-    fat.push(breakfast.fat, lunch.fat, diner.fat, snack.fat)
-    carbohydrates.push(breakfast.carbohydrates, lunch.carbohydrates, diner.carbohydrates, snack.carbohydrates)
+    totalCalories.push(breakfast.calories, lunch.calories, diner.calories, snack.calories)
+    totalProtein.push(breakfast.protein, lunch.protein, diner.protein, snack.protein)
+    totalFat.push(breakfast.fat, lunch.fat, diner.fat, snack.fat)
+    totalCarbohydrates.push(breakfast.carbohydrates, lunch.carbohydrates, diner.carbohydrates, snack.carbohydrates)
 
     // Calc the sum
-    const totalCalories = this.sumAll(...calories);
-    const totalProtein = this.sumAll(...protein);
-    const totalFat = this.sumAll(...fat);
-    const totalCarbohydrates = this.sumAll(...carbohydrates);
+    const calories = this.sumAll(...totalCalories);
+    const protein = this.sumAll(...totalProtein);
+    const fat = this.sumAll(...totalFat);
+    const carbohydrates = this.sumAll(...totalCarbohydrates);
 
     // Return Obj sum
     const totalVals = [
-      {totalCalories},
-      {totalProtein},
-      {totalFat},
-      {totalCarbohydrates}
+      {calories},
+      {protein},
+      {fat},
+      {carbohydrates}
     ];
 
     return totalVals;
   }
 
   render() {
+    const total = this.totalFunc();
+    const actual = total.map(i => <li key={Object.entries(i)} className='list-inline-item'>{Object.keys(i)} :  {Object.values(i)}</li>)
+
     return (
       <div>
         <div className="card border-success mb-3">
-          <div className="card-header bg-transparent border-success">target</div>
+          <div className="card-header bg-transparent border-success">
+            target
+          </div>
           <div className="card-body text-success">
-            actual
+            <ul className='navbar list-inline paper'>
+              {actual}
+            </ul>
           </div>
           <div className="card-footer bg-transparent border-success">dif</div>
         </div>
@@ -58,7 +66,7 @@ class Total_Tables extends Component {
   }
 };
 
-Total_Tables.propTypes = {
+TotalTables.propTypes = {
   totalSum: PropTypes.object.isRequired,
 }
 
@@ -66,4 +74,4 @@ const mapStateToProps = state => ({
   totalSum: state.totalSum
 });
 
-export default connect(mapStateToProps, {})(Total_Tables);
+export default connect(mapStateToProps, {})(TotalTables);
