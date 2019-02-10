@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+// Components
+import CardFieldGroup from '../common/components/CardFieldGroup';
+
 // Redux
 import { connect } from 'react-redux';
-import CardFieldGroup from '../common/components/CardFieldGroup';
+import { dailyTarget} from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -52,12 +55,15 @@ class DailyTarget extends Component {
       fat=(calories * 0.25)/9;
       carbohydrates=calories/4;
     };
-    this.setState({ 
-      calories: Math.ceil(calories).toString(),
-      protein: Math.ceil(protein).toString(),
-      fat: Math.ceil(fat).toString(),
-      carbohydrates: Math.ceil(carbohydrates).toString()
-      });
+      const item = {
+        calories: Math.ceil(calories).toString(),
+        protein: Math.ceil(protein).toString(),
+        fat: Math.ceil(fat).toString(),
+        carbohydrates: Math.ceil(carbohydrates).toString()
+      };
+  
+      // Save to DB
+      this.props.dailyTarget(item)
   }
   render() {
     const { form, errors } = this.state;
@@ -163,4 +169,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect( mapStateToProps, {} )(DailyTarget);
+export default connect( mapStateToProps, { dailyTarget } )(DailyTarget);

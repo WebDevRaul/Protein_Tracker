@@ -5,6 +5,7 @@ const passport = require('passport');
 // Models
 const Table = require('../../models/Table');
 const User = require('../../models/User');
+const Daily = require('../../models/Daily');
 
 
 // @route   POST api/dashboard
@@ -118,6 +119,51 @@ router
       })
       .catch(err => res.status(404).json({ notauthorized: 'User not authorized' }))
   })
+
+// @route   POST api/dashboard/dailyTarget
+// @desc    Create item
+// @access  Private
+router
+  .post('/dailyTarget', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id })
+      .then(user => {
+        // Create item
+        const item = new Daily({
+          user: req.user._id,
+          calories: req.body.calories,
+          protein: req.body.protein,
+          fat: req.body.fat,
+          carbohydrates: req.body.carbohydrates
+        });
+    
+        // Check if exists
+        Daily.findOne({ user: req.user._id })
+          .then(table => {
+            if (table) {
+              // Update
+              Daily.updateOne(
+                {user: req.user._id},
+                {$set:{
+                  calories: req.body.calories,
+                  protein: req.body.protein,
+                  fat: req.body.fat,
+                  carbohydrates: req.body.carbohydrates
+                }},
+                {new: true},
+                () => {
+                  Daily.findOne({ user: req.user._id })
+                    .then(item => res.json(item))
+                    .catch(err => res.status(404).json({ noItemSave: 'No item save' }))
+                }
+              )
+            } else {
+              // Create & save
+              item.save().then(item => res.json(item));
+            }
+          })
+      })
+      .catch(err => res.status(404).json({ notauthorized: 'User not authorized' }))
+  });
 
 
 module.exports = router;

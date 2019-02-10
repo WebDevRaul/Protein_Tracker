@@ -23,6 +23,7 @@ import {
   UPDATE_LUNCH_OFFLINE,
   UPDATE_DINER_OFFLINE,
   UPDATE_SNACK_OFFLINE,
+  DAILY_TARGET,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -212,3 +213,14 @@ export const update_Offline = data => {
     }
   }
 };
+
+// Daily Target
+export const dailyTarget = data => dispatch => {
+  axios
+    .post('/api/dashboard/dailyTarget', data)
+    .then(res => console.log(res))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}
