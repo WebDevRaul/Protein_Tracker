@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// Components
+import DailyTarget from './Daily_Target';
+
 // Redux
 import { connect } from 'react-redux';
 
@@ -52,7 +55,7 @@ class TotalTables extends Component {
       <div>
         <div className="card border-success mb-3">
           <div className="card-header bg-transparent border-success">
-            target
+            <DailyTarget />
           </div>
           <div className="card-body text-success">
             <ul className='navbar list-inline paper'>
