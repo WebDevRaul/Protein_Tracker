@@ -37,14 +37,27 @@ class DailyTarget extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { weight, height, age, sex, activity } = this.state;
-    let calories;
+    let calories, protein, fat, carbohydrates;
+
+    // Calculate male/female cal,prot,fat & carb
     if (!isEmpty(sex) && sex === 'male') {
       calories=(66.4730+(13.7516 * Number(weight)) + (5.0033 * Number(height)) - (6.7550 * Number(age))) * Number(activity);
+      protein=weight*0.825;
+      fat=(calories * 0.25)/9;
+      carbohydrates=calories/4;
     };
     if (!isEmpty(sex) && sex === 'female') {
       calories=(655.0955 + (9.5634 * Number(weight)) + (1.8496 * Number(height))-(4.6756 * Number(age))) * Number(activity);
-    }
-    console.log(Math.ceil(calories).toString());
+      protein=weight*0.825;
+      fat=(calories * 0.25)/9;
+      carbohydrates=calories/4;
+    };
+    this.setState({ 
+      calories: Math.ceil(calories).toString(),
+      protein: Math.ceil(protein).toString(),
+      fat: Math.ceil(fat).toString(),
+      carbohydrates: Math.ceil(carbohydrates).toString()
+      });
   }
   render() {
     const { form, errors } = this.state;
@@ -53,9 +66,10 @@ class DailyTarget extends Component {
       <div>
         <div className="card paper">
           <div className="card-header bg-transparent">
-            <span
-              onClick={this.showForm}
-            >edit</span>
+            <span className='ml-5'>calories: {this.state.calories}</span>
+            <span className='ml-5'>protein: {this.state.protein}</span>
+            <span className='ml-5'>fat: {this.state.fat}</span>
+            <span className='ml-5'>carbohydrates: {this.state.carbohydrates}</span>
           </div>
           <div className={classnames("card-body", {'d-none' : !form})}>
             <div className="spacial-card text-capitalize font-weight-bold">
