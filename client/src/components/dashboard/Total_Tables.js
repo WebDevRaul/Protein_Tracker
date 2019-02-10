@@ -46,7 +46,7 @@ class TotalTables extends Component {
 
   render() {
     const total = this.totalFunc();
-    const actual = total.map(i => <li key={Object.entries(i)} className='list-inline-item'>{Object.keys(i)} :  {Object.values(i)}</li>)
+    const dailyIntake = total.map(i => <li key={Object.entries(i)} className='list-inline-item'>{Object.keys(i)} :  {Object.values(i)}</li>)
 
     return (
       <div>
@@ -56,7 +56,7 @@ class TotalTables extends Component {
           </div>
           <div className="card-body text-success">
             <ul className='navbar list-inline paper'>
-              {actual}
+              {dailyIntake}
             </ul>
           </div>
           <div className="card-footer bg-transparent border-success">dif</div>
