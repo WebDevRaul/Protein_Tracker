@@ -12,11 +12,12 @@ const TextFieldGroup = ({
   info,
   type,
   onChange,
-  disabled
+  disabled,
+  label,
 }) => {
   return (
     <div className='form-group'>
-      <label htmlFor={name}>{text}</label>
+      <span className={label}><label htmlFor={name}>{text}</label></span>
       <input
         type={type}
         className={classnames('form-control form-control-xsm', {'is-invalid' : error})}
@@ -41,7 +42,8 @@ TextFieldGroup.propTypes = {
   error: PropTypes.string,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.string
+  disabled: PropTypes.string,
+  label: PropTypes.string
 };
 
 TextFieldGroup.defaultProps = {

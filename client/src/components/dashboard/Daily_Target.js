@@ -28,7 +28,7 @@ class DailyTarget extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventSubmint();
+    e.preventDefault();
   }
   render() {
     const { form, errors } = this.state;
@@ -43,10 +43,11 @@ class DailyTarget extends Component {
           </div>
           <div className={classnames("card-body", {'d-none' : !form})}>
             <div className="spacial-card text-capitalize font-weight-bold">
-              <form noValidate onSubmit={this.onSubmit}>
+              <form noValidate>
                 <ul className="navbar list-inline">
                   <li className="list-inline-item">
                     <CardFieldGroup
+                      label='d-none'
                       name='age'
                       value={this.state.age}
                       placeholder='Age'
@@ -69,24 +70,6 @@ class DailyTarget extends Component {
                     </div>
                   </li>
                   <li className="list-inline-item">
-                    <CardFieldGroup
-                      name='height'
-                      value={this.state.height}
-                      placeholder='Height'
-                      onChange={this.onChange}
-                      error={errors}
-                    />
-                  </li>
-                  <li className="list-inline-item">
-                    <CardFieldGroup
-                      name='weight'
-                      value={this.state.weight}
-                      placeholder='Weight'
-                      onChange={this.onChange}
-                      error={errors}
-                    />
-                  </li>
-                  <li className="list-inline-item">
                     <div className="form-group">
                       <select 
                         className="form-control custom-select form-control-xsm"
@@ -103,12 +86,33 @@ class DailyTarget extends Component {
                   </li>
                   <li className="list-inline-item">
                     <CardFieldGroup
-                      name='product_name'
-                      type='button'
-                      value='Save'
+                      label='d-none'
+                      name='height'
+                      value={this.state.height}
+                      placeholder='Height'
                       onChange={this.onChange}
                       error={errors}
                     />
+                  </li>
+                  <li className="list-inline-item">
+                    <CardFieldGroup
+                      label='d-none'
+                      name='weight'
+                      value={this.state.weight}
+                      placeholder='Weight'
+                      onChange={this.onChange}
+                      error={errors}
+                    />
+                  </li>
+                  <li className="list-inline-item">
+                    <div className='form-group'>
+                      <input
+                        type='button'
+                        className='form-control form-control-xsm'
+                        value='Save'
+                        onClick={this.onSubmit}
+                      />
+                    </div>
                   </li>
                 </ul>
               </form>
