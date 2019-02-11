@@ -7,7 +7,7 @@ import CardFieldGroup from '../common/components/CardFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
-import { dailyTarget} from '../../redux/actions/dashboard';
+import { saveTotal, collectDaily } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -22,12 +22,21 @@ class DailyTarget extends Component {
       height: '',
       weight: '',
       activity: '',
-      calories: '',
-      protein: '',
-      fat: '',
-      carbohydrates: '',
+      calories: '0',
+      protein: '0',
+      fat: '0',
+      carbohydrates: '0',
     }
   };
+
+  componentDidMount() {
+    const { isAuthenticated } = this.props.auth;
+
+    // Fetch items
+    if (isAuthenticated) {
+      this.props.collectDaily();
+    };
+  }
 
   showForm = () => {
     this.setState({ form: !this.state.form })
@@ -62,8 +71,8 @@ class DailyTarget extends Component {
         carbohydrates: Math.ceil(carbohydrates).toString()
       };
   
-      // Save to DB
-      this.props.dailyTarget(item)
+      // Save to DB & redux
+      this.props.saveTotal(item)
   }
   render() {
     const { form, errors } = this.state;
@@ -162,11 +171,15 @@ class DailyTarget extends Component {
 };
 
 DailyTarget.propTypes = {
-  errors: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  saveTotal: PropTypes.func.isRequired,
+  collectDaily: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  auth: state.auth,
+  errors: state.errors,
 });
 
-export default connect( mapStateToProps, { dailyTarget } )(DailyTarget);
+export default connect( mapStateToProps, { saveTotal, collectDaily } )(DailyTarget);

@@ -34,12 +34,12 @@ router
 // @route   GET api/dashboard
 // @desc    Find products by user
 // @access  Private
-router
-  .get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Table.find({ user: req.user.id })
-    .then(prod => res.json(prod))
-    .catch(err => res.status(404).json({ noProductsFound: 'No products found' }));
-  });
+// router
+//   .get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     Table.find({ user: req.user.id })
+//       .then(prod => res.json(prod))
+//       .catch(err => res.status(404).json({ noProductsFound: 'No products found' }));
+//   });
 
 // @route   Delete api/dashboard/:id
 // @desc    Find products by ID
@@ -162,8 +162,21 @@ router
             }
           })
       })
-      .catch(err => res.status(404).json({ notauthorized: 'User not authorized' }))
+      .catch(err => res.status(401).json({ notauthorized: 'User not authorized' }))
   });
 
+// @route   GET api/dashboard/dailyTarget
+// @desc    GET item
+// @access  Private
+router
+  .get('/collectDaily', passport.authenticate('jwt', {session: false}), (req, res) => {
+    User.findOne({ _id: req.user._id })
+      .then(user => {
+        Daily.findOne({user: req.user._id})
+          .then(item => res.json(item))
+          .catch(err => res.status(404).json({ noData: 'No data found' }))
+      })
+      .catch(err => res.status(401).json({ notauthorized: 'User not authorized' }))
+  });
 
 module.exports = router;

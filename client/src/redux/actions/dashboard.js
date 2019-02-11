@@ -24,6 +24,7 @@ import {
   UPDATE_DINER_OFFLINE,
   UPDATE_SNACK_OFFLINE,
   DAILY_TARGET,
+  COLLECT_DAILY,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -215,10 +216,27 @@ export const update_Offline = data => {
 };
 
 // Daily Target
-export const dailyTarget = data => dispatch => {
+export const saveTotal = data => dispatch => {
   axios
     .post('/api/dashboard/dailyTarget', data)
-    .then(res => console.log(res))
+    .then(res => dispatch({
+      type: DAILY_TARGET,
+      payload: data
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+};
+
+// Collect Daily data
+export const collectDaily = () => dispatch => {
+  axios
+    .get('/api/dashboard/collectDaily')
+    .then(res => dispatch({
+      type: COLLECT_DAILY,
+      payload: res.data
+    }))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

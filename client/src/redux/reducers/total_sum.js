@@ -1,4 +1,4 @@
-import { COLLECT_BREAKFAST, COLLECT_LUNCH, COLLECT_DINER, COLLECT_SNACK, GET_CLEAR_TABLE, CLEAR_LOCAL_BREAKFAST, CLEAR_LOCAL_DINER, CLEAR_LOCAL_LUNCH, CLEAR_LOCAL_SNACK, DAILY_TARGET } from '../actions/types';
+import { COLLECT_BREAKFAST, COLLECT_LUNCH, COLLECT_DINER, COLLECT_SNACK, GET_CLEAR_TABLE, CLEAR_LOCAL_BREAKFAST, CLEAR_LOCAL_DINER, CLEAR_LOCAL_LUNCH, CLEAR_LOCAL_SNACK, DAILY_TARGET, COLLECT_DAILY } from '../actions/types';
 
 const initialState = {
   breakfast: {
@@ -104,6 +104,16 @@ export default function(state=initialState, action) {
         snack: {}
       }
     case DAILY_TARGET:
+      return {
+        ...state,
+        dailyTarget: {
+          calories: action.payload.calories,
+          protein: action.payload.protein,
+          fat: action.payload.fat,
+          carbohydrates: action.payload.carbohydrates
+        }
+      }
+    case COLLECT_DAILY:
       return {
         ...state,
         dailyTarget: {
