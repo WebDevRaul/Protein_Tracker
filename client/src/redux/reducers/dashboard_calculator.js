@@ -37,25 +37,23 @@ const initialState = {
     fat: '',
     carbohydrates: ''
   },
-  totalVals: {
-    target: {
-      calories: '',
-      protein: '',
-      fat: '',
-      carbohydrates: ''
-    },
-    actual: {
-      calories: '',
-      protein: '',
-      fat: '',
-      carbohydrates: ''
-    },
-    diffrence: {
-      calories: '',
-      protein: '',
-      fat: '',
-      carbohydrates: ''
-    }
+  target: {
+    calories: '',
+    protein: '',
+    fat: '',
+    carbohydrates: ''
+  },
+  actual: {
+    calories: '',
+    protein: '',
+    fat: '',
+    carbohydrates: ''
+  },
+  diffrence: {
+    calories: '',
+    protein: '',
+    fat: '',
+    carbohydrates: ''
   }
 };
 
@@ -132,25 +130,21 @@ export default function(state=initialState, action) {
     case DAILY_TARGET:
       return {
         ...state,
-        totalVals: {
-          target: {
-            calories: action.payload.calories,
-            protein: action.payload.protein,
-            fat: action.payload.fat,
-            carbohydrates: action.payload.carbohydrates
-          }
+        actual: {
+          calories: action.payload.calories,
+          protein: action.payload.protein,
+          fat: action.payload.fat,
+          carbohydrates: action.payload.carbohydrates
         }
       }
     case COLLECT_DAILY:
       return {
         ...state,
-        totalVals: {
-          target: {
-            calories: action.payload.calories,
-            protein: action.payload.protein,
-            fat: action.payload.fat,
-            carbohydrates: action.payload.carbohydrates
-          }
+        target: {
+          calories: action.payload.calories,
+          protein: action.payload.protein,
+          fat: action.payload.fat,
+          carbohydrates: action.payload.carbohydrates
         }
       }
     default:

@@ -12,7 +12,7 @@ import { saveTotal, collectDaily } from '../../redux/actions/dashboard';
 // Common
 import isEmpty from '../common/isEmpty';
 
-class DailyTarget extends Component {
+class Target extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,6 +37,14 @@ class DailyTarget extends Component {
       this.props.collectDaily(this.props.auth.user.id);
     };
   }
+
+  componentDidUpdate(prevProps, prevState) {
+
+  }
+
+
+
+
 
   showForm = () => {
     this.setState({ form: !this.state.form })
@@ -171,8 +179,9 @@ class DailyTarget extends Component {
   }
 };
 
-DailyTarget.propTypes = {
+Target.propTypes = {
   auth: PropTypes.object.isRequired,
+  caculator: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   saveTotal: PropTypes.func.isRequired,
   collectDaily: PropTypes.func.isRequired,
@@ -180,7 +189,8 @@ DailyTarget.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  caculator: state.caculator,
   errors: state.errors,
 });
 
-export default connect( mapStateToProps, { saveTotal, collectDaily } )(DailyTarget);
+export default connect( mapStateToProps, { saveTotal, collectDaily } )(Target);
