@@ -9,7 +9,7 @@ import {
   CLEAR_LOCAL_LUNCH, 
   CLEAR_LOCAL_SNACK, 
   DAILY_TARGET, 
-  COLLECT_DAILY,
+  COLLECT_TARGET,
 } from '../actions/types';
 
 const initialState = {
@@ -137,7 +137,7 @@ export default function(state=initialState, action) {
           carbohydrates: action.payload.carbohydrates
         }
       }
-    case COLLECT_DAILY:
+    case COLLECT_TARGET:
       return {
         ...state,
         target: {

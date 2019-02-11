@@ -7,7 +7,7 @@ import CardFieldGroup from '../common/components/CardFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
-import { saveTotal, collectDaily } from '../../redux/actions/dashboard';
+import { saveTotal, collectTarget } from '../../redux/actions/dashboard';
 
 // Common
 import isEmpty from '../common/isEmpty';
@@ -34,12 +34,16 @@ class Target extends Component {
 
     // Fetch items
     if (isAuthenticated) {
-      this.props.collectDaily(this.props.auth.user.id);
+      this.props.collectTarget(this.props.auth.user.id);
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
-
+    const { target } = this.props.calculator;
+    const { calories, protein, fat, carbohydrates } = this.props.calculator.target;
+    if (prevProps.calculator.target !== target) {
+      this.setState({ calories, protein, fat, carbohydrates })
+    }
   }
 
 
@@ -181,16 +185,16 @@ class Target extends Component {
 
 Target.propTypes = {
   auth: PropTypes.object.isRequired,
-  caculator: PropTypes.object.isRequired,
+  calculator: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   saveTotal: PropTypes.func.isRequired,
-  collectDaily: PropTypes.func.isRequired,
+  collectTarget: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  caculator: state.caculator,
+  calculator: state.calculator,
   errors: state.errors,
 });
 
-export default connect( mapStateToProps, { saveTotal, collectDaily } )(Target);
+export default connect( mapStateToProps, { saveTotal, collectTarget } )(Target);

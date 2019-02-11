@@ -47,6 +47,7 @@ class Actual extends Component {
     ];
 
     return totalVals;
+
   }
 
 
