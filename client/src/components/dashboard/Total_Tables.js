@@ -18,7 +18,7 @@ class TotalTables extends Component {
   };
 
   totalFunc = () => {
-    const { breakfast, lunch, diner, snack } = this.props.totalSum;
+    const { breakfast, lunch, diner, snack } = this.props.calculator
     let totalCalories = []; 
     let totalProtein = [];
     let totalFat = [];
@@ -70,11 +70,11 @@ class TotalTables extends Component {
 };
 
 TotalTables.propTypes = {
-  totalSum: PropTypes.object.isRequired,
+  calculator: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-  totalSum: state.totalSum
+  calculator: state.calculator
 });
 
 export default connect(mapStateToProps, {})(TotalTables);

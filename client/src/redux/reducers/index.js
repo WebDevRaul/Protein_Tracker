@@ -3,7 +3,7 @@ import get_Errors from './get_Errors';
 import login_user from './login_user';
 import dashboard_items from './dashboard_items';
 import admin_items from './admin_items';
-import total_sum from './total_sum';
+import dashboard_calculator from './dashboard_calculator';
 
 
 export default combineReducers({
@@ -11,5 +11,5 @@ export default combineReducers({
   auth: login_user,
   admin: admin_items,
   dashboard: dashboard_items,
-  totalSum: total_sum
+  calculator: dashboard_calculator
 });

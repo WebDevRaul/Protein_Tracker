@@ -200,10 +200,10 @@ class Dashboard extends Component {
           option='Select Table'
         />
         <button onClick={this.onClear}>Clear Tables</button>
-        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.totalSum.breakfast} /> : null }
-        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={this.props.totalSum.lunch} /> : null }
-        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={this.props.totalSum.diner} /> : null }
-        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={this.props.totalSum.snack} /> : null }
+        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.calculator.breakfast} /> : null }
+        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={this.props.calculator.lunch} /> : null }
+        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={this.props.calculator.diner} /> : null }
+        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={this.props.calculator.snack} /> : null }
       </div>
     )
   }
@@ -225,7 +225,7 @@ const mapStateToProps = state => ({
   errors: state.errors,
   auth: state.auth,
   dashboard: state.dashboard,
-  totalSum: state.totalSum,
+  calculator: state.calculator,
 });
 
 export default connect( mapStateToProps, { findItems, findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable, clearLocalTable } )(Dashboard);
