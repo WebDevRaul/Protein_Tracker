@@ -106,7 +106,7 @@ export const deleteAllOffline = userID => dispatch => {
   axios
     .delete(`/api/dashboard/deleteAll/${userID}`)
     .then(res => dispatch({
-      type: DELETE_ALL,
+      type: DELETE_ALL
     }))
     .catch(err => dispatch({
       type: GET_ERRORS,
@@ -230,9 +230,9 @@ export const saveTotal = data => dispatch => {
 };
 
 // Collect Daily data
-export const collectDaily = () => dispatch => {
+export const collectDaily = (id) => dispatch => {
   axios
-    .get('/api/dashboard/collectDaily')
+    .get(`/api/dashboard/collectDaily/${id}`)
     .then(res => dispatch({
       type: COLLECT_DAILY,
       payload: res.data

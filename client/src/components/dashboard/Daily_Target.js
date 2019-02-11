@@ -34,7 +34,7 @@ class DailyTarget extends Component {
 
     // Fetch items
     if (isAuthenticated) {
-      this.props.collectDaily();
+      this.props.collectDaily(this.props.auth.user.id);
     };
   }
 
