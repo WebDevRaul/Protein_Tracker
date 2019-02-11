@@ -216,9 +216,9 @@ export const update_Offline = data => {
 };
 
 // Daily Target
-export const saveTotal = data => dispatch => {
+export const saveTotal = (data, id) => dispatch => {
   axios
-    .post('/api/dashboard/dailyTarget', data)
+    .post(`/api/dashboard/total/${id}`, data)
     .then(res => dispatch({
       type: DAILY_TARGET,
       payload: data
@@ -232,7 +232,7 @@ export const saveTotal = data => dispatch => {
 // Collect Daily data
 export const collectDaily = (id) => dispatch => {
   axios
-    .get(`/api/dashboard/collectDaily/${id}`)
+    .get(`/api/dashboard/collectData/${id}`)
     .then(res => dispatch({
       type: COLLECT_DAILY,
       payload: res.data

@@ -31,6 +31,7 @@ class ItemDashboard extends Component {
   onSave = () => {
     const { newQuantity } = this.state;
     const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates } = this.props;
+    const userID = this.props.auth.user.id;
 
     // Update new values
     const newCalories = String(Number(true_calories) * Number(newQuantity));
@@ -38,7 +39,7 @@ class ItemDashboard extends Component {
     const newFat= String(Number(true_fat) * Number(newQuantity));
     const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
 
-    const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates };
+    const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
     this.setState({ edit: false });
     this.props.saveNewQuantity(newQuantityData);
     this.props.update_Offline(newQuantityData);
@@ -78,6 +79,7 @@ class ItemDashboard extends Component {
 };
 
 ItemDashboard.propTypes = {
+  auth: PropTypes.object.isRequired,
   true_calories: PropTypes.string,
   true_protein: PropTypes.string,
   true_fat: PropTypes.string,
@@ -96,7 +98,9 @@ ItemDashboard.propTypes = {
   saveNewQuantity: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
 
 export default connect(mapStateToProps , { saveNewQuantity, update_Offline })(ItemDashboard);

@@ -97,85 +97,90 @@ router
 // // @route   Edit api/dashboard/edit/:id
 // // @desc    Edit item
 // // @access  Private
-// router
-//   .post('/edit/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     User.findById({ _id: req.user._id })
-//       .then(user => {
-//         // Check for item owner
-//         if (user._id.toString() !== req.user.id) {
-//           return res.status(401).json({ notAuthorized: 'User not authorized' });
-//         }
-//         // Update product by ID
-//         Table.updateOne(
-//           { _id: req.params.id },
-//           { $set:{
-//             quantity: req.body.newQuantity,
-//             temp_calories: req.body.newCalories,
-//             temp_protein: req.body.newProtein,
-//             temp_fat: req.body.newFat,
-//             temp_carbohydrates: req.body.newCarbohydrates
-//           } },
-//           { new: true },
-//           () => {
-//             Table.findById(req.params.id)
-//                 .then(item => res.json(item))
-//           }
-//         )
-//           .catch(err => res.status(404).json({ noProductFound: 'No product found' }))
-//       })
-//       .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
-//   })
+router
+  .post('/edit/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id })
+      .then(user => {
+        const id = req.body.userID;
+        // Check user
+        if (user._id.toString() !== id) {
+          return res.status(401).json({ notAuthorized: 'User not authorized' });
+        }
+        // Update product by ID
+        Table.updateOne(
+          { _id: req.params.id },
+          { $set:{
+            quantity: req.body.newQuantity,
+            temp_calories: req.body.newCalories,
+            temp_protein: req.body.newProtein,
+            temp_fat: req.body.newFat,
+            temp_carbohydrates: req.body.newCarbohydrates
+          } },
+          { new: true },
+          () => {
+            Table.findById(req.params.id)
+                .then(item => res.json(item))
+          }
+        )
+          .catch(err => res.status(404).json({ noItemFound: 'No Item found' }))
+      })
+      .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
+  })
 
 // // @route   POST api/dashboard/dailyTarget
 // // @desc    Create item
 // // @access  Private
-// router
-//   .post('/dailyTarget', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     User.findById({ _id: req.user._id })
-//       .then(user => {
-//         // Create item
-//         const item = new Daily({
-//           user: req.user._id,
-//           calories: req.body.calories,
-//           protein: req.body.protein,
-//           fat: req.body.fat,
-//           carbohydrates: req.body.carbohydrates
-//         });
-    
-//         // Check if exists
-//         Daily.findOne({ user: req.user._id })
-//           .then(table => {
-//             if (table) {
-//               // Update
-//               Daily.updateOne(
-//                 {user: req.user._id},
-//                 {$set:{
-//                   calories: req.body.calories,
-//                   protein: req.body.protein,
-//                   fat: req.body.fat,
-//                   carbohydrates: req.body.carbohydrates
-//                 }},
-//                 {new: true},
-//                 () => {
-//                   Daily.findOne({ user: req.user._id })
-//                     .then(item => res.json(item))
-//                     .catch(err => res.status(404).json({ noItemSave: 'No item save' }))
-//                 }
-//               )
-//             } else {
-//               // Create & save
-//               item.save().then(item => res.json(item));
-//             }
-//           })
-//       })
-//       .catch(err => res.status(401).json({ notauthorized: 'User not authorized' }))
-//   });
+router
+  .post('/total/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.findById({ _id: req.user._id })
+      .then(user => {
+        // Check user
+        if (user._id.toString() !== req.params.id) {
+          return res.status(401).json({ notAuthorized: 'User not authorized' });
+        }
+        // Create item
+        const item = new Daily({
+          user: req.user._id,
+          calories: req.body.calories,
+          protein: req.body.protein,
+          fat: req.body.fat,
+          carbohydrates: req.body.carbohydrates
+        });
+        // Check if exists
+        Daily.findOne({ user: req.user._id })
+          .then(table => {
+            if (table) {
+              // Update
+              Daily.updateOne(
+                {user: req.user._id},
+                {$set:{
+                  calories: req.body.calories,
+                  protein: req.body.protein,
+                  fat: req.body.fat,
+                  carbohydrates: req.body.carbohydrates
+                }},
+                {new: true},
+                () => {
+                  Daily.findOne({ user: req.user._id })
+                    .then(item => res.json(item))
+                    .catch(err => res.status(404).json({ noItemSave: 'Item not save' }))
+                }
+              )
+            } else {
+              // Create & save
+              item.save().then(item => res.json(item));
+            }
+          })
+          .catch(err => res.status(404).json({ specialError: err }))
+      })
+      .catch(err => res.status(401).json({ noUserFound: 'User not found' }))
+  });
 
 // // @route   GET api/dashboard/dailyTarget
 // // @desc    GET item
 // // @access  Private
 router
-  .get('/collectDaily/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  .get('/collectData/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
     User.findOne({ _id: req.user._id })
       .then(user => {
         if (user) {
@@ -184,7 +189,7 @@ router
             .catch(err => res.status(404).json({ noData: 'No data found' }))
         }
       })
-      .catch(err => res.status(401).json({ notauthorized: 'User not authorized' }))
+      .catch(err => res.status(401).json({ noUserFound: 'User not found' }))
   });
 
 module.exports = router;

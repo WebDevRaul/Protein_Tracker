@@ -49,6 +49,7 @@ class DailyTarget extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { weight, height, age, sex, activity } = this.state;
+    const { id } = this.props.auth.user;
     let calories, protein, fat, carbohydrates;
 
     // Calculate male/female cal,prot,fat & carb
@@ -72,7 +73,7 @@ class DailyTarget extends Component {
       };
   
       // Save to DB & redux
-      this.props.saveTotal(item)
+      this.props.saveTotal(item, id)
   }
   render() {
     const { form, errors } = this.state;
