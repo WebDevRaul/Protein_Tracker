@@ -23,8 +23,8 @@ import {
   UPDATE_LUNCH_OFFLINE,
   UPDATE_DINER_OFFLINE,
   UPDATE_SNACK_OFFLINE,
-  DAILY_TARGET,
   COLLECT_TARGET,
+  COLLECT_ACTUAL,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -215,12 +215,12 @@ export const update_Offline = data => {
   }
 };
 
-// Daily Target
+// Save Target data
 export const saveTotal = (data, id) => dispatch => {
   axios
     .post(`/api/dashboard/total/${id}`, data)
     .then(res => dispatch({
-      type: DAILY_TARGET,
+      type: COLLECT_TARGET,
       payload: data
     }))
     .catch(err => dispatch({
@@ -229,8 +229,8 @@ export const saveTotal = (data, id) => dispatch => {
     }))
 };
 
-// Collect Daily data
-export const collectTarget = (id) => dispatch => {
+// Collect target data
+export const collectTarget = id => dispatch => {
   axios
     .get(`/api/dashboard/collectData/${id}`)
     .then(res => dispatch({
@@ -241,4 +241,12 @@ export const collectTarget = (id) => dispatch => {
       type: GET_ERRORS,
       payload: err.response.data
     }))
+}
+
+// Save actual data  REDUX
+export const collectActual = data => {
+  return { 
+    type: COLLECT_ACTUAL,
+    payload: data
+  };
 }

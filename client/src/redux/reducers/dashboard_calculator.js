@@ -8,8 +8,8 @@ import {
   CLEAR_LOCAL_DINER, 
   CLEAR_LOCAL_LUNCH, 
   CLEAR_LOCAL_SNACK, 
-  DAILY_TARGET, 
   COLLECT_TARGET,
+  COLLECT_ACTUAL,
 } from '../actions/types';
 
 const initialState = {
@@ -43,12 +43,7 @@ const initialState = {
     fat: '',
     carbohydrates: ''
   },
-  actual: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
-  },
+  actual: {},
   diffrence: {
     calories: '',
     protein: '',
@@ -127,20 +122,20 @@ export default function(state=initialState, action) {
         ...state,
         snack: {}
       }
-    case DAILY_TARGET:
+    case COLLECT_TARGET:
       return {
         ...state,
-        actual: {
+        target: {
           calories: action.payload.calories,
           protein: action.payload.protein,
           fat: action.payload.fat,
           carbohydrates: action.payload.carbohydrates
         }
       }
-    case COLLECT_TARGET:
+    case COLLECT_ACTUAL:
       return {
         ...state,
-        target: {
+        actual: {
           calories: action.payload.calories,
           protein: action.payload.protein,
           fat: action.payload.fat,

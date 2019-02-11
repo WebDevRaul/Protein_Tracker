@@ -10,9 +10,7 @@ export default function Total_Tables() {
           <Target />
         </div>
         <div className="card-body text-success">
-          <ul className='navbar list-inline paper'>
-            <Actual />
-          </ul>
+          <Actual />
         </div>
         <div className="card-footer bg-transparent border-success">dif</div>
       </div>
