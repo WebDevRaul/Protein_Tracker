@@ -14,10 +14,10 @@ import {
 
 const initialState = {
   breakfast: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   },
   lunch: {
     calories: '',
@@ -105,7 +105,12 @@ export default function(state=initialState, action) {
     case CLEAR_LOCAL_BREAKFAST:
       return {
         ...state,
-        breakfast: {}
+        breakfast: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        }
       }
     case CLEAR_LOCAL_LUNCH:
       return {

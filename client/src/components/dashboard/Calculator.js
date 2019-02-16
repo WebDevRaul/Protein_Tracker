@@ -1,6 +1,9 @@
 import React from 'react';
+
+// Components
 import Target from './Target';
 import Actual from './Actual';
+import Diffrence from './Diffrence';
 
 export default function Total_Tables() {
   return (
@@ -12,7 +15,9 @@ export default function Total_Tables() {
         <div className="card-body text-success">
           <Actual />
         </div>
-        <div className="card-footer bg-transparent border-success">dif</div>
+        <div className="card-footer bg-transparent border-success">
+          <Diffrence />
+        </div>
       </div>
     </div>
   )

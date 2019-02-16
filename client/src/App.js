@@ -18,7 +18,7 @@ import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import Home from './components/links/Home';
 import About from './components/links/About';
-import Dashboard from './components/dashboard/Dashboard';
+import DashboardParent from './components/dashboard/DashboardParent';
 import Admin from './components/admin/Admin';
 
 // Redux
@@ -66,7 +66,7 @@ class App extends Component {
                 {/* private routes */}
 
                 <Switch>
-                  <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                  <PrivateRoute exact path='/dashboard' component={DashboardParent} />
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/admin' component={Admin} />
