@@ -16,16 +16,13 @@ class Target extends Component {
   constructor() {
     super();
     this.state = {
-      form: true,
+      form: false,
+      set: false,
       age: '',
       sex: '',
       height: '',
       weight: '',
       activity: '',
-      calories: '0',
-      protein: '0',
-      fat: '0',
-      carbohydrates: '0',
     }
   };
 
@@ -38,20 +35,14 @@ class Target extends Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { target } = this.props.calculator;
-    const { calories, protein, fat, carbohydrates } = this.props.calculator.target;
-    if (prevProps.calculator.target !== target) {
-      this.setState({ calories, protein, fat, carbohydrates })
-    }
-  }
-
-
-
 
 
   showForm = () => {
     this.setState({ form: !this.state.form })
+  }
+
+  showSet = () => {
+    this.setState({ set: !this.state.set })
   }
 
   onChange = (e) => {
@@ -89,15 +80,33 @@ class Target extends Component {
   }
   render() {
     const { form, errors } = this.state;
+    const { target } = this.props.calculator;
+
+    const number = Object.entries(target).map(i => 
+      <li key={Object.entries(i)} className='list-inline-item'>
+        {Object.values(i)[0]}: {Object.values(i)[1]}
+      </li>)
 
     return (
       <div>
         <div className="card paper">
-          <div className="card-header bg-transparent">
-            <span className='ml-5'>calories: {this.state.calories}</span>
-            <span className='ml-5'>protein: {this.state.protein}</span>
-            <span className='ml-5'>fat: {this.state.fat}</span>
-            <span className='ml-5'>carbohydrates: {this.state.carbohydrates}</span>
+          <div className="bg-transparent">
+            <ul className='navbar list-inline'>
+              {number}
+            </ul>
+            <div className='float-right'>
+              <button
+                onClick={this.showSet}
+                className='btn btn-primary mr-2'
+              >Set
+              </button>
+                <span className='bold'>OR</span>
+              <button
+                className='btn btn-success ml-2'
+                onClick={this.showForm}
+              >Calculate
+              </button>
+            </div>
           </div>
           <div className={classnames("card-body", {'d-none' : !form})}>
             <div className="spacial-card text-capitalize font-weight-bold">

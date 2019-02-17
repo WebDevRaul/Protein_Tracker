@@ -25,6 +25,7 @@ import {
   UPDATE_SNACK_OFFLINE,
   COLLECT_TARGET,
   COLLECT_ACTUAL,
+  COLLECT_DIFFRENCE,
     } from './types';
 
 // Add item to TableFieldGroup
@@ -247,6 +248,14 @@ export const collectTarget = id => dispatch => {
 export const collectActual = data => {
   return { 
     type: COLLECT_ACTUAL,
+    payload: data
+  };
+}
+
+// Save diffrence data  REDUX
+export const collectDiffrence = data => {
+  return { 
+    type: COLLECT_DIFFRENCE,
     payload: data
   };
 }

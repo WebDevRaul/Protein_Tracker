@@ -5,19 +5,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { collectActual } from '../../redux/actions/dashboard';
 
-// Common
-import isEmpty from '../common/isEmpty';
-
 class Actual extends Component {
 
   componentDidUpdate(prevProps, prevState){
     const  { breakfast, lunch, diner, snack } = this.props.calculator;
 
-    if ((prevProps.calculator.breakfast !== breakfast) && (!isEmpty(breakfast)) || 
-    (prevProps.calculator.lunch !== lunch) && (!isEmpty(lunch)) ||
-    (prevProps.calculator.diner !== diner) && (!isEmpty(diner)) ||
-    (prevProps.calculator.snack !== snack) && (!isEmpty(snack))) {
-    this.props.collectActual(this.actualFunc(breakfast, lunch, diner, snack))
+    if ( prevProps.calculator.breakfast !== breakfast || 
+        prevProps.calculator.lunch !== lunch ||      
+        prevProps.calculator.diner !== diner || 
+        prevProps.calculator.snack !== snack) {
+
+      this.props.collectActual(this.actualFunc(breakfast, lunch, diner, snack))
+
     }
   }
 
@@ -54,18 +53,11 @@ class Actual extends Component {
   
   render() {
     const { actual, breakfast } = this.props.calculator;
-    let number;
-    if (!isEmpty(actual)) {
-      number = Object.entries(actual).map(i => 
-        <li key={Object.entries(i)} className='list-inline-item'>
-          {Object.values(i)[0]}: {Object.values(i)[1]}
-        </li>)
-    } else {
-      number = Object.entries(breakfast).map(i => 
-        <li key={Object.entries(i)} className='list-inline-item'>
-          {Object.values(i)[0]}: {Object.values(i)[1]}
-        </li>)
-    }
+    
+    const number = Object.entries(actual).map(i => 
+      <li key={Object.entries(i)} className='list-inline-item'>
+        {Object.values(i)[0]}: {Object.values(i)[1]}
+      </li>)
 
     return (
       <div>
@@ -79,6 +71,7 @@ class Actual extends Component {
 
 Actual.propTypes = {
   calculator: PropTypes.object.isRequired,
+  collectActual: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

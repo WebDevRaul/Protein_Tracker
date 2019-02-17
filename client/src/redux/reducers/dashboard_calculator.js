@@ -10,6 +10,7 @@ import {
   CLEAR_LOCAL_SNACK, 
   COLLECT_TARGET,
   COLLECT_ACTUAL,
+  COLLECT_DIFFRENCE,
 } from '../actions/types';
 
 const initialState = {
@@ -20,35 +21,40 @@ const initialState = {
     carbohydrates: '0'
   },
   lunch: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   },
   diner: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   },
   snack: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   },
   target: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   },
-  actual: {},
+  actual: {
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
+  },
   diffrence: {
-    calories: '',
-    protein: '',
-    fat: '',
-    carbohydrates: ''
+    calories: '0',
+    protein: '0',
+    fat: '0',
+    carbohydrates: '0'
   }
 };
 
@@ -115,17 +121,32 @@ export default function(state=initialState, action) {
     case CLEAR_LOCAL_LUNCH:
       return {
         ...state,
-        lunch: {}
+        lunch: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        }
       }
     case CLEAR_LOCAL_DINER:
       return {
         ...state,
-        diner: {}
+        diner: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        }
       }
     case CLEAR_LOCAL_SNACK:
       return {
         ...state,
-        snack: {}
+        snack: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        }
       }
     case COLLECT_TARGET:
       return {
@@ -147,6 +168,17 @@ export default function(state=initialState, action) {
           carbohydrates: action.payload.carbohydrates
         }
       }
+    case COLLECT_DIFFRENCE:
+      return {
+        ...state,
+        diffrence: {
+          calories: action.payload.calories,
+          protein: action.payload.protein,
+          fat: action.payload.fat,
+          carbohydrates: action.payload.carbohydrates
+        }
+      }
+    
     default:
       return state;
   }
