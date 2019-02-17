@@ -46,7 +46,7 @@ class Set extends Component {
         <form noValidate onSubmit={this.onSubmit}>
           <ul className="navbar list-inline">
             <li className="list-inline-item">
-              <h5>Calories</h5>
+              <h5 className='mb-0'>Calories</h5>
               <CardFieldGroup
                 name='calories'
                 value={this.state.calories}
@@ -55,7 +55,7 @@ class Set extends Component {
               />
             </li>
             <li className="list-inline-item">
-              <h5>Protein</h5>
+              <h5 className='mb-0'>Protein</h5>
               <CardFieldGroup
                 name='protein'
                 value={this.state.protein}
@@ -64,7 +64,7 @@ class Set extends Component {
               />
             </li>
             <li className="list-inline-item">
-              <h5>Fat</h5>
+              <h5 className='mb-0'>Fat</h5>
               <CardFieldGroup
                 name='fat'
                 value={this.state.fat}
@@ -73,7 +73,7 @@ class Set extends Component {
               />
             </li>
             <li className="list-inline-item">
-              <h5>Carbohydrates</h5>
+              <h5 className='mb-0'>Carbohydrates</h5>
               <CardFieldGroup
                 name='carbohydrates'
                 value={this.state.carbohydrates}

@@ -135,7 +135,7 @@ class Form extends Component {
               <div className='form-group'>
                 <input
                   type='submit'
-                  className='form-control form-control-xsm'
+                  className='form-control form-control-xsm btn btn-success'
                   value='Save'
                 />
               </div>

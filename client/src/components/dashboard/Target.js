@@ -62,32 +62,32 @@ class Target extends Component {
       <div>
         <div className='row'>
           <div className="col-md-3">
-            <div className="card border-info p-3">
-              <div className="card border-info shadow text-info p-3 my-card" >
+            <div className="card border-info p-2">
+              <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Cal.</h4>
               </div>
-              <div className="text-info text-center mt-5"><h4>{calories}</h4></div>
+              <div className="text-info text-center mt-5"><h5>{calories}</h5></div>
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card border-info p-3">
-              <div className="card border-info shadow text-info p-3 my-card" >
+            <div className="card border-info p-2">
+              <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Prot.</h4>
               </div>
               <div className="text-info text-center mt-5"><h4>{protein}</h4></div>
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card border-info p-3">
-              <div className="card border-info shadow text-info p-3 my-card" >
+            <div className="card border-info p-2">
+              <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Fat</h4>
               </div>
               <div className="text-info text-center mt-5"><h4>{fat}</h4></div>
             </div>
           </div>
           <div className="col-md-3">
-            <div className="card border-info p-3">
-              <div className="card border-info shadow text-info p-3 my-card" >
+            <div className="card border-info p-2">
+              <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Carb.</h4>
               </div>
               <div className="text-info text-center mt-5"><h4>{carbohydrates}</h4></div>
