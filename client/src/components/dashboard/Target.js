@@ -49,44 +49,57 @@ class Target extends Component {
 
   render() {
     const { form, set } = this.state;
-    const { target } = this.props.calculator;
-
-    const number = Object.entries(target).map(i => 
-      <li key={Object.entries(i)} className='list-inline-item'>
-        {Object.values(i)[0]}: {Object.values(i)[1]}
-      </li>)
+    const { calories, protein, fat, carbohydrates } = this.props.calculator.target;
 
     const buttons = ( 
-      <div className='float-right'>
-        <button
-          onClick={this.showSet}
-          className='btn btn-primary mr-3'
-        >Set
-        </button>
-        <span className='bold'>OR</span>
-        <button
-          className='btn btn-primary ml-3'
-          onClick={this.showForm}
-        >Calculate
-        </button>
+      <div className='float-right mt-3'>
+        <span onClick={this.showSet} className="badge badge-primary m-1">Set</span>
+        <span onClick={this.showForm} className="badge badge-primary m-1">Calculate</span>
       </div>
     );
 
     return (
       <div>
-        <div className="card paper">
-          <div className="bg-transparent">
-            <ul className='navbar list-inline'>
-              {number}
-            </ul>
-            {(form || set) ? null : buttons}
+        <div className='row'>
+          <div className="col-md-3">
+            <div className="card border-info p-3">
+              <div className="card border-info shadow text-info p-3 my-card" >
+                <h4>Cal.</h4>
+              </div>
+              <div className="text-info text-center mt-5"><h4>{calories}</h4></div>
+            </div>
           </div>
-          <div className={classnames("card-body", {'d-none' : !form})}>
-            <Form cancel={this.cancelForm} />
+          <div className="col-md-3">
+            <div className="card border-info p-3">
+              <div className="card border-info shadow text-info p-3 my-card" >
+                <h4>Prot.</h4>
+              </div>
+              <div className="text-info text-center mt-5"><h4>{protein}</h4></div>
+            </div>
           </div>
-          <div className={classnames("card-body", {'d-none' : !set})}>
-            <Set cancel={this.cancelSet} />
+          <div className="col-md-3">
+            <div className="card border-info p-3">
+              <div className="card border-info shadow text-info p-3 my-card" >
+                <h4>Fat</h4>
+              </div>
+              <div className="text-info text-center mt-5"><h4>{fat}</h4></div>
+            </div>
           </div>
+          <div className="col-md-3">
+            <div className="card border-info p-3">
+              <div className="card border-info shadow text-info p-3 my-card" >
+                <h4>Carb.</h4>
+              </div>
+              <div className="text-info text-center mt-5"><h4>{carbohydrates}</h4></div>
+            </div>
+          </div>
+        </div>
+        {(form || set) ? null : buttons}
+        <div className={classnames("card-body", {'d-none' : !form})}>
+          <Form cancel={this.cancelForm} />
+        </div>
+        <div className={classnames("card-body", {'d-none' : !set})}>
+          <Set cancel={this.cancelSet} />
         </div>
       </div>
     )

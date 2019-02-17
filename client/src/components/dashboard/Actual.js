@@ -54,16 +54,16 @@ class Actual extends Component {
   render() {
     const { actual } = this.props.calculator;
     
-    const number = Object.entries(actual).map(i => 
-      <li key={Object.entries(i)} className='list-inline-item'>
-        {Object.values(i)[0]}: {Object.values(i)[1]}
-      </li>)
+    const number = Object.entries(actual).map(i =>
+      <div key={Object.entries(i)} className="col-md-3">
+        <div className="card border-info p-3">
+          <div className="text-success text-center"><h4>{Object.values(i)[1]}</h4></div>
+        </div>
+      </div>)
 
     return (
-      <div>
-        <ul className='navbar list-inline paper'>
-          {number}
-        </ul>
+      <div className='row'>
+        {number}
       </div>
     )
   }
