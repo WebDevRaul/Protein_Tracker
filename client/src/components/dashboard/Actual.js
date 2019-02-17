@@ -52,7 +52,7 @@ class Actual extends Component {
 
   
   render() {
-    const { actual, breakfast } = this.props.calculator;
+    const { actual } = this.props.calculator;
     
     const number = Object.entries(actual).map(i => 
       <li key={Object.entries(i)} className='list-inline-item'>

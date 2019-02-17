@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // Components
 import Table from './Table';
 import SelectListGroup from '../common/components/SelectFieldGroup';
-import Calculator from './Calculator';
 
 // Redux
 import { connect } from 'react-redux';

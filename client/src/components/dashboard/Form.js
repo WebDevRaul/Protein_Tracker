@@ -60,6 +60,7 @@ class Form extends Component {
   
       // Save to DB & redux
       this.props.saveTotal(item, id)
+      this.props.cancel()
   }
 
 
@@ -154,11 +155,14 @@ class Form extends Component {
 
 Form.propTypes = {
   errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   saveTotal: PropTypes.func.isRequired,
+  cancel: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  auth: state.auth,
 });
 
 export default connect( mapStateToProps, {saveTotal} )(Form)

@@ -6,6 +6,7 @@ import CardFieldGroup from '../common/components/CardFieldGroup';
 
 // Redux
 import { connect } from 'react-redux';
+import { saveTotal } from '../../redux/actions/dashboard';
 
 class Set extends Component {
   constructor() {
@@ -28,7 +29,14 @@ class Set extends Component {
   };
 
   onSave = () => {
-    console.log(this.state.calories)
+    const { id } = this.props.auth.user;
+    const { calories, protein, fat, carbohydrates } = this.state;
+
+    const item = {calories, protein, fat, carbohydrates}
+
+    // Save to DB & redux
+    this.props.saveTotal(item, id);
+    this.props.cancel();
   }
 
   render() {
@@ -49,7 +57,7 @@ class Set extends Component {
             <li className="list-inline-item">
               <h5>Protein</h5>
               <CardFieldGroup
-                name='calories'
+                name='protein'
                 value={this.state.protein}
                 onChange={this.onChange}
                 error={errors}
@@ -58,7 +66,7 @@ class Set extends Component {
             <li className="list-inline-item">
               <h5>Fat</h5>
               <CardFieldGroup
-                name='calories'
+                name='fat'
                 value={this.state.fat}
                 onChange={this.onChange}
                 error={errors}
@@ -67,7 +75,7 @@ class Set extends Component {
             <li className="list-inline-item">
               <h5>Carbohydrates</h5>
               <CardFieldGroup
-                name='calories'
+                name='carbohydrates'
                 value={this.state.carbohydrates}
                 onChange={this.onChange}
                 error={errors}
@@ -92,11 +100,15 @@ class Set extends Component {
   }
 };
 Set.propTypes = {
-
+  errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  saveTotal: PropTypes.func.isRequired,
+  cancel: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-
+  errors: state.errors,
+  auth: state.auth,
 });
 
-export default connect( mapStateToProps, {  } )(Set);
+export default connect( mapStateToProps, {saveTotal} )(Set);
