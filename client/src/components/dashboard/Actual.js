@@ -55,7 +55,7 @@ class Actual extends Component {
     const { actual } = this.props.calculator;
     
     const number = Object.entries(actual).map(i =>
-      <div key={Object.entries(i)} className="col-md-3">
+      <div key={Object.entries(i)} className="col-3">
         <div className="card border-info p-1">
           <div className="text-success text-center "><h5 className='mb-0'>{Object.values(i)[1]}</h5></div>
         </div>

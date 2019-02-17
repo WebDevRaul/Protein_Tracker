@@ -61,7 +61,7 @@ class Target extends Component {
     return (
       <div>
         <div className='row'>
-          <div className="col-md-3">
+          <div className="col-3">
             <div className="card border-info p-2">
               <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Cal.</h4>
@@ -69,36 +69,36 @@ class Target extends Component {
               <div className="text-info text-center mt-5"><h5>{calories}</h5></div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-3">
             <div className="card border-info p-2">
               <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Prot.</h4>
               </div>
-              <div className="text-info text-center mt-5"><h4>{protein}</h4></div>
+              <div className="text-info text-center mt-5"><h5>{protein}</h5></div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-3">
             <div className="card border-info p-2">
               <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Fat</h4>
               </div>
-              <div className="text-info text-center mt-5"><h4>{fat}</h4></div>
+              <div className="text-info text-center mt-5"><h5>{fat}</h5></div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-3">
             <div className="card border-info p-2">
               <div className="card border-info shadow text-info p-2 my-card" >
                 <h4>Carb.</h4>
               </div>
-              <div className="text-info text-center mt-5"><h4>{carbohydrates}</h4></div>
+              <div className="text-info text-center mt-5"><h5>{carbohydrates}</h5></div>
             </div>
           </div>
         </div>
         {(form || set) ? null : buttons}
-        <div className={classnames("card-body", {'d-none' : !form})}>
+        <div className={classnames("card-body mt-4 mb-4", {'d-none' : !form})}>
           <Form cancel={this.cancelForm} />
         </div>
-        <div className={classnames("card-body", {'d-none' : !set})}>
+        <div className={classnames("card-body mt-4 mb-4", {'d-none' : !set})}>
           <Set cancel={this.cancelSet} />
         </div>
       </div>
