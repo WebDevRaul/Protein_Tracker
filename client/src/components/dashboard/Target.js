@@ -53,8 +53,8 @@ class Target extends Component {
 
     const buttons = ( 
       <div className='float-right mt-3'>
-        <span onClick={this.showSet} className="badge badge-primary m-1">Set</span>
-        <span onClick={this.showForm} className="badge badge-primary m-1">Calculate</span>
+        <span onClick={this.showSet} className="btn badge badge-primary m-1">Set</span>
+        <span onClick={this.showForm} className="btn badge badge-primary m-1">Calculate</span>
       </div>
     );
 

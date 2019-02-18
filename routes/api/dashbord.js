@@ -7,6 +7,9 @@ const Table = require('../../models/Table');
 const User = require('../../models/User');
 const Daily = require('../../models/Daily');
 
+// Validation
+const validateSetInput  = require('../../validation/set');
+
 
 // @route   POST api/dashboard
 // @desc    Create & Save item
@@ -127,11 +130,20 @@ router
       .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
   })
 
-// // @route   POST api/dashboard/dailyTarget
+// // @route   POST api/dashboard/total/:id
 // // @desc    Create item
 // // @access  Private
 router
   .post('/total/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // Validation
+    const { errors, isValid } = validateSetInput(req.body);
+
+    // Check Validation
+    if (!isValid) {
+      // If any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
+
     User.findById({ _id: req.user._id })
       .then(user => {
         // Check user
@@ -176,7 +188,7 @@ router
       .catch(err => res.status(401).json({ noUserFound: 'User not found' }))
   });
 
-// // @route   GET api/dashboard/dailyTarget
+// // @route   GET api/dashboard/collectData/:id
 // // @desc    GET item
 // // @access  Private
 router
