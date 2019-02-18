@@ -67,7 +67,7 @@ class Set extends Component {
 
   onSave = () => {
     const { id } = this.props.auth.user;
-    const { calories, protein, fat, carbohydrates, errors } = this.state;
+    const { calories, protein, fat, carbohydrates } = this.state;
 
     const item = {calories, protein, fat, carbohydrates}
 
