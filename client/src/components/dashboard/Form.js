@@ -104,7 +104,6 @@ class Form extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log(errors)
     return (
       <div className="spacial-card text-capitalize font-weight-bold">
         <form noValidate onSubmit={this.onSubmit}>

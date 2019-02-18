@@ -10,6 +10,56 @@ const validateFormInput = (data) => {
   data.height = !isEmpty(data.height) ? data.height : '';
   data.weight = !isEmpty(data.weight) ? data.weight : '';
 
+
+  // Validate Numbers
+  if (!Validator.isNumeric(data.age)) {
+    errors.age = 'Only numbers allowed'
+  }
+  if (!Validator.isNumeric(data.height)) {
+    errors.height = 'Only numbers allowed'
+  }
+  if (!Validator.isNumeric(data.weight)) {
+    errors.weight = 'Only numbers allowed'
+  }
+
+
+  // Validate Age
+  if (Validator.isInt(data.age, {min:-Infinity, max:17})) {
+    errors.age = 'Minimum age must be 18';
+  }
+  if (Validator.isInt(data.age, {min:100, max:Infinity})) {
+    errors.age = 'Miximum age required is 99';
+  }
+  // Validate Height
+  if (Validator.isInt(data.height, {min:-Infinity, max:56})) {
+    errors.height = 'Minimum height required is 57';
+  }
+  if (Validator.isInt(data.height, {min:273, max: Infinity})) {
+    errors.height = 'Miximum height required is 272';
+  }
+  // Validate Weight
+  if (Validator.isInt(data.weight, {min:-Infinity, max:1})) {
+    errors.weight = 'Minimum weight required is 2';
+  }
+  if (Validator.isInt(data.weight, {min:636, max: Infinity})) {
+    errors.weight = 'Miximum weight required is 635';
+  }
+
+
+
+  // Validate allow_leading_zeroes: false
+  if (!Validator.isInt(data.age, {allow_leading_zeroes: false})) {
+    errors.age = 'Only valid numbers allowed';
+  }
+  if (!Validator.isInt(data.height, {allow_leading_zeroes: false})) {
+    errors.height = 'Only valid numbers allowed';
+  }
+  if (!Validator.isInt(data.weight, {allow_leading_zeroes: false})) {
+    errors.weight = 'Only valid numbers allowed';
+  }
+
+
+
   // Validate Empty
   if (Validator.isEmpty(data.age)) {
     errors.age = 'Age field is required'
@@ -25,33 +75,6 @@ const validateFormInput = (data) => {
   }
   if (Validator.isEmpty(data.weight)) {
     errors.weight = 'Weight field is required'
-  }
-
-  // Validate Numbers
-  if (!Validator.isNumeric(data.age)) {
-    errors.age = 'Only numbers allowed'
-  }
-  if (!Validator.isNumeric(data.height)) {
-    errors.height = 'Only numbers allowed'
-  }
-  if (!Validator.isNumeric(data.weight)) {
-    errors.weight = 'Only numbers allowed'
-  }
-
-  // Validate Age
-  if (!Validator.isInt(data.age, {min:18, max:99})) {
-    errors.age = 'Miximum age required is 99';
-  }
-  if (Validator.isInt(data.age, {min:-Infinity, max:17},{allow_leading_zeroes: false})) {
-    errors.age = 'Minimum age required is 18';
-  }
-
-  // Validate Height
-  if (!Validator.isInt(data.height, {min:57, max:272})) {
-    errors.height = 'Miximum height required is 272';
-  }
-  if (!Validator.isInt(data.height, {min:-Infinity, max:57})) {
-    errors.height = 'Miximum height required is 272';
   }
 
   return {
