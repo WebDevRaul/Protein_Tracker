@@ -86,15 +86,15 @@ class Admin extends Component {
     this.props.saveItem(item);
 
     // Clear the form
-    this.setState({
-      product_name: '',
-      protein: '',
-      quantity: '',
-      type: '',
-      carbohydrates: '',
-      fat: '',
-      calories: ''
-    });
+    // this.setState({
+    //   product_name: '',
+    //   protein: '',
+    //   quantity: '',
+    //   type: '',
+    //   carbohydrates: '',
+    //   fat: '',
+    //   calories: ''
+    // });
   };
 
   render() {

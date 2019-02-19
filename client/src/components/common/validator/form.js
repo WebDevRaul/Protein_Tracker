@@ -31,18 +31,18 @@ const validateFormInput = (data) => {
     errors.age = 'Miximum age required is 99';
   }
   // Validate Height
-  if (Validator.isInt(data.height, {min:-Infinity, max:56})) {
-    errors.height = 'Minimum height required is 57';
+  if (Validator.isInt(data.height, {min:-Infinity, max:0})) {
+    errors.height = 'Minimum height required is 1';
   }
-  if (Validator.isInt(data.height, {min:273, max: Infinity})) {
-    errors.height = 'Miximum height required is 272';
+  if (Validator.isInt(data.height, {min:301, max: Infinity})) {
+    errors.height = 'Miximum height required is 300';
   }
   // Validate Weight
-  if (Validator.isInt(data.weight, {min:-Infinity, max:1})) {
-    errors.weight = 'Minimum weight required is 2';
+  if (Validator.isInt(data.weight, {min:-Infinity, max:0})) {
+    errors.weight = 'Minimum weight required is 1';
   }
-  if (Validator.isInt(data.weight, {min:636, max: Infinity})) {
-    errors.weight = 'Miximum weight required is 635';
+  if (Validator.isInt(data.weight, {min:1001, max: Infinity})) {
+    errors.weight = 'Miximum weight required is 1000';
   }
 
 

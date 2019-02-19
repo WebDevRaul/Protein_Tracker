@@ -12,6 +12,85 @@ module.exports = function validateItemInput(data) {
   data.fat = !isEmpty(data.fat) ? data.fat : '';
   data.carbohydrates = !isEmpty(data.carbohydrates) ? data.carbohydrates : '';
 
+
+
+  // Validate product_name
+  if (!Validator.isAlpha(data.product_name)) {
+    errors.product_name = 'Product name must contains only letters'
+  }
+
+
+  // Validate quantity
+  if (Validator.isAlpha(data.quantity)) {
+    errors.quantity = 'Quantity requires only numbers'
+  }
+  if (!Validator.isAlphanumeric(data.quantity)) {
+    errors.quantity = 'Quantity requires only numbers'
+  }
+  if (Validator.isInt(data.quantity, {min: -Infinity, max:0})) {
+    errors.quantity = 'Minimum quantity required 1'
+  }
+  if (Validator.isInt(data.quantity, {min:1001, max: Infinity})) {
+    errors.quantity = 'Miximum quantity required 1000';
+  }
+
+  // Validate calories
+  if (Validator.isAlpha(data.calories)) {
+    errors.calories = 'Calories requires only numbers'
+  }
+  if (!Validator.isAlphanumeric(data.calories)) {
+    errors.calories = 'Calories requires only numbers'
+  }
+  if (Validator.isInt(data.calories, {min: -Infinity, max:0})) {
+    errors.calories = 'Minimum calories required 1'
+  }
+  if (Validator.isInt(data.calories, {min:1001, max: Infinity})) {
+    errors.calories = 'Miximum calories required 1000';
+  }
+
+  // Validate proteins
+  if (Validator.isAlpha(data.protein)) {
+    errors.protein = 'Protein requires only numbers'
+  }
+  if (!Validator.isAlphanumeric(data.protein)) {
+    errors.protein = 'Protein requires only numbers'
+  }
+  if (Validator.isInt(data.protein, {min: -Infinity, max:0})) {
+    errors.protein = 'Minimum protein required 1'
+  }
+  if (Validator.isInt(data.protein, {min:1001, max: Infinity})) {
+    errors.protein = 'Miximum protein required 1000';
+  }
+
+  // Validate fat
+  if (Validator.isAlpha(data.fat)) {
+    errors.fat = 'Fat requires only numbers'
+  }
+  if (!Validator.isAlphanumeric(data.fat)) {
+    errors.fat = 'Fat requires only numbers'
+  }
+  if (Validator.isInt(data.fat, {min: -Infinity, max:0})) {
+    errors.fat = 'Minimum fat required 1'
+  }
+  if (Validator.isInt(data.fat, {min:1001, max: Infinity})) {
+    errors.fat = 'Miximum fat required 1000';
+  }
+
+  // Validate carbohydrates
+  if (Validator.isAlpha(data.carbohydrates)) {
+    errors.carbohydrates = 'Carbohydrates requires only numbers'
+  }
+  if (!Validator.isAlphanumeric(data.carbohydrates)) {
+    errors.carbohydrates = 'Carbohydrates requires only numbers'
+  }
+  if (Validator.isInt(data.carbohydrates, {min: -Infinity, max:0})) {
+    errors.carbohydrates = 'Minimum carbohydrates required 1'
+  }
+  if (Validator.isInt(data.carbohydrates, {min:1001, max: Infinity})) {
+    errors.carbohydrates = 'Miximum carbohydrates required 1000';
+  }
+
+
   // Validate items for empty
   if (Validator.isEmpty(data.product_name)) {
     errors.product_name = 'Product name field is required'
@@ -34,7 +113,6 @@ module.exports = function validateItemInput(data) {
   if (Validator.isEmpty(data.carbohydrates)) {
     errors.carbohydrates = 'Carbohydrates field is required'
   };
-
 
   return {
     errors,
