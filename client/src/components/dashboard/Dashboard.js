@@ -190,7 +190,7 @@ class Dashboard extends Component {
       <div className='dashboard'>
         <div className='container no-gutters'>
           <div className='row mb-4 mt-3 no-gutters'>
-            <div className='col-7'>
+            <div className='col-7 col-sm-6 col-md-5 col-lg-4'>
               <SelectListGroup
               name='selectTable'
               value={this.state.table}
@@ -200,7 +200,7 @@ class Dashboard extends Component {
               option='Select Table'
             />
             </div>
-            <div className='col-5'>
+            <div className='col-5 offset-sm-1 col-sm-5 col-md-6 offset-lg-4 col-lg-4'>
               <button className='btn btn-danger float-right' onClick={this.onClear} >Clear Table</button>
             </div>
           </div>

@@ -82,7 +82,7 @@ class Table extends Component {
               </div>
               <div className='card-body border border-success border-top-0'>
                 <div className='row'>
-                  <div className='col mt-3 mb-4'>
+                  <div className='offset-1 col-10 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-4 col-lg-4  mt-3 mb-4'>
                     <SelectFieldGroup
                       name='productList'
                       value={this.state.productVal}
