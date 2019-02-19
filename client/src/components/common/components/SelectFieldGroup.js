@@ -16,7 +16,7 @@ const SelectListGroup = ({
   ));
   return (
     <div className="input-group">
-      <select className="custom-select"
+      <select className="custom-select select"
         name={name}
         value={value}
         onChange={onChange}
@@ -26,7 +26,7 @@ const SelectListGroup = ({
       </select>
       <div className="input-group-append">
         <label 
-          className="input-group-text" 
+          className="input-group-text bg-success text-white label" 
           htmlFor={name}
           onClick={onClick}
         >Add

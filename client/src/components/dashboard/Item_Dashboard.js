@@ -47,7 +47,7 @@ class ItemDashboard extends Component {
 
 
   render() {
-    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon} = this.props;
     const { edit, newQuantity } = this.state;
 
     const input = (
@@ -61,18 +61,29 @@ class ItemDashboard extends Component {
     )
     return (
       <div key={id}>
-        <ul className='navbar list-inline paper'>
-          <li className='list-inline-item'>{product_name}</li>
-          <li className='list-inline-item'>
-            <span onClick={this.onEdit}>{edit ? input : quantity} {type} </span>
-            <span onClick={this.onSave}>{edit ? <i className="fas fa-check"></i> : null}</span>
-          </li>
-          <li className='list-inline-item'>{calories}</li>
-          <li className='list-inline-item'>{protein}</li>
-          <li className='list-inline-item'>{fat}</li>
-          <li className='list-inline-item'>{carbohydrates}</li>
-          <span className='hover' onClick={this.onClick(id)} ><i className={this.props.class}></i></span>
-        </ul>
+        <div className='row'>
+          <div className='col'>
+            <div className='text-capitalize'>
+              <p className='ml-2'>{product_name}</p>
+            </div>
+          </div>
+        </div>
+        <div key={id} className='row paper no-gutters'>
+          <div className='col text-center'>
+            <p
+              onClick={this.onEdit}
+            >{edit ? input : quantity} {type}</p>
+            <p
+              onClick={this.onSave}
+            >
+              {edit ? <i className="fas fa-check"></i> : null}
+            </p>
+          </div>
+          <div className='col text-center'><p>{calories}</p></div>
+          <div className='col text-center'><p>{protein}</p></div>
+          <div className='col text-center'><p>{fat}</p></div>
+          <div className='col text-center'><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
+        </div>
       </div>
     )
   }
@@ -93,7 +104,7 @@ ItemDashboard.propTypes = {
   fat: PropTypes.string.isRequired,
   carbohydrates: PropTypes.string.isRequired,
   id: PropTypes.string,
-  class: PropTypes.string,
+  icon: PropTypes.string,
   onClickFunc: PropTypes.func,
   saveNewQuantity: PropTypes.func.isRequired,
 };

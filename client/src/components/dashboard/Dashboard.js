@@ -187,20 +187,60 @@ class Dashboard extends Component {
     ];
 
     return (
-      <div className='container'>
-        <SelectListGroup
-          name='selectTable'
-          value={this.state.table}
-          onChange={this.onChangeSelect}
-          onClick={this.onClickSelect}
-          items={table}
-          option='Select Table'
-        />
-        <button onClick={this.onClear}>Clear Tables</button>
-        { breakfast ? <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.calculator.breakfast} /> : null }
-        { lunch ? <Table id={'lunch'} data={this.props.dashboard.lunch} total={this.props.calculator.lunch} /> : null }
-        { diner ? <Table id={'diner'} data={this.props.dashboard.diner} total={this.props.calculator.diner} /> : null }
-        { snack ? <Table id={'snack'} data={this.props.dashboard.snack} total={this.props.calculator.snack} /> : null }
+      <div className='dashboard'>
+        <div className='container no-gutters'>
+          <div className='row mb-4 mt-3 no-gutters'>
+            <div className='col-7'>
+              <SelectListGroup
+              name='selectTable'
+              value={this.state.table}
+              onChange={this.onChangeSelect}
+              onClick={this.onClickSelect}
+              items={table}
+              option='Select Table'
+            />
+            </div>
+            <div className='col-5'>
+              <button className='btn btn-danger float-right' onClick={this.onClear} >Clear Table</button>
+            </div>
+          </div>
+          { 
+            breakfast ? 
+            <div className='row'>
+              <div className='col'>
+                <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.calculator.breakfast} />
+              </div>
+            </div> 
+            : null
+          }
+          { 
+            lunch ? 
+            <div className='row'>
+              <div className='col'>
+                <Table id={'lunch'} data={this.props.dashboard.lunch} total={this.props.calculator.lunch} />
+              </div>
+            </div> 
+            : null
+          }
+          { 
+            diner ? 
+            <div className='row'>
+              <div className='col'>
+                <Table id={'diner'} data={this.props.dashboard.diner} total={this.props.calculator.diner} />
+              </div>
+            </div> 
+            : null
+          }
+          { 
+            snack ? 
+            <div className='row'>
+              <div className='col'>
+                <Table id={'snack'} data={this.props.dashboard.snack} total={this.props.calculator.snack} />
+              </div>
+            </div> 
+            : null
+          }
+        </div>
       </div>
     )
   }
