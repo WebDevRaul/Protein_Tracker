@@ -53,7 +53,7 @@ class Admin extends Component {
 
     // Reset the errors
     if (!isEmpty(errors)) {
-      setTimeout(() => { this.props.clearError() }, 3000);
+      setTimeout(() => { this.props.clearError() }, 5000);
     }
     
     // Render if new item
@@ -86,15 +86,15 @@ class Admin extends Component {
     this.props.saveItem(item);
 
     // Clear the form
-    // this.setState({
-    //   product_name: '',
-    //   protein: '',
-    //   quantity: '',
-    //   type: '',
-    //   carbohydrates: '',
-    //   fat: '',
-    //   calories: ''
-    // });
+    this.setState({
+      product_name: '',
+      protein: '',
+      quantity: '',
+      type: '',
+      carbohydrates: '',
+      fat: '',
+      calories: ''
+    });
   };
 
   render() {
@@ -151,7 +151,7 @@ class Admin extends Component {
                             value={this.state.quantity}
                             onChange={this.onChange}
                           />
-                          {errors.quantity && <div className='invalid-feedback'>{errors.quantity}</div>}
+                          {errors.quantity && <div className='invalid-feedback font-weight-bold'>{errors.quantity}</div>}
                         </div>
                       <div className='col-6'>
                         <h5>Type</h5>
@@ -163,7 +163,7 @@ class Admin extends Component {
                         >
                           {selectOptions}
                         </select>
-                        {errors.type && <div className='invalid-feedback'>{errors.type}</div>}
+                        {errors.type && <div className='invalid-feedback font-weight-bold'>{errors.type}</div>}
                       </div>
                     </div>
                     <div className='row'>

@@ -19,7 +19,7 @@ const TextFieldGroup = ({
         value={value}
         onChange={onChange}
       />
-      {error && <div className='invalid-feedback'>{error}</div>}
+      {error && <div className='invalid-feedback font-weight-bold'>{error}</div>}
     </div>
   );
 };

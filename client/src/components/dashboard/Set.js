@@ -78,19 +78,19 @@ class Set extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="spacial-card text-capitalize font-weight-bold">
-        <form noValidate onSubmit={this.onSubmit}>
-          <ul className="navbar list-inline">
-            <li className="list-inline-item">
+      <div className='set'>
+        <form className='font-weight-bold'>
+          <div className='row'>
+            <div className='col- col-sm-6 col-md-6 col-lg-3'>
               <h5 className='mb-0'>Calories</h5>
-              <CardFieldGroup
-                name='calories'
-                value={this.state.calories}
-                onChange={this.onChange}
-                error={errors.setCalories}
-              />
-            </li>
-            <li className="list-inline-item">
+                <CardFieldGroup
+                  name='calories'
+                  value={this.state.calories}
+                  onChange={this.onChange}
+                  error={errors.setCalories}
+                />
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-3'>
               <h5 className='mb-0'>Protein</h5>
               <CardFieldGroup
                 name='protein'
@@ -98,8 +98,8 @@ class Set extends Component {
                 onChange={this.onChange}
                 error={errors.setProtein}
               />
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-3'>
               <h5 className='mb-0'>Fat</h5>
               <CardFieldGroup
                 name='fat'
@@ -107,8 +107,8 @@ class Set extends Component {
                 onChange={this.onChange}
                 error={errors.setFat}
               />
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-3'>
               <h5 className='mb-0'>Carbohydrates</h5>
               <CardFieldGroup
                 name='carbohydrates'
@@ -116,17 +116,17 @@ class Set extends Component {
                 onChange={this.onChange}
                 error={errors.setCarbohydrates}
               />
-            </li>
-          </ul>
+            </div>
+          </div>
         </form>
         <button
-          className='btn btn-danger float-left'
+          className='btn btn-danger mt-2 mb-4 float-left'
           onClick={this.onClick}
         >
           Cancel
         </button>
         <button
-          className='btn btn-success float-right'
+          className='btn btn-success mt-2 mb-4 float-right'
           onClick={this.onSave}
         >
           Save

@@ -32,10 +32,6 @@ input {
   margin: 10px 0 30px 0;
 }
 
-.fa-red {
-  color: rgba(255, 0, 0, 0.7) !important;
-}
-
 /* Media */
 
 /* ==================================== */
@@ -55,6 +51,11 @@ input {
   }
   .target > div > .row > .col-3 > :nth-child(1) {
     padding: 0px !important;
+  }
+  
+  /* set */
+  .set > form > div > .col- {
+    margin: 0 20px 0 20px;
   }
 }
 
@@ -85,6 +86,14 @@ input {
   }
   .target h4 {
     font-size: 1rem;
+  }
+
+  /* set */
+  .set {
+    margin: 0 40px 0 40px;
+  }
+  .set > form > div > .col- {
+    margin: 0 20px 0 20px;
   }
 }
 
