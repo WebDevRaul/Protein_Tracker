@@ -35,6 +35,7 @@ module.exports = function validateItemInput(data) {
     errors.carbohydrates = 'Carbohydrates field is required'
   };
 
+
   return {
     errors,
     isValid: isEmpty(errors)

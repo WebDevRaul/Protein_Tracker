@@ -8,7 +8,7 @@ const User = require('../../models/User');
 
 
 // Validation
-const validateItemInput = require('../../validation/item');
+const validateItemInput = require('../../validation/admin');
 
 
 // @route   POST api/items

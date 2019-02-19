@@ -33,7 +33,6 @@ class ListItems extends Component {
           fat={i.fat}
           carbohydrates={i.carbohydrates}
           id={i._id}
-          class='far fa-times-circle fa-red'
           onClickFunc={this.onDelete}
         />
       )

@@ -18,7 +18,7 @@ class ItemAdmin extends Component {
           <li className='list-inline-item'>{protein}</li>
           <li className='list-inline-item'>{fat}</li>
           <li className='list-inline-item'>{carbohydrates}</li>
-          <span className='hover' onClick={this.onClick(id)} ><i className={this.props.class}></i></span>
+          <span className='btn' onClick={this.onClick(id)} ><i className='far fa-times-circle text-danger'></i></span>
         </ul>
       </div>
     )
@@ -34,7 +34,6 @@ ItemAdmin.propTypes = {
   fat: PropTypes.string.isRequired,
   carbohydrates: PropTypes.string.isRequired,
   Id: PropTypes.string,
-  class: PropTypes.string,
   onClickFunc: PropTypes.func,
 };
 
