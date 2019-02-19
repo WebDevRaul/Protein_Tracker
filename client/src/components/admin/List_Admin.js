@@ -11,7 +11,7 @@ import { deleteItem  } from '../../redux/actions/admin';
 // Common
 import isEmpty from '../common/isEmpty';
 
-class ListItems extends Component {
+class ListAdmin extends Component {
 
   onDelete=(id)=> {
     this.props.deleteItem(id)
@@ -33,20 +33,21 @@ class ListItems extends Component {
           fat={i.fat}
           carbohydrates={i.carbohydrates}
           id={i._id}
+          icon='far fa-times-circle text-danger'
           onClickFunc={this.onDelete}
         />
       )
     }
     return (
-      <div className='items-name mt-5 mb-5'>
+      <div className='list-admin mt-5'>
         <div className='container'>
           <ItemAdmin
-            product_name= 'Product Name:'
-            quantity= 'Quantity'
-            calories= 'Calories'
-            protein= 'Proteins'
+            product_name= 'Name:'
+            quantity= 'Qty.'
+            calories= 'Cal.'
+            protein= 'Prot.'
             fat='Fat'
-            carbohydrates= 'Carbohydrates'
+            carbohydrates= 'Carb.'
           />
           {item}
         </div>
@@ -55,7 +56,7 @@ class ListItems extends Component {
   }
 };
 
-ListItems.propTypes = {
+ListAdmin.propTypes = {
   admin: PropTypes.object.isRequired,
   deleteItem: PropTypes.func.isRequired
 }
@@ -64,4 +65,4 @@ const mapStateToProps = state => ({
   admin: state.admin
 });
 
-export default connect( mapStateToProps, { deleteItem  } )(ListItems);
+export default connect( mapStateToProps, { deleteItem  } )(ListAdmin);

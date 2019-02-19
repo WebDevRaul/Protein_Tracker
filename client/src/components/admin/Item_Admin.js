@@ -8,18 +8,15 @@ class ItemAdmin extends Component {
   }
 
   render() {
-    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id } = this.props;
+    const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon } = this.props;
     return (
-      <div key={id}>
-        <ul className='navbar list-inline paper'>
-          <li className='list-inline-item'>{product_name}</li>
-          <li className='list-inline-item'>{quantity}{type}</li>
-          <li className='list-inline-item'>{calories}</li>
-          <li className='list-inline-item'>{protein}</li>
-          <li className='list-inline-item'>{fat}</li>
-          <li className='list-inline-item'>{carbohydrates}</li>
-          <span className='btn' onClick={this.onClick(id)} ><i className='far fa-times-circle text-danger'></i></span>
-        </ul>
+      <div key={id} className='row paper no-gutters'>
+        <div className='col text-capitalize'><p>{product_name}</p></div>
+        <div className='col text-center'><p>{quantity} <span>{type}</span></p></div>
+        <div className='col text-center'><p>{calories}</p></div>
+        <div className='col text-center'><p>{protein}</p></div>
+        <div className='col text-center'><p>{fat}</p></div>
+        <div className='col text-center'><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
       </div>
     )
   }
@@ -34,6 +31,7 @@ ItemAdmin.propTypes = {
   fat: PropTypes.string.isRequired,
   carbohydrates: PropTypes.string.isRequired,
   Id: PropTypes.string,
+  icon: PropTypes.string,
   onClickFunc: PropTypes.func,
 };
 

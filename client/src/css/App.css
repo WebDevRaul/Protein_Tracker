@@ -1,3 +1,7 @@
+.hover :hover {
+  cursor: pointer;
+}
+
 input { 
   background-image: none !important;
 }
@@ -26,10 +30,15 @@ input {
 
 .paper {
   padding: 15px;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: #007bff85;
   border-radius: 10px;
-  box-shadow: 10px 10px 10px #bcc3ca;
+  box-shadow: 10px 10px 10px #007bff56;
   margin: 10px 0 30px 0;
+}
+
+.admin p {
+  margin-bottom: 0px !important;
+  font-weight: 500;
 }
 
 /* Media */
@@ -62,6 +71,18 @@ input {
   .form-btn-div {
     margin:10px 10px 20px 10px;
   }
+
+  /* admin */
+  .admin h5 {
+    font-size: 0.9rem;
+  }
+  .admin  p {
+    font-size: 0.7rem;
+  }
+  .admin .paper {
+    padding: 15px;
+    margin: 10px 0 20px 0;
+  }
 }
 
 /* ==================================== */
@@ -79,6 +100,11 @@ input {
   /* form */
   .form > form {
     margin: 0 40px;
+  }
+
+  /* admin */
+  .admin  p {
+    font-size: 0.9rem;
   }
 }
 
@@ -109,6 +135,11 @@ input {
   /* form */
   .form > form {
     margin: 0px 50px;
+  }
+
+  /* admin */
+  .admin h5 {
+    font-size: 1.1rem;
   }
 }
 

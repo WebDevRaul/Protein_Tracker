@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 // Components
 import CardFieldGroupNoLabel from '../common/components/CardFieldGroupNoLabel';
-import ListAdmin from './List_Items';
+import ListAdmin from './List_Admin';
 
 // Redux
 import { connect } from 'react-redux';
@@ -211,7 +211,7 @@ class Admin extends Component {
                         <input 
                           type="submit" 
                           value="Save" 
-                          className="font-weight-bold btn btn-secondary btn-block bg-primary mt-4" />
+                          className="font-weight-bold btn btn-secondary btn-block bg-success mt-4" />
                       </div>
                     </div>
                   </div>
