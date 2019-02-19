@@ -57,6 +57,11 @@ input {
   .set > form > div > .col- {
     margin: 0 20px 0 20px;
   }
+
+  /* form */
+  .form-btn-div {
+    margin:10px 10px 20px 10px;
+  }
 }
 
 /* ==================================== */
@@ -69,6 +74,11 @@ input {
   }
   .my-card {
     transform: translate(-50%, 30%)
+  }
+
+  /* form */
+  .form > form {
+    margin: 0 40px;
   }
 }
 
@@ -95,6 +105,11 @@ input {
   .set > form > div > .col- {
     margin: 0 20px 0 20px;
   }
+
+  /* form */
+  .form > form {
+    margin: 0px 50px;
+  }
 }
 
 /* ==================================== */
@@ -111,5 +126,17 @@ input {
   }
   .target h4 {
     font-size: 1.2rem;
+  }
+
+  /* form */
+  .form > form > .row > :nth-last-child(1) {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* form */
+  .form > form > .row > :nth-last-child(1) {
+    margin: 0 auto;
   }
 }

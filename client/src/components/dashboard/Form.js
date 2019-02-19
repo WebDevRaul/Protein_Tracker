@@ -32,7 +32,7 @@ class Form extends Component {
 
     // Reset the errors
     if (!isEmpty(errors)) {
-      setTimeout(() => { this.setState({ errors: {} }) }, 3000);
+      setTimeout(() => { this.setState({ errors: {} }) }, 5000);
     }
 
     // Close setForm if no error
@@ -57,8 +57,7 @@ class Form extends Component {
     this.props.cancel()
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  onSave = (e) => {
     const { weight, height, age, gender, activity } = this.state;
     const { id } = this.props.auth.user;
     let calories, protein, fat, carbohydrates;
@@ -105,10 +104,10 @@ class Form extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="spacial-card text-capitalize font-weight-bold">
-        <form noValidate onSubmit={this.onSubmit}>
-          <ul className="navbar list-inline">
-            <li className="list-inline-item">
+      <div className='form'>
+        <form className='font-weight-bold mt-5'>
+          <div className='row'>
+            <div className='col- col-sm-6 col-md-6 offset-lg-1 col-lg-2'>
               <CardFieldGroup
                 label='d-none'
                 name='age'
@@ -117,8 +116,8 @@ class Form extends Component {
                 onChange={this.onChange}
                 error={errors.age}
               />
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-2'>
               <div className="form-group">
                 <select
                   className={classnames('form-control custom-select form-control-xsm', {'is-invalid' : !isEmpty(errors.gender)})}
@@ -132,8 +131,8 @@ class Form extends Component {
                 </select>
                 {errors.gender && <div className='invalid-feedback'>{errors.gender}</div>}
               </div>
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-2'>
               <div className="form-group">
                 <select 
                   className={classnames('form-control custom-select form-control-xsm', {'is-invalid' : !isEmpty(errors.activity)})}
@@ -150,8 +149,8 @@ class Form extends Component {
                 </select>
                 {errors.activity && <div className='invalid-feedback'>{errors.activity}</div>}
               </div>
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-2'>
               <CardFieldGroup
                 label='d-none'
                 name='height'
@@ -160,8 +159,8 @@ class Form extends Component {
                 onChange={this.onChange}
                 error={errors.height}
               />
-            </li>
-            <li className="list-inline-item">
+            </div>
+            <div className='col- col-sm-6 col-md-6 col-lg-2'>
               <CardFieldGroup
                 label='d-none'
                 name='weight'
@@ -170,24 +169,23 @@ class Form extends Component {
                 onChange={this.onChange}
                 error={errors.weight}
               />
-            </li>
-            <li className="list-inline-item">
-              <div className='form-group'>
-                <input
-                  type='submit'
-                  className='form-control form-control-xsm btn btn-success'
-                  value='Save'
-                />
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </form>
-        <button
-          className='btn btn-danger float-right'
-          onClick={this.onClick}
-        >
-          Cancel
-        </button>
+        <div className='form-btn-div mb-2'>
+          <button
+            className='btn btn-danger float-left'
+            onClick={this.onClick}
+          >
+            Cancel
+          </button>
+          <button
+            className='btn btn-success float-right'
+            onClick={this.onSave}
+          >
+            Save
+          </button>
+        </div>
       </div>
     )
   }
