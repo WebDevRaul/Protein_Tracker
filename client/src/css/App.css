@@ -23,7 +23,7 @@ input {
 }
 
 /* Dashboard */
-.dashboard-table p {
+.dashboard-table p, .dashboard-table span {
   margin-bottom: 0px !important;
   font-weight: 500;
 }

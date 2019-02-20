@@ -63,9 +63,9 @@ class ItemDashboard extends Component {
       const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
 
       const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
-      // this.setState({ edit: false });
-      // this.props.saveNewQuantity(newQuantityData);
-      // this.props.update_Offline(newQuantityData);
+      this.setState({ edit: false });
+      this.props.saveNewQuantity(newQuantityData);
+      this.props.update_Offline(newQuantityData);
     }
   };
 
@@ -98,7 +98,7 @@ class ItemDashboard extends Component {
     const paragraph = (
       <div className='d-flex'>
         <p onClick={this.onEdit} className='dashboard-edit-product' >{quantity}</p>
-        <span className=''>{type}</span>
+        <span className='type'>{type}</span>
       </div>
     )  
     
