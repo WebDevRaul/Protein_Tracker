@@ -103,10 +103,30 @@ export default function(state=initialState, action) {
     case GET_CLEAR_TABLE:
       return {
         ...state,
-        breakfast: {},
-        lunch: {},
-        diner: {},
-        snack: {}
+        breakfast: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        },
+        lunch: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        },
+        diner: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        },
+        snack: {
+          calories: '0',
+          protein: '0',
+          fat: '0',
+          carbohydrates: '0'
+        }
       }
     case CLEAR_LOCAL_BREAKFAST:
       return {

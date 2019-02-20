@@ -1,7 +1,7 @@
 import Validator from 'validator';
 import isEmpty from '../isEmpty';
 
-const validateFormInput = (data) => {
+const validateFormInput = data => {
   let errors = [];
 
   data.age = !isEmpty(data.age) ? data.age : '';

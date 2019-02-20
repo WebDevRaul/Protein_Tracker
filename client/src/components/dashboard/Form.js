@@ -69,7 +69,7 @@ class Form extends Component {
 
     // Check Validation
     if (!isValid) {
-      // If any errors, send 400 with errors object
+      // Set Errors
       this.setState({ errors })
 
     } else {

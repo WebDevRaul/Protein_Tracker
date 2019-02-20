@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // Redux
 import { connect } from 'react-redux';
 import { saveNewQuantity, update_Offline } from '../../redux/actions/dashboard';
+
+// Common
+import validateProductQty from '../common/validator/productQty';
+import isEmpty from '../common/isEmpty';
 
 class ItemDashboard extends Component {
   constructor() {
@@ -11,9 +16,18 @@ class ItemDashboard extends Component {
     this.state = {
       edit: false,
       newQuantity: '',
+      errors: {}
     }
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const { errors } = this.state;
+
+    // Reset the errors
+    if (!isEmpty(errors)) {
+      setTimeout(() => { this.setState({ errors: {} }) }, 3000);
+    }
+  }
 
 
   onClick = i => () => {
@@ -33,56 +47,81 @@ class ItemDashboard extends Component {
     const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates } = this.props;
     const userID = this.props.auth.user.id;
 
-    // Update new values
-    const newCalories = String(Number(true_calories) * Number(newQuantity));
-    const newProtein = String(Number(true_protein) * Number(newQuantity));
-    const newFat= String(Number(true_fat) * Number(newQuantity));
-    const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
+    // Validation
+    const { errors, isValid } = validateProductQty(newQuantity);
 
-    const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
-    this.setState({ edit: false });
-    this.props.saveNewQuantity(newQuantityData);
-    this.props.update_Offline(newQuantityData);
+    // Check validation
+    if (!isValid) {
+      // Set Errors
+      this.setState({ errors });
+    } else {
+
+      // Update new values
+      const newCalories = String(Number(true_calories) * Number(newQuantity));
+      const newProtein = String(Number(true_protein) * Number(newQuantity));
+      const newFat= String(Number(true_fat) * Number(newQuantity));
+      const newCarbohydrates = String(Number(true_carbohydrates) * Number(newQuantity));
+
+      const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
+      // this.setState({ edit: false });
+      // this.props.saveNewQuantity(newQuantityData);
+      // this.props.update_Offline(newQuantityData);
+    }
   };
 
 
   render() {
     const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon} = this.props;
-    const { edit, newQuantity } = this.state;
+    const { edit, newQuantity, errors } = this.state;
 
     const input = (
-      <input 
-        type = 'text'
-        value = { newQuantity }
-        onChange = {this.onChange}
-        placeholder = {quantity}
-        autoFocus
-      />
+      <div>
+        <div className='row no-gutters'>
+          <div className='col-9'>
+            <input 
+            className={classnames('col', {'special-border' : !isEmpty(errors.productQty)})}
+            type = 'text'
+            value = { newQuantity }
+            onChange = {this.onChange}
+            placeholder = {quantity}
+            autoFocus
+          />
+          </div>
+          <div className='col-1'>
+            <span className='ml-2 hover'><i onClick={this.onSave} className="fas fa-check"></i></span>
+          </div>
+            {errors.productQty && <div className='text-danger font-weight-bold'>{errors.productQty}</div>}
+        </div>
+      </div>
     )
+
+    const paragraph = (
+      <div className='d-flex'>
+        <p onClick={this.onEdit} className='dashboard-edit-product' >{quantity}</p>
+        <span className=''>{type}</span>
+      </div>
+    )  
+    
     return (
       <div key={id}>
         <div className='row'>
           <div className='col'>
             <div className='text-capitalize'>
               <p className='ml-2'>{product_name}</p>
+              <div className='invalid-feedback'>{errors.productQty}</div>
             </div>
           </div>
         </div>
-        <div key={id} className='row paper no-gutters'>
-          <div className='col text-center'>
-            <p
-              onClick={this.onEdit}
-            >{edit ? input : quantity} {type}</p>
-            <p
-              onClick={this.onSave}
-            >
-              {edit ? <i className="fas fa-check"></i> : null}
-            </p>
+        <div key={id} className='row paper no-gutters text-center'>
+          <div className={classnames('col', {'col-4' : edit})}>
+            <div>
+              {edit ? input : paragraph}
+            </div>
           </div>
-          <div className='col text-center'><p>{calories}</p></div>
-          <div className='col text-center'><p>{protein}</p></div>
-          <div className='col text-center'><p>{fat}</p></div>
-          <div className='col text-center'><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
+          <div className={classnames('col', {'col-2' : edit})}><p>{calories}</p></div>
+          <div className={classnames('col', {'col-2' : edit})}><p>{protein}</p></div>
+          <div className={classnames('col', {'col-2' : edit})}><p>{fat}</p></div>
+          <div className={classnames('col', {'col-2' : edit})}><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
         </div>
       </div>
     )

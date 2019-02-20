@@ -11,10 +11,6 @@ input {
   padding-left: 0px !important;
 }
 
-.fa-check {
-  color: green;
-}
-
 .my-card {
   position:absolute;
   left:50%;
@@ -31,6 +27,21 @@ input {
   margin-bottom: 0px !important;
   font-weight: 500;
 }
+.dashboard-edit-product {
+  margin: 0 10px 0 45px;
+  padding: 0px 6px;
+  background: white;
+}
+.dashboard-edit-product:hover {
+  cursor: pointer;
+}
+.fa-check {
+  color: green;
+}
+.special-border {
+  border: 2px solid red;
+}
+
 
 /* Admin */
 
@@ -103,9 +114,9 @@ input {
     height: calc(1.80rem + 2px);
     padding: .175rem 1.75rem .175rem .75rem;
   }
-  .dashboard p {
+  /* .dashboard p {
     font-size: 0.7rem;
-  }
+  } */
 }
 
 /* ==================================== */

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // Components
 import SelectFieldGroup from '../common/components/SelectFieldGroup';
 import ItemDashboard from './Item_Dashboard';
-import ItemAdmin from '../admin/Item_Admin';
 
 // Redux
 import { connect } from 'react-redux';
