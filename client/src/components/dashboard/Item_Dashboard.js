@@ -44,7 +44,7 @@ class ItemDashboard extends Component {
   
   onSave = () => {
     const { newQuantity } = this.state;
-    const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates, type } = this.props;
+    const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates, type, quantity } = this.props;
     const userID = this.props.auth.user.id;
 
     // Validation
@@ -58,6 +58,11 @@ class ItemDashboard extends Component {
 
       let newCalories, newProtein, newFat, newCarbohydrates;
 
+      const mlFunc = (a, b, c) => {
+        const d = (Number(a) / Number(b)) * Number(c)
+        return d;
+      }
+
       // Update new values
       if (type === 'pc.') {
         newCalories = String(Math.round(Number(true_calories) * Number(newQuantity)));
@@ -65,7 +70,10 @@ class ItemDashboard extends Component {
         newFat= String(Math.round(Number(true_fat) * Number(newQuantity)));
         newCarbohydrates = String(Math.round(Number(true_carbohydrates) * Number(newQuantity)));
       } else if(type === 'ml.') {
-        
+        newCalories =  String(Math.round(mlFunc(newQuantity, quantity, true_calories)))
+        newProtein =  String(Math.round(mlFunc(newQuantity, quantity, true_protein)))
+        newFat =  String(Math.round(mlFunc(newQuantity, quantity, true_fat)))
+        newCarbohydrates =  String(Math.round(mlFunc(newQuantity, quantity, true_carbohydrates)))
       } else if(type === 'gr.') {
 
       }
