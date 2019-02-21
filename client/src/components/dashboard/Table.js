@@ -61,8 +61,8 @@ class Table extends Component {
         id={i._id}
         table_id={i.table_id}
         product_name={i.product_name}
-        quantity={i.quantity}
         type={i.type}
+        quantity={!isEmpty(i.temp_quantity) ? i.temp_quantity : i.quantity}
         calories={!isEmpty(i.temp_calories) ? i.temp_calories : i.calories}
         protein={!isEmpty(i.temp_protein) ? i.temp_protein : i.protein}
         fat={!isEmpty(i.temp_fat) ? i.temp_fat : i.fat}

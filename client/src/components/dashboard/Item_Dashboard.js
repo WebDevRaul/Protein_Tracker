@@ -76,7 +76,7 @@ class ItemDashboard extends Component {
         newCarbohydrates =  String(Math.round(mlFunc(newQuantity, true_quantity, true_carbohydrates)))
       }
 
-      const newQuantityData =  { id, table_id, true_quantity, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
+      const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
       this.setState({ edit: false });
       this.props.saveNewQuantity(newQuantityData);
       this.props.update_Offline(newQuantityData);
