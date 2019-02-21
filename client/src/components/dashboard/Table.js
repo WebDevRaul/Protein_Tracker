@@ -56,6 +56,7 @@ class Table extends Component {
         true_protein = {i.protein} 
         true_fat = {i.fat}
         true_carbohydrates = {i.carbohydrates}
+        true_quantity = {i.quantity}
         key={i._id}
         id={i._id}
         table_id={i.table_id}

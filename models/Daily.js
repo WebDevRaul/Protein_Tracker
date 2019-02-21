@@ -22,7 +22,7 @@ const DailySchema = new Schema({
   carbohydrates: {
     type: String,
     required: true
-  }
+  },
 });
 
 module.exports = Daily = mongoose.model('daily', DailySchema);

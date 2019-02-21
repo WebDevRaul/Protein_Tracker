@@ -50,6 +50,9 @@ const TableSchema = new Schema({
   },
   temp_carbohydrates: {
     type: String
+  },
+  temp_quantity: {
+    type: String
   }
 });
 

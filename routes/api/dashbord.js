@@ -114,6 +114,7 @@ router
           { _id: req.params.id },
           { $set:{
             quantity: req.body.newQuantity,
+            temp_quantity: req.body.true_quantity,
             temp_calories: req.body.newCalories,
             temp_protein: req.body.newProtein,
             temp_fat: req.body.newFat,

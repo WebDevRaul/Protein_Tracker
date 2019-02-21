@@ -44,7 +44,7 @@ class ItemDashboard extends Component {
   
   onSave = () => {
     const { newQuantity } = this.state;
-    const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates, type, quantity } = this.props;
+    const { id, table_id, true_calories, true_protein, true_fat, true_carbohydrates, type, true_quantity } = this.props;
     const userID = this.props.auth.user.id;
 
     // Validation
@@ -69,16 +69,14 @@ class ItemDashboard extends Component {
         newProtein = String(Math.round(Number(true_protein) * Number(newQuantity)));
         newFat= String(Math.round(Number(true_fat) * Number(newQuantity)));
         newCarbohydrates = String(Math.round(Number(true_carbohydrates) * Number(newQuantity)));
-      } else if(type === 'ml.') {
-        newCalories =  String(Math.round(mlFunc(newQuantity, quantity, true_calories)))
-        newProtein =  String(Math.round(mlFunc(newQuantity, quantity, true_protein)))
-        newFat =  String(Math.round(mlFunc(newQuantity, quantity, true_fat)))
-        newCarbohydrates =  String(Math.round(mlFunc(newQuantity, quantity, true_carbohydrates)))
-      } else if(type === 'gr.') {
-
+      } else if(type === 'ml.' || type === 'gr.') {
+        newCalories =  String(Math.round(mlFunc(newQuantity, true_quantity, true_calories)))
+        newProtein =  String(Math.round(mlFunc(newQuantity, true_quantity, true_protein)))
+        newFat =  String(Math.round(mlFunc(newQuantity, true_quantity, true_fat)))
+        newCarbohydrates =  String(Math.round(mlFunc(newQuantity, true_quantity, true_carbohydrates)))
       }
 
-      const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
+      const newQuantityData =  { id, table_id, true_quantity, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
       this.setState({ edit: false });
       this.props.saveNewQuantity(newQuantityData);
       this.props.update_Offline(newQuantityData);
