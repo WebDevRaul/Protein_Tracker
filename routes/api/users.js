@@ -111,4 +111,36 @@ router
       });
   });
 
+// @route   Post api/register/defaultItems
+// @desc    Save default items to new Users
+// @access  Privat
+router
+  .post('/register/defaultItems', (req, res) => {
+
+    // New Validation
+
+    const {email} = req.body;
+
+    User.findOne({ email })
+      .then(user => {
+        if (user) {
+          // Create item(s)
+          const item = new Item ({
+            user: user._id,
+            product_name: req.body.product_name,
+            quantity: req.body.quantity,
+            type: req.body.type,
+            calories: req.body.calories,
+            protein: req.body.protein,
+            fat: req.body.fat,
+            carbohydrates: req.body.carbohydrates
+          })
+
+          item.save().then(() => res.json({ success: 'Default Items added'}))
+        }
+      })
+      .catch(err => res.status(404).json(err))
+  })
+
+
 module.exports = router;

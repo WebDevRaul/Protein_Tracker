@@ -62,22 +62,23 @@ class Register extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
-    }
-    const item = {
+      password2: this.state.password2,
+
+      // New Item
       product_name: 'test',
+      quantity: '1',
+      type: 'pc.',
       calories: '1',
       protein: '1',
       fat: '1',
       carbohydrates: '1'
     }
-    this.props.registerUser(user, this.props.history,
-      // Save default items to DB
-        () => {
-          this.props.defaultItems(item)
-        }
-      )
+    this.newFunc(user)
   }
+      newFunc = (user) => {
+        this.props.registerUser(user, this.props.history);
+        this.props.defaultItems(user);      
+      }
 
   render() {
 
