@@ -71,7 +71,7 @@ class Register extends Component {
       calories: '1',
       protein: '1',
       fat: '1',
-      carbohydrates: '1'
+      carbohydrates: '2'
     }
     // Register and save default Item(s)
       this.props.registerUser(user);
