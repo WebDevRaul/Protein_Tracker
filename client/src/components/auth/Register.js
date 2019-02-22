@@ -73,12 +73,11 @@ class Register extends Component {
       fat: '1',
       carbohydrates: '1'
     }
-    this.newFunc(user)
+    // Register and save default Item(s)
+      this.props.registerUser(user);
+      this.props.defaultItems(user, this.props.history);    
   }
-      newFunc = (user) => {
-        this.props.registerUser(user, this.props.history);
-        this.props.defaultItems(user);      
-      }
+
 
   render() {
 

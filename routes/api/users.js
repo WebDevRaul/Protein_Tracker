@@ -117,6 +117,7 @@ router
 router
   .post('/register/defaultItems', (req, res) => {
 
+    console.log('register back')
     // New Validation
 
     const {email} = req.body;

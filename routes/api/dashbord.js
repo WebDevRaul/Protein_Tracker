@@ -197,7 +197,11 @@ router
       .then(user => {
         if (user) {
           Daily.findOne({user: req.params.id})
-            .then(item => res.json(item))
+            .then(item => {
+              if (item) {
+                res.json(item)
+              }
+            })
             .catch(err => res.status(404).json({ noData: 'No data found' }))
         }
       })
