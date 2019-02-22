@@ -55,22 +55,6 @@ router
               .catch(err => console.log(err));
           })
         })
-        User.findOne({ email: req.body.email })
-          .then(user => {
-            const userID = user._id;
-            // Create default products
-            const product = new Table({
-              user: userID,
-              product_name: 'Test',
-              quantity: '1',
-              protein: '10',
-              calories: '10',
-              carbohydrates: '10',
-              fat: '10',
-            })
-            // Save Item to DB
-            product.save().then(item => res.json({ success: 'success' }));
-          })
       }
     })
   });
