@@ -11,7 +11,7 @@ import isEmpty from '../common/isEmpty';
 
 // Redux
 import { connect } from 'react-redux';
-import { registerUser, defaultItems } from '../../redux/actions/register_user';
+import { registerUser } from '../../redux/actions/register_user';
 import { clearError } from '../../redux/actions/commonAction';
 
 class Register extends Component {
@@ -74,8 +74,7 @@ class Register extends Component {
       carbohydrates: '2'
     }
     // Register and save default Item(s)
-      this.props.registerUser(user);
-      this.props.defaultItems(user, this.props.history);    
+      this.props.registerUser(user, this.props.history);   
   }
 
 
@@ -164,11 +163,10 @@ Register.propTypes = {
   errors: PropTpyes.object.isRequired,
   clearError: PropTpyes.func.isRequired,
   registerUser: PropTpyes.func.isRequired,
-  defaultItems: PropTpyes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect( mapStateToProps, { registerUser, clearError, defaultItems } )(withRouter(Register));
+export default connect( mapStateToProps, { registerUser, clearError } )(withRouter(Register));

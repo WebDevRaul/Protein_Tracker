@@ -6,7 +6,7 @@ const keys = require('../../config/keys')
 
 // Load User Model
 const User = require('../../models/User');
-const Table = require('../../models/Table');
+const Item = require('../../models/Item');
 
 // Load Register Validation
 const validateRegisterInput = require('../../validation/register');
@@ -51,7 +51,31 @@ router
 
             newUser
               .save()
-              .then(user => res.json(user))
+              .then(user => {
+                // Create default item(s)
+                User.findOne({ _id: user._id })
+                  .then(user => {
+                    // Check for same user
+                    if (user.email !== req.body.email) {
+                      return res.status(401).json({ notAuthorized: 'User not authorized' });
+                    } else {
+                      // Create item(s)
+                      const item = new Item ({
+                        user: user._id,
+                        product_name: req.body.product_name,
+                        quantity: req.body.quantity,
+                        type: req.body.type,
+                        calories: req.body.calories,
+                        protein: req.body.protein,
+                        fat: req.body.fat,
+                        carbohydrates: req.body.carbohydrates
+                      })
+                      // Save item(s)
+                      item.save().then(() => res.json({ success: 'Default Items added'}))
+                    }
+                  })
+                  .catch(err => res.status(404).json({noUser: 'User not found'}))
+              })
               .catch(err => console.log(err));
           })
         })
@@ -110,38 +134,5 @@ router
         });
       });
   });
-
-// @route   Post api/register/defaultItems
-// @desc    Save default items to new Users
-// @access  Privat
-router
-  .post('/register/defaultItems', (req, res) => {
-
-    console.log('register back')
-    // New Validation
-
-    const {email} = req.body;
-
-    User.findOne({ email })
-      .then(user => {
-        if (user) {
-          // Create item(s)
-          const item = new Item ({
-            user: user._id,
-            product_name: req.body.product_name,
-            quantity: req.body.quantity,
-            type: req.body.type,
-            calories: req.body.calories,
-            protein: req.body.protein,
-            fat: req.body.fat,
-            carbohydrates: req.body.carbohydrates
-          })
-
-          item.save().then(() => res.json({ success: 'Default Items added'}))
-        }
-      })
-      .catch(err => res.status(404).json(err))
-  })
-
 
 module.exports = router;
