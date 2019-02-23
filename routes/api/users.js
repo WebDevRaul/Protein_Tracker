@@ -27,20 +27,23 @@ router
       return res.status(400).json(errors);
     };
 
+    const { user } = req.body;
+    const { item } = req.body;
+
     // Fetch User
 
     User.findOne({ email: req.body.email })
-    .then(user => {
+    .then(userData => {
       // Check for user
-      if (user) {
+      if (userData) {
         return res.status(400).json({email: 'Email already exists'})
       } else {
         const newUser = new User({
-          first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password
+          first_name: user.first_name,
+          last_name: user.last_name,
+          username: user.username,
+          email: user.email,
+          password: user.password
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -59,19 +62,22 @@ router
                     if (user.email !== req.body.email) {
                       return res.status(401).json({ notAuthorized: 'User not authorized' });
                     } else {
-                      // Create item(s)
-                      const item = new Item ({
-                        user: user._id,
-                        product_name: req.body.product_name,
-                        quantity: req.body.quantity,
-                        type: req.body.type,
-                        calories: req.body.calories,
-                        protein: req.body.protein,
-                        fat: req.body.fat,
-                        carbohydrates: req.body.carbohydrates
+                      Object.entries(item).map(i => {
+                        // Create item(s)
+                        const data = new Item ({
+                          user: user._id,
+                          product_name: i.product_name,
+                          quantity: i.quantity,
+                          type: i.type,
+                          calories: i.calories,
+                          protein: i.protein,
+                          fat: i.fat,
+                          carbohydrates: i.carbohydrates
+                        })
+
+                        // Save item(s)
+                        data.save().then(() => res.json({ success: 'Default Items added'}))
                       })
-                      // Save item(s)
-                      item.save().then(() => res.json({ success: 'Default Items added'}))
                     }
                   })
                   .catch(err => res.status(404).json({noUser: 'User not found'}))
