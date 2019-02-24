@@ -10,12 +10,12 @@ export default class Footer extends Component {
       <div className='footer'>
         <div className='container'>
           <div className='row border rounded border-primary'>
-            <div className='col p-3'>
+            <div className='col m-5 border-right border-success'>
               <div className='p-2'>
                 <Logo />
               </div>
             </div>
-            <div className='col'>
+            <div className='col m-2 pl-0 pr-0'>
               <div className='row'>
                 <div className='col'>
                   <p className='m-0'>home/about/register/sign in // dashboard/admin</p>
@@ -23,7 +23,7 @@ export default class Footer extends Component {
               </div>
               <div className='row'>
                 <div className='col'>
-                  <Link to={'/about'}>
+                  <Link to='/about'>
                     <p>About the project</p>
                   </Link>
                 </div>
@@ -37,11 +37,9 @@ export default class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col'>
+                      <div className='col-3'>
                         <p className='float-left ml-3 mb-0'>Social media</p>
                       </div>
-                    </div>
-                    <div className='row'>
                       <div className='col'>
                         <span className='ml-2 mr-2'>
                           <Link to={'/'} target='_blank'>
@@ -66,21 +64,17 @@ export default class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col'>
-                        <p className='float-left ml-3 mb-0'>tel icon</p>
+                      <div className='col-3'>
+                        <p className='float-left ml-3'>tel icon</p>
                       </div>
-                    </div>
-                    <div className='row'>
                       <div className='col'>
                         <p>555-555-5555</p>
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col'>
-                        <p className='float-left ml-3 mb-0'>Email:</p>
+                      <div className='col-3'>
+                        <p className='float-left ml-3'>Email:</p>
                       </div>
-                    </div>
-                    <div className='row'>
                       <div className='col'>
                         <p className=''>Test@email.com</p>
                       </div>
