@@ -9,7 +9,7 @@ export default class Footer extends Component {
     return (
       <div className='footer'>
         <div className='container'>
-          <div className='row border rounded border-primary'>
+          <div className='row border-bottom text-white border-primary'>
             <div className='col m-5 border-right border-success'>
               <div className='p-2'>
                 <Logo />
@@ -84,7 +84,7 @@ export default class Footer extends Component {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div className='row text-white'>
             <div className='col'>
               <div className='text-center font-weight-bold broder-top broder-success pt-4'>
                 <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
