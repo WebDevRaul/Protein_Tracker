@@ -81,12 +81,12 @@ class Register extends Component {
 
     return (
       <div>
-        <section id="register" className="bg-light py-5">
+        <section id="register" className="py-5">
           <div className="container">
             <div className="row">
               <div className="col-md-6 mx-auto">
                 <div className="card">
-                  <div className="card-header bg-primary text-white">
+                  <div className="card-header bg-gradient text-white">
                     <h4>
                       <i className="fas fa-user-plus"></i> Register</h4>
                   </div>

@@ -7,9 +7,9 @@ import Logo from './Logo';
 export default class Footer extends Component {
   render() {
     return (
-      <div className='footer'>
+      <div className='footer bg-dark text-white'>
         <div className='container'>
-          <div className='row border-bottom text-white border-primary'>
+          <div className='row border-bottom border-primary'>
             <div className='col m-5 border-right border-success'>
               <div className='p-2'>
                 <Logo />
@@ -24,7 +24,7 @@ export default class Footer extends Component {
               <div className='row'>
                 <div className='col'>
                   <Link to='/about'>
-                    <p>About the project</p>
+                    <p className='link '>About the project</p>
                   </Link>
                 </div>
               </div>
