@@ -18,32 +18,73 @@ export default class Footer extends Component {
             <div className='col'>
               <div className='row'>
                 <div className='col'>
-                  <p>Info</p>
+                  <p className='m-0'>home/about/register/sign in // dashboard/admin</p>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col'>
+                  <Link to={'/about'}>
+                    <p>About the project</p>
+                  </Link>
                 </div>
               </div>
               <div className='row'>
                 <div className='col'>
                   <div className='text-center m-auto'>
-                    <span className='ml-2 mr-2'>
-                      <Link to={'/'} target='_blank'>
-                        <i className='m-2 fab fa-facebook-f fa-1x'></i>
-                      </Link>
-                    </span>
-                    <span className='ml-2 mr-2'>
-                      <Link to={'/'} target='_blank'>
-                        <i className='m-2 fab fa-twitter fa-1x'></i>
-                      </Link>
-                    </span>
-                    <span className='ml-2 mr-2'>
-                      <Link to={'/'} target='_blank'>
-                        <i className='m-2 fab fa-instagram fa-1x'></i>
-                      </Link>
-                    </span>
-                    <span className='ml-2 mr-2'>
-                      <Link to={'/'} target='_blank'>
-                        <i className='m-2 fab fa-linkedin-in fa-1x'></i>
-                      </Link>
-                    </span>
+                    <div className='row'>
+                      <div className='col'>
+                        <h5 className='float-left'>Contact Us</h5>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <p className='float-left ml-3 mb-0'>Social media</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <span className='ml-2 mr-2'>
+                          <Link to={'/'} target='_blank'>
+                            <i className='m-2 fab fa-facebook-f fa-1x'></i>
+                          </Link>
+                        </span>
+                        <span className='ml-2 mr-2'>
+                          <Link to={'/'} target='_blank'>
+                            <i className='m-2 fab fa-twitter fa-1x'></i>
+                          </Link>
+                        </span>
+                        <span className='ml-2 mr-2'>
+                          <Link to={'/'} target='_blank'>
+                            <i className='m-2 fab fa-instagram fa-1x'></i>
+                          </Link>
+                        </span>
+                        <span className='ml-2 mr-2'>
+                          <Link to={'/'} target='_blank'>
+                            <i className='m-2 fab fa-linkedin-in fa-1x'></i>
+                          </Link>
+                        </span>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <p className='float-left ml-3 mb-0'>tel icon</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <p>555-555-5555</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <p className='float-left ml-3 mb-0'>Email:</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col'>
+                        <p className=''>Test@email.com</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -52,7 +93,7 @@ export default class Footer extends Component {
           <div className='row'>
             <div className='col'>
               <div className='text-center font-weight-bold broder-top broder-success pt-4'>
-                <p>Copyright &copy; {new Date().getFullYear()} Protein-Tracker</p>
+                <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
               </div>
             </div>
           </div>
