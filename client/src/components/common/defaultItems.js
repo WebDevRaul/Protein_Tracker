@@ -1,17 +1,17 @@
 const Items = [
   {
     id: 1,
-    product_name: 'test',
+    product_name: 'test1',
     quantity: '1',
     type: 'pc.',
     calories: '1',
     protein: '1',
     fat: '1',
-    carbohydrates: '2'
+    carbohydrates: '1'
   },
   {
     id: 2,
-    product_name: 'test',
+    product_name: 'test2',
     quantity: '1',
     type: 'pc.',
     calories: '1',
@@ -21,84 +21,14 @@ const Items = [
   },
   {
     id: 3,
-    product_name: 'test',
+    product_name: 'test3',
     quantity: '1',
     type: 'pc.',
     calories: '1',
     protein: '1',
     fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 4,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 5,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 6,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 7,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 8,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 9,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
-  {
-    id: 10,
-    product_name: 'test',
-    quantity: '1',
-    type: 'pc.',
-    calories: '1',
-    protein: '1',
-    fat: '1',
-    carbohydrates: '2'
-  },
+    carbohydrates: '3'
+  }
 ];
 
 export default Items;

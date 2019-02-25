@@ -37,8 +37,12 @@ export const setCurrentUser = decoded => {
 // Set default items
 export const setDefaultItems = (data, id) => dispatch => {
   axios
-    .post(`/api/login/${id}`, data)
+    .post(`/api/users/login/${id}`, data)
     .then(res => dispatch({
       type: NEW_USER
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
     }))
 }

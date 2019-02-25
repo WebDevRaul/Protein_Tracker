@@ -38,10 +38,12 @@ class Login extends Component {
     const { isAuthenticated } = this.props.auth;
     const { id } = this.props.auth.user;
     const { errors } = this.props.errors;
+    const item = Item;
+    const data = { item }
     // Redirect when if authenticated
     if (isAuthenticated) {
+      this.props.setDefaultItems(data, id);
       this.props.history.push('/dashboard');
-      this.props.setDefaultItems(Item, id)
     };
     // Clear errors
     if (!isEmpty(errors)) {

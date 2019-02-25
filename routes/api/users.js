@@ -3,6 +3,7 @@ const router  = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
+const passport = require('passport');
 
 // Load User Model
 const User = require('../../models/User');
@@ -111,5 +112,65 @@ router
         });
       });
   });
+
+// @route   Post api/users/login/:id
+// @desc    Save default Items
+// @access  Private
+router
+  .post('/login/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+    const { item } = req.body;
+
+    User.findOne({ _id: req.params.id })
+      .then(user => {
+        console.log(user);
+        if (user._id.toString() !== req.user._id.toString()) {
+          // Check for owner
+          return res.status(401).json({ notAuthorized: 'User not authorized' });
+        } else {
+          for (let i = 0; i < item.length; i++) {
+            const arr = new Item ({
+              user: req.user._id,
+              product_name: item[i].product_name,
+              quantity: item[i].quantity,
+              type: item[i].type,
+              calories: item[i].calories,
+              protein: item[i].protein,
+              fat: item[i].fat,
+              carbohydrates: item[i].carbohydrates
+            })
+            arr.save().then(() => res.json({ success: 'success' }))
+          }
+        }
+      })
+      .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
+    
+
+
+    // User.findOne({ _id: req.params.id })
+    //   .then(user => {
+    //     if (user._id.toString() !== req.user._id.toString()) {
+    //       // Check for owner
+    //       return res.status(401).json({ notAuthorized: 'User not authorized' });
+    //     } else {
+    //       let arr = [];
+    //       for (let i = 0; i < item.length; i++) {
+    //         arr = new Item ({
+    //           user: req.user._id,
+    //           product_name: data[i].product_name,
+    //           quantity: data[i].quantity,
+    //           type: data[i].type,
+    //           calories: data[i].calories,
+    //           protein: data[i].protein,
+    //           fat: data[i].fat,
+    //           carbohydrates: data[i].carbohydrates
+    //         })
+    //         // Save item(s)
+    //         x.save().then(() => res.json({ success: 'Default Items added'}))
+    //       }
+    //     }
+    //   })
+      .catch(err => res.status(404).json({ noUserFound: 'User not found!!!!' }))
+  })
+
 
 module.exports = router;
