@@ -8,7 +8,6 @@ import TextFieldGroup from '../common/components/TextFieldGroup';
 
 // Common
 import isEmpty from '../common/isEmpty';
-import Item from '../common/defaultItems';
 
 // Redux
 import { connect } from 'react-redux';
@@ -57,7 +56,6 @@ class Register extends Component {
 
   onSubmit=(e) => {
     e.preventDefault();
-    const item = Item;
     const user = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
@@ -67,10 +65,8 @@ class Register extends Component {
       password2: this.state.password2,
     };
 
-    const data = { user, item};
-
     // Register and save default Item(s)
-      this.props.registerUser(data, this.props.history);   
+      this.props.registerUser(user, this.props.history);   
   }
 
 

@@ -7,10 +7,11 @@ import TextFieldGroup from '../common/components/TextFieldGroup';
 
 // Common
 import isEmpty from '../common/isEmpty';
+import Item from '../common/defaultItems';
 
 // Redux
 import { connect } from 'react-redux';
-import { loginUser } from '../../redux/actions/login_user';
+import { loginUser, setDefaultItems } from '../../redux/actions/login_user';
 import { clearError } from '../../redux/actions/commonAction';
 
 class Login extends Component {
@@ -35,10 +36,12 @@ class Login extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { isAuthenticated } = this.props.auth;
-    const { errors } = this.props.errors
+    const { id } = this.props.auth.user;
+    const { errors } = this.props.errors;
     // Redirect when if authenticated
     if (isAuthenticated) {
-      this.props.history.push('/dashboard')
+      this.props.history.push('/dashboard');
+      this.props.setDefaultItems(Item, id)
     };
     // Clear errors
     if (!isEmpty(errors)) {
@@ -126,4 +129,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProps, { loginUser, clearError })(withRouter(Login))
+export default connect( mapStateToProps, { loginUser, setDefaultItems, clearError })(withRouter(Login))
