@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Components
 import Logo from './Logo';
 
-export default class Footer extends Component {
+class Footer extends Component {
   render() {
     return (
       <div className='footer bg-dark text-white'>
@@ -96,3 +96,5 @@ export default class Footer extends Component {
     )
   }
 }
+
+export default Footer;
