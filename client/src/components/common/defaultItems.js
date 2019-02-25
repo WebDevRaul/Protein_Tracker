@@ -1,5 +1,6 @@
-const Items = {
-  item_1: {
+const Items = [
+  {
+    id: 1,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -8,7 +9,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_2: {
+  {
+    id: 2,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -17,7 +19,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_3: {
+  {
+    id: 3,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -26,7 +29,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_4: {
+  {
+    id: 4,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -35,7 +39,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_5: {
+  {
+    id: 5,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -44,7 +49,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_6: {
+  {
+    id: 6,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -53,7 +59,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_7: {
+  {
+    id: 7,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -62,7 +69,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_8: {
+  {
+    id: 8,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -71,7 +79,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_9: {
+  {
+    id: 9,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -80,7 +89,8 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-  item_10: {
+  {
+    id: 10,
     product_name: 'test',
     quantity: '1',
     type: 'pc.',
@@ -89,6 +99,6 @@ const Items = {
     fat: '1',
     carbohydrates: '2'
   },
-};
+];
 
 export default Items;

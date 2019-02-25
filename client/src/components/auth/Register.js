@@ -68,7 +68,6 @@ class Register extends Component {
     };
 
     const data = { user, item};
-    console.log(data)
 
     // Register and save default Item(s)
       this.props.registerUser(data, this.props.history);   

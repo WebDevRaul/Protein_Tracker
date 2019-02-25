@@ -20,7 +20,7 @@ router
 
     // Validation //
 
-    const { errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateRegisterInput(req.body.user);
 
     // Check Validation
     if (!isValid) {
@@ -32,7 +32,7 @@ router
 
     // Fetch User
 
-    User.findOne({ email: req.body.email })
+    User.findOne({ email: user.email })
     .then(userData => {
       // Check for user
       if (userData) {
@@ -57,27 +57,25 @@ router
               .then(user => {
                 // Create default item(s)
                 User.findOne({ _id: user._id })
-                  .then(user => {
-                    // Check for same user
-                    if (user.email !== req.body.email) {
+                  .then(userMail => {
+                    if (userMail.email !== req.body.user.email) {
                       return res.status(401).json({ notAuthorized: 'User not authorized' });
                     } else {
-                      Object.entries(item).map(i => {
-                        // Create item(s)
-                        const data = new Item ({
+                      console.log(user)
+                      for (let i = 0; i < item.length; i++) {
+                        data = new Item ({
                           user: user._id,
-                          product_name: i.product_name,
-                          quantity: i.quantity,
-                          type: i.type,
-                          calories: i.calories,
-                          protein: i.protein,
-                          fat: i.fat,
-                          carbohydrates: i.carbohydrates
+                          product_name: item[i].product_name,
+                          quantity: item[i].quantity,
+                          type: item[i].type,
+                          calories: item[i].calories,
+                          protein: item[i].protein,
+                          fat: item[i].fat,
+                          carbohydrates: item[i].carbohydrates
                         })
-
                         // Save item(s)
                         data.save().then(() => res.json({ success: 'Default Items added'}))
-                      })
+                      }
                     }
                   })
                   .catch(err => res.status(404).json({noUser: 'User not found'}))
