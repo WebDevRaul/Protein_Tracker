@@ -11,7 +11,7 @@ import Item from '../common/defaultItems';
 
 // Redux
 import { connect } from 'react-redux';
-import { loginUser, setDefaultItems } from '../../redux/actions/login_user';
+import { loginUser, setDefaultItems, updateNewUser } from '../../redux/actions/login_user';
 import { clearError } from '../../redux/actions/commonAction';
 
 class Login extends Component {
@@ -43,6 +43,7 @@ class Login extends Component {
 
     if (isAuthenticated && (newUser === 'true')) {
       this.props.setDefaultItems(data, id);
+      this.props.updateNewUser(id);
     }
     // Redirect when if authenticated
     if (isAuthenticated) {
@@ -134,4 +135,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProps, { loginUser, setDefaultItems, clearError })(withRouter(Login))
+export default connect( mapStateToProps, { loginUser, setDefaultItems, updateNewUser, clearError })(withRouter(Login))

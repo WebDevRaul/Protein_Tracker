@@ -134,7 +134,32 @@ router
         return Promise.all(promises).then(() => res.json({ newUser: 'New user' }))
       })
       .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
-  })
+  });
+
+// @route   GET api/users/login/user/update/:id
+// @desc    Update newUser to false
+// @access  Private
+router
+  .post('/login/update/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+    User.findOne({ _id: req.params.id })
+      .then(user => {
+        if (user._id.toString() !== req.user.id.toString()) {
+          return res.status(401).json({ notAuthorized: 'User not authorized' });
+        }
+        // Update
+        User.findOneAndUpdate(
+          { _id: req.user.id },
+          {$set:{newUser: false}},
+          {new: true},
+          () => {
+            User.findOne({ _id: req.params.id })
+            .then(user => res.json({ update: true }))
+            .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
+          }
+        )
+      })
+      .catch(err => res.status(404).json({ noUserFound: 'User not found' }))
+  });
 
 
 module.exports = router;

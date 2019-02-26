@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../../components/auth/utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER, NEW_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, NEW_USER, UPDATE_NEW_USER } from './types';
 
 // Login User
 export const loginUser = userData => dispatch => {
@@ -46,3 +46,16 @@ export const setDefaultItems = (data, id) => dispatch => {
       payload: err.response.data
     }))
 }
+
+// Update newUser to False
+export const updateNewUser = id => dispatch => {
+  axios
+    .post(`/api/users/login/update/${id}`)
+    .then(res => dispatch({
+      type: UPDATE_NEW_USER
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+};
