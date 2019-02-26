@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // Components
 import Logo from './Logo';
@@ -29,14 +29,24 @@ class Footer extends Component {
             <div className='col m-2 pl-0 pr-0'>
               <div className='row'>
                 <div className='col'>
-                  <p className='m-0'>home/about/register/sign in // dashboard/admin</p>
-                </div>
-              </div>
-              <div className='row'>
-                <div className='col'>
-                  <Link to='/about'>
-                    <p className='link '>About the project</p>
-                  </Link>
+                  <div className='navbar float-left navbar-expand'>
+                    <ul className="navbar-nav ml-auto mr-5">
+                      <li className="nav-item mr-3 mt-3">
+                        <NavLink 
+                          to='/home' 
+                          className='nav-link'
+                          activeClassName="active"
+                        ><span>Home</span></NavLink>
+                      </li>
+                      <li className="nav-item mr-3 mt-3">
+                        <NavLink 
+                          to='/about' 
+                          className='nav-link'
+                          activeClassName="active"
+                        ><span>About</span></NavLink>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div className='row'>
@@ -53,24 +63,24 @@ class Footer extends Component {
                       </div>
                       <div className='col'>
                         <span className='ml-2 mr-2'>
-                          <Link to={'/'} target='_blank'>
+                          <NavLink to={'/'} target='_blank'>
                             <i className='m-2 fab fa-facebook-f fa-1x'></i>
-                          </Link>
+                          </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <Link to={'/'} target='_blank'>
+                          <NavLink to={'/'} target='_blank'>
                             <i className='m-2 fab fa-twitter fa-1x'></i>
-                          </Link>
+                          </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <Link to={'/'} target='_blank'>
+                          <NavLink to={'/'} target='_blank'>
                             <i className='m-2 fab fa-instagram fa-1x'></i>
-                          </Link>
+                          </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <Link to={'/'} target='_blank'>
+                          <NavLink to={'/'} target='_blank'>
                             <i className='m-2 fab fa-linkedin-in fa-1x'></i>
-                          </Link>
+                          </NavLink>
                         </span>
                       </div>
                     </div>

@@ -37,6 +37,12 @@ a:hover {
   text-decoration: none;
 }
 
+/* Navbar */
+.navbar li>.active {
+  font-weight: 500;
+  color: red !important;
+}
+
 /* Logo */
 
 .logo {

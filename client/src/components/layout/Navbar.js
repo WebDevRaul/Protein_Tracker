@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames  from 'classnames';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 // Components
@@ -36,18 +36,20 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
-          <Link 
+          <NavLink 
             to='/dashboard'
             className='nav-link'
+            activeClassName="active"
             onClick={this.onClick}
-            ><span>Dashboard</span></Link>
+            ><span>Dashboard</span></NavLink>
         </li>
         <li className="nav-item mr-3 mt-3">
-          <Link 
+          <NavLink 
             to='/admin'
             className='nav-link'
+            activeClassName="active"
             onClick={this.onClick}
-            ><span>Admin</span></Link>
+            ><span>Admin</span></NavLink>
         </li>
         
         <li className="nav-item mr-3 mt-3">
@@ -63,18 +65,20 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
-          <Link 
+          <NavLink 
             to='/register' 
             className='nav-link'
+            activeClassName="active"
             onClick={this.onClick}
-          ><span>Register</span></Link>
+          ><span>Register</span></NavLink>
         </li>
         <li className="nav-item mr-3 mt-3">
-          <Link 
+          <NavLink 
             to='/login' 
             className='nav-link'
+            activeClassName="active"
             onClick={this.onClick}
-          ><span>Sign in</span></Link>
+          ><span>Sign in</span></NavLink>
         </li>
       </ul>
     );
@@ -92,18 +96,20 @@ class Navbar extends Component {
         <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
           <ul className='navbar-nav mr-auto m-r-5'>
             <li className="nav-item mr-3 mt-3">
-            <Link 
+            <NavLink 
               to='/home' 
               className='nav-link'
+              activeClassName="active"
               onClick={this.onClick}
-              ><span>Home</span></Link>
+              ><span>Home</span></NavLink>
             </li>
             <li className="nav-item mr-3 mt-3">
-            <Link 
+            <NavLink 
               to='/about' 
               className='nav-link'
+              activeClassName="active"
               onClick={this.onClick}
-              ><span>About</span></Link>
+              ><span>About</span></NavLink>
             </li>
           </ul>
           {isAuthenticated ? authLinks : guestLinks}
