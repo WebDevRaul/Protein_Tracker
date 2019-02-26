@@ -18,33 +18,23 @@ const validateLoginInput = require('../../validation/login');
 // @access  Public
 router
   .post('/register', (req, res) => {
-
     // Validation //
-
-    const { errors, isValid } = validateRegisterInput(req.body.user);
-
+    const { errors, isValid } = validateRegisterInput(req.body);
     // Check Validation
     if (!isValid) {
       return res.status(400).json(errors);
     };
 
-    const { user } = req.body;
-
+    const { email, first_name, last_name, username, password } = req.body;
     // Fetch User
-
-    User.findOne({ email: user.email })
+    User.findOne({ email })
     .then(userData => {
       // Check for user
       if (userData) {
         return res.status(400).json({email: 'Email already exists'})
       } else {
-        const newUser = new User({
-          first_name: user.first_name,
-          last_name: user.last_name,
-          username: user.username,
-          email: user.email,
-          password: user.password
-        });
+        const newUser = new User({ first_name, last_name, username, email, password });
+
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -91,7 +81,7 @@ router
         bcrypt.compare(password, user.password).then(isMatch => {
           if (isMatch) {
             // User Matched
-            const payload = {id: user.id, first_name: user.first_name, last_name: user.last_name};
+            const payload = {id: user.id, first_name: user.first_name, last_name: user.last_name, newUser: user.newUser};
     
             // Sign Token
             jwt.sign(

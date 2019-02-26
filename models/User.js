@@ -23,6 +23,10 @@ const UserSchema = new Scheema({
     type: String,
     required: true
   },
+  newUser: {
+    type: String,
+    default: false
+  },
   date: {
     type: Date,
     default: Date.now

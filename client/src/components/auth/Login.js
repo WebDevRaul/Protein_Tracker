@@ -34,6 +34,10 @@ class Login extends Component {
     }
   };
 
+  componentDidMount() {
+    const { user } = this.props.auth;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { isAuthenticated } = this.props.auth;
     const { id } = this.props.auth.user;
