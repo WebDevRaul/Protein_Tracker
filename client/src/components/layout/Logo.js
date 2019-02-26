@@ -5,7 +5,7 @@ class Logo extends Component {
   render() {
     let squers = [];
     
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 10; i++) {
       let color = [];
       for (let i = 0; i < 3; i++) {
         color.push(Math.floor(Math.random() * 256 ))
@@ -17,9 +17,9 @@ class Logo extends Component {
       <span key={i.i} style =
         {{
           display: 'inline-flex',
-          margin: '2px',
-          width: '8px',
-          height: '8px',
+          margin: '1px',
+          width: '4.5px',
+          height: '4.5px',
           backgroundColor: `rgb(${i.color})`
         }}>
       </span>);

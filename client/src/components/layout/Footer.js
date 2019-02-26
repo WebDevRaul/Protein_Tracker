@@ -8,11 +8,22 @@ class Footer extends Component {
   render() {
     return (
       <div className='footer bg-dark text-white'>
-        <div className='container'>
-          <div className='row border-bottom border-primary'>
-            <div className='col m-5 border-right border-success'>
-              <div className='p-2'>
-                <Logo />
+        <div className='pl-4 pr-4 pt-2 pb-2'>
+          <div className='row'>
+            <div className='col mt-5 mr-5 mb-5 border-right border-success'>
+              <div className='row'>
+                <div className='col'>
+                  <div className='p-2'>
+                    <Logo />
+                  </div>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col'>
+                  <div className='text-center text-white font-weight-bold broder-top broder-success pt-4'>
+                    <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className='col m-2 pl-0 pr-0'>
@@ -38,7 +49,7 @@ class Footer extends Component {
                     </div>
                     <div className='row'>
                       <div className='col-3'>
-                        <p className='float-left ml-3 mb-0'>Social media</p>
+                        <p className='float-left ml-3 mb-0'><i className="far fa-2x fa-address-card"></i></p>
                       </div>
                       <div className='col'>
                         <span className='ml-2 mr-2'>
@@ -65,29 +76,22 @@ class Footer extends Component {
                     </div>
                     <div className='row'>
                       <div className='col-3'>
-                        <p className='float-left ml-3'>tel icon</p>
+                        <p className='float-left ml-3'><i className="fas fa-2x fa-mobile-alt"></i></p>
                       </div>
                       <div className='col'>
-                        <p>555-555-5555</p>
+                        <p className='m-0'>555-555-5555</p>
                       </div>
                     </div>
                     <div className='row'>
                       <div className='col-3'>
-                        <p className='float-left ml-3'>Email:</p>
+                        <p className='float-left ml-3'><i className="far fa-2x fa-envelope"></i></p>
                       </div>
                       <div className='col'>
-                        <p className=''>Test@email.com</p>
+                        <p className='m-0'>Test@email.com</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className='row text-white'>
-            <div className='col'>
-              <div className='text-center font-weight-bold broder-top broder-success pt-4'>
-                <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
               </div>
             </div>
           </div>
