@@ -25,7 +25,7 @@ const UserSchema = new Scheema({
   },
   newUser: {
     type: String,
-    default: false
+    default: true
   },
   date: {
     type: Date,
