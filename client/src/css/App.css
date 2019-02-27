@@ -98,9 +98,6 @@ a:hover {
   font-weight: 500;
 }
 
-/* Footer */
-
-
 /* ==================================== */
 
 /* Media */
@@ -159,9 +156,17 @@ a:hover {
     height: calc(1.80rem + 2px);
     padding: .175rem 1.75rem .175rem .75rem;
   }
-  /* .dashboard p {
-    font-size: 0.7rem;
-  } */
+
+  /* Footer */
+  .footer-name > :nth-child(1) > span, .footer-name > :nth-child(2) > span {
+    float: none !important;
+  }
+  .footer-name > :nth-child(1), .footer-name > :nth-child(2) {
+    text-align: center;
+  }
+  .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
+    padding: 3rem 1rem !important;
+  }
 }
 
 /* ==================================== */
@@ -220,6 +225,14 @@ a:hover {
   .admin h5 {
     font-size: 1.1rem;
   }
+
+  /* footer */
+  .footer-name > :nth-child(1) > span, .footer-name > :nth-child(2) > span {
+    float: none !important;
+  }
+  .footer-name > :nth-child(1), .footer-name > :nth-child(2) {
+    text-align: center;
+  }
 }
 
 /* ==================================== */
@@ -244,18 +257,16 @@ a:hover {
   }
 }
 
-@media (min-width: 768px) and (max-width: 991) { 
-  /* Footer */
-  .footer > div > div > div > div {
-    background: red !important;
-    padding: 0px !important;
-  }
-}
 
-
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 991px) {
   /* form */
   .form > form > .row > :nth-last-child(1) {
     margin: 0 auto;
   }
+
+  /* Footer */
+  .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
+    padding: 3rem 0 !important;
+  }
+  
 }
