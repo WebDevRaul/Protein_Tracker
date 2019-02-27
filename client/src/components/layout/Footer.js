@@ -10,37 +10,41 @@ class Footer extends Component {
       <div className='footer bg-dark text-white'>
         <div className='pl-4 pr-4 pt-2 pb-2'>
           <div className='row'>
-            <div className='col mt-5 mr-5 mb-5 border-right border-success'>
-              <div className='row'>
-                <div className='col'>
-                  <div className='p-2'>
-                    <Logo />
-                  </div>
-                </div>
-              </div>
-              <div className='row'>
-                <div className='col'>
-                  <div className='text-center text-white font-weight-bold broder-top broder-success pt-4'>
-                    <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
+            <div className='col-md-6'>
+              <div className='m-auto p-5  border-right border-success'>
+                <div className='row'>
+                  <div className='col'>
+                    <div className='row'>
+                      <div className='col-3'>
+                        <div className='p-2'>
+                          <Logo />
+                        </div>
+                      </div>
+                      <div className='col'>
+                        <div className='text-center text-white font-weight-bold broder-top broder-success pt-4'>
+                          <p>Copyright &copy; {new Date().getFullYear()} Savin Raul-Calin</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='col m-2 pl-0 pr-0'>
+            <div className='col-md-6'>
               <div className='row'>
                 <div className='col'>
                   <div className='navbar float-left navbar-expand'>
                     <ul className="navbar-nav ml-auto mr-5">
                       <li className="nav-item mr-3 mt-3">
                         <NavLink 
-                          to='/home' 
+                          exact to='/home' 
                           className='nav-link'
                           activeClassName="active"
                         ><span>Home</span></NavLink>
                       </li>
                       <li className="nav-item mr-3 mt-3">
                         <NavLink 
-                          to='/about' 
+                          exact to='/about' 
                           className='nav-link'
                           activeClassName="active"
                         ><span>About</span></NavLink>
