@@ -190,11 +190,16 @@ a:hover {
   .admin  p {
     font-size: 0.9rem;
   }
+
+  /* Footer */
+  .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
+    padding: 3rem !important;
+  }
 }
 
 /* ==================================== */
 
-@media (min-width: 481px) and (max-width: 576px) {
+@media (min-width: 481px) and (max-width: 575px) {
 
   /* Calculator */
   .col-3 {
@@ -237,7 +242,7 @@ a:hover {
 
 /* ==================================== */
 
-@media (min-width: 577px) and (max-width: 767px)  {
+@media (min-width: 576px) and (max-width: 767px)  {
 
    /* Calculator */
    .col-3 {
@@ -266,7 +271,7 @@ a:hover {
 
   /* Footer */
   .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
-    padding: 3rem 0 !important;
+    padding: 3rem 0rem !important;
   }
   
 }

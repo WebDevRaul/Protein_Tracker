@@ -23,8 +23,8 @@ class Footer extends Component {
                       <div className='col p-0'>
                         <div className='text-white font-weight-bold broder-top broder-success pt-4'>
                           <div className='row footer-name'>
-                            <div className='col-xsm-6 p-0 pr-2'><span className='float-right'>Copyright &copy; {new Date().getFullYear()}</span></div>
-                            <div className='col-xsm-6 p-0'><span className='float-left'>Savin Raul-Calin</span></div>
+                            <div className='col-sm-6 p-0 pr-2'><span className='m-auto float-right'>Copyright &copy; {new Date().getFullYear()}</span></div>
+                            <div className='col-sm-6 p-0'><span className='m-auto float-left'>Savin Raul-Calin</span></div>
                           </div>
                         </div>
                       </div>
