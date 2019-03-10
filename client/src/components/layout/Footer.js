@@ -36,23 +36,17 @@ class Footer extends Component {
             <div className='col-md-6'>
               <div className='row'>
                 <div className='col'>
-                  <div className='navbar float-left navbar-expand'>
-                    <ul className="navbar-nav ml-auto mr-5">
-                      <li className="nav-item mr-3 mt-3">
-                        <NavLink 
-                          exact to='/home' 
-                          className='nav-link'
-                          activeClassName="active"
-                        ><span>Home</span></NavLink>
-                      </li>
-                      <li className="nav-item mr-3 mt-3">
-                        <NavLink 
-                          exact to='/about' 
-                          className='nav-link'
-                          activeClassName="active"
-                        ><span>About</span></NavLink>
-                      </li>
-                    </ul>
+                  <div>
+                    <li className='link-wrapper'>
+                      <NavLink 
+                        exact to='/about' 
+                        className='nav-link'
+                        activeClassName="active">
+                        <span>
+                          About Us
+                        </span>
+                      </NavLink>
+                    </li>
                   </div>
                 </div>
               </div>
