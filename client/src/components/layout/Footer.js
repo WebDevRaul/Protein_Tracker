@@ -39,18 +39,16 @@ class Footer extends Component {
             </div>
             <div className='col-md-6'>
               <div className='row'>
-                <div className='col'>
-                  <div>
-                    <li className='link-wrapper'>
-                      <NavLink 
-                        exact to='/about' 
-                        className='nav-link'
-                        activeClassName="active">
-                        <span>
-                          About Us
-                        </span>
-                      </NavLink>
-                    </li>
+                <div className='col col-md-6 text-center'>
+                  <div className='m-auto p-2'>
+                    <NavLink 
+                      exact to='/about' 
+                      className='nav-link'
+                      activeClassName="active">
+                      <h5 className='m-0'>
+                        About Us
+                      </h5>
+                    </NavLink>
                   </div>
                 </div>
               </div>
