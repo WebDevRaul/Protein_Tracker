@@ -57,14 +57,14 @@ class Footer extends Component {
                   <div className='text-center m-auto'>
                     <div className='row'>
                       <div className='col'>
-                        <h5 className='float-left'>Contact Us</h5>
+                        <h5 className='float-left border-bottom mb-3'>Contact Us</h5>
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3'>
-                        <p className='float-left ml-3 mb-0'><i className="far fa-2x fa-address-card"></i></p>
+                      <div className='col-3 m-2'>
+                        <p className='mb-0 float-left ml-3'><i className="far fa-2x fa-address-card"></i></p>
                       </div>
-                      <div className='col'>
+                      <div className='col m-auto'>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
                             <i className='m-2 fab fa-facebook-f fa-1x'></i>
@@ -88,18 +88,18 @@ class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3'>
-                        <p className='float-left ml-3'><i className="fas fa-2x fa-mobile-alt"></i></p>
+                      <div className='col-3 m-2'>
+                        <p className='mb-0 float-left ml-3'><i className="fas fa-2x fa-mobile-alt"></i></p>
                       </div>
-                      <div className='col'>
+                      <div className='col m-auto'>
                         <p className='m-0'>555-555-5555</p>
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3'>
-                        <p className='float-left ml-3'><i className="far fa-2x fa-envelope"></i></p>
+                      <div className='col-3 m-2'>
+                        <p className='mb-0 float-left ml-3'><i className="far fa-2x fa-envelope"></i></p>
                       </div>
-                      <div className='col'>
+                      <div className='col m-auto'>
                         <p className='m-0'>Test@email.com</p>
                       </div>
                     </div>
