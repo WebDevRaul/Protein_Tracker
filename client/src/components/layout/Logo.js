@@ -28,7 +28,7 @@ class Logo extends Component {
       <div className='logo text-center'>
         <div className='logo-div text-uppercase'>
           <Link to='/home'>
-            <p>Protien</p>
+            <p>Protein</p>
             <p>{squer}</p>
             <p>{squer}</p>
             <p>Tracker</p>

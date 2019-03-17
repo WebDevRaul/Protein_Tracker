@@ -10,7 +10,7 @@ class Footer extends Component {
       <div className='footer bg-dark text-white'>
         <div className='pl-4 pr-4 pt-2 pb-2'>
           <div className='row'>
-            <div className='col-md-6 p-0'>
+            <div className='col-md-6 p-0 m-auto'>
               <div className='m-auto p-5 border-right border-success'>
                 <div className='row'>
                   <div className='col'>
@@ -20,11 +20,15 @@ class Footer extends Component {
                           <Logo />
                         </div>
                       </div>
-                      <div className='col p-0'>
-                        <div className='text-white font-weight-bold broder-top broder-success pt-4'>
+                      <div className='col p-0 m-auto'>
+                        <div className='text-white font-weight-bold broder-top broder-success'>
                           <div className='row footer-name'>
-                            <div className='col-sm-6 p-0 pr-2'><span className='m-auto float-right'>Copyright &copy; {new Date().getFullYear()}</span></div>
-                            <div className='col-sm-6 p-0'><span className='m-auto float-left'>Savin Raul-Calin</span></div>
+                            <div className='col-sm-6 p-0 pr-2'>
+                              <span className='m-auto float-right'>Copyright &copy; {new Date().getFullYear()}</span>
+                            </div>
+                            <div className='col-sm-6 p-0'>
+                              <span className='m-auto float-left'>Savin Raul-Calin</span>
+                            </div>
                           </div>
                         </div>
                       </div>
