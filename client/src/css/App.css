@@ -102,6 +102,11 @@ a:hover {
 .footer > div > .row > div > .border-right {
   border-right: 3px solid #007bff85 !important;
 }
+.social-border {
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 5px;
+}
 
 
 /* ==================================== */

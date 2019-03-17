@@ -37,13 +37,13 @@ class Footer extends Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-6 pl-5 pr-5'>
               <div className='row'>
-                <div className='col col-md-6 text-center'>
-                  <div className='m-auto p-2'>
+                <div className='col col-md-6'>
+                  <div className='m-auto pt-2 pr-2 pb-2'>
                     <NavLink 
                       exact to='/about' 
-                      className='nav-link'
+                      className='nav-link pl-0'
                       activeClassName="active">
                       <h5 className='m-0'>
                         About Us
@@ -67,22 +67,22 @@ class Footer extends Component {
                       <div className='col m-auto'>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
-                            <i className='m-2 fab fa-facebook-f fa-1x'></i>
+                            <i className='social-border fab fa-facebook-f fa-1x'></i>
                           </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
-                            <i className='m-2 fab fa-twitter fa-1x'></i>
+                            <i className='social-border fab fa-twitter fa-1x'></i>
                           </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
-                            <i className='m-2 fab fa-instagram fa-1x'></i>
+                            <i className='social-border fab fa-instagram fa-1x'></i>
                           </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
-                            <i className='m-2 fab fa-linkedin-in fa-1x'></i>
+                            <i className='social-border fab fa-linkedin-in fa-1x'></i>
                           </NavLink>
                         </span>
                       </div>
