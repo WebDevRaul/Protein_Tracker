@@ -98,6 +98,12 @@ a:hover {
   font-weight: 500;
 }
 
+/* Footer */
+.footer > div > .row > div > .border-right {
+  border-right: 3px solid #007bff85 !important;
+}
+
+
 /* ==================================== */
 
 /* Media */
@@ -167,6 +173,9 @@ a:hover {
   .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
     padding: 3rem 1rem !important;
   }
+  .footer > div > .row > div > .border-right {
+    border-right: 0px !important;
+  }
 }
 
 /* ==================================== */
@@ -194,6 +203,9 @@ a:hover {
   /* Footer */
   .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
     padding: 3rem !important;
+  }
+  .footer > div > .row > div > .border-right {
+    border-right: 0px !important;
   }
 }
 
@@ -238,6 +250,10 @@ a:hover {
   .footer-name > :nth-child(1), .footer-name > :nth-child(2) {
     text-align: center;
   }
+
+  .footer > div > .row > div > .border-right {
+    border-right: 0px !important;
+  }
 }
 
 /* ==================================== */
@@ -259,6 +275,11 @@ a:hover {
   /* form */
   .form > form > .row > :nth-last-child(1) {
     margin: 0 auto;
+  }
+
+  /* footer */
+  .footer > div > .row > div > .border-right {
+    border-right: 0px !important;
   }
 }
 

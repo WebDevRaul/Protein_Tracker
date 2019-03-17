@@ -16,7 +16,7 @@ class Footer extends Component {
                   <div className='col'>
                     <div className='row'>
                       <div className='col-3'>
-                        <div className='p-2'>
+                        <div className='p-2 text-center'>
                           <Logo />
                         </div>
                       </div>
