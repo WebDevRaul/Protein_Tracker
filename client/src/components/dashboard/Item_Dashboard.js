@@ -91,9 +91,9 @@ class ItemDashboard extends Component {
     const input = (
       <div>
         <div className='row no-gutters'>
-          <div className='col-9'>
+          <div className='col-7'>
             <input 
-            className={classnames('col', {'special-border' : !isEmpty(errors.productQty)})}
+            className={classnames('col p-0', {'special-border' : !isEmpty(errors.productQty)})}
             type = 'text'
             value = { newQuantity }
             onChange = {this.onChange}
@@ -121,7 +121,7 @@ class ItemDashboard extends Component {
         <div className='row'>
           <div className='col'>
             <div className='text-capitalize'>
-              <p className='ml-2'>{product_name}</p>
+              <p className='ml-4'>{product_name}</p>
               <div className='invalid-feedback'>{errors.productQty}</div>
             </div>
           </div>
@@ -135,7 +135,7 @@ class ItemDashboard extends Component {
           <div className={classnames('col', {'col-2' : edit})}><p>{calories}</p></div>
           <div className={classnames('col', {'col-2' : edit})}><p>{protein}</p></div>
           <div className={classnames('col', {'col-2' : edit})}><p>{fat}</p></div>
-          <div className={classnames('col', {'col-2' : edit})}><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
+          <div className={classnames('col', {'col-2' : edit})}><p className='d-flex'>{carbohydrates}<span className='hover ml-1' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
         </div>
       </div>
     )

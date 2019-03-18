@@ -99,7 +99,7 @@ class Table extends Component {
                       <div className='row'>
                         <div className='col'>
                           <div className='text-capitalize'>
-                            <p className='ml-2'>Name:</p>
+                            <p className='ml-4'>Name:</p>
                           </div>
                         </div>
                       </div>
