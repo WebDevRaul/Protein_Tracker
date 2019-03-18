@@ -103,9 +103,14 @@ a:hover {
   border-right: 3px solid #007bff85 !important;
 }
 .social-border {
-  padding: 10px;
-  border: 2px solid red;
+  width: 45px;
+  height: 45px;
   border-radius: 5px;
+  border: 2px solid red;
+}
+.social-border::before {
+  position:absolute;
+  transform: translate(-55%, 55%);
 }
 
 
