@@ -107,10 +107,14 @@ a:hover {
   height: 45px;
   border-radius: 5px;
   border: 2px solid red;
+  background: linear-gradient(25deg, 
+  rgba(0, 132, 255, 0.7) 0%, 
+  rgba(248, 1, 1, 0.7) 50%, 
+  rgba(238, 255, 0, 0.7) 100% )
 }
 .social-border::before {
   position:absolute;
-  transform: translate(-55%, 55%);
+  transform: translate(-55%, 65%);
 }
 
 
