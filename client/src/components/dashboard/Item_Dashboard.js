@@ -78,6 +78,7 @@ class ItemDashboard extends Component {
 
       const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
       this.setState({ edit: false });
+      this.setState({ newQuantity: '' })
       this.props.saveNewQuantity(newQuantityData);
       this.props.update_Offline(newQuantityData);
     }
