@@ -197,7 +197,7 @@ class Dashboard extends Component {
               onChange={this.onChangeSelect}
               onClick={this.onClickSelect}
               items={table}
-              option='Select Table'
+              option='Select Meal'
             />
             </div>
             <div className='col-5 offset-sm-1 col-sm-5 col-md-6 offset-lg-4 col-lg-4'>
@@ -207,7 +207,7 @@ class Dashboard extends Component {
           { 
             breakfast ? 
             <div className='row'>
-              <div className='col'>
+              <div className='col p-0'>
                 <Table id={'breakfast'} data={this.props.dashboard.breakfast} total={this.props.calculator.breakfast} />
               </div>
             </div> 

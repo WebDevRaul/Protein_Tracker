@@ -112,7 +112,7 @@ class ItemDashboard extends Component {
     const paragraph = (
       <div className='d-flex'>
         <p onClick={this.onEdit} className='dashboard-edit-product' >{quantity}</p>
-        <span className='type'>{type}</span>
+        <span className='pl-2'>{type}</span>
       </div>
     )  
     

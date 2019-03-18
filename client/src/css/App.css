@@ -68,7 +68,7 @@ a:hover {
   font-weight: 500;
 }
 .dashboard-edit-product {
-  margin: 0 10px 0 45px;
+  margin: auto 0 auto 45%;
   padding: 0px 6px;
   background: white;
 }
@@ -175,6 +175,9 @@ a:hover {
   .dashboard .select{
     height: calc(1.80rem + 2px);
     padding: .175rem 1.75rem .175rem .75rem;
+  }
+  .dashboard-edit-product {
+    margin: 0 auto;
   }
 
   /* Footer */
