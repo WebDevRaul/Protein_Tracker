@@ -21,7 +21,7 @@ class Footer extends Component {
                         </div>
                       </div>
                       <div className='col p-0 m-auto'>
-                        <div className='text-white font-weight-bold broder-top broder-success'>
+                        <div className='text-white broder-top broder-success'>
                           <div className='row footer-name'>
                             <div className='col-sm-6 p-0 pr-2'>
                               <span className='m-auto float-right'>Copyright &copy; {new Date().getFullYear()}</span>
@@ -45,9 +45,9 @@ class Footer extends Component {
                       exact to='/about' 
                       className='nav-link pl-0'
                       activeClassName="active">
-                      <h5 className='m-0'>
+                      <p className='m-0'>
                         About Us
-                      </h5>
+                      </p>
                     </NavLink>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ class Footer extends Component {
                   <div className='text-center m-auto'>
                     <div className='row'>
                       <div className='col'>
-                        <h5 className='float-left border-bottom mb-3'>Contact Us</h5>
+                        <p className='float-left border-bottom mb-3'>Contact Us</p>
                       </div>
                     </div>
                     <div className='row'>
