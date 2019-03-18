@@ -61,13 +61,13 @@ class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3 m-2'>
+                      <div className='col-2 col-sm-3 p-0 mb-3 mt-3'>
                         <p className='mb-0 float-left ml-3'><i className="far fa-2x fa-address-card"></i></p>
                       </div>
-                      <div className='col m-auto'>
+                      <div className='col m-auto p-0'>
                         <span className='ml-2 mr-2'>
                           <NavLink to={'/'} target='_blank'>
-                            <i className='social-border fab fa-facebook-f fa-1x'></i>
+                            <i className='social-border m-auto fab fa-facebook-f fa-1x'></i>
                           </NavLink>
                         </span>
                         <span className='ml-2 mr-2'>
@@ -88,7 +88,7 @@ class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3 m-2'>
+                      <div className='col-2 col-sm-3 p-0 mb-3 mt-3'>
                         <p className='mb-0 float-left ml-3'><i className="fas fa-2x fa-mobile-alt"></i></p>
                       </div>
                       <div className='col m-auto'>
@@ -96,7 +96,7 @@ class Footer extends Component {
                       </div>
                     </div>
                     <div className='row'>
-                      <div className='col-3 m-2'>
+                      <div className='col-2 col-sm-3 p-0 mb-3 mt-3'>
                         <p className='mb-0 float-left ml-3'><i className="far fa-2x fa-envelope"></i></p>
                       </div>
                       <div className='col m-auto'>

@@ -114,7 +114,7 @@ a:hover {
 }
 .social-border::before {
   position:absolute;
-  transform: translate(-55%, 65%);
+  transform: translate(-55%, 75%);
 }
 
 
@@ -189,6 +189,9 @@ a:hover {
   }
   .footer > div > .row > div > .border-right {
     border-right: 0px !important;
+  }
+  .footer > div > .row > :nth-child(2) {
+    padding: 0 10px !important;
   }
 }
 
@@ -307,6 +310,9 @@ a:hover {
   /* Footer */
   .footer > :nth-child(1) > .row > :nth-child(1) > :nth-child(1){
     padding: 3rem 0rem !important;
+  }
+  .footer > div > .row > :nth-child(2) {
+    padding: 0 35px !important;
   }
   
 }
