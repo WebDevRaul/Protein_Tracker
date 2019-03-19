@@ -100,14 +100,54 @@ const Items = [
     calories: '219.0'
   },
   {
-    id: 1,
-    product_name: '',
-    quantity: '',
+    id: 11,
+    product_name: 'Beef',
+    quantity: '100',
     type: 'gr.',
-    protein: '',
-    carbohydrates: '',
-    fat: '',
-    calories: ''
+    protein: '26.0',
+    carbohydrates: '0.0',
+    fat: '18.0',
+    calories: '271'
+  },
+  {
+    id: 12,
+    product_name: 'Potato',
+    quantity: '100',
+    type: 'gr.',
+    protein: '2.0',
+    carbohydrates: '17.0',
+    fat: '0.1',
+    calories: '77.0'
+  },
+  {
+    id: 13,
+    product_name: 'Sweet potato',
+    quantity: '100',
+    type: 'gr.',
+    protein: '1.3',
+    carbohydrates: '17.7',
+    fat: '0.1',
+    calories: '76.0'
+  },
+  {
+    id: 14,
+    product_name: 'Cheese',
+    quantity: '100',
+    type: 'gr.',
+    protein: '25.0',
+    carbohydrates: '1.3',
+    fat: '33.0',
+    calories: '402.0'
+  },
+  {
+    id: 1,
+    product_name: 'Apple',
+    quantity: '1',
+    type: 'pc.',
+    protein: '0.5',
+    carbohydrates: '25.1',
+    fat: '0.3',
+    calories: '94.6'
   },
 ];
 
