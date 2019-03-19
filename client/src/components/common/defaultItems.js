@@ -51,7 +51,7 @@ const Items = [
   },
   {
     id: 6,
-    product_name: 'Broccoli boiled',
+    product_name: 'Boiled broccoli',
     quantity: '100',
     type: 'gr.',
     protein: '2.4',
@@ -71,7 +71,7 @@ const Items = [
   },
   {
     id: 8,
-    product_name: 'Brine telemea',
+    product_name: 'Telemea cheese',
     quantity: '100',
     type: 'gr.',
     protein: '25.0',
