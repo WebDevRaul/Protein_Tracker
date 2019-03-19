@@ -20,6 +20,24 @@ class ListAdmin extends Component {
   render() {
     let item;
     const { items } = this.props.admin;
+
+    const compare = (a, b) => {
+      // Use toUpperCase() to ignore character casing
+      const nameA = a.product_name.toUpperCase();
+      const nameB = b.product_name.toUpperCase();
+    
+      let comparison = 0;
+      if (nameA > nameB) {
+        comparison = 1;
+      } else if (nameA < nameB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+    // Sort
+    items.sort(compare)
+    
     // Check for empty items
     if (!isEmpty(items)) {
       item = items.map(i => 
@@ -37,7 +55,7 @@ class ListAdmin extends Component {
           onClickFunc={this.onDelete}
         />
       )
-    }
+    };
     return (
       <div className='list-admin mt-5'>
         <div className='container'>
