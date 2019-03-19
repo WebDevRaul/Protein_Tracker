@@ -160,10 +160,10 @@ class Dashboard extends Component {
     const fatVals = data.map(i => Number(!isEmpty(i.temp_fat) ? i.temp_fat : i.fat));
     const carbohydratesVals = data.map(i => Number(!isEmpty(i.temp_carbohydrates) ? i.temp_carbohydrates : i.carbohydrates));
 
-    const calories = Math.ceil(this.sumAll(...caloriesVals));
-    const protein = Math.ceil(this.sumAll(...proteinVals));
-    const fat = Math.ceil(this.sumAll(...fatVals));
-    const carbohydrates = Math.ceil(this.sumAll(...carbohydratesVals));
+    const calories = this.sumAll(...caloriesVals).toFixed(1);
+    const protein = this.sumAll(...proteinVals).toFixed(1);
+    const fat = this.sumAll(...fatVals).toFixed(1);
+    const carbohydrates = this.sumAll(...carbohydratesVals).toFixed(1);
     const totalSum = [
       {calories},
       {protein},

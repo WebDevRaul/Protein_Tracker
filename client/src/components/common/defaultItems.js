@@ -99,6 +99,16 @@ const Items = [
     fat: '13.0',
     calories: '219.0'
   },
+  {
+    id: 1,
+    product_name: '',
+    quantity: '',
+    type: 'gr.',
+    protein: '',
+    carbohydrates: '',
+    fat: '',
+    calories: ''
+  },
 ];
 
 export default Items;
