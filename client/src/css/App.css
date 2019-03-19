@@ -81,6 +81,9 @@ a:hover {
 .special-border {
   border: 2px solid red;
 }
+.margin-1 {
+  margin-left: 5px !important;
+}
 
 
 /* Admin */
