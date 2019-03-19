@@ -49,6 +49,23 @@ class Table extends Component {
     const { items } = this.props.admin;
     const { data, total }  = this.props;
 
+    const compare = (a, b) => {
+      // Use toUpperCase() to ignore character casing
+      const nameA = a.product_name.toUpperCase();
+      const nameB = b.product_name.toUpperCase();
+    
+      let comparison = 0;
+      if (nameA > nameB) {
+        comparison = 1;
+      } else if (nameA < nameB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+    // Sort
+    data.sort(compare)
+
     // Items in dashboard
     const productItems = data.map(i => 
       <ItemDashboard
