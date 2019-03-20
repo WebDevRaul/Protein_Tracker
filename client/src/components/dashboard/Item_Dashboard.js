@@ -88,6 +88,8 @@ class ItemDashboard extends Component {
   render() {
     const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon} = this.props;
     const { edit, newQuantity, errors } = this.state;
+
+    console.log(fat)
     
 
     const input = (

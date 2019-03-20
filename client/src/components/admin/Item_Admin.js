@@ -10,13 +10,13 @@ class ItemAdmin extends Component {
   render() {
     const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon } = this.props;
     return (
-      <div key={id} className='row paper no-gutters'>
-        <div className='col text-capitalize'><p>{product_name}</p></div>
-        <div className='col text-center'><p>{quantity} <span>{type}</span></p></div>
-        <div className='col text-center'><p>{calories}</p></div>
-        <div className='col text-center'><p>{protein}</p></div>
-        <div className='col text-center'><p>{fat}</p></div>
-        <div className='col text-center'><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
+      <div key={id} className='row admin-paper no-gutters'>
+        <div className='col m-auto text-capitalize'><p>{product_name}</p></div>
+        <div className='col m-auto text-center'><p>{quantity} <span>{type}</span></p></div>
+        <div className='col m-auto text-center'><p>{calories}</p></div>
+        <div className='col m-auto text-center'><p>{protein}</p></div>
+        <div className='col m-auto text-center'><p>{fat}</p></div>
+        <div className='col m-auto text-center'><p>{carbohydrates}<span className='ml-3 hover' onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
       </div>
     )
   }
