@@ -88,20 +88,21 @@ class ItemDashboard extends Component {
   render() {
     const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon} = this.props;
     const { edit, newQuantity, errors } = this.state;
+    
 
     const input = (
-      <div>
+      <div className='input'>
         <div className='row no-gutters'>
           <div className='col-7'>
-            <div className='input'>
+            <div className='w-50 m-auto'>
               <input 
-              className={classnames('col p-0', {'special-border' : !isEmpty(errors.productQty)})}
-              type = 'text'
-              value = { newQuantity }
-              onChange = {this.onChange}
-              placeholder = {quantity}
-              autoFocus
-            />
+                className={classnames('col p-0', {'special-border' : !isEmpty(errors.productQty)})}
+                type = 'text'
+                value = { newQuantity }
+                onChange = {this.onChange}
+                placeholder = {quantity}
+                autoFocus
+              />
             </div>
           </div>
           <div className='col-1'>

@@ -128,7 +128,7 @@ class Table extends Component {
                         <div className='col text-center'><p>Carb.</p></div>
                       </div>
                       {productItems}
-                      <div className='row paper no-gutters'>
+                      <div className='row paper no-gutters mt-4'>
                         <div className='col text-capitalize'><p>Total</p></div>
                         <div className='col text-center'>
                           <p>{total.calories ? String(total.calories): '0'}</p>

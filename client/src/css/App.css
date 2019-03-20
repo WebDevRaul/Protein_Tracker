@@ -93,10 +93,7 @@ a:hover {
   background-color: #007bff85;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #007bff56;
-  margin: 0px 0 10px 0;
-}
-.dashboard-table p,.dashboard-table span {
-  font-size: 10px;
+  margin: 0px 0 5px 0;
 }
 
 .admin p {
@@ -189,6 +186,12 @@ a:hover {
     outline: none;
     height:20px !important;
   }
+  .input .text-danger {
+    font-size: 10px;
+  }
+  .dashboard-table p,.dashboard-table span {
+    font-size: 10px;
+  }
 
   /* Footer */
   .footer-name > :nth-child(1) > span, .footer-name > :nth-child(2) > span {
@@ -268,6 +271,14 @@ a:hover {
     margin: 0px 50px;
   }
 
+  /* Dashboar */
+  .input .text-danger {
+    font-size: 13px;
+  }
+  .dashboard-table p,.dashboard-table span {
+    font-size: 15px;
+  }
+
   /* admin */
   .admin h5 {
     font-size: 1.1rem;
@@ -305,6 +316,11 @@ a:hover {
   /* form */
   .form > form > .row > :nth-last-child(1) {
     margin: 0 auto;
+  }
+
+  /* Dashboar */
+  .input .text-danger {
+    font-size: 13px;
   }
 
   /* footer */
