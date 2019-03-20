@@ -65,16 +65,20 @@ class ItemDashboard extends Component {
 
       // Update new values
       if (type === 'pc.') {
-        newCalories = String(Math.round(Number(true_calories) * Number(newQuantity)));
-        newProtein = String(Math.round(Number(true_protein) * Number(newQuantity)));
-        newFat= String(Math.round(Number(true_fat) * Number(newQuantity)));
-        newCarbohydrates = String(Math.round(Number(true_carbohydrates) * Number(newQuantity)));
+        newCalories = Number(true_calories) * Number(newQuantity);
+        newProtein = Number(true_protein) * Number(newQuantity);
+        newFat = Number(true_fat) * Number(newQuantity)
+        newCarbohydrates = Number(true_carbohydrates) * Number(newQuantity);
       } else if(type === 'ml.' || type === 'gr.') {
-        newCalories =  String(Math.round(mlFunc(newQuantity, true_quantity, true_calories)))
-        newProtein =  String(Math.round(mlFunc(newQuantity, true_quantity, true_protein)))
-        newFat =  String(Math.round(mlFunc(newQuantity, true_quantity, true_fat)))
-        newCarbohydrates =  String(Math.round(mlFunc(newQuantity, true_quantity, true_carbohydrates)))
+        newCalories =  mlFunc(newQuantity, true_quantity, true_calories);
+        newProtein =  mlFunc(newQuantity, true_quantity, true_protein);
+        newFat =  mlFunc(newQuantity, true_quantity, true_fat);
+        newCarbohydrates =  mlFunc(newQuantity, true_quantity, true_carbohydrates);
       }
+       newCalories = String(newCalories.toFixed(1));
+       newProtein = String(newProtein.toFixed(1));
+       newFat = String(newFat.toFixed(1));
+       newCarbohydrates = String(newCarbohydrates.toFixed(1));
 
       const newQuantityData =  { id, table_id, newQuantity, newCalories, newProtein, newFat, newCarbohydrates, userID };
       this.setState({ edit: false });
@@ -88,8 +92,6 @@ class ItemDashboard extends Component {
   render() {
     const { product_name, quantity, type, calories, protein, fat, carbohydrates, id, icon} = this.props;
     const { edit, newQuantity, errors } = this.state;
-
-    console.log(fat)
     
 
     const input = (

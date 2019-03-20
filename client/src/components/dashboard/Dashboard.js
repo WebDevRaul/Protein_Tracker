@@ -69,6 +69,7 @@ class Dashboard extends Component {
     if (prevProps.dashboard.item !== itemState) {
       if (!isEmpty(item)) {
         this.props.addProductOffline(item);
+        console.log(item)
       };
     };
     
