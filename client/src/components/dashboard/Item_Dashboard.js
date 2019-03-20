@@ -93,14 +93,16 @@ class ItemDashboard extends Component {
       <div>
         <div className='row no-gutters'>
           <div className='col-7'>
-            <input 
-            className={classnames('col p-0', {'special-border' : !isEmpty(errors.productQty)})}
-            type = 'text'
-            value = { newQuantity }
-            onChange = {this.onChange}
-            placeholder = {quantity}
-            autoFocus
-          />
+            <div className='input'>
+              <input 
+              className={classnames('col p-0', {'special-border' : !isEmpty(errors.productQty)})}
+              type = 'text'
+              value = { newQuantity }
+              onChange = {this.onChange}
+              placeholder = {quantity}
+              autoFocus
+            />
+            </div>
           </div>
           <div className='col-1'>
             <span className='ml-2 hover'><i onClick={this.onSave} className="fas fa-check"></i></span>
