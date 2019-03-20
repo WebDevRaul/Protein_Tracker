@@ -64,7 +64,8 @@ class Table extends Component {
     };
 
     // Sort
-    data.sort(compare)
+    data.sort(compare);
+    items.sort(compare);
 
     // Items in dashboard
     const productItems = data.map(i => 
