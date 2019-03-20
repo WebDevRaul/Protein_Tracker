@@ -135,10 +135,10 @@ class ItemDashboard extends Component {
               {edit ? input : paragraph}
             </div>
           </div>
-          <div className={classnames('col', {'col-2' : edit})}><p>{calories}</p></div>
-          <div className={classnames('col', {'col-2' : edit})}><p>{protein}</p></div>
-          <div className={classnames('col', {'col-2' : edit})}><p>{fat}</p></div>
-          <div className={classnames('col', {'col-2' : edit})}><p className={classnames('', {'d-flex' : edit})}>{carbohydrates}<span className={classnames('hover ml-3', {'margin-1' : edit})} onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
+          <div className={classnames('col m-auto', {'col-2' : edit})}><p>{calories}</p></div>
+          <div className={classnames('col m-auto', {'col-2' : edit})}><p>{protein}</p></div>
+          <div className={classnames('col m-auto', {'col-2' : edit})}><p>{fat}</p></div>
+          <div className={classnames('col m-auto', {'col-2' : edit})}><p className={classnames('', {'d-flex' : edit})}>{carbohydrates}<span className={classnames('hover ml-3', {'margin-1' : edit})} onClick={this.onClick(id)} ><i className={icon}></i></span></p></div>
         </div>
       </div>
     )

@@ -185,6 +185,10 @@ a:hover {
   .dashboard-edit-product {
     margin: 0 auto;
   }
+  .input input{
+    outline: none;
+    height:20px !important;
+  }
 
   /* Footer */
   .footer-name > :nth-child(1) > span, .footer-name > :nth-child(2) > span {
