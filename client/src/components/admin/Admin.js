@@ -60,6 +60,17 @@ class Admin extends Component {
     if (!isEmpty(item)) {
       if (item !== prevProps.admin.item) {
         this.props.findItems(this.props.auth.user.id)
+
+        // Clear the form
+        this.setState({
+          product_name: '',
+          protein: '',
+          quantity: '',
+          type: '',
+          carbohydrates: '',
+          fat: '',
+          calories: ''
+        });
       }
     }
   }
@@ -71,6 +82,7 @@ class Admin extends Component {
 
   onSubmit = (e) => {
     const {user} = this.props.auth;
+    const { errors } = this.props.errors;
     e.preventDefault();
     const item = {
       user: user.id,
@@ -82,19 +94,7 @@ class Admin extends Component {
       fat: this.state.fat,
       calories: this.state.calories
     };
-
     this.props.saveItem(item);
-
-    // Clear the form
-    this.setState({
-      product_name: '',
-      protein: '',
-      quantity: '',
-      type: '',
-      carbohydrates: '',
-      fat: '',
-      calories: ''
-    });
   };
 
   render() {
