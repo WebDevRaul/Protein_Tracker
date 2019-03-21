@@ -12,12 +12,23 @@ import { deleteItem  } from '../../redux/actions/admin';
 import isEmpty from '../common/isEmpty';
 
 class ListAdmin extends Component {
+  constructor() {
+    super();
+    this.state = {
+      id: ''
+    }
+  }
 
   onDelete=(id)=> {
-    this.props.deleteItem(id)
+
+    // this.props.deleteItem(id);
+    this.setState({ id })
   };
 
   render() {
+
+    console.log(this.state.id)
+
     let item;
     const { items } = this.props.admin;
 
@@ -57,17 +68,35 @@ class ListAdmin extends Component {
       )
     };
     return (
-      <div className='list-admin mt-5'>
-        <div className='container'>
-          <ItemAdmin
-            product_name= 'Name:'
-            quantity= 'Qty.'
-            calories= 'Cal.'
-            protein= 'Prot.'
-            fat='Fat'
-            carbohydrates= 'Carb.'
-          />
-          {item}
+      <div>
+        <div className='list-admin mt-5'>
+          <div className='container'>
+            <ItemAdmin
+              product_name= 'Name:'
+              quantity= 'Qty.'
+              calories= 'Cal.'
+              protein= 'Prot.'
+              fat='Fat'
+              carbohydrates= 'Carb.'
+            />
+            {item}
+          </div>
+        </div>
+        <div className="modal">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Name of product</h5>
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                <button type="button" className="btn btn-primary">Cancel</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
