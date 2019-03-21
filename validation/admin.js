@@ -15,8 +15,8 @@ module.exports = function validateItemInput(data) {
 
 
   // Validate product_name
-  if (!Validator.isAlpha(data.product_name)) {
-    errors.product_name = 'Product name must contains only letters'
+  if (!Validator.isLength(data.product_name, {min: 1, max: 20})) {
+    errors.product_name = 'Product name is to long'
   }
 
 
