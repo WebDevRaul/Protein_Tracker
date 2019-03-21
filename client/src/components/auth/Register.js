@@ -20,7 +20,6 @@ class Register extends Component {
     this.state = {
       first_name: '',
       last_name: '',
-      username: '',
       email: '',
       password: '',
       password2: '',
@@ -59,7 +58,6 @@ class Register extends Component {
     const user = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
@@ -102,14 +100,6 @@ class Register extends Component {
                         value={this.state.last_name}
                         onChange={this.onChange}
                         error={errors.last_name}
-                      />
-                      <TextFieldGroup
-                        text='Username'
-                        name='username'
-                        icon='fas fa-user'
-                        value={this.state.username}
-                        onChange={this.onChange}
-                        error={errors.username}
                       />
                       <TextFieldGroup
                         text='Email'

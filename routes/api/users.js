@@ -25,7 +25,7 @@ router
       return res.status(400).json(errors);
     };
 
-    const { email, first_name, last_name, username, password } = req.body;
+    const { email, first_name, last_name, password } = req.body;
     // Fetch User
     User.findOne({ email })
     .then(userData => {
@@ -33,7 +33,7 @@ router
       if (userData) {
         return res.status(400).json({email: 'Email already exists'})
       } else {
-        const newUser = new User({ first_name, last_name, username, email, password });
+        const newUser = new User({ first_name, last_name, email, password });
 
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
