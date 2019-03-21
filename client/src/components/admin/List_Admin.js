@@ -28,14 +28,12 @@ class ListAdmin extends Component {
     const name = name => name._id === id;
     const productName = items.find(name);
 
-    // this.props.deleteItem(id);
     this.setState({ productName, id, modal: true })
   };
 
   onModalDelete = () => {
     const { id } = this.state;
-    // this.props.deleteItem(id);
-    console.log(id)
+    this.props.deleteItem(id);
     this.setState({ modal: false })
   }
 
@@ -44,10 +42,9 @@ class ListAdmin extends Component {
   }
   
   render() {
-    console.log(this.state.modal, 'this.state.delete')
     const { items } = this.props.admin;
     const { modal } = this.state;
-    const { product_name } = this.state.productName;
+    const { product_name, calories, protein, fat, carbohydrates } = this.state.productName;
     let item;
   
     const compare = (a, b) => {
@@ -104,10 +101,16 @@ class ListAdmin extends Component {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">{product_name}</h5>
+                <h5 className="modal-title">Delete {product_name}?</h5>
               </div>
               <div className="modal-body">
-                ...
+                <p className='ml-4'>{product_name}</p>
+                <div className='row paper no-gutters text-center'>
+                  <div className='col m-auto'><p>Cal. {calories}</p></div>
+                  <div className='col m-auto'><p>Prot. {protein}</p></div>
+                  <div className='col m-auto'><p>Fat {fat}</p></div>
+                  <div className='col m-auto'><p>Carb. {carbohydrates}</p></div>
+                </div>
               </div>
               <div className="modal-footer">
                 <button 
