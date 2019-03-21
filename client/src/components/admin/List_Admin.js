@@ -15,23 +15,25 @@ class ListAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      id: ''
+      productName: ''
     }
   }
 
   onDelete=(id)=> {
+    const { items } = this.props.admin;
+    // Find the product for Delete
+    const name = name => name._id === id;
+    const productName = items.find(name);
 
     // this.props.deleteItem(id);
-    this.setState({ id })
+    this.setState({ productName })
   };
-
+  
   render() {
-
-    console.log(this.state.id)
-
-    let item;
     const { items } = this.props.admin;
-
+    const { product_name } = this.state.productName;
+    let item;
+  
     const compare = (a, b) => {
       // Use toUpperCase() to ignore character casing
       const nameA = a.product_name.toUpperCase();
@@ -82,11 +84,11 @@ class ListAdmin extends Component {
             {item}
           </div>
         </div>
-        <div className="modal">
+        <div className="">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Name of product</h5>
+                <h5 className="modal-title">{product_name}</h5>
               </div>
               <div className="modal-body">
                 ...
