@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // Components
 import ItemAdmin from './Item_Admin';
@@ -15,22 +16,37 @@ class ListAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      productName: ''
+      modal: false,
+      productName: '',
+      id: '',
     }
   }
 
-  onDelete=(id)=> {
+  onDelete = id => {
     const { items } = this.props.admin;
     // Find the product for Delete
     const name = name => name._id === id;
     const productName = items.find(name);
 
     // this.props.deleteItem(id);
-    this.setState({ productName })
+    this.setState({ productName, id, modal: true })
   };
+
+  onModalDelete = () => {
+    const { id } = this.state;
+    // this.props.deleteItem(id);
+    console.log(id)
+    this.setState({ modal: false })
+  }
+
+  onModalCancel = () => {
+    this.setState({ modal: false })
+  }
   
   render() {
+    console.log(this.state.modal, 'this.state.delete')
     const { items } = this.props.admin;
+    const { modal } = this.state;
     const { product_name } = this.state.productName;
     let item;
   
@@ -70,7 +86,7 @@ class ListAdmin extends Component {
       )
     };
     return (
-      <div>
+      <div className='list-admin'>
         <div className='list-admin mt-5'>
           <div className='container'>
             <ItemAdmin
@@ -84,7 +100,7 @@ class ListAdmin extends Component {
             {item}
           </div>
         </div>
-        <div className="">
+        <div className={classnames('modal', { 'show' : modal })}>
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
@@ -94,8 +110,16 @@ class ListAdmin extends Component {
                 ...
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-                <button type="button" className="btn btn-primary">Cancel</button>
+                <button 
+                  type="button" 
+                  className="btn btn-danger"
+                  onClick={this.onModalDelete}
+                >Delete</button>
+                <button 
+                  type="button" 
+                  className="btn btn-primary"
+                  onClick={this.onModalCancel}
+                >Cancel</button>
               </div>
             </div>
           </div>
