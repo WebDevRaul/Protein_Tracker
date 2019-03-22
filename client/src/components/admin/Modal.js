@@ -54,7 +54,14 @@ const Modal = ({
 };
 
 Modal.propTypes = {
-
+  product_name: PropTypes.string.isRequired,
+  calories: PropTypes.string.isRequired,
+  protein: PropTypes.string.isRequired,
+  fat: PropTypes.string.isRequired,
+  carbohydrates: PropTypes.string.isRequired,
+  modal: PropTypes.bool.isRequired,
+  onModalCancel: PropTypes.func.isRequired,
+  onModalDelete: PropTypes.func.isRequired
 };
 
 export default Modal;
