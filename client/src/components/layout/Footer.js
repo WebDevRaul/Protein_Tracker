@@ -21,7 +21,7 @@ class Footer extends Component {
                         </div>
                       </div>
                       <div className='col p-0 m-auto'>
-                        <div className='text-white broder-top broder-success'>
+                        <div className='text-white broder-top broder-success overflow-hidden'>
                           <div className='row footer-name'>
                             <div className='col-sm-6 p-0 pr-2'>
                               <span className='m-auto float-right'>Copyright &copy; {new Date().getFullYear()}</span>

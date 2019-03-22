@@ -134,6 +134,9 @@ a:hover {
   position:absolute;
   transform: translate(-55%, 75%);
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 
 
 /* ==================================== */

@@ -14,7 +14,7 @@ const Modal = ({
   onModalDelete
 }) => {
   return (
-    <div className='container'>
+    <div className='container m-auto'>
       <div className='row'>
         <div className='col'>
           <div className={classnames('modal', { 'show' : modal })}>
@@ -54,11 +54,11 @@ const Modal = ({
 };
 
 Modal.propTypes = {
-  product_name: PropTypes.string.isRequired,
-  calories: PropTypes.string.isRequired,
-  protein: PropTypes.string.isRequired,
-  fat: PropTypes.string.isRequired,
-  carbohydrates: PropTypes.string.isRequired,
+  product_name: PropTypes.string,
+  calories: PropTypes.string,
+  protein: PropTypes.string,
+  fat: PropTypes.string,
+  carbohydrates: PropTypes.string,
   modal: PropTypes.bool.isRequired,
   onModalCancel: PropTypes.func.isRequired,
   onModalDelete: PropTypes.func.isRequired

@@ -124,14 +124,14 @@ class Admin extends Component {
     return (
       <div className='admin'>
         <section className="admine-section-on">
-          <div className="container-fluid">
+          <div className="overflow-hidden">
             <div className='row'>
-              <div className='col-12'>
+              <div className='col'>
                 <div className="m-5 text-primary">
                   <h3><i className='card-header-h4'>Admin</i></h3>
                 </div>
                 <div className='row'>
-                  <div className='col-12'>
+                  <div className='col'>
                     <div className='text-primary text-center mb-3'>
                       <h3 className=''>Add product</h3>
                     </div>
@@ -139,98 +139,98 @@ class Admin extends Component {
                 </div>
               </div>
             </div>
-            <div className='container'>
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className='row'>
-                  <div className='offset-1 col-10 offset-md-3 col-md-6 offset-lg-3 col-lg-6'>
-                    <div className='row'>
-                      <div className='col-12'>
-                        <h5>Product Name:</h5>
-                        <CardFieldGroupNoLabel
-                          name='product_name'
-                          value={this.state.product_name}
-                          onChange={this.onChange}
-                          error={errors.product_name}
-                        />
-                      </div>
+          </div>
+          <div className='container'>
+            <form noValidate onSubmit={this.onSubmit}>
+              <div className='row'>
+                <div className='offset-1 col-10 offset-md-3 col-md-6 offset-lg-3 col-lg-6'>
+                  <div className='row'>
+                    <div className='col-12'>
+                      <h5>Product Name:</h5>
+                      <CardFieldGroupNoLabel
+                        name='product_name'
+                        value={this.state.product_name}
+                        onChange={this.onChange}
+                        error={errors.product_name}
+                      />
                     </div>
-                    <div className='row'>
-                      <div className='col-6'>
-                          <h5>Quantity</h5>
-                          <input
-                            className={classnames('form-control mb-3 form-control-xsm', {'is-invalid' : !isEmpty(errors.quantity)})}
-                            type='text'
-                            name='quantity'
-                            value={this.state.quantity}
-                            onChange={this.onChange}
-                          />
-                          {errors.quantity && <div className='invalid-feedback font-weight-bold'>{errors.quantity}</div>}
-                        </div>
-                      <div className='col-6'>
-                        <h5>Type</h5>
-                        <select
-                          className={classnames('form-control mb-3 form-control-xsm', {'is-invalid' : !isEmpty(errors.type)})}
-                          name='type'
-                          value={this.state.type}
+                  </div>
+                  <div className='row'>
+                    <div className='col-6'>
+                        <h5>Quantity</h5>
+                        <input
+                          className={classnames('form-control mb-3 form-control-xsm', {'is-invalid' : !isEmpty(errors.quantity)})}
+                          type='text'
+                          name='quantity'
+                          value={this.state.quantity}
                           onChange={this.onChange}
-                        >
-                          {selectOptions}
-                        </select>
-                        {errors.type && <div className='invalid-feedback font-weight-bold'>{errors.type}</div>}
+                        />
+                        {errors.quantity && <div className='invalid-feedback font-weight-bold'>{errors.quantity}</div>}
                       </div>
+                    <div className='col-6'>
+                      <h5>Type</h5>
+                      <select
+                        className={classnames('form-control mb-3 form-control-xsm', {'is-invalid' : !isEmpty(errors.type)})}
+                        name='type'
+                        value={this.state.type}
+                        onChange={this.onChange}
+                      >
+                        {selectOptions}
+                      </select>
+                      {errors.type && <div className='invalid-feedback font-weight-bold'>{errors.type}</div>}
                     </div>
-                    <div className='row'>
-                      <div className='col-6'>
-                        <h5>Calories</h5>
-                        <CardFieldGroupNoLabel
-                          name='calories'
-                          value={this.state.calories}
-                          onChange={this.onChange}
-                          error={errors.calories}
-                        />
-                      </div>
-                      <div className='col-6'>
-                        <h5>Protein</h5>
-                        <CardFieldGroupNoLabel
-                          name='protein'
-                          value={this.state.protein}
-                          onChange={this.onChange}
-                          error={errors.protein}
-                        />
-                      </div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-6'>
+                      <h5>Calories</h5>
+                      <CardFieldGroupNoLabel
+                        name='calories'
+                        value={this.state.calories}
+                        onChange={this.onChange}
+                        error={errors.calories}
+                      />
                     </div>
-                    <div className='row'>
-                      <div className='col-6'>
-                        <h5>Fat</h5>
-                        <CardFieldGroupNoLabel
-                          name='fat'
-                          value={this.state.fat}
-                          onChange={this.onChange}
-                          error={errors.fat}
-                        />
-                      </div>
-                      <div className='col-6'>
-                        <h5>Carbohydrates</h5>
-                        <CardFieldGroupNoLabel
-                          name='carbohydrates'
-                          value={this.state.carbohydrates}
-                          onChange={this.onChange}
-                          error={errors.carbohydrates}
-                        />
-                      </div>
+                    <div className='col-6'>
+                      <h5>Protein</h5>
+                      <CardFieldGroupNoLabel
+                        name='protein'
+                        value={this.state.protein}
+                        onChange={this.onChange}
+                        error={errors.protein}
+                      />
                     </div>
-                    <div className='row'>
-                      <div className='col'>
-                        <input 
-                          type="submit" 
-                          value="Save" 
-                          className="font-weight-bold btn btn-secondary btn-block bg-success mt-4" />
-                      </div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-6'>
+                      <h5>Fat</h5>
+                      <CardFieldGroupNoLabel
+                        name='fat'
+                        value={this.state.fat}
+                        onChange={this.onChange}
+                        error={errors.fat}
+                      />
+                    </div>
+                    <div className='col-6'>
+                      <h5>Carbohydrates</h5>
+                      <CardFieldGroupNoLabel
+                        name='carbohydrates'
+                        value={this.state.carbohydrates}
+                        onChange={this.onChange}
+                        error={errors.carbohydrates}
+                      />
+                    </div>
+                  </div>
+                  <div className='row'>
+                    <div className='col'>
+                      <input 
+                        type="submit" 
+                        value="Save" 
+                        className="font-weight-bold btn btn-secondary btn-block bg-success mt-4" />
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </section>
         <section className='admin-section-alert container'>
