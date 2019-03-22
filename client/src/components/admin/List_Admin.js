@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 // Components
 import ItemAdmin from './Item_Admin';
+import Modal from './Modal';
 
 // Redux
 import { connect } from 'react-redux';
@@ -96,36 +96,16 @@ class ListAdmin extends Component {
             />
             {item}
           </div>
-        </div>
-        <div className={classnames('modal', { 'show' : modal })}>
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Delete {product_name}?</h5>
-              </div>
-              <div className="modal-body">
-                <p className='ml-4'>{product_name}</p>
-                <div className='row paper no-gutters text-center'>
-                  <div className='col m-auto'><p>Cal. {calories}</p></div>
-                  <div className='col m-auto'><p>Prot. {protein}</p></div>
-                  <div className='col m-auto'><p>Fat {fat}</p></div>
-                  <div className='col m-auto'><p>Carb. {carbohydrates}</p></div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button 
-                  type="button" 
-                  className="btn btn-danger"
-                  onClick={this.onModalDelete}
-                >Delete</button>
-                <button 
-                  type="button" 
-                  className="btn btn-primary"
-                  onClick={this.onModalCancel}
-                >Cancel</button>
-              </div>
-            </div>
-          </div>
+          <Modal
+            onModalCancel={this.onModalCancel}
+            onModalDelete={this.onModalDelete}
+            modal={modal}
+            product_name={product_name}
+            calories={calories}
+            protein={protein}
+            fat={fat}
+            carbohydrates={carbohydrates}
+          />
         </div>
       </div>
     )
