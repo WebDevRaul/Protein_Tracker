@@ -25,7 +25,8 @@ class Admin extends Component {
       carbohydrates: '',
       fat: '',
       calories: '',
-      newItem: false
+      opacity: false,
+      submit: false,
     }
   }
 
@@ -49,7 +50,7 @@ class Admin extends Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    const { errors, newItem } = this.state;
+    const { errors, opacity, submit } = this.state;
     const { item } = this.props.admin
 
     // Reset the errors
@@ -75,13 +76,16 @@ class Admin extends Component {
       }
     }
 
-    if (!isEmpty(item) && (newItem === false)) {
-      // Update newItem state to render alert
-      this.setState({ newItem: true });
-
-      // Update newItem state to close alert
-      setTimeout(() => { this.setState({ newItem: false }) }, 3000);
-    }
+    // show alert
+    if (!isEmpty(item) && (opacity === false) && (item !== prevProps.admin.item)) {
+      if (submit === true) {
+        this.setState({ opacity: true, submit: false });
+      }
+    };
+    // close alert
+    if (!isEmpty(item) && (opacity === true)) {
+      setTimeout(() => this.setState({ opacity: false }), 3000)
+    };
   }
 
 
@@ -91,7 +95,6 @@ class Admin extends Component {
 
   onSubmit = (e) => {
     const {user} = this.props.auth;
-    const { errors } = this.props.errors;
     e.preventDefault();
     const item = {
       user: user.id,
@@ -104,10 +107,11 @@ class Admin extends Component {
       calories: this.state.calories
     };
     this.props.saveItem(item);
+    this.setState({ submit: true })
   };
 
   render() {
-    const { errors, newItem } = this.state;
+    const { errors, opacity } = this.state;
 
     // Type input
     const select = [{id: ''},{id: 'gr.'},{id: 'pc.'},{id: 'ml.'}]
@@ -232,7 +236,7 @@ class Admin extends Component {
         <section className='admin-section-alert container'>
           <div className='row'>
             <div className='col'>
-              <div className={classnames('alert text-center mt-3 opacity-0 fade show alert-primary', {'opacity-1':newItem})}>
+              <div className={classnames('alert text-center mt-3 opacity-0 fade show alert-primary', {'opacity-1':opacity})}>
                 This is a primary alert—check it out!
               </div>
             </div>
