@@ -109,6 +109,12 @@ a:hover {
 .show {
   display: block !important;
 }
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-1 {
+  opacity: 1;
+}
 
 /* Footer */
 .footer > div > .row > div > .border-right {

@@ -84,7 +84,7 @@ class ListAdmin extends Component {
     };
     return (
       <div className='list-admin'>
-        <div className='list-admin mt-5'>
+        <div className='list-admin'>
           <div className='container'>
             <ItemAdmin
               product_name= 'Name:'

@@ -25,6 +25,7 @@ class Admin extends Component {
       carbohydrates: '',
       fat: '',
       calories: '',
+      newItem: false
     }
   }
 
@@ -48,7 +49,7 @@ class Admin extends Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    const { errors } = this.state;
+    const { errors, newItem } = this.state;
     const { item } = this.props.admin
 
     // Reset the errors
@@ -72,6 +73,14 @@ class Admin extends Component {
           calories: ''
         });
       }
+    }
+
+    if (!isEmpty(item) && (newItem === false)) {
+      // Update newItem state to render alert
+      this.setState({ newItem: true });
+
+      // Update newItem state to close alert
+      setTimeout(() => { this.setState({ newItem: false }) }, 3000);
     }
   }
 
@@ -98,7 +107,7 @@ class Admin extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    const { errors, newItem } = this.state;
 
     // Type input
     const select = [{id: ''},{id: 'gr.'},{id: 'pc.'},{id: 'ml.'}]
@@ -217,6 +226,15 @@ class Admin extends Component {
                   </div>
                 </div>
               </form>
+            </div>
+          </div>
+        </section>
+        <section className='admin-section-alert container'>
+          <div className='row'>
+            <div className='col'>
+              <div className={classnames('alert text-center mt-3 opacity-0 fade show alert-primary', {'opacity-1':newItem})}>
+                This is a primary alert—check it out!
+              </div>
             </div>
           </div>
         </section>
