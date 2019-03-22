@@ -34,6 +34,7 @@ router
         return res.status(400).json({email: 'Email already exists'})
       } else {
         const newUser = new User({ first_name, last_name, email, password });
+        console.log(newUser)
 
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {

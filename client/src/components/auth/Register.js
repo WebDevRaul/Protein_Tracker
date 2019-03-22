@@ -64,7 +64,7 @@ class Register extends Component {
     };
 
     // Register and save default Item(s)
-      this.props.registerUser(user, this.props.history);   
+      this.props.registerUser(user, this.props.history);
   }
 
 
