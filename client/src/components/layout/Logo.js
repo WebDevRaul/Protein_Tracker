@@ -25,7 +25,7 @@ class Logo extends Component {
       </span>);
 
     return (
-      <div className='logo text-center'>
+      <div className='logo text-center ml-3'>
         <div className='logo-div text-uppercase'>
           <Link to='/home'>
             <p>Protein</p>

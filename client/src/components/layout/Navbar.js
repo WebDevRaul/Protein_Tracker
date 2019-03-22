@@ -53,10 +53,10 @@ class Navbar extends Component {
         </li>
         
         <li className="nav-item mr-3 mt-3">
-          <span
-            className='nav-link'
+          <button
+            className='nav-link btn'
             onClick={this.onSignOut}
-            ><span>Sign Out</span></span>
+            ><span>Sign Out</span></button>
         </li>
       </ul>
     );
@@ -98,7 +98,7 @@ class Navbar extends Component {
             <li className="nav-item mr-3 mt-3">
             <NavLink 
               to='/home' 
-              className='nav-link'
+              className='nav-link ml-5'
               activeClassName="active"
               onClick={this.onClick}
               ><span>Home</span></NavLink>

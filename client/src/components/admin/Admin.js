@@ -128,7 +128,7 @@ class Admin extends Component {
             <div className='row'>
               <div className='col'>
                 <div className="m-5 text-primary">
-                  <h3><i className='card-header-h4'>Admin</i></h3>
+                  <h3><i className='card-header-h4 border-bottom'>Admin</i></h3>
                 </div>
                 <div className='row'>
                   <div className='col'>
