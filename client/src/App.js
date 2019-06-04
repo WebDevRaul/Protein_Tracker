@@ -17,7 +17,6 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import Home from './components/links/Home';
-import About from './components/links/About';
 import DashboardParent from './components/dashboard/DashboardParent';
 import Admin from './components/admin/Admin';
 
@@ -28,27 +27,29 @@ import { Provider } from 'react-redux';
 // CSS
 import './css/App.css';
 
-// Check Token
-if (localStorage.jwtToken) {
-  // Set auth token header auth
-  setAuthToken(localStorage.jwtToken);
-  // Decode token and get user info and exp
-  const decoded = jwt_decode(localStorage.jwtToken);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-
-  // Check for expired token
-  const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-    // Redirect to login
-    window.location.href = '/login';
-  }
-}
-
 
 class App extends Component {
+
+  componentDidMount() {
+    // Check Token
+    if (localStorage.jwtToken) {
+      // Set auth token header auth
+      setAuthToken(localStorage.jwtToken);
+      // Decode token and get user info and exp
+      const decoded = jwt_decode(localStorage.jwtToken);
+      // Set user and isAuthenticated
+      store.dispatch(setCurrentUser(decoded));
+
+      // Check for expired token
+      const currentTime = Date.now() / 1000;
+      if (decoded.exp < currentTime) {
+        // Logout user
+        store.dispatch(logoutUser());
+        // Redirect to login
+        window.location.href = '/login';
+      }
+    }
+  }
   render() {
     return (
       <Provider store={store}>
@@ -59,7 +60,6 @@ class App extends Component {
               <div>
                 <Navbar />
                 <Route exact path='/home' component={Home} />
-                <Route exact path='/about' component={About} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
 

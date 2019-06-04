@@ -103,14 +103,6 @@ class Navbar extends Component {
               onClick={this.onClick}
               ><span>Home</span></NavLink>
             </li>
-            <li className="nav-item mr-3 mt-3">
-            <NavLink 
-              to='/about' 
-              className='nav-link'
-              activeClassName="active"
-              onClick={this.onClick}
-              ><span>About</span></NavLink>
-            </li>
           </ul>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
