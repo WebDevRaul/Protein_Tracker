@@ -61,6 +61,23 @@ a:hover {
   border-bottom: 3px solid red;
 }
 
+/* Home */
+.home {
+  height: 100vh;
+  background: url('../img/food.jpg');
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.home > .container {
+  min-height: 50vh;
+}
+.home-text {
+  color: white;
+  font-size: 2em;
+}
+
 /* Dashboard */
 .dashboard-table p, .dashboard-table span {
   margin-bottom: 0px !important;
