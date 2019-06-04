@@ -25,7 +25,7 @@ class Navbar extends Component {
   onSignOut = () => {
     this.props.logoutUser();
     this.onClick();
-    this.props.history.push('/home');
+    this.props.history.push('/');
   }
 
   render() {
@@ -97,7 +97,7 @@ class Navbar extends Component {
           <ul className='navbar-nav mr-auto m-r-5'>
             <li className="nav-item mr-3 mt-3">
             <NavLink 
-              to='/home' 
+              to='/' 
               className='nav-link ml-5'
               activeClassName="active"
               onClick={this.onClick}

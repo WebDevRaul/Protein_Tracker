@@ -12,7 +12,6 @@ import PrivateRoute from './components/common/privateRoute';
  
 // Components
 import Navbar from './components/layout/Navbar';
-import Landing from './components/links/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
@@ -54,28 +53,23 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Switch>
-            <Route exact path='/' component={Landing} />
-            <Router>
-              <div>
-                <Navbar />
-                <Route exact path='/home' component={Home} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
+          <div>
+            <Navbar />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/register' component={Register} />
 
-                {/* private routes */}
+              {/* private routes */}
 
-                <Switch>
-                  <PrivateRoute exact path='/dashboard' component={DashboardParent} />
-                </Switch>
-                <Switch>
-                  <PrivateRoute exact path='/admin' component={Admin} />
-                </Switch>
-                
-                <Footer />
-              </div>
-            </Router>
-          </Switch>
+              <Switch>
+                <PrivateRoute exact path='/dashboard' component={DashboardParent} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/admin' component={Admin} />
+              </Switch>
+              
+              <Footer />
+          </div>
         </Router>
       </Provider>
     );
