@@ -25,7 +25,7 @@ class Navbar extends Component {
   onSignOut = () => {
     this.props.logoutUser();
     this.onClick();
-    this.props.history.push('/');
+    this.props.history.push('/home');
   }
 
   render() {
@@ -35,6 +35,14 @@ class Navbar extends Component {
     // authenticated users
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
+        <li className="nav-item mr-3 mt-3">
+          <NavLink 
+            to='/home' 
+            className='nav-link'
+            activeClassName="active"
+            onClick={this.onClick}
+            ><span>Home</span></NavLink>
+        </li>
         <li className="nav-item mr-3 mt-3">
           <NavLink 
             to='/dashboard'
@@ -66,6 +74,14 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
           <NavLink 
+            to='/home' 
+            className='nav-link'
+            activeClassName="active"
+            onClick={this.onClick}
+            ><span>Home</span></NavLink>
+          </li>
+        <li className="nav-item mr-3 mt-3">
+          <NavLink 
             to='/register' 
             className='nav-link'
             activeClassName="active"
@@ -94,16 +110,6 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
-          <ul className='navbar-nav mr-auto m-r-5'>
-            <li className="nav-item mr-3 mt-3">
-            <NavLink 
-              to='/' 
-              className='nav-link ml-5'
-              activeClassName="active"
-              onClick={this.onClick}
-              ><span>Home</span></NavLink>
-            </li>
-          </ul>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
