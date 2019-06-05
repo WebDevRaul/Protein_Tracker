@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames  from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 // Components
@@ -25,7 +25,7 @@ class Navbar extends Component {
   onSignOut = () => {
     this.props.logoutUser();
     this.onClick();
-    this.props.history.push('/home');
+    this.props.history.push('/');
   }
 
   render() {
@@ -36,12 +36,11 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
-            to='/home' 
+          <Link 
+            to='/' 
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-            ><span>Home</span></NavLink>
+            ><span>Home</span></Link>
         </li>
         <li className="nav-item mr-3 mt-3">
           <NavLink 
@@ -73,12 +72,11 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="navbar-nav ml-auto mr-5">
         <li className="nav-item mr-3 mt-3">
-          <NavLink 
-            to='/home' 
+          <Link 
+            to='/' 
             className='nav-link'
-            activeClassName="active"
             onClick={this.onClick}
-            ><span>Home</span></NavLink>
+            ><span>Home</span></Link>
           </li>
         <li className="nav-item mr-3 mt-3">
           <NavLink 
