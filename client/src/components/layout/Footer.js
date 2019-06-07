@@ -52,24 +52,24 @@ class Footer extends Component {
                       </div>
                       <div className='col m-auto p-0'>
                         <span className='ml-2 mr-2'>
-                          <NavLink to={'/'} target='_blank'>
+                          <a href='https://www.facebook.com/raul.savin.3' target='_blank' rel="noopener noreferrer">
                             <i className='social-border m-auto fab fa-facebook-f fa-1x'></i>
-                          </NavLink>
+                          </a>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <NavLink to={'/'} target='_blank'>
+                          <a href='https://twitter.com/texterror2' target='_blank' rel="noopener noreferrer">
                             <i className='social-border fab fa-twitter fa-1x'></i>
-                          </NavLink>
+                          </a>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <NavLink to={'/'} target='_blank'>
+                          <a href='https://www.instagram.com/_texterror_/' target='_blank' rel="noopener noreferrer">
                             <i className='social-border fab fa-instagram fa-1x'></i>
-                          </NavLink>
+                          </a>
                         </span>
                         <span className='ml-2 mr-2'>
-                          <NavLink to={'/'} target='_blank'>
+                          <a href='https://www.linkedin.com/in/raul-savin-660010188/' target='_blank' rel="noopener noreferrer">
                             <i className='social-border fab fa-linkedin-in fa-1x'></i>
-                          </NavLink>
+                          </a>
                         </span>
                       </div>
                     </div>
