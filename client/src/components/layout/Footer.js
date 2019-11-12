@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // Components
-import Logo from './Logo';
+import Logo from '../common/logo/Logo';
 
 class Footer extends Component {
   render() {

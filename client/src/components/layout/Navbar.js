@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 // Components
-import Logo from './Logo';
+import Logo from '../common/logo/Logo';
 
 // Redux
 import { connect } from 'react-redux';
