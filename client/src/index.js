@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import HttpsApp from './HttpsApp';
+import { store, persistor } from './redux/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ReduxToastr from 'react-redux-toastr';
+import HttpsRedirect from 'react-https-redirect';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<HttpsApp />, document.getElementById('root'));
+import App from './App';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+import './index.css';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <Router>
+        <>
+          <ReduxToastr position='bottom-right' transitionIn='fadeIn' transitionOut='fadeOut' />
+          <App />
+        </>
+      </Router>
+    </PersistGate>
+  </Provider> 
+, document.getElementById('root'));
+
 serviceWorker.unregister();
