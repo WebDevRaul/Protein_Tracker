@@ -1,4 +1,7 @@
-
+:root {
+  --primary: rgb(127, 0, 31);
+  --secondary: rgb(255, 129, 6);
+}
 
 /* Global css */
 * {
@@ -15,8 +18,12 @@ button:focus, input:focus {
   font-weight: 500;
 }
 
-a, a:hover {
+a {
   text-decoration: none;
-  cursor: pointer;
   color: unset;
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--secondary);
 }

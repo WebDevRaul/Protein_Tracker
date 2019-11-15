@@ -12,7 +12,7 @@ const Navbar = () => {
   const onClick = () => setShow(!show);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg">
       <Logo />
       <button
         className="navbar-toggler" 

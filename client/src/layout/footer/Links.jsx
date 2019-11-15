@@ -3,7 +3,7 @@ import React from 'react';
 const Links = props => {
   return (
     <div className='d-flex mb-3'>
-      <i className="far fa-2x fa-address-card"></i>
+      <i className="far fa-2x fa-address-card text-secondary"></i>
       <div className='d-flex m-auto w-50'>
         <span className='ml-3 mr-auto'>
           <a href='https://www.facebook.com/raul.savin.3' target='_blank' rel="noopener noreferrer">
