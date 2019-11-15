@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // Components
-import Logo from '../common/logo/Logo';
 
 class Footer extends Component {
   render() {
@@ -17,7 +16,6 @@ class Footer extends Component {
                     <div className='row'>
                       <div className='col-3'>
                         <div className='p-2 text-center'>
-                          <Logo />
                         </div>
                       </div>
                       <div className='col p-0 m-auto'>

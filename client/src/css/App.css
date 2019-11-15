@@ -37,25 +37,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* Logo */
-
-.logo {
-  font-size: 0px;
-  display: inline-block;
-}
-.logo > div > :nth-child(1), .logo > div > :nth-last-child(1) {
-  letter-spacing: 4px;
-  font-weight: 700;
-}
-.logo p {
-  margin-bottom: 0;
-  font-size: 0.6rem;
-}
-.logo-div {
-  border-top: 3px solid red;
-  border-bottom: 3px solid red;
-}
-
 /* Home */
 .home {
   height: 100vh;

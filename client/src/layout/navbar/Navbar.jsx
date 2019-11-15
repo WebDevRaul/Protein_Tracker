@@ -9,12 +9,13 @@ import './navbar.css'
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  const isAuth = false;
 
   const onClick = () => setShow(!show);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
-      {/* <Logo /> */}
+      <Logo />
       <button
         className="navbar-toggler" 
         type="button"
@@ -23,7 +24,7 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
-        { false ? <User show={show} setShow={setShow} /> : <Guest show={show} setShow={setShow} /> }
+        { isAuth ? <User show={show} setShow={setShow} /> : <Guest show={show} setShow={setShow} /> }
       </div>
     </nav>
   )
