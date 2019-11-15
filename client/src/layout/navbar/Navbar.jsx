@@ -5,8 +5,6 @@ import Logo from '../../components/common/logo/Logo';
 import Guest from './Guest';
 import User from './User';
 
-import './navbar.css'
-
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const isAuth = false;

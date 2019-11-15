@@ -9,7 +9,7 @@ const User = ({ show, setShow }) => {
 
   return (
     <ul className="navbar-nav ml-auto mr-5">
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/home' 
           className='nav-link'
@@ -19,7 +19,7 @@ const User = ({ show, setShow }) => {
           Home
         </NavLink>
       </li>
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/dashboard'
           className='nav-link'
@@ -29,7 +29,7 @@ const User = ({ show, setShow }) => {
           Dashboard
         </NavLink>
       </li>
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/admin'
           className='nav-link'
@@ -40,7 +40,7 @@ const User = ({ show, setShow }) => {
         </NavLink>
       </li>
       
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <button
           className='nav-link btn'
           onClick={onSignOut}

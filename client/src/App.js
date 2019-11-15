@@ -5,7 +5,7 @@ import Navbar from './layout/navbar/Navbar';
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Footer from './components/layout/Footer';
+import Footer from './layout/footer/Footer';
 import Home from './components/links/Home';
 
 import './app.css';

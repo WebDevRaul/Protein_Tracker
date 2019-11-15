@@ -8,7 +8,7 @@ const Guest = ({ show, setShow }) => {
 
   return (
     <ul className="navbar-nav ml-auto mr-5">
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/home' 
           className='nav-link'
@@ -18,7 +18,7 @@ const Guest = ({ show, setShow }) => {
           Home
         </NavLink>
         </li>
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/register' 
           className='nav-link'
@@ -28,7 +28,7 @@ const Guest = ({ show, setShow }) => {
           Register
         </NavLink>
       </li>
-      <li className="nav-item mr-3 mt-3">
+      <li className="nav-item mr-3">
         <NavLink 
           to='/sign-in' 
           className='nav-link'
