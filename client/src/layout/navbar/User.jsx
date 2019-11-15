@@ -2,42 +2,59 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const User = () => {
+const User = ({ show, setShow }) => {
+
+  const onClick = () => { show && setShow(!show) }
+  const onSignOut = () => {}
+
   return (
     <ul className="navbar-nav ml-auto mr-5">
       <li className="nav-item mr-3 mt-3">
         <NavLink 
-          to='/' 
+          to='/home' 
           className='nav-link'
-          ><span>Home</span></NavLink>
+          activeClassName="active"
+          onClick={onClick}
+        >
+          Home
+        </NavLink>
       </li>
       <li className="nav-item mr-3 mt-3">
         <NavLink 
           to='/dashboard'
           className='nav-link'
           activeClassName="active"
-          ><span>Dashboard</span></NavLink>
+          onClick={onClick}
+        >
+          Dashboard
+        </NavLink>
       </li>
       <li className="nav-item mr-3 mt-3">
         <NavLink 
           to='/admin'
           className='nav-link'
           activeClassName="active"
-          ><span>Admin</span></NavLink>
+          onClick={onClick}
+        >
+          Admin
+        </NavLink>
       </li>
       
       <li className="nav-item mr-3 mt-3">
         <button
           className='nav-link btn'
-          onClick={() =>{}}
-          ><span>Sign Out</span></button>
+          onClick={onSignOut}
+        >
+          Sign Out
+        </button>
       </li>
     </ul>
   )
 }
 
 User.propTypes = {
-
+  setShow: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired
 }
 
 export default User;

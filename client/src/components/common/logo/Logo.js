@@ -27,7 +27,7 @@ class Logo extends Component {
     return (
       <div className='logo text-center ml-3'>
         <div className='logo-div text-uppercase'>
-          <Link to='/'>
+          <Link to='/home'>
             <p>{squer}</p>
             <p>Macro</p>
             <p>{squer}</p>

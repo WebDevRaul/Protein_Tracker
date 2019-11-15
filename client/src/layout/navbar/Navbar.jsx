@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Logo from '../../components/common/logo/Logo';
 import Guest from './Guest';
 import User from './User';
+
+import './navbar.css'
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
-      <Logo />
+      {/* <Logo /> */}
       <button
         className="navbar-toggler" 
         type="button"
@@ -22,14 +23,10 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className={classnames('collapse navbar-collapse', { 'show' : show })}>
-        { false ? <User /> : <Guest /> }
+        { false ? <User show={show} setShow={setShow} /> : <Guest show={show} setShow={setShow} /> }
       </div>
     </nav>
   )
-}
-
-Navbar.propTypes = {
-
 }
 
 export default Navbar;

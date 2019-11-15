@@ -8,7 +8,7 @@ import Register from './components/auth/Register';
 import Footer from './components/layout/Footer';
 import Home from './components/links/Home';
 
-import './css/App.css';
+import './app.css';
 
 
 const App = () => {
