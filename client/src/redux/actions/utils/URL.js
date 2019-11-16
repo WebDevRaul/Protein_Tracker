@@ -1,5 +1,5 @@
 const URL = {
-  account: '/api/account'
+  account: '/api/user/account'
 };
 
 export default URL;

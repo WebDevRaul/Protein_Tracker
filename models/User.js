@@ -1,27 +1,35 @@
 const mongoose = require('mongoose');
 const Scheema = mongoose.Schema;
 
-// Create User Scheema
 const UserSchema = new Scheema({
   first_name: {
     type: String,
-    required: true
+    trim: true,
+    maxlength: 30,
+    minlength: 2,
+    required: true,
+    lowercase: true,
   },
   last_name: {
     type: String,
-    required: true
+    trim: true,
+    maxlength: 30,
+    minlength: 2,
+    required: true,
+    lowercase: true,
   },
   email: {
     type: String,
-    required: true
+    trim: true,
+    required: true,
+    unique: true
   },
   password: {
     type: String,
-    required: true
-  },
-  newUser: {
-    type: String,
-    default: true
+    trim: true,
+    maxlength: 30,
+    minlength: 6,
+    required: true,
   },
   date: {
     type: Date,

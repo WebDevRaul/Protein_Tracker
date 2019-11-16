@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { register } from '../../redux/actions/user';
+import { register, clearUserErrors } from '../../redux/actions/user';
 import { createStructuredSelector } from 'reselect';
-import { state_isLoading } from '../../redux/selectors/user';
+import { state_isLoading, state_errors } from '../../redux/selectors/user';
 import validateRegister from './validation/validation';
 
 import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
 
-const Form = ({ register, isLoading, history }) => {
+const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
   const [state, setState] = useState({ first_name: 'Joe', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
   const [error, setError] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
   const { first_name, last_name, email, password, password2 } = state;
+
+  // Update error CDU
+  useEffect(() => {
+    setError({...error, ...errors});
+    // eslint-disable-next-line
+  },[errors]);
+
+  // Clear Errors CDUM
+  useEffect(() => {
+    const clear = () => clearUserErrors();
+    return clear;
+    // eslint-disable-next-line
+  },[]);
   
   const onChange = e => setState({...state, [e.target.name]: e.target.value });
   
@@ -93,11 +106,14 @@ const Form = ({ register, isLoading, history }) => {
 Form.propTypes = {
   register: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
+  clearUserErrors: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLoading: state_isLoading
+  isLoading: state_isLoading,
+  errors: state_errors
 });
 
-export default connect(mapStateToProps, { register })(Form);
+export default connect(mapStateToProps, { register, clearUserErrors })(Form);

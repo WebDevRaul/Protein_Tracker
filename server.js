@@ -10,6 +10,7 @@ require('./config/Passport')(passport);
 
 
 
+const account = require('./routes/api/account');
 const user = require('./routes/api/user');
 const admin = require('./routes/api/admin');
 const dashboard = require('./routes/api/dashbord');
@@ -36,6 +37,7 @@ mongoose
 
 
 // Routes
+  app.use('/api/user/account', account);
   app.use('/api/user', user);
   app.use('/api/admin', admin);
   app.use('/api/dashboard', dashboard);

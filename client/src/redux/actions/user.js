@@ -12,5 +12,12 @@ export const register = ({ data, history }) => dispatch => {
       toastr.success('Success!', 'Registered successfully');
       history.push('/login');
     })
-    .catch(err => dispatch({ type: USER.ERROR, payload: err.response.data }))
+    .catch(err => {
+      dispatch({ type: USER.ERROR, payload: err.response.data })
+      dispatch({ type: USER.LOADED });
+    })
+};
+
+export const clearUserErrors = () => {
+  return { type: USER.CLEAR_ERRORS, payload: {} }
 }
