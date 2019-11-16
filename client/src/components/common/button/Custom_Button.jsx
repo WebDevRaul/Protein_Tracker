@@ -8,7 +8,7 @@ const CustomButton = ({ text, isClass, onClick, isLoading, type }) => {
   return (
     <button 
       className={classnames(`btn ${isClass}`, { 'p-0': isLoading })} 
-      style={{ minHeight: '50px' }}
+      style={{ minHeight: '50px', minWidth: '125px' }}
       type={type} 
       onClick={onClick}
     >
@@ -25,7 +25,7 @@ CustomButton.propTypes = {
   text: PropTypes.string.isRequired,
   isClass: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
   type: PropTypes.string.isRequired
 }
 

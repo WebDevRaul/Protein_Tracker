@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Target from './Target';
-import Form from './Form';
-import Actual from './Actual';
-import Diffrence from './Diffrence';
+import Target from './target/Target';
+import Form from './form/Form';
+import Actual from './actual/Actual';
+import Diffrence from './diffrence/Diffrence';
 
 import './table.css';
 

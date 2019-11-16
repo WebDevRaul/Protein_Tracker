@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Form = props => {
+const Calc = props => {
   return (
     <div>
-      form
+      calc
     </div>
   )
 }
 
-Form.propTypes = {
+Calc.propTypes = {
 
 }
 
-export default Form;
+export default Calc;
