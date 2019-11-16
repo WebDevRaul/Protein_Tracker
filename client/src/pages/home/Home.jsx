@@ -11,7 +11,7 @@ const Home = () => {
         <h5>
           <i><Link to='/register'> - Register - </Link></i>
           or
-          <i><Link to='/login'> - Sign in - </Link></i></h5>
+          <i><Link to='/sign-in'> - Sign in - </Link></i></h5>
     </div>
   )
 }

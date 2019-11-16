@@ -23,8 +23,11 @@ const validateRegister = ({ first_name, last_name, email, password, password2 })
     errors.email = 'Email is invalid';
   }
   // Validate password
-  if (!Validator.isLength(password, {min:6, max: 30})) {
+  if (!Validator.isLength(password, {min:6})) {
     errors.password = 'Password must be at least 6 characters';
+  }
+  if (!Validator.isLength(password, {max:30})) {
+    errors.password = 'Password cant exceed 30 characters';
   }
   // Validate password to match password2
   if (!Validator.equals(password, password2)) {

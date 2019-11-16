@@ -26,9 +26,6 @@ const UserSchema = new Scheema({
   },
   password: {
     type: String,
-    trim: true,
-    maxlength: 30,
-    minlength: 6,
     required: true,
   },
   date: {

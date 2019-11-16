@@ -14,9 +14,21 @@ export const register = ({ data, history }) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: USER.ERROR, payload: err.response.data })
+      toastr.error('Error!', 'Ooops');
       dispatch({ type: USER.LOADED });
     })
 };
+
+export const signIn = obj => dispatch => {
+  dispatch({ type: USER.LOADING });
+  axios.post(`${URL.account}/sign-in`, obj)
+    .then(user => console.log(user))
+    .catch(err => {
+      dispatch({ type: USER.ERROR, payload: err.response.data })
+      toastr.error('Error!', 'Ooops');
+      dispatch({ type: USER.LOADED });
+    })
+}
 
 export const clearUserErrors = () => {
   return { type: USER.CLEAR_ERRORS, payload: {} }

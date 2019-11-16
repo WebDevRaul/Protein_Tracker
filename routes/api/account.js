@@ -14,6 +14,23 @@ router.post('/register', (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
+  User.findOne({ email })
+    .then(user => {
+      errors.email = 'This E-Mail is already taken';
+      if(user) return res.status(409).json(errors);
+      const newUser = new User({ first_name, last_name, email, password });
+
+      bcrypt.genSalt(10,(err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if(err) throw err;
+          newUser.password = hash;
+          newUser.save()
+            .then(() => res.json({ success: true }))
+            .catch(err => res.status(400).json({ error: 'Ooops'}))
+        });
+      });
+    })
+    .catch(err => res.status(400).json({ error: 'Ooops'}));
 });
 
 
