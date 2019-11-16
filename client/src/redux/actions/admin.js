@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ERRORS, SAVE_ITEM, FIND_ITEMS, DELETE_ITEM } from './types';
+import { GET_ERRORS, SAVE_ITEM, FIND_ITEMS, DELETE_ITEM } from './typess';
 
 
 // Save item

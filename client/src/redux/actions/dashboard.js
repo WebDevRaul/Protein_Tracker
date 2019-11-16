@@ -26,7 +26,7 @@ import {
   COLLECT_TARGET,
   COLLECT_ACTUAL,
   COLLECT_DIFFRENCE,
-    } from './types';
+    } from './typess';
 
 // Add item to TableFieldGroup
 export const addProduct = data => dispatch => {

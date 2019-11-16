@@ -12,7 +12,7 @@ import {
   UPDATE_LUNCH_OFFLINE,
   UPDATE_DINER_OFFLINE,
   UPDATE_SNACK_OFFLINE,
-    } from '../actions/types';
+    } from '../actions/typess';
 
 const initialState = {
   item: {},

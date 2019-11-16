@@ -11,7 +11,7 @@ import {
   COLLECT_TARGET,
   COLLECT_ACTUAL,
   COLLECT_DIFFRENCE,
-} from '../actions/types';
+} from '../actions/typess';
 
 const initialState = {
   breakfast: {

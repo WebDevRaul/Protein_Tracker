@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CLEAR_ERROR, CLEAR_ITEMS } from './types';
+import { GET_ERRORS, GET_CLEAR_ERROR, CLEAR_ITEMS } from './typess';
 
 // Set custom error
 export const setError = data => {

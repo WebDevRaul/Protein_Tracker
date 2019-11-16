@@ -1,4 +1,4 @@
-import { FIND_ITEMS, CLEAR_ITEMS, DELETE_ITEM, SAVE_ITEM } from '../actions/types';
+import { FIND_ITEMS, CLEAR_ITEMS, DELETE_ITEM, SAVE_ITEM } from '../actions/typess';
 
 const initialState = {
   item: {},

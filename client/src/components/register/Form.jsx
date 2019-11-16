@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Input from '../common/form/input/Input';
+import { connect } from 'react-redux';
+import { register } from '../../redux/actions/user';
+import { createStructuredSelector } from 'reselect';
 
-const Form = ({ history }) => {
-  const [state, setState] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
+import Input from '../common/form/input/Input';
+import CustomButton from '../common/button/Custom_Button';
+
+const Form = ({ register, history }) => {
+  const [state, setState] = useState({ first_name: 'Joe', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
   const [error, setError] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
   const { first_name, last_name, email, password, password2 } = state;
 
@@ -11,7 +16,8 @@ const Form = ({ history }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-
+    // validation here
+    register({ data: { ...state }, history });
   }
 
   return (
@@ -59,12 +65,23 @@ const Form = ({ history }) => {
         error={error.password2}
         onChange={onChange}
       />
+      <CustomButton 
+        text='Submit' 
+        isClass='btn-outline-primary w-100 text-uppercase font-weight-bold' 
+        isLoading={false} 
+        type='submit' 
+      />
     </form>
   )
-}
+};
 
 Form.propTypes = {
+  register: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
-}
+};
 
-export default Form;
+const mapStateToProps = createStructuredSelector({
+
+});
+
+export default connect(mapStateToProps, { register })(Form);

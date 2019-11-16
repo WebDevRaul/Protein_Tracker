@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_CLEAR_ERROR } from '../actions/types';
+import { GET_ERRORS, GET_CLEAR_ERROR } from '../actions/typess';
 
 const initialState = {
   errors: {}

@@ -1,5 +1,5 @@
 import isEmpty from '../../components/common/utils/isEmpty';
-import { SET_CURRENT_USER } from '../actions/types';
+import { SET_CURRENT_USER } from '../actions/typess';
 
 const initialState = {
   isAuthenticated: false,

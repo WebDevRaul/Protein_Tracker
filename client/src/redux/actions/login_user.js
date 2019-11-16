@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../../components/auth/utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER, NEW_USER, UPDATE_NEW_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, NEW_USER, UPDATE_NEW_USER } from './typess';
 
 // Login User
 export const loginUser = userData => dispatch => {
