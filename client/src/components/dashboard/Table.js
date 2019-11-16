@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { addProduct, deleteProduct } from '../../redux/actions/dashboard';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 
 class Table extends Component {

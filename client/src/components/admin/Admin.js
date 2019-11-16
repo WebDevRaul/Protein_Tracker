@@ -12,7 +12,7 @@ import { saveItem, findItems } from '../../redux/actions/admin';
 import { clearError } from '../../redux/actions/commonAction';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 class Admin extends Component {
   constructor(){

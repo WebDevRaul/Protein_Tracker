@@ -11,7 +11,7 @@ import { findItems } from '../../redux/actions/admin';
 import { findProducts, addProductOffline, deleteAllOffline, collectSum, clearTable, clearLocalTable, collectActual } from '../../redux/actions/dashboard';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 class Dashboard extends Component {
   constructor() {

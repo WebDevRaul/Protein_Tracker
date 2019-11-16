@@ -1,4 +1,4 @@
-import isEmpty from '../../components/common/isEmpty';
+import isEmpty from '../../components/common/utils/isEmpty';
 import { SET_CURRENT_USER } from '../actions/types';
 
 const initialState = {

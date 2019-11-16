@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { saveTotal } from '../../redux/actions/dashboard';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 import validateFormInput from '../common/validator/form';
 
 class Form extends Component {

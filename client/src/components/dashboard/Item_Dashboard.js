@@ -8,7 +8,7 @@ import { saveNewQuantity, update_Offline } from '../../redux/actions/dashboard';
 
 // Common
 import validateProductQty from '../common/validator/productQty';
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 class ItemDashboard extends Component {
   constructor() {

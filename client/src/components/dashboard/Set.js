@@ -10,7 +10,7 @@ import { saveTotal } from '../../redux/actions/dashboard';
 import { clearError } from '../../redux/actions/commonAction';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 class Set extends Component {
   constructor() {

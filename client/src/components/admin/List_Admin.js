@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { deleteItem  } from '../../redux/actions/admin';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 
 class ListAdmin extends Component {
   constructor() {

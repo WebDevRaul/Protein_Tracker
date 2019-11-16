@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import TextFieldGroup from '../common/components/TextFieldGroup';
 
 // Common
-import isEmpty from '../common/isEmpty';
+import isEmpty from '../common/utils/isEmpty';
 import Item from '../common/defaultItems';
 
 // Redux

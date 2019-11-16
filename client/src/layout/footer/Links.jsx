@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Links = props => {
+const Links = () => {
   return (
     <div className='d-flex mb-3'>
       <i className="far fa-2x fa-address-card text-secondary"></i>
@@ -11,17 +11,17 @@ const Links = props => {
           </a>
         </span>
         <span className='ml-3 mr-auto'>
-          <a href='https://twitter.com/texterror2' target='_blank' rel="noopener noreferrer">
+          <a href='https://twitter.com' target='_blank' rel="noopener noreferrer">
             <i className='social-border fab fa-twitter fa-1x'></i>
           </a>
         </span>
         <span className='ml-3 mr-auto'>
-          <a href='https://www.instagram.com/_texterror_/' target='_blank' rel="noopener noreferrer">
+          <a href='https://www.instagram.com' target='_blank' rel="noopener noreferrer">
             <i className='social-border fab fa-instagram fa-1x'></i>
           </a>
         </span>
         <span className='ml-3 mr-auto'>
-          <a href='https://www.linkedin.com/in/raul-savin-660010188/' target='_blank' rel="noopener noreferrer">
+          <a href='https://www.linkedin.com' target='_blank' rel="noopener noreferrer">
             <i className='social-border fab fa-linkedin-in fa-1x'></i>
           </a>
         </span>

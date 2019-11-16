@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import Navbar from './layout/navbar/Navbar';
 
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
+import Registerr from './components/auth/Register';
+import Register from './pages/register/Register';
 import Footer from './layout/footer/Footer';
 import Home from './pages/home/Home';
 
@@ -16,7 +16,7 @@ const App = () => {
     <div className='app bg-light'>
       <Navbar />
       <Switch>
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/sign-in' component={Registerr} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/home' component={Home} />
       </Switch>
