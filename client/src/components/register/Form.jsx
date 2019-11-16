@@ -28,7 +28,6 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
     // eslint-disable-next-line
   },[]);
   
-  console.log(error)
   const onChange = e => setState({...state, [e.target.name]: e.target.value });
   
   const onFocus = e => {

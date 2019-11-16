@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const User = ({ show, setShow }) => {
+const User = ({ show, setShow, onSignOut }) => {
 
   const onClick = () => { show && setShow(!show) }
-  const onSignOut = () => {}
 
   return (
     <ul className="navbar-nav ml-auto mr-5">
@@ -54,7 +53,8 @@ const User = ({ show, setShow }) => {
 
 User.propTypes = {
   setShow: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
+  onSignOut: PropTypes.func.isRequired
 }
 
 export default User;

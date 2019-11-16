@@ -40,6 +40,16 @@ export const signIn = obj => dispatch => {
     })
 }
 
+export const signOut = () => dispatch => {
+  // Remove token from localstorage
+  localStorage.removeItem('PTracker_token');
+  // Remove Auth Token
+  setAuthToken(false);
+  // Clear user (Redux)
+  dispatch(setRemoveUser());
+  toastr.success('Success!', 'Signed Out successfully');
+};
+
 export const setAuthToken = token => {
   if (!token) return delete axios.defaults.headers.common['Authorization'];
   axios.defaults.headers.common['Authorization'] = token;
