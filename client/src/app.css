@@ -11,7 +11,8 @@
 }
 
 button:focus, input:focus {
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .active {

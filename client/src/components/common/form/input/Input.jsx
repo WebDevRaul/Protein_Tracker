@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 
-const Input = ({ name, value, label, icon, type, error, onChange}) => {
+const Input = ({ name, value, label, icon, type, error, onChange, onFocus}) => {
   return (
     <div className='form-group'>
       <label className={classnames('', { 'text-danger': error })} htmlFor={name} >
@@ -19,6 +19,9 @@ const Input = ({ name, value, label, icon, type, error, onChange}) => {
           name={name}
           value={value}
           onChange={onChange}
+          onFocus={onFocus}
+          autoComplete='off'
+          required
         />
       </div>
     </div>
@@ -32,7 +35,8 @@ Input.propTypes = {
   icon: PropTypes.string.isRequired,
   type: PropTypes.string,
   error: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired
 };
 
 Input.defaultProps = {

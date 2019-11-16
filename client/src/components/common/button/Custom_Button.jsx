@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import Spinner from '../spinner/Spinner';
 
 const CustomButton = ({ text, isClass, onClick, isLoading, type }) => {
   return (
-    <button className={`btn ${isClass}`} type={type} onClick={onClick}>
-      {isLoading ? <Spinner /> : text}
+    <button 
+      className={classnames(`btn ${isClass}`, { 'p-0': isLoading })} 
+      style={{ minHeight: '50px' }}
+      type={type} 
+      onClick={onClick}
+    >
+      <div>{isLoading ? <Spinner /> : text}</div>
     </button>
   )
 }
