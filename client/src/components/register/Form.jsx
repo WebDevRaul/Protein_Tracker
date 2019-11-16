@@ -8,6 +8,7 @@ import validateRegister from './validation/validation';
 
 import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
+import isEmpty from '../common/utils/isEmpty';
 
 const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
   const [state, setState] = useState({ first_name: 'John', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
@@ -27,6 +28,7 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
     // eslint-disable-next-line
   },[]);
   
+  console.log(error)
   const onChange = e => setState({...state, [e.target.name]: e.target.value });
   
   const onFocus = e => {

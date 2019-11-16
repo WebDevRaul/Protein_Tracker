@@ -1,8 +1,11 @@
 const express = require('express')
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { SECRET_OR_KEY } = require('../../config/keys');
 const User = require('../../models/User');
 const validateRegister = require('../../validation/register');
+const validateSignIn = require('../../validation/sign_in');
 
 
 // @route   POST api/user/account/register
@@ -31,6 +34,35 @@ router.post('/register', (req, res) => {
       });
     })
     .catch(err => res.status(400).json({ error: 'Ooops'}));
+});
+
+
+// @route   POST api/user/account/sign-in
+// @desc    Sign in user
+// @access  Public
+router.post('/sign-in', (req, res) => {
+  const { email, password } = req.body;
+  const { errors, isValid } = validateSignIn({ email, password });
+
+  if (!isValid) return res.status(400).json(errors);
+  errors.emailOrPassword='Invalid E-Mail or Password';
+  
+  User.findOne({ email })
+    .then(user => {
+      if(!user) return res.status(400).json(errors);
+      const { _id, first_name, last_name, email } = user;
+
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if(!isMatch) return res.status(404).json(errors);
+          const payload = { user: { _id, first_name, last_name, email }, isAuth: true };
+          jwt.sign(payload, SECRET_OR_KEY, { expiresIn: 3600 }, (err, token) => {
+            res.json({ token: 'Bearer ' + token });
+          });
+        })
+        .catch(err => res.status(400).json({ error: 'Ooops'}));
+    })
+    .catch(err => res.status(400).json({ error: 'Ooops'}))
 });
 
 

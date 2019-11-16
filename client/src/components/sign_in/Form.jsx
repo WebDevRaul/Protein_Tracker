@@ -4,21 +4,21 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn, clearUserErrors } from '../../redux/actions/user';
 import { createStructuredSelector } from 'reselect';
-import { state_isLoading, state_errors } from '../../redux/selectors/user';
+import { state_isLoading, state_errors, state_isAuth } from '../../redux/selectors/user';
 import validateSignIn from './validation/validation';
+import isEmpty from '../common/utils/isEmpty';
 
 import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
 
-const Form = ({ signIn, isLoading, errors, clearUserErrors }) => {
+const Form = ({ signIn, isLoading, errors, clearUserErrors, isAuth }) => {
   const [state, setState] = useState({ email: 'Jdoe@test.com', password: '123456'});
   const [error, setError] = useState({ email: '', password: '' });
   const { email, password } = state;
-  const isAuth = false;
 
   // Update error CDU
   useEffect(() => {
-    setError({...error, ...errors});
+    if(!isEmpty(errors)) setError({email: errors.emailOrPassword, password: errors.emailOrPassword});
     // eslint-disable-next-line
   },[errors]);
 
@@ -84,12 +84,14 @@ Form.propTypes = {
   signIn: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.object.isRequired,
-  clearUserErrors: PropTypes.func.isRequired
+  clearUserErrors: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
   isLoading: state_isLoading,
-  errors: state_errors
+  errors: state_errors,
+  isAuth: state_isAuth
 });
 
 export default connect(mapStateToProps, { signIn, clearUserErrors })(Form);
