@@ -1,16 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import Table from '../../components/dashboard/table/Table';
+import Meals from '../../components/dashboard/meals/Meals';
 
-const Dashboard = props => {
+const Dashboard = () => {
   return (
-    <div>
-      Dashboard
-    </div>
+    <section className='dashboard'>
+      <Table />
+      <Meals />
+    </section>
   )
-}
-
-Dashboard.propTypes = {
-
 }
 
 export default Dashboard;
