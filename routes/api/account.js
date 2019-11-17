@@ -1,9 +1,13 @@
 const express = require('express')
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { SECRET_OR_KEY } = require('../../config/keys');
+const collectAllData = require('./utils/collectAllData');
 const User = require('../../models/User');
+const Target = require('../../models/Target');
+const Breakfast = require('../../models/Breakfast');
+const Lunch = require('../../models/Lunch');
+const Diner = require('../../models/Diner');
+const Snack = require('../../models/Snack');
 const validateRegister = require('../../validation/register');
 const validateSignIn = require('../../validation/sign_in');
 
@@ -28,7 +32,16 @@ router.post('/register', (req, res) => {
           if(err) throw err;
           newUser.password = hash;
           newUser.save()
-            .then(() => res.json({ success: true }))
+            .then(({ _id }) => {
+              const one = new Target({ user: _id }).save();
+              const two = new Breakfast({ user: _id }).save();
+              const tree = new Lunch({ user: _id }).save();
+              const four = new Diner({ user: _id }).save();
+              const five = new Snack({ user: _id }).save();
+              Promise.all([ one, two, tree, four, five ])
+                .then(() => res.json({ success: true }))
+                .catch(err => res.status(400).json({ error: 'Ooops'}))
+            })
             .catch(err => res.status(400).json({ error: 'Ooops'}))
         });
       });
@@ -50,19 +63,17 @@ router.post('/sign-in', (req, res) => {
   User.findOne({ email })
     .then(user => {
       if(!user) return res.status(400).json(errors);
-      const { _id, first_name, last_name, email } = user;
 
       bcrypt.compare(password, user.password)
         .then(isMatch => {
-          if(!isMatch) return res.status(404).json(errors);
-          const payload = { user: { _id, first_name, last_name, email }, isAuth: true };
-          jwt.sign(payload, SECRET_OR_KEY, { expiresIn: 3600 }, (err, token) => {
-            res.json({ token: 'Bearer ' + token });
-          });
+          if(!isMatch) return res.status(400).json(errors);
+          collectAllData(user)
+          .then(({ token }) => { res.json({ token: 'Bearer ' + token })})
+          .catch(err => res.status(400).json(errors));
         })
-        .catch(err => res.status(400).json({ error: 'Ooops'}));
+        .catch(err => res.status(400).json(errors));
     })
-    .catch(err => res.status(400).json({ error: 'Ooops'}))
+    .catch(err => res.status(400).json(errors));
 });
 
 

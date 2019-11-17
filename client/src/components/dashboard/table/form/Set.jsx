@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { set } from '../../../../redux/actions/target';
 import Input from '../../../common/form/input/Input';
 import CustomButton from '../../../common/button/Custom_Button';
 import validateSet from './validation/validate_set';
 
-const Set = ({ show, setShow }) => {
+const Set = ({ show, setShow, set }) => {
   const [state, setState] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const [error, setError] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const { cal, prot, fat, carb } = state;
@@ -22,6 +24,7 @@ const Set = ({ show, setShow }) => {
     e.preventDefault();
     const { errors, isValid } = validateSet({ ...state });
     if(!isValid) return setError({ ...error, ...errors });
+    set(state);
   }
 
   return (
@@ -78,7 +81,8 @@ const Set = ({ show, setShow }) => {
 
 Set.propTypes = {
   setShow: PropTypes.func.isRequired,
-  show: PropTypes.object.isRequired
+  show: PropTypes.object.isRequired,
+  set: PropTypes.func.isRequired
 }
 
-export default Set;
+export default connect(null, { set })(Set);

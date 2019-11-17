@@ -8,5 +8,9 @@ const USER = {
   LOADED: 'USER_LOADED'
 };
 
+const TABLE = {
+  SET: 'SET'
+};
 
-export { USER };
+
+export { USER, TABLE };
