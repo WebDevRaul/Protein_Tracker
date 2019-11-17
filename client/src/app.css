@@ -10,9 +10,16 @@
   box-sizing: border-box;
 }
 
-button:focus, input:focus {
+button:focus, input:focus, select:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+select:hover {
+  cursor: pointer;
+}
+
+.is-invalid {
+  padding-right: 16px !important;
 }
 
 .active {

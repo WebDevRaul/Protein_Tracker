@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Input from '../../../common/form/input/Input';
 import CustomButton from '../../../common/button/Custom_Button';
+import validateSet from './validation/validate_set';
 
 const Set = ({ show, setShow }) => {
   const [state, setState] = useState({ cal: '', prot: '', fat: '', carb: '' });
@@ -10,10 +11,17 @@ const Set = ({ show, setShow }) => {
 
   const onClick = () => setShow({ ...show, btn: true, set: false });
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
-  const onFocus = e => {}
+  const onFocus = e => {
+    const { cal, prot, fat, carb } = error;
+    if(!( cal || prot || fat || carb )) return null;
+    const field = Object.keys(error).filter(i => i === e.target.name )[0];
+    setError({ ...error, [field]: '' });
+  }
 
   const onSubmit = e => {
     e.preventDefault();
+    const { errors, isValid } = validateSet({ ...state });
+    if(!isValid) return setError({ ...error, ...errors });
   }
 
   return (
@@ -28,7 +36,7 @@ const Set = ({ show, setShow }) => {
           onFocus={onFocus}
         />
         <Input
-          name='propt'
+          name='prot'
           value={prot}
           label='Protein'
           error={error.prot}

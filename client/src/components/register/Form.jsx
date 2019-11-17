@@ -8,7 +8,6 @@ import validateRegister from './validation/validation';
 
 import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
-import isEmpty from '../common/utils/isEmpty';
 
 const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
   const [state, setState] = useState({ first_name: 'John', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
@@ -32,7 +31,7 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
   
   const onFocus = e => {
     const { first_name, last_name, email, password, password2 } = error;
-    if(!(first_name || last_name || email || password || password2 !== '')) return null;
+    if(!( first_name || last_name || email || password || password2 )) return null;
     const field = Object.keys(error).filter(i => i === e.target.name )[0];
     setError({ ...error, [field]: '' });
   }
