@@ -28,7 +28,17 @@ const user = ( state=INITIAL_STATE, action ) => {
         isAuth: payload.isAuth
       };
       case USER.SIGN_OUT:
-        return { ...state, user: {}, isAuth: false };
+        return { 
+          ...state, 
+          ...state, 
+          info: {},
+          target: {},
+          breakfast: {},
+          lunch: {},
+          diner: {},
+          snack: {},
+          isAuth: false
+        };
     case USER.LOADING:
       return { ...state, isLoading: true };
     case USER.LOADED:
