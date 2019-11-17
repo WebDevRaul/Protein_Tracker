@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { set } from '../../../../redux/actions/target';
+import { createStructuredSelector } from 'reselect';
+import { state_isLoading } from '../../../../redux/selectors/user';
 import Input from '../../../common/form/input/Input';
 import CustomButton from '../../../common/button/Custom_Button';
 import validateSet from './validation/validate_set';
 
-const Set = ({ show, setShow, set }) => {
+const Set = ({ show, setShow, set, isLoading }) => {
   const [state, setState] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const [error, setError] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const { cal, prot, fat, carb } = state;
 
-  const onClick = () => setShow({ ...show, btn: true, set: false });
+  const onClick = () => {
+    // Clear state
+    setState({ cal: '', prot: '', fat: '', carb: '' });
+    setShow({ ...show, btn: true, set: false });
+  };
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
   const onFocus = e => {
     const { cal, prot, fat, carb } = error;
@@ -73,7 +79,12 @@ const Set = ({ show, setShow, set }) => {
       </div>
       <div className='d-flex justify-content-between m-auto w-50'>
         <CustomButton text='Cancel' onClick={onClick} isClass='btn-danger text-uppercase font-weight-bold' />
-        <CustomButton text='Save' isClass='btn-success text-uppercase font-weight-bold' type='submit' />
+        <CustomButton 
+          text='Save' 
+          isClass='btn-success text-uppercase font-weight-bold' 
+          type='submit' 
+          isLoading={isLoading}
+        />
       </div>
     </form>
   )
@@ -82,7 +93,12 @@ const Set = ({ show, setShow, set }) => {
 Set.propTypes = {
   setShow: PropTypes.func.isRequired,
   show: PropTypes.object.isRequired,
-  set: PropTypes.func.isRequired
-}
+  set: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
 
-export default connect(null, { set })(Set);
+const mapStateToProps = createStructuredSelector({
+  isLoading :state_isLoading
+});
+
+export default connect(mapStateToProps, { set })(Set);

@@ -15,6 +15,7 @@ export const set = obj => dispatch => {
       localStorage.setItem('PTracker_token', token);
       // Set Auth Token
       setAuthToken(token);
+      dispatch({ type: USER.LOADED });
       toastr.success('Success!', '....');
     })
     .catch(err => {
