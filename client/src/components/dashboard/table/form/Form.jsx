@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Buttons from './Buttons';
 import Set from './Set';
 import Calc from './Calc';
 
 const Form = () => {
-  const [show, setShow] = useState({ btn: false, set: false, calc: true });
+  const [show, setShow] = useState({ btn: true, set: false, calc: false });
   const { btn, set, calc } = show;
 
   return (
@@ -15,10 +14,6 @@ const Form = () => {
       { calc && <Calc show={show} setShow={setShow} /> }
     </>
   )
-}
-
-Form.propTypes = {
-
 }
 
 export default Form;

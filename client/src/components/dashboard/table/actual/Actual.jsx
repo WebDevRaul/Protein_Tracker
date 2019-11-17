@@ -1,10 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Cell from './Cell';
 
-const Actual = props => {
+const Actual = () => {
   return (
-    <div>
-      actual
+    <div className='d-flex mb-2'>
+      <Cell value='100' />
+      <Cell value='100' />
+      <Cell value='100' />
+      <Cell value='100' />
     </div>
   )
 }
