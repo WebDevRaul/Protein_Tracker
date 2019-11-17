@@ -8,7 +8,7 @@ const CustomButton = ({ text, isClass, onClick, isLoading, type }) => {
   return (
     <button 
       className={classnames(`btn ${isClass}`, { 'p-0': isLoading })} 
-      style={{ minHeight: '50px', minWidth: '125px' }}
+      style={{ minHeight: '48px', minWidth: '125px' }}
       type={type} 
       onClick={onClick}
     >

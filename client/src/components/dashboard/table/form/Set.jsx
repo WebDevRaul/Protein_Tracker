@@ -26,41 +26,47 @@ const Set = ({ show, setShow }) => {
 
   return (
     <form className='mt-3 mb-3' noValidate onSubmit={onSubmit}>
-      <div className='d-flex justify-content-between'>
-        <Input
-          name='cal'
-          value={cal}
-          label='Calories'
-          error={error.cal}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-        <Input
-          name='prot'
-          value={prot}
-          label='Protein'
-          error={error.prot}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-      </div>
-      <div className='d-flex justify-content-between'>
-        <Input
-          name='fat'
-          value={fat}
-          label='Fat'
-          error={error.fat}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-        <Input
-          name='carb'
-          value={carb}
-          label='Carbohydrates'
-          error={error.carb}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
+      <div className='row no-gutters'>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+          <Input
+            name='cal'
+            value={cal}
+            label='Calories'
+            error={error.cal}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+          <Input
+            name='prot'
+            value={prot}
+            label='Protein'
+            error={error.prot}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+          <Input
+            name='fat'
+            value={fat}
+            label='Fat'
+            error={error.fat}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+          <Input
+            name='carb'
+            value={carb}
+            label='Carbohydrates'
+            error={error.carb}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
       </div>
       <div className='d-flex justify-content-between m-auto w-50'>
         <CustomButton text='Cancel' onClick={onClick} isClass='btn-danger text-uppercase font-weight-bold' />

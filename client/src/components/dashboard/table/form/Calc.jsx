@@ -29,60 +29,66 @@ const Calc = ({ show, setShow }) => {
 
   return (
     <form className='mt-3 mb-3' noValidate onSubmit={onSubmit}>
-      <div className='d-flex justify-content-between'>
-        <Input
-          name='age'
-          value={age}
-          label='Age'
-          error={error.age}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-        <Select
-          name='gender'
-          value={[
-            { key: 'Man', value: 'man' },
-            { key: 'Women', value: 'women' }
-          ]}
-          label='Gender'
-          error={error.gender}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-      </div>
-      <div className='d-flex justify-content-center'>
-        <Select
-          name='activity'
-          value={[
-            { key: 'Little to no exercise', value: '1.2' },
-            { key: '1–3 days per week', value: '1.375' },
-            { key: '3–5 days per week', value: '1.55' },
-            { key: '6–7 days per week', value: '1.725' },
-            { key: 'Twice per day', value: '1.9' }
-          ]}
-          label='Activity'
-          error={error.activity}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-      </div>
-      <div className='d-flex justify-content-between'>
-        <Input
-          name='height'
-          value={height}
-          label='Height (cm)'
-          error={error.height}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
-        <Input
-          name='weight'
-          value={weight}
-          label='Weight (kg)'
-          error={error.weight}
-          onChange={onChange}
-          onFocus={onFocus}
-        />
+      <div className='row no-gutters'>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-4 m-auto'>
+          <Input
+            name='age'
+            value={age}
+            label='Age'
+            error={error.age}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-4 m-auto'>
+          <Select
+            name='gender'
+            value={[
+              { key: 'Man', value: 'man' },
+              { key: 'Women', value: 'women' }
+            ]}
+            label='Gender'
+            error={error.gender}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-4 m-auto'>
+          <Select
+            name='activity'
+            value={[
+              { key: 'Little to no exercise', value: '1.2' },
+              { key: '1–3 days per week', value: '1.375' },
+              { key: '3–5 days per week', value: '1.55' },
+              { key: '6–7 days per week', value: '1.725' },
+              { key: 'Twice per day', value: '1.9' }
+            ]}
+            label='Activity'
+            error={error.activity}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-4 offset-lg-3 m-auto'>
+          <Input
+            name='height'
+            value={height}
+            label='Height (cm)'
+            error={error.height}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
+        <div className='col-8 col-sm-6 col-md-5 col-lg-4 offset-lg-3 m-auto'>
+          <Input
+            name='weight'
+            value={weight}
+            label='Weight (kg)'
+            error={error.weight}
+            onChange={onChange}
+            onFocus={onFocus}
+          />
+        </div>
       </div>
       <div className='d-flex justify-content-around m-auto'>
         <CustomButton text='Cancel' onClick={onClick} isClass='btn-danger text-uppercase font-weight-bold' />

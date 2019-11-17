@@ -6,7 +6,11 @@ import PropTypes from 'prop-types';
 const Input = ({ name, value, label, icon, type, error, onChange, onFocus}) => {
   return (
     <div className='form-group'>
-      <label className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error })} htmlFor={name} >
+      <label 
+        style={{ fontSize: '.8em' }}
+        className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error })} 
+        htmlFor={name}
+      >
         { error ? error: label }
       </label>
       <div className='input-group'>

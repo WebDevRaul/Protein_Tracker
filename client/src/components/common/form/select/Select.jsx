@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 
 const Select = ({ name, value, label, error, onChange, onFocus}) => {
   return (
-    <div className='form-group' style={{width: '262px'}}>
-      <label className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error })} htmlFor={name} >
+    <div className='form-group'>
+      <label 
+        style={{ fontSize: '.8em' }}
+        className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error })} 
+        htmlFor={name} 
+        >
         { error ? error: label }
       </label>
       <div className='input-group'>

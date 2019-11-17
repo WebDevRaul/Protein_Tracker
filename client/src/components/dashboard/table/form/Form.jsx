@@ -5,7 +5,7 @@ import Set from './Set';
 import Calc from './Calc';
 
 const Form = () => {
-  const [show, setShow] = useState({ btn: false, set: true, calc: false });
+  const [show, setShow] = useState({ btn: false, set: false, calc: true });
   const { btn, set, calc } = show;
 
   return (
