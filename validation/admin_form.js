@@ -36,6 +36,15 @@ module.exports = function validateAdminForm({ name, qty, type, cal, prot, fat, c
     errors.name = 'Product Name must be between 1 and 50 characters';
   }
 
+  // Validate qty
+  if ((!Validator.isFloat(qty, {min:0, max: 1001})) && (!Validator.isInt(qty))) {
+    errors.qty = 'Enter a valid Qty.';
+  } else if(!Validator.isFloat(qty, {min:0, max:1000})&&(Validator.isInt(qty, {min:-Infinity, max:0}))) {
+    errors.qty = 'Minimum Qty. is 1'
+  } else if(!Validator.isFloat(qty, {min:0, max:1000})&&(!Validator.isInt(qty, {min:0, max: 1000}))) {
+    errors.qty = 'Maximum Qty. is 1000'
+  }
+
   // Validate cal
   if ((!Validator.isFloat(cal, {min:0, max: 1001})) && (!Validator.isInt(cal))) {
     errors.cal = 'Enter a valid Qty.';
