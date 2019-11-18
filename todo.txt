@@ -1,2 +1,2 @@
 fix navbar, footer? where is scrollbar
-loading for each element?
+do the calc func on dashboard

@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { calc, clearTargetErrors } from '../../../../redux/actions/target';
+import { createStructuredSelector } from 'reselect';
+import { state_calc_isLoading } from '../../../../redux/selectors/target';
 
 import CustomButton from '../../../common/button/Custom_Button';
 import Input from '../../../common/form/input/Input';
 import Select from '../../../common/form/select/Select';
 import validateCalc from './validation/validate_calc';
 
-const Calc = ({ show, setShow }) => {
+const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
   const [state, setState] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const [error, setError] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const { age, height, weight } = state;
+
+  // Clear Errors CDUM
+  useEffect(() => {
+    const clear = () => clearTargetErrors();
+    return clear;
+    // eslint-disable-next-line
+  },[]);
 
   const onClick = () => setShow({ ...show, btn: true, calc: false });
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
@@ -24,7 +35,8 @@ const Calc = ({ show, setShow }) => {
     e.preventDefault();
     const { errors, isValid } = validateCalc({ ...state });
     if(!isValid) return setError({ ...error, ...errors });
-
+    // do the calc
+    calc({ cal: '0', prot: '-123', fat: 'dfdf', carb: '-0' });
   }
 
   return (
@@ -92,7 +104,12 @@ const Calc = ({ show, setShow }) => {
       </div>
       <div className='d-flex justify-content-around m-auto'>
         <CustomButton text='Cancel' onClick={onClick} isClass='btn-danger text-uppercase font-weight-bold' />
-        <CustomButton text='Save' isClass='btn-success text-uppercase font-weight-bold' type='submit' />
+        <CustomButton 
+          text='Save' 
+          isClass='btn-success text-uppercase font-weight-bold' 
+          type='submit' 
+          isLoading={isLoading}
+        />
       </div>
     </form>
   )
@@ -100,7 +117,15 @@ const Calc = ({ show, setShow }) => {
 
 Calc.propTypes = {
   setShow: PropTypes.func.isRequired,
-  show: PropTypes.object.isRequired
-}
+  show: PropTypes.object.isRequired,
+  calc: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
+  clearTargetErrors: PropTypes.func.isRequired
+};
 
-export default Calc;
+const mapStateToProps = createStructuredSelector({
+  isLoading: state_calc_isLoading
+});
+
+export default connect(mapStateToProps, { calc, clearTargetErrors })(Calc);

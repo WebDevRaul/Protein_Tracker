@@ -31,5 +31,18 @@ router.post('/set', passport.authenticate('jwt'), (req, res) => {
   // )
   });
 
+  
+// @route   POST api/user/table/calc
+// @desc    Set Target
+// @access  Private
+router.post('/calc', passport.authenticate('jwt'), (req, res) => {
+  const { cal, prot, fat, carb } = req.body;
+  const { _id } = req.user;
+  const { errors, isValid } = validateDashboardSet({ cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json({ error: 'Unavailable'});
+
+  });
+
 
 module.exports = router;

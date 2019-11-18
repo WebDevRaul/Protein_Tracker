@@ -41,8 +41,8 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    // const { errors, isValid } = validateSet({ ...state });
-    // if(!isValid) return setError({ ...error, ...errors });
+    const { errors, isValid } = validateSet({ ...state });
+    if(!isValid) return setError({ ...error, ...errors });
     set(state);
   }
 
@@ -113,7 +113,7 @@ Set.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLoading :state_set_isLoading,
+  isLoading: state_set_isLoading,
   errors: state_errors
 });
 

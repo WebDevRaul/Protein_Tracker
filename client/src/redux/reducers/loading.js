@@ -34,9 +34,9 @@ const loading = ( state=INITIAL_STATE, action ) => {
     case TARGET.LOADED_SET:
       return { ...state, target: { ...state.target, set: { isLoading: false } }};
     case TARGET.LOADING_CALC:
-      return { ...state, target: { ...state.item, calc: { isLoading: true } }};
+      return { ...state, target: { ...state.target, calc: { isLoading: true } }};
     case TARGET.LOADED_CALC:
-      return { ...state, target: { ...state.item, calc: { isLoading: false } }};
+      return { ...state, target: { ...state.target, calc: { isLoading: false } }};
 
     case ADMIN.LOADING_FORM:
       return { ...state, admin: { ...state.admin, form: { isLoading: true } }};
