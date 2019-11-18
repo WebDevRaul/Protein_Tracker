@@ -1,2 +1,2 @@
 fix navbar, footer? where is scrollbar
-add later rel to user db
+loading for each element?

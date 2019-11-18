@@ -7,6 +7,7 @@ import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Sign_In from './pages/sign_in/Sign_In';
 import Dashboard from './pages/dashboard/Dashboard';
+import Admin from './pages/admin/Admin';
 import NotFound from './pages/not_found/Not_Found';
 import Footer from './layout/footer/Footer';
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path='/register' component={Register} />
 
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/admin' component={Admin} />
 
         <Route path='*' component={NotFound} />
       </Switch>
