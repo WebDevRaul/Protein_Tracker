@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { saveItem } from '../../../redux/actions/admin';
+import { createStructuredSelector } from 'reselect';
+import { state_errors, state_form_isLoading } from '../../../redux/selectors/admin';
 
 import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
 import Input from '../../common/form/input/Input';
 import validateAdmin from './validation/validate';
 
-const Form = ({ isLoading = false }) => {
-  const [state, setState] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
+const Form = ({ saveItem, isLoading, errors }) => {
+  const [state, setState] = useState({ name: 'test', qty: '1', type: 'ml', cal: '1', prot : '1', fat: '1', carb: '1'});
   const [error, setError] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
   const { name, qty, type, cal, fat, prot, carb } = state;
 
@@ -23,8 +27,9 @@ const Form = ({ isLoading = false }) => {
     e.preventDefault();
     const { errors, isValid } = validateAdmin(state);
     if(!isValid) return setError({ ...error, ...errors });
-    console.log('test')
+    saveItem(state);
   }
+  
   return (
     <> 
       <h2 className='text-center text-primary'>Add Product</h2>
@@ -121,7 +126,14 @@ const Form = ({ isLoading = false }) => {
 };
 
 Form.propTypes = {
-
+  saveItem: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
-export default Form;
+const mapStateToProps = createStructuredSelector({
+  isLoading: state_form_isLoading,
+  errors: state_errors
+});
+
+export default connect( mapStateToProps, { saveItem } )(Form);

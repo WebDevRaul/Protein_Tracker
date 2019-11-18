@@ -1,45 +1,27 @@
 import axios from 'axios';
-import { GET_ERRORS, SAVE_ITEM, FIND_ITEMS, DELETE_ITEM } from './typess';
+import URL from './utils/URL';
+import { ADMIN } from './types';
+import { toastr } from 'react-redux-toastr';
+import { setAuthToken } from './user';
 
-
-// Save item
-export const saveItem = item => dispatch => {
-  axios
-    .post('/api/admin', item)
-    .then(res => dispatch({
-      type: SAVE_ITEM,
-      payload: res.data
-    }))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }));
-};
-
-// Find Items
-export const findItems = data => dispatch => {
-  axios
-    .get(`/api/admin/${data}`)
-    .then(res => dispatch({
-      type: FIND_ITEMS,
-      payload: res.data
-    }))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }));
+export const saveItem = obj => dispatch => {
+  console.log(obj)
+  dispatch({ type: ADMIN.LOADING_FORM });
+  axios.post(`${URL.admin}/form`, obj)
+    .then(({ data: { token, data } }) => {
+      dispatch({ type: ADMIN.SAVE_ITEM, payload: { data } });
+      // Remove old Token
+      localStorage.removeItem('PTracker_token');
+      // Set new Token
+      localStorage.setItem('PTracker_token', token);
+      // Set Auth Token
+      setAuthToken(token);
+      dispatch({ type: ADMIN.LOADED_FORM });
+      toastr.success('Success!', 'Item saved');
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN.ERROR, payload: err.response.data })
+      toastr.error('Error!', 'Ooops');
+      dispatch({ type: ADMIN.LOADED_FORM });
+    })
 }
-
-// Delete item
-export const deleteItem = data => dispatch => {
-  axios
-    .delete(`/api/admin/${data}`)
-    .then(res => dispatch({
-      type: DELETE_ITEM,
-      payload: data
-    }))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }))
-};
