@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
 import Input from '../../common/form/input/Input';
+import validateAdmin from './validation/validate';
 
 const Form = ({ isLoading = false }) => {
   const [state, setState] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
@@ -12,12 +13,17 @@ const Form = ({ isLoading = false }) => {
 
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
   const onFocus = e => {
-
+    const { name, qty, type, cal, prot, fat, carb } = error;
+    if(!( name || qty || type || cal || prot || fat || carb )) return null;
+    const field = Object.keys(error).filter(i => i === e.target.name )[0];
+    setError({ ...error, [field]: '' });
   }
 
   const onSubmit = e => {
     e.preventDefault();
-
+    const { errors, isValid } = validateAdmin(state);
+    if(!isValid) return setError({ ...error, ...errors });
+    console.log('test')
   }
   return (
     <> 
