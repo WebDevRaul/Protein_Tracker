@@ -7,7 +7,7 @@ const Admin = () => {
   return (
     <section className='admin'>
       <div className='row no-gutters'>
-        <div className='col-10 col-sm-8 col-md-6 m-auto'>
+        <div className='col-10 col-sm-8 col-md-6 col-lg-4 m-auto'>
           <Form />
         </div>
       </div>

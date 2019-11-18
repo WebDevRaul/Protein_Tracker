@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { set } from '../../../../redux/actions/target';
+import { set, clearTargetErrors } from '../../../../redux/actions/target';
 import { createStructuredSelector } from 'reselect';
-import { state_isLoading } from '../../../../redux/selectors/user';
+import { state_set_isLoading, state_errors } from '../../../../redux/selectors/target';
 import Input from '../../../common/form/input/Input';
 import CustomButton from '../../../common/button/Custom_Button';
 import validateSet from './validation/validate_set';
 
-const Set = ({ show, setShow, set, isLoading }) => {
+const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
   const [state, setState] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const [error, setError] = useState({ cal: '', prot: '', fat: '', carb: '' });
   const { cal, prot, fat, carb } = state;
+
+  // Update error CDU
+  useEffect(() => {
+    setError({...error, ...errors});
+    // eslint-disable-next-line
+  },[errors]);
+
+  // Clear Errors CDUM
+  useEffect(() => {
+    const clear = () => clearTargetErrors();
+    return clear;
+    // eslint-disable-next-line
+  },[]);
 
   const onClick = () => {
     // Clear state
@@ -28,8 +41,8 @@ const Set = ({ show, setShow, set, isLoading }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const { errors, isValid } = validateSet({ ...state });
-    if(!isValid) return setError({ ...error, ...errors });
+    // const { errors, isValid } = validateSet({ ...state });
+    // if(!isValid) return setError({ ...error, ...errors });
     set(state);
   }
 
@@ -94,11 +107,14 @@ Set.propTypes = {
   setShow: PropTypes.func.isRequired,
   show: PropTypes.object.isRequired,
   set: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
+  clearTargetErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLoading :state_isLoading
+  isLoading :state_set_isLoading,
+  errors: state_errors
 });
 
-export default connect(mapStateToProps, { set })(Set);
+export default connect(mapStateToProps, { set, clearTargetErrors })(Set);

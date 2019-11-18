@@ -1,4 +1,4 @@
-import { USER, TABLE } from '../actions/types';
+import { USER, TARGET, ADMIN } from '../actions/types';
 
 const INITIAL_STATE = {
   info: {},
@@ -8,15 +8,14 @@ const INITIAL_STATE = {
   diner: {},
   snack: {},
   isAuth: false,
-  errors: {},
-  isLoading: false
 }
 
 const user = ( state=INITIAL_STATE, action ) => {
   const { payload } = action;
   switch(action.type) {
     case USER.SIGN_IN:
-    case TABLE.SET:
+    case TARGET.SET:
+    case ADMIN.SAVE_ITEM:
       return { 
         ...state, 
         info: payload.info,
@@ -29,8 +28,7 @@ const user = ( state=INITIAL_STATE, action ) => {
       };
       case USER.SIGN_OUT:
         return { 
-          ...state, 
-          ...state, 
+          ...state,
           info: {},
           target: {},
           breakfast: {},
@@ -39,14 +37,6 @@ const user = ( state=INITIAL_STATE, action ) => {
           snack: {},
           isAuth: false
         };
-    case USER.LOADING:
-      return { ...state, isLoading: true };
-    case USER.LOADED:
-      return { ...state, isLoading: false };
-    case USER.ERROR:
-      return { ...state, errors: payload };
-    case USER.CLEAR_ERRORS:
-      return { ...state, errors: {} };
     default:
       return state;
   }

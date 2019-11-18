@@ -13,7 +13,6 @@ router.post('/form', passport.authenticate('jwt'), (req, res) => {
   const { errors, isValid } = validateAdminForm({ name, qty, type, cal, prot, fat, carb });
 
   if (!isValid) return res.status(400).json(errors);
-  
 });
 
 

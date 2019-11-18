@@ -11,7 +11,7 @@ export const register = ({ data, history }) => dispatch => {
       dispatch({ type: USER.REGISTER });
       dispatch({ type: USER.LOADED });
       toastr.success('Success!', 'Registered successfully');
-      history.push('/login');
+      history.push('/sign-in');
     })
     .catch(err => {
       dispatch({ type: USER.ERROR, payload: err.response.data })
@@ -64,5 +64,5 @@ export const setRemoveUser = () => {
 };
 
 export const clearUserErrors = () => {
-  return { type: USER.CLEAR_ERRORS, payload: {} }
+  return { type: USER.CLEAR_ERRORS }
 }

@@ -11,9 +11,9 @@ import Input from '../../common/form/input/Input';
 import validateAdmin from './validation/validate';
 
 const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
-  const [state, setState] = useState({ name: '', qty: '01', type: '', cal: 'gm', prot : '-1', fat: '10000', carb: '%^^&'});
+  const [state, setState] = useState({ name: 'Carrot', qty: '1', type: 'pc', cal: '1', prot : '1', fat: '1', carb: '1'});
   const [error, setError] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
-  const { name, qty, type, cal, fat, prot, carb } = state;
+  const { name, qty, cal, fat, prot, carb } = state;
 
   // Update error CDU
   useEffect(() => {
@@ -47,7 +47,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
     <> 
       <h2 className='text-center text-primary'>Add Product</h2>
       <form noValidate onSubmit={onSubmit}>
-        <div className='col-12 col-lg-10 m-auto p-0'>
+        <div className='col-12 m-auto p-0'>
           <Input
             name='name'
             value={name}
@@ -58,7 +58,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
           />
         </div>
         <div className='d-flex'>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Input
               name='qty'
               value={qty}
@@ -68,7 +68,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
               onFocus={onFocus}
             />
           </div>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Select
               name='type'
               value={[
@@ -84,7 +84,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
           </div>
         </div>
         <div className='d-flex'>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Input
               name='cal'
               value={cal}
@@ -94,7 +94,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
               onFocus={onFocus}
             />
           </div>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Input
               name='prot'
               value={prot}
@@ -106,7 +106,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
           </div>
         </div>
         <div className='d-flex'>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Input
               name='fat'
               value={fat}
@@ -116,7 +116,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
               onFocus={onFocus}
             />
           </div>
-          <div className='col-6 col-lg-4 m-auto p-0'>
+          <div className='col-6 m-auto p-0'>
             <Input
               name='carb'
               value={carb}

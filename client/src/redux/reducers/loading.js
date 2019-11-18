@@ -1,11 +1,16 @@
-import { ADMIN } from '../actions/types';
+import { USER, TARGET, ADMIN } from '../actions/types';
 
 const INITIAL_STATE = {
   user: {
     isLoading: false
   },
-  table: {
-    isLoading: false
+  target: {
+    set: {
+      isLoading: false
+    },
+    calc: {
+      isLoading: false
+    }
   },
   admin: {
     form: {
@@ -19,6 +24,20 @@ const INITIAL_STATE = {
 
 const loading = ( state=INITIAL_STATE, action ) => {
   switch(action.type) {
+    case USER.LOADING:
+      return { ...state, user: { ...state.user, isLoading: true }};
+    case USER.LOADED:
+      return { ...state, user: { ...state.user, isLoading: false }};
+
+    case TARGET.LOADING_SET:
+      return { ...state, target: { ...state.target, set: { isLoading: true } }};
+    case TARGET.LOADED_SET:
+      return { ...state, target: { ...state.target, set: { isLoading: false } }};
+    case TARGET.LOADING_CALC:
+      return { ...state, target: { ...state.item, calc: { isLoading: true } }};
+    case TARGET.LOADED_CALC:
+      return { ...state, target: { ...state.item, calc: { isLoading: false } }};
+
     case ADMIN.LOADING_FORM:
       return { ...state, admin: { ...state.admin, form: { isLoading: true } }};
     case ADMIN.LOADED_FORM:

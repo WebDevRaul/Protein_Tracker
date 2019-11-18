@@ -37,7 +37,7 @@ mongoose
 
 // Routes
   app.use('/api/user/account', account);
-  app.use('/api/user/table', target);
+  app.use('/api/user/target', target);
   app.use('/api/user/admin', admin);
 
 

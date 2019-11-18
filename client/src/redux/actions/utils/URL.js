@@ -1,6 +1,6 @@
 const URL = {
   account: '/api/user/account',
-  table: '/api/user/table',
+  target: '/api/user/target',
   admin: '/api/user/admin',
 };
 
