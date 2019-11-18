@@ -5,7 +5,6 @@ import { toastr } from 'react-redux-toastr';
 import { setAuthToken } from './user';
 
 export const saveItem = obj => dispatch => {
-  console.log(obj)
   dispatch({ type: ADMIN.LOADING_FORM });
   axios.post(`${URL.admin}/form`, obj)
     .then(({ data: { token, data } }) => {
@@ -24,4 +23,8 @@ export const saveItem = obj => dispatch => {
       toastr.error('Error!', 'Ooops');
       dispatch({ type: ADMIN.LOADED_FORM });
     })
+}
+
+export const clearAdminErrors = () => {
+  return { type: ADMIN.CLEAR_ERRORS }
 }

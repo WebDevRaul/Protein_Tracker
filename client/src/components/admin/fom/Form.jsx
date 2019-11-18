@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { saveItem } from '../../../redux/actions/admin';
+import { saveItem, clearAdminErrors } from '../../../redux/actions/admin';
 import { createStructuredSelector } from 'reselect';
 import { state_errors, state_form_isLoading } from '../../../redux/selectors/admin';
 
@@ -10,10 +10,23 @@ import Select from '../../common/form/select/Select';
 import Input from '../../common/form/input/Input';
 import validateAdmin from './validation/validate';
 
-const Form = ({ saveItem, isLoading, errors }) => {
-  const [state, setState] = useState({ name: 'test', qty: '1', type: 'ml', cal: '1', prot : '1', fat: '1', carb: '1'});
+const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
+  const [state, setState] = useState({ name: '', qty: '01', type: '', cal: 'gm', prot : '-1', fat: '10000', carb: '%^^&'});
   const [error, setError] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
   const { name, qty, type, cal, fat, prot, carb } = state;
+
+  // Update error CDU
+  useEffect(() => {
+    setError({...error, ...errors});
+    // eslint-disable-next-line
+  },[errors]);
+
+  // Clear Errors CDUM
+  useEffect(() => {
+    const clear = () => clearAdminErrors();
+    return clear;
+    // eslint-disable-next-line
+  },[]);
 
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
   const onFocus = e => {
@@ -29,7 +42,7 @@ const Form = ({ saveItem, isLoading, errors }) => {
     if(!isValid) return setError({ ...error, ...errors });
     saveItem(state);
   }
-  
+
   return (
     <> 
       <h2 className='text-center text-primary'>Add Product</h2>
@@ -128,7 +141,8 @@ const Form = ({ saveItem, isLoading, errors }) => {
 Form.propTypes = {
   saveItem: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  clearAdminErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -136,4 +150,4 @@ const mapStateToProps = createStructuredSelector({
   errors: state_errors
 });
 
-export default connect( mapStateToProps, { saveItem } )(Form);
+export default connect( mapStateToProps, { saveItem, clearAdminErrors } )(Form);

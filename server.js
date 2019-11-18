@@ -12,6 +12,7 @@ require('./config/Passport')(passport);
 
 const account = require('./routes/api/account');
 const target = require('./routes/api/target');
+const admin = require('./routes/api/admin');
 
 
 const app = express();
@@ -37,6 +38,7 @@ mongoose
 // Routes
   app.use('/api/user/account', account);
   app.use('/api/user/table', target);
+  app.use('/api/user/admin', admin);
 
 
 // Server static assets if in production
