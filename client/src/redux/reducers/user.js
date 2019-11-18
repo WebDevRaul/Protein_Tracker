@@ -16,6 +16,7 @@ const user = ( state=INITIAL_STATE, action ) => {
     case USER.SIGN_IN:
     case TARGET.SET:
     case ADMIN.SAVE_ITEM:
+    case ADMIN.DELETE_ITEM:
       return { 
         ...state, 
         info: payload.info,

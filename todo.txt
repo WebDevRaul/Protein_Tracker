@@ -1,2 +1,3 @@
 fix navbar, footer? where is scrollbar
 do the calc func on dashboard
+save Product name Capitalize

@@ -13,12 +13,7 @@ const INITIAL_STATE = {
     }
   },
   admin: {
-    form: {
-      isLoading: false
-    },
-    item: {
-      isLoading: false
-    }
+    isLoading: false
   }
 }
 
@@ -38,14 +33,10 @@ const loading = ( state=INITIAL_STATE, action ) => {
     case TARGET.LOADED_CALC:
       return { ...state, target: { ...state.target, calc: { isLoading: false } }};
 
-    case ADMIN.LOADING_FORM:
-      return { ...state, admin: { ...state.admin, form: { isLoading: true } }};
-    case ADMIN.LOADED_FORM:
-      return { ...state, admin: { ...state.admin, form: { isLoading: false } }};
-    case ADMIN.LOADING_ITEM:
-      return { ...state, admin: { ...state.item, item: { isLoading: true } }};
-    case ADMIN.LOADED_ITEM:
-      return { ...state, admin: { ...state.item, item: { isLoading: false } }};
+    case ADMIN.LOADING:
+      return { ...state, admin: { ...state.admin, isLoading: true }};
+    case ADMIN.LOADED:
+      return { ...state, admin: { ...state.admin, isLoading: false }};
     default:
       return state;
   }

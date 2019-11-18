@@ -12,7 +12,7 @@ const Admin = () => {
         </div>
       </div>
       <div className='row no-gutters'>
-        <div className='col-10 col-sm-8 m-auto'>
+        <div className='col-11 col-md-10 col-lg-8 m-auto'>
           <List />
         </div>
       </div>

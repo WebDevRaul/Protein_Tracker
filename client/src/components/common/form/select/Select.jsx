@@ -16,7 +16,7 @@ const Select = ({ name, value, label, error, onChange, onFocus}) => {
       <div className='input-group'>
         <select 
           name={name}
-          className={classnames('custom-select mr-1 ml-1', {'is-invalid' : error})} 
+          className={classnames('custom-select mr-1 ml-1 hover', {'is-invalid' : error})} 
           style={{ height: '48px' }}
           onChange={onChange}
           onFocus={onFocus}

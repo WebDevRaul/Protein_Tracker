@@ -3,6 +3,6 @@ import spinner from '../../../assets/spinner/spinner.gif';
 
 export default () => {
   return (
-    <img src={spinner} style={{width: '46px'}} alt='Loading...'/>
+    <img src={spinner} style={{height: '46px'}} alt='Loading...'/>
   );
 };
