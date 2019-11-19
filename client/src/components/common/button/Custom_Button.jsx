@@ -12,7 +12,7 @@ const CustomButton = ({ text, isClass, onClick, isLoading, type }) => {
       type={type} 
       onClick={onClick}
     >
-      <div>{isLoading ? <Spinner /> : text}</div>
+      <div>{isLoading ? <Spinner height='46px' /> : text}</div>
     </button>
   )
 }

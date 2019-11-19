@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
 
-const Card = ({ title, item, onDelete }) => {
+const Card = ({ title, item }) => {
   return (
     <section>
       <div className="card">
@@ -11,8 +11,11 @@ const Card = ({ title, item, onDelete }) => {
         </div>
         <div className='border border-top-0 border-success'>
           <ul className="list-group list-group-flush">
+            <Item 
+              item={{ name: 'Name', qty:'Qty', type:'.', cal:'Cal', prot:'Prot', fat:'Fat', carb: 'Carb', icon:'no' }} 
+            />
             {
-              item.map((i,index)=> <Item key={index} item={i} onDelete={onDelete} />)
+              item.map((i,index)=> <Item key={index} item={i} />)
             }
           </ul>
         </div>
@@ -22,7 +25,8 @@ const Card = ({ title, item, onDelete }) => {
 }
 
 Card.propTypes = {
-
+  title: PropTypes.string.isRequired,
+  item: PropTypes.array.isRequired
 }
 
 export default Card;

@@ -13,13 +13,12 @@ const Meals = () => {
   const [state, setState] = useState({ select: '' });
 
   const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
-  const onDelete = id => console.log(id)
 
   return (
     <div className='row no-gutters'>
       <div className='col-9 m-auto'>
         <Buttons onChange={onChange} />
-        <Card title='Breakfast' item={arr} onDelete={onDelete} />
+        <Card title='Breakfast' item={arr} />
       </div>
     </div>
   )
