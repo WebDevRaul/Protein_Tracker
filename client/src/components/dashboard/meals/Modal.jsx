@@ -1,15 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
-import Input from '../../common/form/input/Input';
+import isEmpty from '../../common/utils/isEmpty';
 
-const Modal = ({ show, setModal, item: { _id, name, qty, type, cal, prot, fat, carb } }) => {
+const Modal = ({ show, setShow, item, state, setState }) => {
+  const [modal, setModal] = useState({ qty: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
+  const { _id, name, type } = item;
+  const { qty, cal, prot, fat, carb } = modal;
 
-  const onClick = () => setModal(!show);
-  const onChange = e => setInput(e.target.value);
-  const onFocus = () => {};
+  // Update state CDM
+  useEffect(() => {
+    const { qty, cal, prot, fat, carb } = item;
+    setModal({ ...modal, qty, cal, prot, fat, carb });
+    // eslint-disable-next-line
+  },[]);
+
+  // Update state on Input change
+  useEffect(() => {
+    const { qty, cal, prot, fat, carb } = item;
+    if(!isEmpty(input)) { setModal({ ...modal, 
+      cal: String(cal*input),
+      prot: String(prot*input),
+      fat: String(fat*input),
+      carb: String(carb*input),
+    })}
+    else { setModal({ ...modal, qty, cal, prot, fat, carb }) }
+  },[input])
+
+  const onClick = () => setShow(!show);
+  const onChange = val => {
+    // validation here
+    // 0 no good
+    setInput(val)
+  };
+
+  const onSave = () => {
+    if(isEmpty(input)) return;
+    setState({ ...state, cal, prot, fat, carb, qty:input });
+    setShow(!show);
+  }
 
   return (
     <div className={classnames('modal fade', { 'd-block': show })}
@@ -34,13 +65,13 @@ const Modal = ({ show, setModal, item: { _id, name, qty, type, cal, prot, fat, c
               <div>Qty. {qty} {type}</div>
               <div className='d-flex'>
                 <i className='text-success mr-2'>NEW</i> Qty. 
-                <div class="input-group input-group-sm ml-2">
+                <div className="input-group input-group-sm ml-2">
                   <input 
                     name='input'
                     value={input}
-                    onChange={onChange}
+                    onChange={e=>onChange(e.target.value)}
                     error=''
-                    class="form-control"
+                    className="form-control"
                     type="text"   
                   />
                 </div>
@@ -49,7 +80,7 @@ const Modal = ({ show, setModal, item: { _id, name, qty, type, cal, prot, fat, c
           </div>
           <div className="d-flex justify-content-between">
             <CustomButton text='Cancel' isClass='btn-outline-danger' onClick={onClick} />
-            <CustomButton text='Save' isClass='btn-outline-success' />
+            <CustomButton text='Save' isClass='btn-outline-success' onClick={onSave} />
           </div>
         </div>
       </div>

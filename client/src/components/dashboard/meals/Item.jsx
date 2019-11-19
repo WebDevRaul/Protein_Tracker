@@ -6,18 +6,19 @@ import Modal from './Modal';
 const Item = ({ item }) => {
   const [state, setState] = useState({ qty: '', cal: '', prot: '', fat: '', carb});
   const [loading, setLoading] = useState(false);
-  const [show, setModal] = useState(false);
+  const [show, setShow] = useState(false);
   const { qty, cal, prot, fat, carb, } = state;
   const { _id, name, type, icon } = item;
 
   // Update state CDM
   useEffect(() => {
     const { qty, cal, prot, fat, carb, } = item;
-    setState({ ...state, qty, cal, prot, fat, carb })
+    setState({ ...state, qty, cal, prot, fat, carb });
+    // eslint-disable-next-line
   },[])
 
   const onClick = () => setLoading(!loading);
-  const onModal = () => setModal(!show);
+  const onModal = () => setShow(!show);
 
   return (
     <li className="list-group-item d-flex p-0">
@@ -27,10 +28,19 @@ const Item = ({ item }) => {
             <h5 className='mb-0 pr-2 pt-2 pb-2 text-truncate'>{name}</h5>
           </div>
           <div className='col p-0'>
-            <Modal show={show} setModal={setModal} item={item}/>
-            <p onClick={onModal}
-              className='mb-0 pt-2 pb-2 font-weight-bold'
-            >{qty}{type}</p>
+            <Modal 
+              show={show} 
+              setShow={setShow} 
+              item={item}
+              state={state}
+              setState={setState}
+            />
+            <p 
+              onClick={onModal}
+              className='mb-0 pt-2 pb-2 font-weight-bold hover'
+            >
+              {qty}{type}
+            </p>
           </div>
           <div className='col p-0'>
             <p className='mb-0 pt-2 pb-2 font-weight-bold'>{cal}</p>
