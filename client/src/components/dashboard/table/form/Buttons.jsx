@@ -11,7 +11,7 @@ const Buttons = ({ show, setShow }) => {
     <div className='d-flex justify-content-end mt-2 mb-2'>
       <CustomButton 
         text='Set' 
-        isClass='btn-outline-primary mr-4 text-uppercase font-weight-bold'
+        isClass='btn-outline-primary mr-2 text-uppercase font-weight-bold'
         onClick={onClickSet}  
       />
       <CustomButton 

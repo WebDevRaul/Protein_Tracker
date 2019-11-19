@@ -3,12 +3,12 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 
-const Select = ({ name, value, label, error, onChange, onFocus}) => {
+const Select = ({ name, value, label, isClass, error, onChange, onFocus}) => {
   return (
     <div className='form-group'>
       <label 
         style={{ fontSize: '.8em' }}
-        className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error })} 
+        className={classnames(`ml-1 mb-0 text-primary ${isClass}`, { 'text-danger': error })} 
         htmlFor={name} 
         >
         { error ? error: label }
@@ -17,7 +17,7 @@ const Select = ({ name, value, label, error, onChange, onFocus}) => {
         <select 
           name={name}
           className={classnames('custom-select mr-1 ml-1 hover', {'is-invalid' : error})} 
-          style={{ height: '48px' }}
+          style={{ height: '48px', minWidth: '125px' }}
           onChange={onChange}
           onFocus={onFocus}
         >
@@ -33,9 +33,10 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
+  isClass: PropTypes.string,
   error: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired
+  onFocus: PropTypes.func
 };
 
 export default Select;
