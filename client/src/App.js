@@ -16,7 +16,7 @@ import './app.css';
 
 const App = () => {
   return (
-    <div className='app bg-light'>
+    <div className='app'>
       <Navbar />
       <Switch>
         <Route exact path='/home' component={Home} />

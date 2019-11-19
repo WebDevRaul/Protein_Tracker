@@ -4,16 +4,15 @@ import Spinner from '../../common/spinner/Spinner';
 import Modal from './Modal';
 
 const Item = ({ item }) => {
-  const [state, setState] = useState({ qty: '', cal: '', prot: '', fat: '', carb});
+  const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  const { qty, cal, prot, fat, carb, } = state;
-  const { _id, name, type, icon } = item;
+  const { name, qty, type, cal, prot, fat, carb } = state;
+  const { icon } = item;
 
   // Update state CDM
   useEffect(() => {
-    const { qty, cal, prot, fat, carb, } = item;
-    setState({ ...state, qty, cal, prot, fat, carb });
+    setState({ ...item });
     // eslint-disable-next-line
   },[])
 
@@ -28,13 +27,16 @@ const Item = ({ item }) => {
             <h5 className='mb-0 pr-2 pt-2 pb-2 text-truncate'>{name}</h5>
           </div>
           <div className='col p-0'>
-            <Modal 
-              show={show} 
-              setShow={setShow} 
-              item={item}
-              state={state}
-              setState={setState}
-            />
+            {
+              show && 
+              <Modal 
+                show={show} 
+                setShow={setShow} 
+                state={state}
+                setState={setState}
+                item={item}
+              />
+            }
             <p 
               onClick={onModal}
               className='mb-0 pt-2 pb-2 font-weight-bold hover'

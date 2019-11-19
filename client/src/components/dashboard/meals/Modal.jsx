@@ -4,30 +4,41 @@ import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import isEmpty from '../../common/utils/isEmpty';
 
-const Modal = ({ show, setShow, item, state, setState }) => {
-  const [modal, setModal] = useState({ qty: '', cal: '', prot: '', fat: '', carb: '' });
+const Modal = ({ show, setShow, state, setState, item }) => {
+  const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
-  const { _id, name, type } = item;
-  const { qty, cal, prot, fat, carb } = modal;
+  const { name, qty, type, cal, prot, fat, carb } = modal;
 
   // Update state CDM
   useEffect(() => {
-    const { qty, cal, prot, fat, carb } = item;
-    setModal({ ...modal, qty, cal, prot, fat, carb });
+    setModal({ ...state });
     // eslint-disable-next-line
-  },[]);
+  },[])
 
-  // Update state on Input change
+  // Update state on Input change CDU
   useEffect(() => {
-    const { qty, cal, prot, fat, carb } = item;
-    if(!isEmpty(input)) { setModal({ ...modal, 
-      cal: String(cal*input),
-      prot: String(prot*input),
-      fat: String(fat*input),
-      carb: String(carb*input),
-    })}
-    else { setModal({ ...modal, qty, cal, prot, fat, carb }) }
-  },[input])
+    if(!isEmpty(input)) { 
+      const { cal, prot, fat, carb } = item;
+      setModal({ 
+        ...modal, 
+        cal: String(cal*input),
+        prot: String(prot*input),
+        fat: String(fat*input),
+        carb: String(carb*input),
+      })}
+    // eslint-disable-next-line
+  },[input]);
+
+  // Create Event CDM && CDUM
+  useEffect(() => {
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  });
+
+  const onClickOutside = e => {
+    if(e.target.className !== 'modal fade d-block') return;
+    setShow(!show);
+  }
 
   const onClick = () => setShow(!show);
   const onChange = val => {
@@ -37,7 +48,6 @@ const Modal = ({ show, setShow, item, state, setState }) => {
   };
 
   const onSave = () => {
-    if(isEmpty(input)) return;
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
   }
@@ -89,7 +99,11 @@ const Modal = ({ show, setShow, item, state, setState }) => {
 }
 
 Modal.propTypes = {
-
+  show: PropTypes.bool.isRequired,
+  setShow: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
 }
 
 export default Modal;
