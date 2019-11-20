@@ -10,15 +10,25 @@ const arr = [
 ]
 
 const Meals = () => {
-  const [state, setState] = useState({ select: '' });
+  const [state, setState] = useState({ breakfast: false, lunch: false, diner: false, snack: false });
+  const [items, setItems] = useState({ 
+    breakfast_items: { title: 'Breakfast', items: [...arr]  },
+    lunch_items: { title: 'Lunch', items: [...arr]  },
+    diner_items: { title: 'Diner', items: [...arr]  },
+    snack_items: { title: 'Snack', items: [...arr]  },
+  });
 
-  const onChange = e => setState({ ...state, [e.target.name]: e.target.value });
+  const { breakfast, lunch, diner, snack } = state;
+  const { breakfast_items, lunch_items, diner_items, snack_items } = items;
 
   return (
     <div className='row no-gutters'>
       <div className='col-9 m-auto'>
-        <Buttons onChange={onChange} />
-        <Card title='Breakfast' item={arr} />
+        <Buttons state={state} setState={setState} />
+        { breakfast && <Card data={breakfast_items} /> }
+        { lunch && <Card data={lunch_items} /> }
+        { diner && <Card data={diner_items} /> }
+        { snack && <Card data={snack_items} /> }
       </div>
     </div>
   )
