@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Cell from './Cell';
 
-const Target = ({ cal, prot, fat, carb, set }) => {
+const Target = ({ cal, prot, fat, carb }) => {
   return (
     <div className='target d-flex'>
       <Cell title='Cal.' value={cal} />
@@ -14,10 +14,10 @@ const Target = ({ cal, prot, fat, carb, set }) => {
 }
 
 Target.propTypes = {
-  cal: PropTypes.string.isRequired,
-  prot: PropTypes.string.isRequired,
-  fat: PropTypes.string.isRequired,
-  carb: PropTypes.string.isRequired
+  cal: PropTypes.string,
+  prot: PropTypes.string,
+  fat: PropTypes.string,
+  carb: PropTypes.string
 }
 
 export default Target;

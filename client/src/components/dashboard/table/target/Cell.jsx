@@ -16,7 +16,7 @@ const Cell = ({ title, value, set_isLoading }) => {
 
 Cell.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   set_isLoading: PropTypes.bool.isRequired
 };
 

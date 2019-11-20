@@ -6,7 +6,7 @@ const select_errors_state = state => state.error.target.error;
 
 export const state_target = createSelector(
   [select_target_state],
-  state => state
+  state => state.values
 );
 
 export const state_set_isLoading = createSelector(
@@ -17,6 +17,11 @@ export const state_set_isLoading = createSelector(
 export const state_calc_isLoading = createSelector(
   [select_isLoading_state],
   state => state.calc.isLoading
+);
+
+export const state_target_isDefault = createSelector(
+  [select_target_state],
+  state => state.isDefault
 );
 
 export const state_errors = createSelector(

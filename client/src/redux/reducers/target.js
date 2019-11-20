@@ -1,23 +1,27 @@
 import { USER, TARGET } from '../actions/types';
 
 const INITIAL_STATE = {
-  cal: '0',
-  prot: '0',
-  fat: '0',
-  carb: '0'
+  values: {
+    cal: '0',
+    prot: '0',
+    fat: '0',
+    carb: '0',
+  },
+  isDefault: true
 }
 
 const target = ( state=INITIAL_STATE, action ) => {
   const { payload } = action;
   switch(action.type) {
+    case TARGET.UPDATE:
+      return { ...state, values: { ...payload }, isDefault: false }
     case TARGET.SET_REDUX:
     case TARGET.SET:
     case TARGET.CALC_REDUX:
     case TARGET.CALC:
-    case TARGET.UPDATE:
-      return { ...state, cal: payload.cal, prot: payload.prot, fat: payload.fat, carb: payload.carb }
+      return { ...state, values: { ...payload } }
     case USER.SIGN_OUT:
-        return { ...state, cal: '0', prot: '0', fat: '0', carb: '0' };
+        return { ...state, values: {cal: '0', prot: '0', fat: '0', carb: '0',}, isDefault: true };
     default:
       return state;
   }

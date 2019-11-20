@@ -3,7 +3,6 @@ const router  = express.Router();
 const passport = require('passport');
 const validateAdminForm = require('../../validation/admin_form');
 const Admin = require('../../models/Admin');
-const items = require('./utils/Items');
 
 // @route   GET api/user/admin/update
 // @desc    Update
@@ -13,9 +12,11 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 
   Admin.findOne({ user: _id }, { user: 0, _id: 0, __v: 0 })
     .then(table => {
-      if(table) return res.json(table);
-      // Fake data
-      res.json(items)
+      if(table) return res.json(table.items);
+      const payload = new Admin({ user: _id });
+        payload.save()
+          .then(({ items }) => res.json(items))
+          .catch(err => res.status(400).json({ error: 'Ooops'}))
     })
     .catch(err => res.status(400).json({ error: 'Ooops'}))
 });
@@ -27,9 +28,10 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 router.post('/save-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
+  // Validate
   const { errors, isValid } = validateAdminForm({ name, qty, type, cal, prot, fat, carb });
-
   if (!isValid) return res.status(400).json(errors);
+
 });
 
 
