@@ -5,9 +5,12 @@ import { toastr } from 'react-redux-toastr';
 
 export const set = obj => dispatch => {
   dispatch({ type: TARGET.LOADING_SET });
+  dispatch({ type: TARGET.SET_REDUX, payload: obj })
   axios.post(`${URL.target}/set`, obj)
-    .then(({ data  }) => {
-      dispatch({ type: TARGET.SET });
+    .then(({ data }) => {
+      dispatch({ type: TARGET.SET, payload: { ...data } });
+      toastr.success('Success', '....');
+      dispatch({ type: TARGET.LOADED_SET });
     })
     .catch(err => {
       dispatch({ type: TARGET.ERROR, payload: err.response.data })

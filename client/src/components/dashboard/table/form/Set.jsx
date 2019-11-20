@@ -44,6 +44,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
     const { errors, isValid } = validateSet({ ...state });
     if(!isValid) return setError({ ...error, ...errors });
     set(state);
+    setShow({ ...show, btn: true, set: false });
   }
 
   return (

@@ -38,3 +38,13 @@ a:hover {
   text-decoration: none;
   color: var(--secondary);
 }
+
+.blinking {
+  animation: blink 1s infinite alternate;
+  color: #808080;
+}
+
+@keyframes blink {
+  from {opacity:0;}
+  to {opacity: 1;}
+}
