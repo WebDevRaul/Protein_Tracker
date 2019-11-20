@@ -2,6 +2,23 @@ const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
 const validateAdminForm = require('../../validation/admin_form');
+const Admin = require('../../models/Admin');
+const items = require('./utils/Items');
+
+// @route   GET api/user/admin/update
+// @desc    Update
+// @access  Private
+router.get('/update', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.user;
+
+  Admin.findOne({ user: _id }, { user: 0, _id: 0, __v: 0 })
+    .then(table => {
+      if(table) return res.json(table);
+      // Fake data
+      res.json(items)
+    })
+    .catch(err => res.status(400).json({ error: 'Ooops'}))
+});
 
 
 // @route   POST api/user/admin/save-item

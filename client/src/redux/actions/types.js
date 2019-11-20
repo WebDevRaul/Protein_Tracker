@@ -9,7 +9,7 @@ const USER = {
 };
 
 const TARGET = {
-  UPDATE: 'UPDATE',
+  UPDATE: 'UPDATE_TARGET',
   SET: 'SET',
   SET_REDUX: 'SET_REDUX',
   CALC: 'CALC',
@@ -25,6 +25,7 @@ const TARGET = {
 };
 
 const ADMIN = {
+  UPDATE: 'UPDATE_ADMIN',
   SAVE_ITEM: 'SAVE_ITEM',
   DELETE_ITEM: 'DELETE_ITEM',
   LOADING: 'ADMIN_LOADING',

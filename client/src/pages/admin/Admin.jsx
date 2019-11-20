@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateTarget } from '../../redux/actions/target';
+import { updateAdmin } from '../../redux/actions/admin';
 
 import Form from '../../components/admin/fom/Form';
 import List from '../../components/admin/list/List';
 
-const Admin = () => {
+const Admin = ({ updateAdmin, updateTarget }) => {
+  // Update target CDM
+  useEffect(() => {
+    updateTarget();
+    updateAdmin();
+    // eslint-disable-next-line
+  },[])
   return (
     <section className='admin mt-5 mb-3'>
       <div className='row no-gutters'>
@@ -20,4 +30,9 @@ const Admin = () => {
   )
 }
 
-export default Admin;
+Admin.propTypes = {
+  updateTarget: PropTypes.func.isRequired,
+  updateAdmin: PropTypes.func.isRequired
+}
+
+export default connect(null, { updateTarget, updateAdmin })(Admin);

@@ -3,7 +3,7 @@ import URL from './utils/URL';
 import { TARGET } from './types';
 import { toastr } from 'react-redux-toastr';
 
-export const update = () => dispatch => {
+export const updateTarget = () => dispatch => {
   dispatch({ type: TARGET.LOADING_UPDATE });
   axios.get(`${URL.target}/update`)
   .then(({ data }) => {

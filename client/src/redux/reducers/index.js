@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { reducer as ToastrReducer } from 'react-redux-toastr';
 import user from './user';
 import target from './target';
+import admin from './admin';
 import loading from './loading';
 import error from './error';
 
@@ -17,6 +18,7 @@ const persistConfig = {
 const rootReducer =  combineReducers({
   user,
   target,
+  admin,
   loading,
   error,
   toastr: ToastrReducer

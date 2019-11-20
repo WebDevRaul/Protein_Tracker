@@ -3,6 +3,20 @@ import URL from './utils/URL';
 import { ADMIN } from './types';
 import { toastr } from 'react-redux-toastr';
 
+export const updateAdmin = () => dispatch => {
+  dispatch({ type: ADMIN.LOADING });
+  axios.get(`${URL.admin}/update`)
+    .then(({ data }) => {
+      dispatch({ type: ADMIN.UPDATE, payload: data });
+      dispatch({ type: ADMIN.LOADED });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN.ERROR, payload: err.response.data })
+      toastr.error('Error!', 'Ooops');
+      dispatch({ type: ADMIN.LOADED });
+    })
+}
+
 export const saveItem = obj => dispatch => {
   dispatch({ type: ADMIN.LOADING });
   axios.post(`${URL.admin}/save-item`, obj)

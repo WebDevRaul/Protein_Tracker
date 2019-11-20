@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { update } from '../../redux/actions/target';
+import { updateTarget } from '../../redux/actions/target';
+import { updateAdmin } from '../../redux/actions/admin';
 import Table from '../../components/dashboard/table/Table';
 import Meals from '../../components/dashboard/meals/Meals';
 
-const Dashboard = ({ update }) => {
+const Dashboard = ({ updateTarget, updateAdmin }) => {
   // Update target CDM
   useEffect(() => {
-    update();
+    updateTarget();
+    updateAdmin();
     // eslint-disable-next-line
   },[])
   return (
@@ -16,6 +19,11 @@ const Dashboard = ({ update }) => {
       <Meals />
     </section>
   )
+};
+
+Dashboard.propTypes = {
+  updateTarget: PropTypes.func.isRequired,
+  updateAdmin: PropTypes.func.isRequired
 }
 
-export default connect(null, { update })(Dashboard);
+export default connect(null, { updateTarget, updateAdmin })(Dashboard);

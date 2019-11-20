@@ -17,7 +17,7 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
       res.json({ cal: '0', prot: '0', fat: '0', carb: '0' })
     })
     .catch(err => res.status(400).json({ error: 'Ooops'}))
-  });
+});
 
 
 // @route   POST api/user/table/set
