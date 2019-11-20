@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateItem } from '../../../redux/actions/meal';
+import { createStructuredSelector } from 'reselect';
+import { state_errors } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import isEmpty from '../../common/utils/isEmpty';
 
-const Modal = ({ show, setShow, state, setState, item }) => {
+const Modal = ({ show, setShow, state, setState, item, updateItem }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
   const { name, qty, type, cal, prot, fat, carb } = modal;
@@ -44,7 +48,8 @@ const Modal = ({ show, setShow, state, setState, item }) => {
   const onChange = val => {
     // validation here
     // 0 no good
-    setInput(val)
+    setInput(val);
+    updateItem({...modal});
   };
 
   const onSave = () => {
@@ -103,7 +108,12 @@ Modal.propTypes = {
   setShow: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  updateItem: PropTypes.func.isRequired
 }
 
-export default Modal;
+const mapStateToProps = createStructuredSelector({
+
+});
+
+export default connect( mapStateToProps, { updateItem } )(Modal);

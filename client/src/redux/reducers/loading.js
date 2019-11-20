@@ -1,4 +1,4 @@
-import { USER, TARGET, ADMIN } from '../actions/types';
+import { USER, TARGET, ADMIN, MEAL } from '../actions/types';
 
 const INITIAL_STATE = {
   user: {
@@ -11,6 +11,9 @@ const INITIAL_STATE = {
     calc: {
       isLoading: false
     }
+  },
+  meal: {
+    isLoading: false
   },
   admin: {
     isLoading: false
@@ -32,6 +35,11 @@ const loading = ( state=INITIAL_STATE, action ) => {
       return { ...state, target: { ...state.target, calc: { isLoading: true } }};
     case TARGET.LOADED_CALC:
       return { ...state, target: { ...state.target, calc: { isLoading: false } }};
+
+    case MEAL.LOADING:
+      return { ...state, meal: { ...state.meal, isLoading: true }};
+    case MEAL.LOADED:
+      return { ...state, meal: { ...state.meal, isLoading: false }};
 
     case ADMIN.LOADING:
       return { ...state, admin: { ...state.admin, isLoading: true }};

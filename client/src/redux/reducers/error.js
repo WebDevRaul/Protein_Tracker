@@ -1,10 +1,13 @@
-import { USER, TARGET, ADMIN } from '../actions/types';
+import { USER, TARGET, ADMIN, MEAL } from '../actions/types';
 
 const INITIAL_STATE = {
   user: {
     error: {}
   },
   target: {
+    error: {}
+  },
+  meal: {
     error: {}
   },
   admin: {
@@ -24,6 +27,11 @@ const error = ( state=INITIAL_STATE, action ) => {
       return { ...state, target: { ...state.target, error: payload } }
     case TARGET.CLEAR_ERRORS:
       return { ...state, target: { ...state.target, error: {} } }
+
+    case MEAL.ERROR:
+      return { ...state, meal: { ...state.meal, error: payload } }
+    case MEAL.CLEAR_ERRORS:
+      return { ...state, meal: { ...state.meal, error: {} } }
 
     case ADMIN.ERROR:
       return { ...state, admin: { ...state.admin, error: payload } }
