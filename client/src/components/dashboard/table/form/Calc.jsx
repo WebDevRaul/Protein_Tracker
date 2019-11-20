@@ -9,6 +9,7 @@ import CustomButton from '../../../common/button/Custom_Button';
 import Input from '../../../common/form/input/Input';
 import Select from '../../../common/form/select/Select';
 import validateCalc from './validation/validate_calc';
+import doTheCalc from './DoTheCalc';
 
 const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
   const [state, setState] = useState({ age: '20', gender: 'man', activity: '1.2', height: '170', weight: '80' });
@@ -35,8 +36,8 @@ const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
     e.preventDefault();
     const { errors, isValid } = validateCalc({ ...state });
     if(!isValid) return setError({ ...error, ...errors });
-    // do the calc
-    calc({ cal: '500', prot: '500', fat: '200', carb: '100' });
+    const { cal, prot, fat, carb } = doTheCalc(state);
+    calc({ cal, prot, fat, carb });
     setShow({ ...show, btn: true, calc: false });
   }
 
@@ -121,7 +122,6 @@ Calc.propTypes = {
   show: PropTypes.object.isRequired,
   calc: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  errors: PropTypes.object.isRequired,
   clearTargetErrors: PropTypes.func.isRequired
 };
 

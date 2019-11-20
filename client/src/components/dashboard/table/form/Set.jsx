@@ -50,7 +50,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
   return (
     <form className='mt-3 mb-3' noValidate onSubmit={onSubmit}>
       <div className='row no-gutters'>
-        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+        <div className='col-7 col-sm-5 col-md-3 m-auto'>
           <Input
             name='cal'
             value={cal}
@@ -60,7 +60,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
             onFocus={onFocus}
           />
         </div>
-        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+        <div className='col-7 col-sm-5 col-md-3 m-auto'>
           <Input
             name='prot'
             value={prot}
@@ -70,7 +70,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
             onFocus={onFocus}
           />
         </div>
-        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+        <div className='col-7 col-sm-5 col-md-3 m-auto'>
           <Input
             name='fat'
             value={fat}
@@ -80,7 +80,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
             onFocus={onFocus}
           />
         </div>
-        <div className='col-8 col-sm-6 col-md-5 col-lg-3 m-auto'>
+        <div className='col-7 col-sm-5 col-md-3 m-auto'>
           <Input
             name='carb'
             value={carb}
