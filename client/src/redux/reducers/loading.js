@@ -35,6 +35,11 @@ const loading = ( state=INITIAL_STATE, action ) => {
       return { ...state, target: { ...state.target, calc: { isLoading: true } }};
     case TARGET.LOADED_CALC:
       return { ...state, target: { ...state.target, calc: { isLoading: false } }};
+    case TARGET.LOADING_UPDATE:
+      return { ...state, target: { ...state.target, calc: { isLoading: true }, set: { isLoading: true } }};
+    case TARGET.LOADED_UPDATE:
+      return { ...state, target: { ...state.target, calc: { isLoading: false }, set: { isLoading: false } }};
+    
 
     case MEAL.LOADING:
       return { ...state, meal: { ...state.meal, isLoading: true }};

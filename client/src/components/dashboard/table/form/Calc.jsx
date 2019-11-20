@@ -11,7 +11,7 @@ import Select from '../../../common/form/select/Select';
 import validateCalc from './validation/validate_calc';
 
 const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
-  const [state, setState] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
+  const [state, setState] = useState({ age: '20', gender: 'man', activity: '1.2', height: '170', weight: '80' });
   const [error, setError] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const { age, height, weight } = state;
 
@@ -36,7 +36,8 @@ const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
     const { errors, isValid } = validateCalc({ ...state });
     if(!isValid) return setError({ ...error, ...errors });
     // do the calc
-    calc({ cal: '0', prot: '-123', fat: 'dfdf', carb: '-0' });
+    calc({ cal: '500', prot: '500', fat: '200', carb: '100' });
+    setShow({ ...show, btn: true, calc: false });
   }
 
   return (

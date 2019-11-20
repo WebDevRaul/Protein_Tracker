@@ -12,6 +12,9 @@ const target = ( state=INITIAL_STATE, action ) => {
   switch(action.type) {
     case TARGET.SET_REDUX:
     case TARGET.SET:
+    case TARGET.CALC_REDUX:
+    case TARGET.CALC:
+    case TARGET.UPDATE:
       return { ...state, cal: payload.cal, prot: payload.prot, fat: payload.fat, carb: payload.carb }
     case USER.SIGN_OUT:
         return { ...state, cal: '0', prot: '0', fat: '0', carb: '0' };

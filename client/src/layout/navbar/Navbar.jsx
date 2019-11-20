@@ -14,7 +14,7 @@ const Navbar = ({ isAuth, signOut }) => {
   const [show, setShow] = useState(false);
 
   const onClick = () => setShow(!show);
-  const onSignOut = () => signOut();
+  const onSignOut = () => { signOut(); setShow(!show) };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
