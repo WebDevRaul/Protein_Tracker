@@ -4,17 +4,17 @@ import Card from './Card';
 import Buttons from './Buttons';
 
 const Meals = () => {
-  const [state, setState] = useState({ breakfast: false, lunch: false, diner: false, snack: false });
+  const [state, setState] = useState({ breakfast: true, lunch: false, diner: false, snack: false });
   const { breakfast, lunch, diner, snack } = state;
 
   return (
     <div className='row no-gutters'>
       <div className='col-9 m-auto'>
         <Buttons state={state} setState={setState} />
-        { breakfast && <Card title='breakfast' /> }
-        { lunch && <Card title='lunch' /> }
-        { diner && <Card title='diner' /> }
-        { snack && <Card title='snack' /> }
+        { breakfast && <Card title='breakfast' state={state} setState={setState} /> }
+        { lunch && <Card title='lunch' state={state} setState={setState} /> }
+        { diner && <Card title='diner' state={state} setState={setState} /> }
+        { snack && <Card title='snack' state={state} setState={setState} /> }
       </div>
     </div>
   )

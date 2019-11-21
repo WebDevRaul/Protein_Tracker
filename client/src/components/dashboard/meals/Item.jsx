@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Spinner from '../../common/spinner/Spinner';
 import Modal from './Modal';
 
-const Item = ({ item }) => {
+const Item = ({ item, card, setCard }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
-  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  const { name, qty, type, cal, prot, fat, carb } = state;
+  const {_id, name, qty, type, cal, prot, fat, carb } = state;
   const { icon } = item;
 
-  // Update state CDM
+  // Update state CDU
   useEffect(() => {
     setState({ ...item });
     // eslint-disable-next-line
-  },[])
+  },[item])
 
-  const onClick = () => setLoading(!loading);
+  const onRemove = () => {
+    const items = card.filter(i => i._id !== _id);
+    setCard(items)
+  }
   const onModal = () => setShow(!show);
 
   return (
@@ -60,17 +61,11 @@ const Item = ({ item }) => {
         <div className='col-1 d-flex m-auto'>
           {
             !icon &&
-            <>
-              {
-                loading
-                ? <span className='d-flex m-auto'><Spinner height='40px' /></span>
-                : <i 
-                    className='far fa-times-circle icon-responsive m-auto text-danger hover'
-                    style={{ fontSize: '1.4em' }}
-                    onClick={onClick}
-                  ></i>
-              }
-            </>
+            <i 
+              className='far fa-times-circle icon-responsive m-auto text-danger hover'
+              style={{ fontSize: '1.4em' }}
+              onClick={onRemove}
+            ></i>
           }
         </div>
       </div>
