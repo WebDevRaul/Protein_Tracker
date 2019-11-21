@@ -9,7 +9,11 @@ const target = ( state=INITIAL_STATE, action ) => {
   const { payload } = action;
   switch(action.type) {
     case ADMIN.UPDATE:
-      return { ...state, items: payload, isDefault: false }
+      return { ...state, items: payload, isDefault: false };
+    case ADMIN.SAVE_ITEM_REDUX:
+      return { ...state, items: [...state.items, payload] };
+    case ADMIN.SAVE_ITEM:
+      return { ...state, items: [ ...state.items.filter(i => i._id !== 'temp'), payload ] }
     case USER.SIGN_OUT:
         return { ...state, items: [], isDefault: true };
     default:

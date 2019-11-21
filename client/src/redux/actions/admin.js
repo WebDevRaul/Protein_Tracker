@@ -19,6 +19,7 @@ export const updateAdmin = () => dispatch => {
 
 export const saveItem = obj => dispatch => {
   dispatch({ type: ADMIN.LOADING });
+  dispatch({ type: ADMIN.SAVE_ITEM_REDUX, payload: obj });
   axios.post(`${URL.admin}/save-item`, obj)
     .then(({ data }) => {
       dispatch({ type: ADMIN.SAVE_ITEM });

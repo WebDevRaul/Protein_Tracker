@@ -1,6 +1,5 @@
 const items = [
   {    
-    id: 1,
     name: 'Cranberries',
     qty: '100',
     type: 'gr.',
@@ -10,7 +9,6 @@ const items = [
     carb: '21.0'
   },
   {
-    id: 2,
     name: 'Pepper',
     qty: '1',
     type: 'pc.',
@@ -20,7 +18,6 @@ const items = [
     carb: '6.0'
   },
   {
-    id: 3,
     name: 'Hazelnuts',
     qty: '100',
     type: 'gr.',
@@ -30,7 +27,6 @@ const items = [
     carb: '17.8'
   },
   {
-    id: 4,
     name: 'Avocado',
     qty: '1',
     type: 'pc.',
@@ -40,7 +36,6 @@ const items = [
     carb: '17.0'
   },
   {
-    id: 5,
     name: 'Banana',
     qty: '1',
     type: 'pc.',
@@ -50,7 +45,6 @@ const items = [
     carb: '27.0'
   },
   {
-    id: 6,
     name: 'Boiled broccoli',
     qty: '100',
     type: 'gr.',
@@ -60,7 +54,6 @@ const items = [
     carb: '7.0'
   },
   {
-    id: 7,
     name: 'Cottage cheese',
     qty: '100',
     type: 'gr.',
@@ -70,7 +63,6 @@ const items = [
     carb: '3.4'
   },
   {
-    id: 8,
     name: 'Telemea cheese',
     qty: '100',
     type: 'gr.',
@@ -80,7 +72,6 @@ const items = [
     carb: '0.7'
   },
   {
-    id: 9,
     name: 'Turkey meat',
     qty: '100',
     type: 'gr.',
@@ -90,7 +81,6 @@ const items = [
     carb: '4.0'
   },
   {
-    id: 10,
     name: 'Chicken meat',
     qty: '100',
     type: 'gr.',
@@ -100,7 +90,6 @@ const items = [
     carb: '0.0'
   },
   {
-    id: 11,
     name: 'Beef',
     qty: '100',
     type: 'gr.',
@@ -110,7 +99,6 @@ const items = [
     carb: '0.0'
   },
   {
-    id: 12,
     name: 'Potato',
     qty: '100',
     type: 'gr.',
@@ -120,7 +108,6 @@ const items = [
     carb: '17.0'
   },
   {
-    id: 13,
     name: 'Sweet potato',
     qty: '100',
     type: 'gr.',
@@ -130,7 +117,6 @@ const items = [
     carb: '17.7'
   },
   {
-    id: 14,
     name: 'Cheese',
     qty: '100',
     type: 'gr.',
@@ -140,7 +126,6 @@ const items = [
     carb: '1.3'
   },
   {
-    id: 15,
     name: 'Apple',
     qty: '1',
     type: 'pc.',
