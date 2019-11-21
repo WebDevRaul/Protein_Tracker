@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Spinner from '../../common/spinner/Spinner';
+import Modal from './Modal';
 
 import './item.css'
 
-const Item = ({ data: { _id, name, qty, type, cal, prot, fat, carb, icon }, onDelete }) => {
+const Item = ({ data, onDelete }) => {
   const [loading, setLoading] = useState(false);
   const temp = _id === 'temp' ? true : false;
+  const { _id, name, qty, type, cal, prot, fat, carb, icon } = data;
 
   const onClick = () => {
     if(temp) return;
     setLoading(!loading)
-    onDelete(_id);
   }
+
+  const toDelete = () => onDelete(_id);
 
   return (
     <div className='border border-secondary mt-3 rounded shadow text-muted'>
@@ -39,6 +42,15 @@ const Item = ({ data: { _id, name, qty, type, cal, prot, fat, carb, icon }, onDe
           </div>
         </div>
         <div className='col-1 d-flex m-auto'>
+          {
+            loading && 
+            <Modal 
+              loading={loading} 
+              setLoading={setLoading} 
+              item={data}
+              toDelete={toDelete}
+            />
+          }
           {
             !icon &&
             <>
