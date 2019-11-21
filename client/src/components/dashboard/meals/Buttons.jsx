@@ -9,21 +9,23 @@ const Buttons = ({ state, setState }) => {
   const onClear = () => setState({ breakfast: false, lunch: false, diner: false, snak: false });
   
   return (
-    <div className='d-flex justify-content-between'>
-      <Select
-        name='select'
-        value={[
-          { key: 'Breakfast', value: 'breakfast' },
-          { key: 'Lunch', value: 'lunch' },
-          { key: 'Dinner', value: 'diner' },
-          { key: 'Snack', value: 'snack' }
-        ]}
-        label='Create table'
-        isClass='text-uppercase font-weight-bold'
-        onChange={onChange}
-        error=''
-      />
-      <div className='d-flex align-items-center'>
+    <div className='row no-gutters'>
+      <div className='col-4'>
+        <Select
+          name='select'
+          value={[
+            { key: 'breakfast', value: 'Breakfast' },
+            { key: 'lunch', value: 'Lunch' },
+            { key: 'diner', value: 'Diner' },
+            { key: 'snack', value: 'Snack' }
+          ]}
+          label='Create table'
+          isClass='text-uppercase font-weight-bold'
+          onChange={onChange}
+          error=''
+        />
+      </div>
+      <div className='col d-flex m-auto justify-content-end'>
         <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={onClear} />
       </div>
     </div>
@@ -31,7 +33,8 @@ const Buttons = ({ state, setState }) => {
 }
 
 Buttons.propTypes = {
-
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired
 }
 
 export default Buttons;

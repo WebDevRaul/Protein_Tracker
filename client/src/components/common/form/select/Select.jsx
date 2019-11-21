@@ -22,7 +22,7 @@ const Select = ({ name, value, label, isClass, error, onChange, onFocus}) => {
           onFocus={onFocus}
         >
           <option defaultValue value=''>Choose...</option>
-          { value.map(({ key, value }) => <option key={value} value={value}>{key}</option>) }
+          { value.map(({ key, value }) => <option key={key} value={key}>{value}</option>) }
         </select>
       </div>
     </div>
