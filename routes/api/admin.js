@@ -48,12 +48,12 @@ router.post('/save-item', passport.authenticate('jwt'), (req, res) => {
   if (!isValid) return res.status(400).json(errors);
   const payload = { name, qty, type, cal, prot, fat, carb }
 
-  Admin.findOneAndUpdate({ user: _id }, 
+  Admin.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
-    { new: true, upsert:true },
-    ((err, list) => {
-      if(err) return res.status(400).json(errors);
-      console.log(list)
+    { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
     }))
 });
 
@@ -65,7 +65,13 @@ router.post('/delete-item', passport.authenticate('jwt'), (req, res) => {
   const { id} = req.body;
   const { _id } = req.user;
 
-  console.log(id)
+  Admin.findOneAndUpdate({ user: _id },
+    { $pull: { "items": { _id: id } } },
+    { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
+    }))
 });
 
 

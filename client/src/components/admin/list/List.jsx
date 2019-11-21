@@ -13,12 +13,9 @@ const List = ({ items, deleteItem }) => {
 
   return (
     <section>
+      <Item data={ {name:'Name:', qty:'Qty', type:'.', cal:'Cal.', prot:'Prot.', fat:'Fat.', carb:'Carb.', icon:'no'} } />
       {
-        items &&
-        <>
-          <Item data={ {name:'Name:', qty:'Qty', type:'.', cal:'Cal.', prot:'Prot.', fat:'Fat.', carb:'Carb.', icon:'no'} } />
-          {items.map((i, index) => <Item key={index} data={i} onDelete={onDelete} />)}
-        </>
+        items && items.map((i, index) => <Item key={index} data={i} onDelete={onDelete} />)
       }
     </section>
   )

@@ -21,8 +21,8 @@ export const saveItem = obj => dispatch => {
   dispatch({ type: ADMIN.LOADING });
   dispatch({ type: ADMIN.SAVE_ITEM_REDUX, payload: obj });
   axios.post(`${URL.admin}/save-item`, obj)
-    .then(({ data }) => {
-      dispatch({ type: ADMIN.SAVE_ITEM });
+    .then(({ data: { items } }) => {
+      dispatch({ type: ADMIN.SAVE_ITEM , payload: items});
       dispatch({ type: ADMIN.LOADED });
       toastr.success('Success!', 'Item saved');
     })
@@ -35,8 +35,8 @@ export const saveItem = obj => dispatch => {
 
 export const deleteItem = obj => dispatch => {
   axios.post(`${URL.admin}/delete-item`, obj)
-    .then(({ data }) => {
-      dispatch({ type: ADMIN.DELETE_ITEM });
+    .then(({ data: { items } }) => {
+      dispatch({ type: ADMIN.DELETE_ITEM, payload: items });
       toastr.success('Success!', 'Item deleted');
     })
     .catch(err => {

@@ -13,7 +13,8 @@ const target = ( state=INITIAL_STATE, action ) => {
     case ADMIN.SAVE_ITEM_REDUX:
       return { ...state, items: [...state.items, payload] };
     case ADMIN.SAVE_ITEM:
-      return { ...state, items: [ ...state.items.filter(i => i._id !== 'temp'), payload ] }
+      case ADMIN.DELETE_ITEM:
+      return { ...state, items: payload}
     case USER.SIGN_OUT:
         return { ...state, items: [], isDefault: true };
     default:
