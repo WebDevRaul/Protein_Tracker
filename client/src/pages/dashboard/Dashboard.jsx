@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTarget } from '../../redux/actions/target';
+import { updateMeal } from '../../redux/actions/meal';
 import { updateAdmin } from '../../redux/actions/admin';
 import { createStructuredSelector } from 'reselect';
 import { state_admin_isDefault } from '../../redux/selectors/admin';
@@ -9,10 +10,11 @@ import { state_target_isDefault } from '../../redux/selectors/target';
 import Table from '../../components/dashboard/table/Table';
 import Meals from '../../components/dashboard/meals/Meals';
 
-const Dashboard = ({ updateTarget, updateAdmin, target, admin }) => {
+const Dashboard = ({ updateTarget, updateMeal, updateAdmin, target, admin }) => {
   // Update target CDM
   useEffect(() => {
     if(target) updateTarget();
+    updateMeal();
     if(admin) updateAdmin();
     // eslint-disable-next-line
   },[])
@@ -26,6 +28,7 @@ const Dashboard = ({ updateTarget, updateAdmin, target, admin }) => {
 
 Dashboard.propTypes = {
   updateTarget: PropTypes.func.isRequired,
+  updateMeal: PropTypes.func.isRequired,
   updateAdmin: PropTypes.func.isRequired,
   target: PropTypes.bool.isRequired,
   admin: PropTypes.bool.isRequired
@@ -36,4 +39,4 @@ const mapStateToProps = createStructuredSelector({
   admin: state_admin_isDefault
 });
 
-export default connect(mapStateToProps, { updateTarget, updateAdmin })(Dashboard);
+export default connect(mapStateToProps, { updateTarget, updateMeal, updateAdmin })(Dashboard);

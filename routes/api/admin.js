@@ -12,27 +12,7 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
   const { _id } = req.user;
 
   Admin.findOne({ user: _id }, { user: 0, _id: 0, __v: 0 })
-    .then(table => {
-      if(table) return res.json(table.items);
-      // Save default items
-      const payload = new Admin({ user: _id })
-      payload.save()
-        .then(table => {
-          Items.map(i => {
-            table.updateOne(
-              {$push: {'items': i}},
-              ((err, done) => { if(err) return })  
-            )
-          })
-        })
-        .then(() => {
-          Admin.findOne({user: _id})
-            .then(table => res.json(table))
-            .catch(err => res.status(400).json({ error: 'Ooops'}))
-        })
-        .catch(err => res.status(400).json({ error: 'Ooops'}))
-
-    })
+    .then(({ items }) => res.json(items))
     .catch(err => res.status(400).json({ error: 'Ooops'}))
 });
 

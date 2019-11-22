@@ -4,6 +4,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { SECRET_OR_KEY } = require('../../config/keys');
 const User = require('../../models/User');
+const Target = require('../../models/Target');
+const Breakfast = require('../../models/Breakfast');
+const Lunch = require('../../models/Lunch');
+const Diner = require('../../models/Diner');
+const Snack = require('../../models/Snack');
+const Admin = require('../../models/Admin');
+const Items = require('./utils/Items');
 const validateRegister = require('../../validation/register');
 const validateSignIn = require('../../validation/sign_in');
 
@@ -28,7 +35,29 @@ router.post('/register', (req, res) => {
           if(err) throw err;
           newUser.password = hash;
           newUser.save()
-          .then(() => res.json({ success: true }))
+          .then(({ _id }) => {
+            const target = new Target({ user: _id }).save();
+            const breakfast = new Breakfast({ user: _id, title: 'breakfast' }).save();
+            const lunch = new Lunch({ user: _id, title: 'lunch' }).save();
+            const diner = new Diner({ user: _id, title: 'diner' }).save();
+            const snack = new Snack({ user: _id, title: 'snack' }).save();
+            const admin = new Admin({ user: _id }).save();
+            Promise.all([breakfast, lunch, diner, snack, target, admin])
+              .then(() => {
+                Admin.findOne({user: _id})
+                  .then(table => {
+                    Items.map(i => {
+                      table.updateOne(
+                        {$push: {'items': i}},
+                        ((err, done) => { if(err) return })  
+                      )
+                    })
+                  })
+                  .then(success => res.json({ success: true }))
+                  .catch(err => res.status(400).json({ error: 'Ooops'}))
+              })
+              .catch(err => res.status(400).json({ error: 'Ooops'}))
+          })
           .catch(err => res.status(400).json({ error: 'Ooops'}))
         });
       });
