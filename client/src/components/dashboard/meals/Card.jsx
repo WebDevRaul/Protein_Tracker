@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addItemToTable } from '../../../redux/actions/meal';
@@ -8,8 +8,14 @@ import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 import Item from './Item';
 import Select from '../../common/form/select/Select';
 
-const Card = ({ title, options, list, state, setState, addItemToTable }) => {
+const Card = ({ items, title, options, list, state, setState, addItemToTable }) => {
   const [card, setCard] = useState([]);
+
+  // Update State CDM
+  useEffect(() => {
+    setCard([...items]);
+    // eslint-disable-next-line
+  },[]);
   
   const onChange = e => {
     const item = list.filter(i => i._id === e.target.value)[0];

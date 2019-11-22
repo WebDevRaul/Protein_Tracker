@@ -17,7 +17,7 @@ export const updateMeal = () => dispatch => {
 }
 
 export const addItemToTable = ({ data, title }) => {
-  if(title === 'BREAKFAST') {
+  if(title === 'Breakfast') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
@@ -28,7 +28,7 @@ export const addItemToTable = ({ data, title }) => {
       LOADED: BREAKFAST.LOADED
     })
   }
-  if(title === 'LUNCH') {
+  if(title === 'Lunch') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
@@ -39,7 +39,7 @@ export const addItemToTable = ({ data, title }) => {
       LOADED: LUNCH.LOADED
     })
   }
-  if(title === 'DINER') {
+  if(title === 'Diner') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
@@ -50,7 +50,7 @@ export const addItemToTable = ({ data, title }) => {
       LOADED: DINER.LOADED
     })
   }
-  if(title === 'SNACK') {
+  if(title === 'Snack') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,

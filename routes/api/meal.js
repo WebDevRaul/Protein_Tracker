@@ -27,7 +27,7 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 // @route   POST api/user/meal/BREAKFAST/add-item
 // @desc    Add Item
 // @access  Private
-router.post('/BREAKFAST/add-item', passport.authenticate('jwt'), (req, res) => {
+router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
   // Validate here
@@ -44,7 +44,7 @@ router.post('/BREAKFAST/add-item', passport.authenticate('jwt'), (req, res) => {
 // @route   POST api/user/meal/LUNCH/add-item
 // @desc    Add Item
 // @access  Private
-router.post('/LUNCH/add-item', passport.authenticate('jwt'), (req, res) => {
+router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
   // Validate here
@@ -61,7 +61,7 @@ router.post('/LUNCH/add-item', passport.authenticate('jwt'), (req, res) => {
 // @route   POST api/user/meal/DINER/add-item
 // @desc    Add Item
 // @access  Private
-router.post('/DINER/add-item', passport.authenticate('jwt'), (req, res) => {
+router.post('/Diner/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
   // Validate here
@@ -78,7 +78,7 @@ router.post('/DINER/add-item', passport.authenticate('jwt'), (req, res) => {
 // @route   POST api/user/meal/SNACK/add-item
 // @desc    Add Item
 // @access  Private
-router.post('/SNACK/add-item', passport.authenticate('jwt'), (req, res) => {
+router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
   // Validate here

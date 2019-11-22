@@ -6,7 +6,7 @@ import Select from '../../common/form/select/Select';
 const Buttons = ({ state, setState }) => {
 
   const onChange = e => setState({ ...state, [e.target.value]: true });
-  const onClear = () => setState({ breakfast: false, lunch: false, diner: false, snak: false });
+  const onClear = () => setState({ one: false, two: false, tree: false, four: false });
   
   return (
     <div className='row no-gutters'>
@@ -14,10 +14,10 @@ const Buttons = ({ state, setState }) => {
         <Select
           name='select'
           value={[
-            { key: 'breakfast', value: 'Breakfast' },
-            { key: 'lunch', value: 'Lunch' },
-            { key: 'diner', value: 'Diner' },
-            { key: 'snack', value: 'Snack' }
+            { key: 'Breakfast', value: 'Breakfast' },
+            { key: 'Lunch', value: 'Lunch' },
+            { key: 'Diner', value: 'Diner' },
+            { key: 'Snack', value: 'Snack' }
           ]}
           label='Create table'
           isClass='text-uppercase font-weight-bold'
