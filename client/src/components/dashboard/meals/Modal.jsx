@@ -6,30 +6,17 @@ import { createStructuredSelector } from 'reselect';
 import { state_errors } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
-import isEmpty from '../../common/utils/isEmpty';
+import doTheCalc from './utils/doTheCalc';
 
 const Modal = ({ show, setShow, state, setState, item, updateItem }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
   const { name, qty, type, cal, prot, fat, carb } = modal;
 
-  // Update state CDM
+  // Update state CDU
   useEffect(() => {
-    setModal({ ...state });
-    // eslint-disable-next-line
-  },[])
-
-  // Update state on Input change CDU
-  useEffect(() => {
-    if(!isEmpty(input)) { 
-      const { cal, prot, fat, carb } = item;
-      setModal({ 
-        ...modal, 
-        cal: String(cal*input),
-        prot: String(prot*input),
-        fat: String(fat*input),
-        carb: String(carb*input),
-      })}
+    const { _cal, _prot, _fat, _carb } = doTheCalc({...item, input, state_qty: state.qty});
+    setModal({ ...state, cal: _cal, prot: _prot, fat: _fat, carb: _carb });
     // eslint-disable-next-line
   },[input]);
 
@@ -47,9 +34,8 @@ const Modal = ({ show, setShow, state, setState, item, updateItem }) => {
   const onClick = () => setShow(!show);
   const onChange = val => {
     // validation here
-    // 0 no good
     setInput(val);
-    updateItem({...modal});
+    // updateItem({...modal});
   };
 
   const onSave = () => {

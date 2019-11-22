@@ -45,6 +45,7 @@ const Card = ({ title, options, list, state, setState }) => {
           <ul className="list-group list-group-flush">
             <Item 
               item={{ name: 'Name', qty:'Qty', type:'.', cal:'Cal', prot:'Prot', fat:'Fat', carb: 'Carb', icon:'no' }}
+              dummy={true}
             />
             {
               card.map((i,index)=> <Item key={index} item={i} card={card} setCard={setCard} />)

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Modal from './Modal';
 
-const Item = ({ item, card, setCard }) => {
+const Item = ({ item, card, setCard, dummy }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
@@ -18,7 +19,10 @@ const Item = ({ item, card, setCard }) => {
     const items = card.filter(i => i._id !== _id);
     setCard(items)
   }
-  const onModal = () => setShow(!show);
+  const onModal = () => {
+    if(dummy) return;
+    setShow(!show)
+  };
 
   return (
     <li className="list-group-item d-flex p-0">
@@ -40,7 +44,7 @@ const Item = ({ item, card, setCard }) => {
             }
             <p 
               onClick={onModal}
-              className='mb-0 pt-2 pb-2 font-weight-bold hover'
+              className={classnames('mb-0 pt-2 pb-2 font-weight-bold', {'hover' : !dummy})}
             >
               {qty}{type}
             </p>
@@ -74,7 +78,8 @@ const Item = ({ item, card, setCard }) => {
 }
 
 Item.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  dummy: PropTypes.bool
 }
 
 export default Item;
