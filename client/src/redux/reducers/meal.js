@@ -14,10 +14,10 @@ const meal = ( state=INITIAL_STATE, action ) => {
     case MEAL.UPDATE:
       return { 
         ...state, 
-        breakfast: payload.bearkfast,
-        lunch: payload.lunch,
-        diner: payload.diner,
-        snack: payload.snack,
+        breakfast: payload.filter(i => i.title === 'breakfast')[0].items,
+        lunch: payload.filter(i => i.title === 'lunch')[0].items,
+        diner: payload.filter(i => i.title === 'diner')[0].items,
+        snack: payload.filter(i => i.title === 'snack')[0].items,
         isDefault: false 
       }
     case BREAKFAST.ITEM_UPDATE_REDUX:

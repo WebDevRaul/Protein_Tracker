@@ -1,14 +1,18 @@
 import axios from 'axios';
+import { MEAL } from './types';
 import { ADD_ITEM } from './utils/add_item';
 import URL from './utils/URL';
 
 export const updateMeal = () => dispatch => {
+  dispatch({ type: MEAL.LOADING });
   axios.get(`${URL.meal}/update`)
     .then(({ data }) => {
-
+      dispatch({ type: MEAL.UPDATE, payload: data });
+      dispatch({ type: MEAL.LOADED });
     })
     .catch(err => {
-
+      dispatch({ type: MEAL.ERROR, payload: err.response.data })
+      dispatch({ type: MEAL.LOADED });
     })
 }
 
