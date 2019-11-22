@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Modal from './Modal';
 
-const Item = ({ item, card, setCard, dummy }) => {
+const Item = ({ item, card, setCard, title, dummy }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
@@ -40,6 +40,7 @@ const Item = ({ item, card, setCard, dummy }) => {
                 state={state}
                 setState={setState}
                 item={item}
+                title={title}
               />
             }
             <p 
@@ -79,6 +80,7 @@ const Item = ({ item, card, setCard, dummy }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
+  title: PropTypes.string,
   dummy: PropTypes.bool
 }
 

@@ -12,6 +12,7 @@ require('./config/Passport')(passport);
 
 const account = require('./routes/api/account');
 const target = require('./routes/api/target');
+const meal = require('./routes/api/meal');
 const admin = require('./routes/api/admin');
 
 
@@ -38,6 +39,7 @@ mongoose
 // Routes
   app.use('/api/user/account', account);
   app.use('/api/user/target', target);
+  app.use('/api/user/meal', meal);
   app.use('/api/user/admin', admin);
 
 

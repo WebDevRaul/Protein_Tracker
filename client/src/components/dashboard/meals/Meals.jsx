@@ -11,10 +11,10 @@ const Meals = () => {
     <div className='row no-gutters'>
       <div className='col-9 m-auto'>
         <Buttons state={state} setState={setState} />
-        { breakfast && <Card title='breakfast' state={state} setState={setState} /> }
-        { lunch && <Card title='lunch' state={state} setState={setState} /> }
-        { diner && <Card title='diner' state={state} setState={setState} /> }
-        { snack && <Card title='snack' state={state} setState={setState} /> }
+        { breakfast && <Card title='BREAKFAST' state={state} setState={setState} /> }
+        { lunch && <Card title='LUNCH' state={state} setState={setState} /> }
+        { diner && <Card title='DINER' state={state} setState={setState} /> }
+        { snack && <Card title='SNACK' state={state} setState={setState} /> }
       </div>
     </div>
   )

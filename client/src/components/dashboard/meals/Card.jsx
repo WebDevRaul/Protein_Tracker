@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { addItemToTable } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
 import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 
 import Item from './Item';
 import Select from '../../common/form/select/Select';
 
-const Card = ({ title, options, list, state, setState }) => {
+const Card = ({ title, options, list, state, setState, addItemToTable }) => {
   const [card, setCard] = useState([]);
   
   const onChange = e => {
     const item = list.filter(i => i._id === e.target.value)[0];
-    setCard([...card, item])
+    setCard([...card, item]);
+    const { name, qty, type, cal, prot, fat, carb } = item;
+    const data = { _id: 'temp', name, qty, type, cal, prot, fat, carb }
+    addItemToTable({ data, title });
   };
+
   const onClose = () => setState({ ...state, [title]: false });
 
   return (
@@ -48,7 +53,7 @@ const Card = ({ title, options, list, state, setState }) => {
               dummy={true}
             />
             {
-              card.map((i,index)=> <Item key={index} item={i} card={card} setCard={setCard} />)
+              card.map((i,index)=> <Item key={index} item={i} card={card} setCard={setCard} title={title} />)
             }
           </ul>
         </div>
@@ -60,7 +65,8 @@ const Card = ({ title, options, list, state, setState }) => {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  addItemToTable: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -68,4 +74,4 @@ const mapStateToProps = createStructuredSelector({
   list: state_admin
 });
 
-export default connect( mapStateToProps, null )(Card);
+export default connect( mapStateToProps, { addItemToTable } )(Card);

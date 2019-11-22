@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateItem } from '../../../redux/actions/meal';
+import { addItemToTable } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
 import { state_errors } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import doTheCalc from './utils/doTheCalc';
 
-const Modal = ({ show, setShow, state, setState, item, updateItem }) => {
+const Modal = ({ show, setShow, state, setState, item, title, }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
   const { name, qty, type, cal, prot, fat, carb } = modal;
@@ -35,12 +35,14 @@ const Modal = ({ show, setShow, state, setState, item, updateItem }) => {
   const onChange = val => {
     // validation here
     setInput(val);
-    // updateItem({...modal});
   };
-
+  
   const onSave = () => {
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
+    const data = { _id: 'temp', qty, type, cal, prot, fat, carb };
+
+    console.log({ data, title });
   }
 
   return (
@@ -95,11 +97,11 @@ Modal.propTypes = {
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired,
-  updateItem: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = createStructuredSelector({
 
 });
 
-export default connect( mapStateToProps, { updateItem } )(Modal);
+export default connect( mapStateToProps, {  } )(Modal);
