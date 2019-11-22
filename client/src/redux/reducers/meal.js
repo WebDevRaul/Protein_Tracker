@@ -1,4 +1,4 @@
-import { USER, MEAL, BREAKFAST } from '../actions/types';
+import { USER, MEAL, BREAKFAST, LUNCH,DINER, SNACK } from '../actions/types';
 
 const INITIAL_STATE = {
   breakfast: [],
@@ -21,8 +21,25 @@ const meal = ( state=INITIAL_STATE, action ) => {
         isDefault: false 
       }
     case BREAKFAST.ITEM_UPDATE_REDUX:
-    case BREAKFAST.ITEM_UPDATE:
       return { ...state, breakfast: [ ...state.breakfast, payload ]};
+      case BREAKFAST.ITEM_UPDATE:
+          return { ...state, breakfast: payload};
+
+    case LUNCH.ITEM_UPDATE_REDUX:
+      return { ...state, breakflunchast: [ ...state.lunch, payload ]};
+    case LUNCH.ITEM_UPDATE:
+      return { ...state, breakflunchast: payload};
+      
+    case DINER.ITEM_UPDATE_REDUX:
+      return { ...state, diner: [ ...state.diner, payload ]};
+    case DINER.ITEM_UPDATE:
+      return { ...state, diner: payload};
+
+    case SNACK.ITEM_UPDATE_REDUX:
+      return { ...state, snack: [ ...state.snack, payload ]};
+    case SNACK.ITEM_UPDATE:
+      return { ...state, snack: payload};
+
     case USER.SIGN_OUT:
         return { ...state, breakfast: [], lunch: [], diner: [], snack: [], isDefault: true };
     default:

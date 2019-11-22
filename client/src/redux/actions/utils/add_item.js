@@ -4,7 +4,6 @@ import { toastr } from 'react-redux-toastr';
 export const ADD_ITEM = ({
   ENDPOINT,
   DATA,
-  TABLE,
   LOADING,
   REDUX,
   SUCCESS_TYPE,
@@ -23,9 +22,9 @@ export const ADD_ITEM = ({
     try {
       dispatch({ type: LOADING });
       dispatch({ type: REDUX, payload: DATA });
-      const response = await axios.post(`${ENDPOINT}`, { DATA, TABLE });
-      const { data}  = response;
-      return onSuccess(data);
+      const response = await axios.post(`${ENDPOINT}`, DATA);
+      const { data: { items } }  = response;
+      return onSuccess(items);
     } catch (error) {
       return onError(error);
     }

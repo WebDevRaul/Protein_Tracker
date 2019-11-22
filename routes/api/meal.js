@@ -28,18 +28,68 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 // @desc    Add Item
 // @access  Private
 router.post('/BREAKFAST/add-item', passport.authenticate('jwt'), (req, res) => {
-  const { DATA, TABLE } = req.body;
+  const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
   // Validate here
+  const payload = { name, qty, type, cal, prot, fat, carb }
+  Breakfast.findOneAndUpdate({ user: _id },
+    { $push: { 'items': payload }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
+    }))
 });
 
 // @route   POST api/user/meal/LUNCH/add-item
 // @desc    Add Item
 // @access  Private
 router.post('/LUNCH/add-item', passport.authenticate('jwt'), (req, res) => {
-  const { DATA, TABLE } = req.body;
+  const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
-  console.log(TABLE)
+  // Validate here
+  const payload = { name, qty, type, cal, prot, fat, carb }
+  Lunch.findOneAndUpdate({ user: _id },
+    { $push: { 'items': payload }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
+    }))
+});
+
+// @route   POST api/user/meal/DINER/add-item
+// @desc    Add Item
+// @access  Private
+router.post('/DINER/add-item', passport.authenticate('jwt'), (req, res) => {
+  const { name, qty, type, cal, prot, fat, carb } = req.body;
+  const { _id } = req.user;
+  // Validate here
+  const payload = { name, qty, type, cal, prot, fat, carb }
+  Diner.findOneAndUpdate({ user: _id },
+    { $push: { 'items': payload }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
+    }))
+});
+
+// @route   POST api/user/meal/SNACK/add-item
+// @desc    Add Item
+// @access  Private
+router.post('/SNACK/add-item', passport.authenticate('jwt'), (req, res) => {
+  const { name, qty, type, cal, prot, fat, carb } = req.body;
+  const { _id } = req.user;
+  // Validate here
+  const payload = { name, qty, type, cal, prot, fat, carb }
+  Snack.findOneAndUpdate({ user: _id },
+    { $push: { 'items': payload }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
+    ((err, items) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(items)
+    }))
 });
 
 
