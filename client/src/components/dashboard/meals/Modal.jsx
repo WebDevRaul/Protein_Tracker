@@ -41,8 +41,7 @@ const Modal = ({ show, setShow, state, setState, item, title, }) => {
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
     const data = { _id: 'temp', qty, type, cal, prot, fat, carb };
-
-    console.log({ data, title });
+    console.log(modal)
   }
 
   return (
@@ -64,9 +63,9 @@ const Modal = ({ show, setShow, state, setState, item, title, }) => {
               <div>Fat {fat}</div>
               <div>Carb. {carb}</div>
             </div>
-            <div className='d-flex justify-content-around pt-3'>
+            <div className='d-flex justify-content-around pt-3 align-items-center'>
               <div>Qty. {qty} {type}</div>
-              <div className='d-flex'>
+              <div className='d-flex align-items-center'>
                 <i className='text-success mr-2'>NEW</i> Qty. 
                 <div className="input-group input-group-sm ml-2">
                   <input 

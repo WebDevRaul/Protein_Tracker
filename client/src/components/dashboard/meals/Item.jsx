@@ -8,6 +8,7 @@ const Item = ({ item, card, setCard, title, dummy }) => {
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
   const { icon } = item;
+  const temp = _id === 'temp' ? true : false;
 
   // Update state CDU
   useEffect(() => {
@@ -20,13 +21,13 @@ const Item = ({ item, card, setCard, title, dummy }) => {
     setCard(items)
   }
   const onModal = () => {
-    if(dummy) return;
+    if(temp || dummy) return;
     setShow(!show)
   };
 
   return (
     <li className="list-group-item d-flex p-0">
-       <div className='row no-gutters pl-2 pr-2 w-100'>
+       <div className={classnames('row no-gutters pl-2 pr-2 w-100', {'blinking': temp})}>
         <div className='col-11 d-flex text-muted'>
           <div className='col p-0 text-truncate'>
             <h5 className='mb-0 pr-2 pt-2 pb-2 text-truncate'>{name}</h5>
@@ -81,7 +82,7 @@ const Item = ({ item, card, setCard, title, dummy }) => {
 Item.propTypes = {
   item: PropTypes.object.isRequired,
   title: PropTypes.string,
-  dummy: PropTypes.bool
+  dummy: PropTypes.bool,
 }
 
 export default Item;

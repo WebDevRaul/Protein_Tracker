@@ -7,3 +7,4 @@ create item scroll to item?
 arrow to scroll up?
 global Loading on reload
 open Table if items in meal-table
+modal validation

@@ -11,15 +11,15 @@ import Select from '../../common/form/select/Select';
 const Card = ({ items, title, options, list, state, setState, addItemToTable }) => {
   const [card, setCard] = useState([]);
 
-  // Update State CDM
+  // Update State CDU
   useEffect(() => {
     setCard([...items]);
     // eslint-disable-next-line
-  },[]);
+  },[items]);
+
   
   const onChange = e => {
     const item = list.filter(i => i._id === e.target.value)[0];
-    setCard([...card, item]);
     const { name, qty, type, cal, prot, fat, carb } = item;
     const data = { _id: 'temp', name, qty, type, cal, prot, fat, carb }
     addItemToTable({ data, title });

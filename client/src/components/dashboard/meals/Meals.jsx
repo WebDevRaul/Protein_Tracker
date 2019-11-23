@@ -12,15 +12,16 @@ const Meals = ({ breakfast, lunch, diner, snack }) => {
   const [state, setState] = useState({ Breakfast: false, Lunch: false, Diner: false, Snack: false });
   const { Breakfast, Lunch, Diner, Snack } = state;
 
+  // Update State CDU
   useEffect(() => {
-    if(!isEmpty(breakfast)) setState({ ...state, Breakfast: true });
-  },[breakfast]);
-
-  // useEffect(() => {
-  //   if(!isEmpty(breakfast)) setState({ ...state, Breakfast: true });
-  //   if(!isEmpty(lunch)) setState({ ...state, Lunch: true });
-  //   if(!isEmpty(diner)) setState({ ...state, Diner: true });
-  // },[breakfast, lunch, diner, snack]);
+    let updates = {};
+    if (!isEmpty(breakfast)) updates.Breakfast = true;
+    if (!isEmpty(lunch)) updates.Lunch = true;
+    if (!isEmpty(diner)) updates.Diner = true;
+    if (!isEmpty(snack)) updates.Snack = true;
+  
+    setState({ ...state, ...updates });
+  }, [breakfast, lunch, diner, snack]);
 
   return (
     <div className='row no-gutters'>
