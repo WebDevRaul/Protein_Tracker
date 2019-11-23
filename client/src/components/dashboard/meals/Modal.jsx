@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addItemToTable } from '../../../redux/actions/meal';
+import { updateItemsToTable } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
-import { state_errors } from '../../../redux/selectors/meal'
+import {  } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import doTheCalc from './utils/doTheCalc';
 
-const Modal = ({ show, setShow, state, setState, item, title, }) => {
+const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [input, setInput] = useState('');
-  const { name, qty, type, cal, prot, fat, carb } = modal;
+  const { _id, name, qty, type, cal, prot, fat, carb } = modal;
 
   // Update state CDU
   useEffect(() => {
@@ -40,8 +40,9 @@ const Modal = ({ show, setShow, state, setState, item, title, }) => {
   const onSave = () => {
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
-    const data = { _id: 'temp', qty, type, cal, prot, fat, carb };
-    console.log(modal)
+    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb };
+    const data = { ...modal };
+    updateItemsToTable({ data, title, temp, _id });
   }
 
   return (
@@ -97,10 +98,11 @@ Modal.propTypes = {
   setState: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
+  updateItemsToTable: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({
 
 });
 
-export default connect( mapStateToProps, {  } )(Modal);
+export default connect( mapStateToProps, { updateItemsToTable } )(Modal);

@@ -93,4 +93,18 @@ router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
 });
 
 
+////////////////////////////////////////////////////////
+///////////////////////
+
+
+// @route   POST api/user/meal/BREAKFAST/update-item
+// @desc    Update Item
+// @access  Private
+router.post('/Breakfast/update-item', passport.authenticate('jwt'), (req, res) => {
+  const { name, qty, type, cal, prot, fat, carb } = req.body;
+  const { _id } = req.user;
+  console.log(req.body)
+});
+
+
 module.exports = router;

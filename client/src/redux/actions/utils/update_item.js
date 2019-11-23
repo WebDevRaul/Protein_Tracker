@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const ADD_ITEM = ({
+export const UPDATE_ITEM = ({
   ENDPOINT,
   DATA,
+  TEMP,
   LOADING,
   REDUX,
   SUCCESS_TYPE,
@@ -20,7 +21,7 @@ export const ADD_ITEM = ({
     };
     try {
       dispatch({ type: LOADING });
-      dispatch({ type: REDUX, payload: DATA });
+      dispatch({ type: REDUX, payload: TEMP });
       const response = await axios.post(`${ENDPOINT}`, DATA);
       const { data: { items } }  = response;
       return onSuccess(items);
