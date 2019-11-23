@@ -1,28 +1,28 @@
 import isEmpty from "../../../common/utils/isEmpty";
 
-const doTheCalc = ({ qty, type, cal, prot, carb, fat, input, state_qty }) => {
-  let _cal, _prot, _fat, _carb;
+const doTheCalc = ({ qty, type, _cal, _prot, _carb, _fat, input, state_qty }) => {
+  let cal, prot, fat, carb;
   const val = isEmpty(input) ? (state_qty!==qty) ? state_qty : qty : input;
   
   if(type === 'pc.') {
-    _cal = cal * val;
-    _prot = prot * val;
-    _fat = fat * val;
-    _carb = carb * val;
+    cal = _cal * val;
+    prot = _prot * val;
+    fat = _fat * val;
+    carb = _carb * val;
   } else {
-    _cal = (val / qty) * cal;
-    _prot = (val / qty) * prot;
-    _fat = (val / qty) * fat;
-    _carb = (val / qty) * carb;
+    cal = (val / qty) * _cal;
+    prot = (val / qty) * _prot;
+    fat = (val / qty) * _fat;
+    carb = (val / qty) * _carb;
   }
 
-  _cal = _cal.toFixed(1).toString();
-  _prot = _prot.toFixed(1).toString();
-  _fat = _fat.toFixed(1).toString();
-  _carb = _carb.toFixed(1).toString();
+  cal = cal.toFixed(1).toString();
+  prot = prot.toFixed(1).toString();
+  fat = fat.toFixed(1).toString();
+  carb = carb.toFixed(1).toString();
 
 
-  return { _cal, _prot, _fat, _carb };
+  return { cal, prot, fat, carb };
 }
 
 export default doTheCalc;

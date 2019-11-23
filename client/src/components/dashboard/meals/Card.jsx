@@ -20,9 +20,10 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable, de
   
   const onChange = e => {
     const item = list.filter(i => i._id === e.target.value)[0];
-    const { name, qty, type, cal, prot, fat, carb } = item;
-    const data = { _id: 'temp', name, qty, type, cal, prot, fat, carb }
-    addItemToTable({ data, title });
+    const { _id, name, qty, type, cal, prot, fat, carb } = item;
+    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb };
+    const data = { _id, name, qty, type, cal, prot, fat, carb };
+    addItemToTable({ temp, data, title });
   };
 
   const onDelete = obj => deleteItemFromTable(obj)

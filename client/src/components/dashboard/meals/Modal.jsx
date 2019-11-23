@@ -15,8 +15,8 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
 
   // Update state CDU
   useEffect(() => {
-    const { _cal, _prot, _fat, _carb } = doTheCalc({...item, input, state_qty: state.qty});
-    setModal({ ...state, cal: _cal, prot: _prot, fat: _fat, carb: _carb });
+    const { cal, prot, fat, carb } = doTheCalc({...item, input, state_qty: state.qty});
+    setModal({ ...state, cal, prot, fat, carb });
     // eslint-disable-next-line
   },[input]);
 
