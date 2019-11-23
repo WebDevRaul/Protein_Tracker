@@ -15,7 +15,7 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable, de
   useEffect(() => {
     setCard([...items]);
     // eslint-disable-next-line
-  },[items]);
+  },[items])
 
   
   const onChange = e => {
@@ -61,7 +61,7 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable, de
               icon={false}
             />
             {
-              card.map((i,index)=> <Item key={index} item={i} icon={true} title={title} onDelete={onDelete} />)
+              card.map(i => <Item key={i._id} item={i} icon={true} title={title} onDelete={onDelete} />)
             }
           </ul>
         </div>
