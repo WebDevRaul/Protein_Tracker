@@ -35,8 +35,8 @@ export const saveItem = obj => dispatch => {
 
 export const deleteItem = obj => dispatch => {
   axios.post(`${URL.admin}/delete-item`, obj)
-    .then(({ data: { items } }) => {
-      dispatch({ type: ADMIN.DELETE_ITEM, payload: items });
+    .then(({ data: { _id } }) => {
+      dispatch({ type: ADMIN.DELETE_ITEM, payload: _id });
       toastr.success('Success!', 'Item deleted');
     })
     .catch(err => {

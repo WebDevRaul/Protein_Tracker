@@ -7,16 +7,20 @@ import Modal from './Modal';
 import './item.css'
 
 const Item = ({ data, onDelete }) => {
-  const [loading, setLoading] = useState(false);
-  const temp = _id === 'temp' ? true : false;
+  const [state, setState] = useState({ loading: false, modal: false });
+  const { loading, modal } = state;
   const { _id, name, qty, type, cal, prot, fat, carb, icon } = data;
+  const temp = _id === 'temp' ? true : false;
 
   const onClick = () => {
     if(temp) return;
-    setLoading(!loading)
+    setState({ loading: true, modal: true });
   }
 
-  const toDelete = () => onDelete(_id);
+  const toDelete = () => {
+    setState({ ...state, modal: false });
+    onDelete(_id);
+  };
 
   return (
     <div className='border border-secondary mt-3 rounded shadow text-muted'>
@@ -43,10 +47,10 @@ const Item = ({ data, onDelete }) => {
         </div>
         <div className='col-1 d-flex m-auto'>
           {
-            loading && 
-            <Modal 
-              loading={loading} 
-              setLoading={setLoading} 
+            modal && 
+            <Modal
+              state={state}
+              setState={setState} 
               item={data}
               toDelete={toDelete}
             />

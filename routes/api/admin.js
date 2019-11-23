@@ -46,10 +46,10 @@ router.post('/delete-item', passport.authenticate('jwt'), (req, res) => {
 
   Admin.findOneAndUpdate({ user: req.user._id },
     { $pull: { "items": { _id } } },
-    { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },
-    ((err, items) => {
+    { select: { user: 0, __v: 0, _id: 0, items: 0 }, new: true, upsert: true  },
+    ((err, done) => {
       if(err) return res.status(400).json({ error: 'Ooops'})
-      res.json(items)
+      res.json({ _id })
     }))
 });
 

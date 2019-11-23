@@ -42,6 +42,31 @@ const BreakfastSchema = new Schema({
         type: String,
         required: true,
         trim: true
+      },
+      _qty: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      _cal: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      _prot: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      _fat: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      _carb: {
+        type: String,
+        required: true,
+        trim: true
       }
     }
   ]

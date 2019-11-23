@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 
-const Modal = ({ loading, setLoading, item, toDelete }) => {
+const Modal = ({ state, setState, item, toDelete }) => {
   const { name, qty, type, cal, prot, fat, carb } = item;
 
   // Create Event CDM && CDUM
@@ -14,12 +14,12 @@ const Modal = ({ loading, setLoading, item, toDelete }) => {
 
   const onClickOutside = e => {
     if(e.target.className !== 'modal fade d-block') return;
-    setLoading(!loading);
+    setState({ loading: false, modal: false });
   }
 
-  const onClick = () => setLoading(!loading);
+  const onClick = () => setState({ loading: false, modal: false });
 
-  const onSave = () => toDelete()
+  const onSave = () => toDelete();
 
   return (
     <div className={classnames('modal fade', { 'd-block': true })}
@@ -53,10 +53,10 @@ const Modal = ({ loading, setLoading, item, toDelete }) => {
 }
 
 Modal.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  setLoading: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+  setState: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired,
-  onDelete: PropTypes.func.isRequired
+  toDelete: PropTypes.func.isRequired
 }
 
 export default Modal;
