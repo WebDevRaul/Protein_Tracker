@@ -24,7 +24,12 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 });
 
 
-// @route   POST api/user/meal/BREAKFAST/add-item
+////////////////////////////////////////////////////
+////////////////////  ADD ITEM  ////////////////////
+////////////////////////////////////////////////////
+
+
+// @route   POST api/user/meal/Breakfast/add-item
 // @desc    Add Item
 // @access  Private
 router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
@@ -41,7 +46,7 @@ router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
     }))
 });
 
-// @route   POST api/user/meal/LUNCH/add-item
+// @route   POST api/user/meal/Lunch/add-item
 // @desc    Add Item
 // @access  Private
 router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
@@ -58,7 +63,7 @@ router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
     }))
 });
 
-// @route   POST api/user/meal/DINER/add-item
+// @route   POST api/user/meal/Diner/add-item
 // @desc    Add Item
 // @access  Private
 router.post('/Diner/add-item', passport.authenticate('jwt'), (req, res) => {
@@ -75,7 +80,7 @@ router.post('/Diner/add-item', passport.authenticate('jwt'), (req, res) => {
     }))
 });
 
-// @route   POST api/user/meal/SNACK/add-item
+// @route   POST api/user/meal/Snack/add-item
 // @desc    Add Item
 // @access  Private
 router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
@@ -93,17 +98,69 @@ router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
 });
 
 
-////////////////////////////////////////////////////////
-///////////////////////
+///////////////////////////////////////////////////////
+////////////////////  UPDATE ITEM  ////////////////////
+///////////////////////////////////////////////////////
 
 
-// @route   POST api/user/meal/BREAKFAST/update-item
+// @route   POST api/user/meal/Breakfast/update-item
 // @desc    Update Item
 // @access  Private
 router.post('/Breakfast/update-item', passport.authenticate('jwt'), (req, res) => {
-  const { name, qty, type, cal, prot, fat, carb } = req.body;
-  const { _id } = req.user;
-  console.log(req.body)
+  const { _id, qty, cal, prot, fat, carb } = req.body;
+
+  Breakfast.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
+  {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
+  { select: { user: 0, __v: 0, _id: 0, title: 0, items: {$elemMatch:{ _id }}}, new: true, upsert: true  },
+  ((err, item) => {
+    if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(item)
+  }))
+});
+
+// @route   POST api/user/meal/Lunch/update-item
+// @desc    Update Item
+// @access  Private
+router.post('/Lunch/update-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id, qty, cal, prot, fat, carb } = req.body;
+
+  Lunch.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
+  {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
+  { select: { user: 0, __v: 0, _id: 0, title: 0, items: {$elemMatch:{ _id }}}, new: true, upsert: true  },
+  ((err, item) => {
+    if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(item)
+  }))
+});
+
+// @route   POST api/user/meal/Diner/update-item
+// @desc    Update Item
+// @access  Private
+router.post('/Diner/update-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id, qty, cal, prot, fat, carb } = req.body;
+
+  Diner.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
+  {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
+  { select: { user: 0, __v: 0, _id: 0, title: 0, items: {$elemMatch:{ _id }}}, new: true, upsert: true  },
+  ((err, item) => {
+    if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(item)
+  }))
+});
+
+// @route   POST api/user/meal/Snack/update-item
+// @desc    Update Item
+// @access  Private
+router.post('/Snack/update-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id, qty, cal, prot, fat, carb } = req.body;
+
+  Snack.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
+  {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
+  { select: { user: 0, __v: 0, _id: 0, title: 0, items: {$elemMatch:{ _id }}}, new: true, upsert: true  },
+  ((err, item) => {
+    if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(item)
+  }))
 });
 
 

@@ -40,8 +40,9 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
   const onSave = () => {
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
-    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb };
-    const data = { ...modal };
+    const temp = { _id: 'temp', name, qty:input, type, cal, prot, fat, carb };
+    const data = { _id, name, qty:input, type, cal, prot, fat, carb };
+    // validation here
     updateItemsToTable({ data, title, temp, _id });
   }
 

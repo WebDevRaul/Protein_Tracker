@@ -82,7 +82,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
     return UPDATE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
-      TEMP: temp,
+      TEMP: { temp, _id },
       LOADING: LUNCH.LOADING,
       REDUX: LUNCH.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: LUNCH.UPDATE_ITEM,
@@ -94,7 +94,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
     return UPDATE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
-      TEMP: temp,
+      TEMP: { temp, _id },
       LOADING: DINER.LOADING,
       REDUX: DINER.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: DINER.UPDATE_ITEM,
@@ -106,7 +106,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
     return UPDATE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
-      TEMP: temp,
+      TEMP: { temp, _id },
       LOADING: SNACK.LOADING,
       REDUX: SNACK.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: SNACK.UPDATE_ITEM,

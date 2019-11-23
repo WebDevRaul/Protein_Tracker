@@ -24,7 +24,7 @@ export const UPDATE_ITEM = ({
       dispatch({ type: REDUX, payload: TEMP });
       const response = await axios.post(`${ENDPOINT}`, DATA);
       const { data: { items } }  = response;
-      return onSuccess(items);
+      return onSuccess(items[0]);
     } catch (error) {
       return onError(error);
     }

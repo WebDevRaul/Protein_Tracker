@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Modal from './Modal';
 
-const Item = ({ item, card, setCard, title, dummy }) => {
+const Item = ({ item, card, setCard, title, dummy, icon }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
-  const { icon } = item;
   const temp = _id === 'temp' ? true : false;
 
   // Update state CDU
@@ -83,6 +82,7 @@ Item.propTypes = {
   item: PropTypes.object.isRequired,
   title: PropTypes.string,
   dummy: PropTypes.bool,
+  icon: PropTypes.string,
 }
 
 export default Item;
