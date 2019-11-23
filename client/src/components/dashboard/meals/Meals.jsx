@@ -21,6 +21,7 @@ const Meals = ({ breakfast, lunch, diner, snack }) => {
     if (!isEmpty(snack)) updates.Snack = true;
   
     setState({ ...state, ...updates });
+    // eslint-disable-next-line
   }, [breakfast, lunch, diner, snack]);
 
   return (

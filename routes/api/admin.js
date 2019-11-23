@@ -42,11 +42,10 @@ router.post('/save-item', passport.authenticate('jwt'), (req, res) => {
 // @desc    Delete Item
 // @access  Private
 router.post('/delete-item', passport.authenticate('jwt'), (req, res) => {
-  const { id} = req.body;
-  const { _id } = req.user;
+  const { _id } = req.body;
 
-  Admin.findOneAndUpdate({ user: _id },
-    { $pull: { "items": { _id: id } } },
+  Admin.findOneAndUpdate({ user: req.user._id },
+    { $pull: { "items": { _id } } },
     { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },
     ((err, items) => {
       if(err) return res.status(400).json({ error: 'Ooops'})

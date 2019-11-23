@@ -30,6 +30,8 @@ const meal = ( state=INITIAL_STATE, action ) => {
       return { ...state, breakfast: [ ...state.breakfast.filter(i => i._id !== payload._id), payload.temp ] }
     case BREAKFAST.UPDATE_ITEM:
       return { ...state, breakfast: [...state.breakfast.filter(i => i._id !== 'temp'), payload] }
+    case BREAKFAST.DELETE_ITEM:
+      return { ...state, breakfast: [...state.breakfast.filter(i => i._id !== payload)] }
 
 
     case LUNCH.ITEM_UPDATE_REDUX:
@@ -40,6 +42,8 @@ const meal = ( state=INITIAL_STATE, action ) => {
       return { ...state, lunch: [ ...state.lunch.filter(i => i._id !== payload._id), payload.temp ] }
     case LUNCH.UPDATE_ITEM:
       return { ...state, lunch: [...state.lunch.filter(i => i._id !== 'temp'), payload] }
+    case LUNCH.DELETE_ITEM:
+      return { ...state, lunch: [...state.lunch.filter(i => i._id !== payload)] }
 
 
     case DINER.ITEM_UPDATE_REDUX:
@@ -50,6 +54,8 @@ const meal = ( state=INITIAL_STATE, action ) => {
         return { ...state, diner: [ ...state.diner.filter(i => i._id !== payload._id), payload.temp ] }
     case DINER.UPDATE_ITEM:
       return { ...state, diner: [...state.diner.filter(i => i._id !== 'temp'), payload] }
+    case DINER.DELETE_ITEM:
+        return { ...state, diner: [...state.diner.filter(i => i._id !== payload)] }
 
 
     case SNACK.ITEM_UPDATE_REDUX:
@@ -60,8 +66,10 @@ const meal = ( state=INITIAL_STATE, action ) => {
       return { ...state, snack: [ ...state.snack.filter(i => i._id !== payload._id), payload.temp ] }
     case SNACK.UPDATE_ITEM:
       return { ...state, snack: [...state.snack.filter(i => i._id !== 'temp'), payload] }
+    case SNACK.DELETE_ITEM:
+        return { ...state, snack: [...state.snack.filter(i => i._id !== payload)] }
 
-
+        
     case USER.SIGN_OUT:
         return { ...state, breakfast: [], lunch: [], diner: [], snack: [], isDefault: true };
     default:

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addItemToTable } from '../../../redux/actions/meal';
+import { addItemToTable, deleteItemFromTable } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
 import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 
 import Item from './Item';
 import Select from '../../common/form/select/Select';
 
-const Card = ({ items, title, options, list, state, setState, addItemToTable }) => {
+const Card = ({ items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
   const [card, setCard] = useState([]);
 
   // Update State CDU
@@ -24,6 +24,8 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable }) 
     const data = { _id: 'temp', name, qty, type, cal, prot, fat, carb }
     addItemToTable({ data, title });
   };
+
+  const onDelete = obj => deleteItemFromTable(obj)
 
   const onClose = () => setState({ ...state, [title]: false });
 
@@ -55,11 +57,11 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable }) 
         <div className='border border-top-0 border-success'>
           <ul className="list-group list-group-flush">
             <Item 
-              item={{ name: 'Name', qty:'Qty', type:'.', cal:'Cal', prot:'Prot', fat:'Fat', carb: 'Carb', icon:'no' }}
-              dummy={true}
+              item={{ name: 'Name', qty:'Qty', type:'.', cal:'Cal', prot:'Prot', fat:'Fat', carb: 'Carb' }}
+              icon={false}
             />
             {
-              card.map((i,index)=> <Item key={index} item={i} card={card} setCard={setCard} title={title} />)
+              card.map((i,index)=> <Item key={index} item={i} icon={true} title={title} onDelete={onDelete} />)
             }
           </ul>
         </div>
@@ -72,7 +74,8 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   list: PropTypes.array.isRequired,
-  addItemToTable: PropTypes.func.isRequired
+  addItemToTable: PropTypes.func.isRequired,
+  deleteItemFromTable: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -80,4 +83,4 @@ const mapStateToProps = createStructuredSelector({
   list: state_admin
 });
 
-export default connect( mapStateToProps, { addItemToTable } )(Card);
+export default connect( mapStateToProps, { addItemToTable, deleteItemFromTable } )(Card);

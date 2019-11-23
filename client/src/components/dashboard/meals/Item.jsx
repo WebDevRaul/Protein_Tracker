@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Modal from './Modal';
+import Spinner from '../../common/spinner/Spinner';
 
-const Item = ({ item, card, setCard, title, dummy, icon }) => {
+const Item = ({ item, title, icon, onDelete }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
+  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
   const temp = _id === 'temp' ? true : false;
@@ -16,11 +18,12 @@ const Item = ({ item, card, setCard, title, dummy, icon }) => {
   },[item])
 
   const onRemove = () => {
-    const items = card.filter(i => i._id !== _id);
-    setCard(items)
-  }
+    setLoading(true);
+    onDelete({ _id, title })
+  };
+  
   const onModal = () => {
-    if(temp || dummy) return;
+    if(temp || !icon) return;
     setShow(!show)
   };
 
@@ -45,7 +48,7 @@ const Item = ({ item, card, setCard, title, dummy, icon }) => {
             }
             <p 
               onClick={onModal}
-              className={classnames('mb-0 pt-2 pb-2 font-weight-bold', {'hover' : !dummy})}
+              className={classnames('mb-0 pt-2 pb-2 font-weight-bold', {'hover' : icon})}
             >
               {qty}{type}
             </p>
@@ -65,12 +68,17 @@ const Item = ({ item, card, setCard, title, dummy, icon }) => {
         </div>
         <div className='col-1 d-flex m-auto'>
           {
-            !icon &&
-            <i 
-              className='far fa-times-circle icon-responsive m-auto text-danger hover'
-              style={{ fontSize: '1.4em' }}
-              onClick={onRemove}
-            ></i>
+            icon &&
+            <>
+              {
+                loading
+                ? <span className='d-flex m-auto'><Spinner height='40px' /></span>
+                :  <i className='far fa-times-circle icon-responsive m-auto text-danger hover'
+                      style={{ fontSize: '1.4em' }}
+                      onClick={onRemove}>
+                    </i>
+              }
+            </>
           }
         </div>
       </div>
@@ -81,8 +89,8 @@ const Item = ({ item, card, setCard, title, dummy, icon }) => {
 Item.propTypes = {
   item: PropTypes.object.isRequired,
   title: PropTypes.string,
-  dummy: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func
 }
 
 export default Item;

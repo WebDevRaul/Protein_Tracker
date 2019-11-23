@@ -9,7 +9,7 @@ import Item from './Item';
 
 const List = ({ items, deleteItem }) => {
 
-  const onDelete = id => deleteItem({ id });
+  const onDelete = _id => deleteItem({ _id });
 
   return (
     <section>

@@ -164,4 +164,71 @@ router.post('/Snack/update-item', passport.authenticate('jwt'), (req, res) => {
 });
 
 
+///////////////////////////////////////////////////////
+////////////////////  DELETE ITEM  ////////////////////
+///////////////////////////////////////////////////////
+
+
+// @route   POST api/user/meal/Breakfast/delete-item
+// @desc    Delete Item
+// @access  Private
+router.post('/Breakfast/delete-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.body;
+
+  Breakfast.findOneAndUpdate({ user: req.user._id },
+    { $pull: { "items": { _id } } },
+    { select: { user: 0, __v: 0, _id: 0, title: 0, items: 0},  new: true, upsert: true  },
+    ((err, done) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json({ _id })
+    }))
+});
+
+// @route   POST api/user/meal/Lunch/delete-item
+// @desc    Delete Item
+// @access  Private
+router.post('/Lunch/delete-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.body;
+
+  Lunch.findOneAndUpdate({ user: req.user._id },
+    { $pull: { "items": { _id } } },
+    { select: { user: 0, __v: 0, _id: 0, title: 0, items: 0},  new: true, upsert: true  },
+    ((err, done) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json({ _id })
+    }))
+});
+
+// @route   POST api/user/meal/Diner/delete-item
+// @desc    Delete Item
+// @access  Private
+router.post('/Diner/delete-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.body;
+
+  Diner.findOneAndUpdate({ user: req.user._id },
+    { $pull: { "items": { _id } } },
+    { select: { user: 0, __v: 0, _id: 0, title: 0, items: 0},  new: true, upsert: true  },
+    ((err, done) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json({ _id })
+    }))
+});
+
+// @route   POST api/user/meal/Snack/delete-item
+// @desc    Delete Item
+// @access  Private
+router.post('/Snack/delete-item', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.body;
+
+  Snack.findOneAndUpdate({ user: req.user._id },
+    { $pull: { "items": { _id } } },
+    { select: { user: 0, __v: 0, _id: 0, title: 0, items: 0},  new: true, upsert: true  },
+    ((err, done) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json({ _id })
+    }))
+});
+
+
+
 module.exports = router;

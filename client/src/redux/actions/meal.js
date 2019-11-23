@@ -2,6 +2,7 @@ import axios from 'axios';
 import { MEAL, BREAKFAST, LUNCH, DINER, SNACK } from './types';
 import { ADD_ITEM } from './utils/add_item';
 import { UPDATE_ITEM } from './utils/update_item';
+import { DELETE_ITEM } from './utils/delete_item';
 import URL from './utils/URL';
 
 export const updateMeal = () => dispatch => {
@@ -16,6 +17,12 @@ export const updateMeal = () => dispatch => {
       dispatch({ type: MEAL.LOADED });
     })
 }
+
+
+////////////////////////////////////////////////////
+////////////////////  ADD ITEM  ////////////////////
+////////////////////////////////////////////////////
+
 
 export const addItemToTable = ({ data, title }) => {
   if(title === 'Breakfast') {
@@ -63,6 +70,11 @@ export const addItemToTable = ({ data, title }) => {
     })
   }
 }
+
+
+///////////////////////////////////////////////////////
+////////////////////  UPDATE ITEM  ////////////////////
+///////////////////////////////////////////////////////
 
 
 export const updateItemsToTable = ({ data, title, temp, _id }) => {
@@ -116,6 +128,54 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
   }
 }
 
+
+///////////////////////////////////////////////////////
+////////////////////  DELETE ITEM  ////////////////////
+///////////////////////////////////////////////////////
+
+
+export const deleteItemFromTable = ({ title, _id }) => {
+  if(title === 'Breakfast') {
+    return DELETE_ITEM({
+      ENDPOINT: `${URL.meal}/${title}/delete-item`,
+      ID: _id,
+      LOADING: BREAKFAST.LOADING,
+      SUCCESS_TYPE: BREAKFAST.DELETE_ITEM,
+      ERROR_TYPE: MEAL.ERROR,
+      LOADED: BREAKFAST.LOADED
+    })
+  }
+  if(title === 'Lunch') {
+    return DELETE_ITEM({
+      ENDPOINT: `${URL.meal}/${title}/delete-item`,
+      ID: _id,
+      LOADING: LUNCH.LOADING,
+      SUCCESS_TYPE: LUNCH.DELETE_ITEM,
+      ERROR_TYPE: MEAL.ERROR,
+      LOADED: LUNCH.LOADED
+    })
+  }
+  if(title === 'Diner') {
+    return DELETE_ITEM({
+      ENDPOINT: `${URL.meal}/${title}/delete-item`,
+      ID: _id,
+      LOADING: DINER.LOADING,
+      SUCCESS_TYPE: DINER.DELETE_ITEM,
+      ERROR_TYPE: MEAL.ERROR,
+      LOADED: DINER.LOADED
+    })
+  }
+  if(title === 'Snack') {
+    return DELETE_ITEM({
+      ENDPOINT: `${URL.meal}/${title}/delete-item`,
+      ID: _id,
+      LOADING: SNACK.LOADING,
+      SUCCESS_TYPE: SNACK.DELETE_ITEM,
+      ERROR_TYPE: MEAL.ERROR,
+      LOADED: SNACK.LOADED
+    })
+  }
+}
 
 
 export const clearMealErrors = () => {
