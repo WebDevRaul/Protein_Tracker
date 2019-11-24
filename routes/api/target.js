@@ -11,11 +11,7 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
   const { _id } = req.user;
 
   Target.findOne({ user: _id }, { user: 0, _id: 0, __v: 0 })
-    .then(table => {
-      if(table) return res.json(table);
-      // Fake data
-      res.json({ cal: '0', prot: '0', fat: '0', carb: '0' })
-    })
+    .then(data => res.json(data))
     .catch(err => res.status(400).json({ error: 'Ooops'}))
 });
 
@@ -30,23 +26,13 @@ router.post('/set', passport.authenticate('jwt'), (req, res) => {
   const { errors, isValid } = validateDashboardSet({ cal, prot, fat, carb });
   if (!isValid) return res.status(400).json(errors);
 
-  Target.findOne({ user: _id }, { user: 0, __v: 0 })
-    .then(table => {
-      if(table) {
-        table.updateOne({cal, prot, fat, carb}, ((err, { nModified }) => {
-          if(err) return res.status(400).json({ error: 'Ooops'});
-          if(nModified) return res.json({ cal, prot, fat, carb });
-          res.status(400).json({ error: 'nModified: 0'});
-        }))
-      }
-      else {
-        const payload = new Target({ user: _id, cal, prot, fat, carb });
-        payload.save()
-          .then(({ cal, prot, fat, carb }) => res.json({ cal, prot, fat, carb }))
-          .catch(err => res.status(400).json({ error: 'Ooops'}))
-      }
-    })
-    .catch(err => res.status(400).json({ error: 'Ooops'}))
+  Target.findOneAndUpdate({ user: _id },
+    { $set: { cal, prot, fat, carb }},
+    { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },
+    ((err, data) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+      res.json(data)
+    }))
   });
 
 
