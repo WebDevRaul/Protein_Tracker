@@ -6,7 +6,7 @@ const SignIn = () => {
   return (
     <section className='sign-in d-flex flex-column justify-content-center' 
       // Center the form and 19px for the scrollbar 
-      style={{ minHeight: 'calc(100vh - 259px)', paddingRight: '19px' }}
+      style={{ minHeight: 'calc(100vh - 264px)', paddingRight: '19px' }}
     >
       <div className='row no-gutters'>
         <div className='col-8 col-sm-6 col-md-4 m-auto'>

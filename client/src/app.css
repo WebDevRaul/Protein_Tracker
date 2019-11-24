@@ -13,6 +13,10 @@
   background: rgba(255, 254, 196, 0.534);
 }
 
+.is-scroll {
+  margin-right: 18px;
+}
+
 button:focus, input:focus, select:focus {
   outline: none !important;
   box-shadow: none !important;

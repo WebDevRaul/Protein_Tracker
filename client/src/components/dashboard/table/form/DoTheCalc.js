@@ -1,7 +1,7 @@
 const doTheCalc = ({ age, gender, activity, height, weight }) => {
   let cal, prot, fat, carb;
 
-  if(gender === 'man') {
+  if(gender === 'Man') {
     cal = (66.4730+(13.7516 * Number(weight)) + (5.0033 * Number(height)) - (6.7550 * Number(age))) * Number(activity);
     prot = weight*0.825;
     fat = (cal * 0.25)/9;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { signOut } from '../../redux/actions/user';
@@ -10,14 +11,15 @@ import Logo from '../../components/common/logo/Logo';
 import Guest from './Guest';
 import User from './User';
 
-const Navbar = ({ isAuth, signOut }) => {
+const Navbar = ({ isAuth, signOut, history: { location: { pathname } } }) => {
   const [show, setShow] = useState(false);
+  const plus18px = pathname === '/home' || pathname === '/sign-in' ? true : false;
 
   const onClick = () => setShow(!show);
   const onSignOut = () => { signOut(); setShow(!show) };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className={classnames('navbar navbar-expand-lg navbar-light', {'is-scroll': plus18px})}>
       <Logo />
       <button
         className="navbar-toggler" 
@@ -46,4 +48,4 @@ const mapStateToProps = createStructuredSelector({
   isAuth: state_isAuth
 });
 
-export default connect(mapStateToProps, { signOut })(Navbar);
+export default connect(mapStateToProps, { signOut })(withRouter(Navbar));

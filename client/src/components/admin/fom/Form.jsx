@@ -55,6 +55,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
             error={error.name}
             onChange={onChange}
             onFocus={onFocus}
+            capitalize={true}
           />
         </div>
         <div className='d-flex'>

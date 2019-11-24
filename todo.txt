@@ -1,7 +1,4 @@
-fix navbar, footer? where is scrollbar
-save Product name Capitalize
 do responsive for all
-fetch on CDM if not data
 items.map is  not a func admin
 create item scroll to item?
 arrow to scroll up?

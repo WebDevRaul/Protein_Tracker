@@ -58,8 +58,8 @@ const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
           <Select
             name='gender'
             value={[
-              { key: 'Man', value: 'man' },
-              { key: 'Women', value: 'women' }
+              { key: 'Man', value: 'Man' },
+              { key: 'Women', value: 'Women' }
             ]}
             label='Gender'
             error={error.gender}

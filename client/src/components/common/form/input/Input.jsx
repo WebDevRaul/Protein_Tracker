@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 
-const Input = ({ name, value, label, icon, type, error, onChange, onFocus}) => {
+const Input = ({ name, value, label, icon, type, error, onChange, onFocus, capitalize}) => {
   return (
     <div className='form-group'>
       <label 
@@ -22,7 +22,8 @@ const Input = ({ name, value, label, icon, type, error, onChange, onFocus}) => {
         }
         <input
           type={type}
-          className={classnames('form-control mr-1 ml-1 form-control-lg', {'is-invalid' : error})}
+          className={classnames('form-control mr-1 ml-1 form-control-lg', 
+            {'is-invalid' : error, 'text-capitalize' : capitalize})}
           name={name}
           value={value}
           onChange={onChange}
@@ -43,7 +44,8 @@ Input.propTypes = {
   type: PropTypes.string,
   error: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired
+  onFocus: PropTypes.func.isRequired,
+  capitalize: PropTypes.bool
 };
 
 Input.defaultProps = {

@@ -53,6 +53,7 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
         error={error.first_name}
         onChange={onChange}
         onFocus={onFocus}
+        capitalize={true}
       />
       <Input
         name='last_name'
@@ -62,6 +63,7 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
         error={error.last_name}
         onChange={onChange}
         onFocus={onFocus}
+        capitalize={true}
       />
       <Input
         name='email'
