@@ -22,13 +22,14 @@ const doTheCalc = (target, breakfast, lunch, diner, snack) => {
 
   // Collect all data
   [breakfast, lunch, diner, snack].map(el => {
-    el.map(item => {
-      if(isEmpty(item)) return;
+    return el.map(item => {
+      if(isEmpty(item)) return item;
       const { cal, prot, fat, carb } = item;
       _cal.push(cal);
       _prot.push(prot);
       _fat.push(fat);
       _carb.push(carb);
+      return item
     })
   });
 

@@ -1,6 +1,0 @@
-.home {
-  min-height: calc(100vh - 264px);
-  background: url('../../assets/images/home.jpg');
-  background-position: bottom;
-  background-size: cover;
-}

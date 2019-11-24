@@ -7,9 +7,11 @@ import {  } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import doTheCalc from './utils/doTheCalc';
+import validateModal from './utils/validate_modal';
 
 const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
+  const [error, setError] = useState('');
   const [input, setInput] = useState('');
   const { _id, name, qty, type, cal, prot, fat, carb } = modal;
 
@@ -32,19 +34,21 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
   }
 
   const onClick = () => setShow(!show);
+
   const onChange = val => {
-    // validation here
     setInput(val);
   };
   
   const onSave = () => {
     setState({ ...state, cal, prot, fat, carb, qty:input });
-    setShow(!show);
     const temp = { _id: 'temp', name, qty:input, type, cal, prot, fat, carb };
     const data = { _id, name, qty:input, type, cal, prot, fat, carb };
-    // validation here
+    const { errors, isValid } = validateModal(input);
+    if(!isValid) return setError(errors);
     updateItemsToTable({ data, title, temp, _id });
+    setShow(!show);
   }
+  
 
   return (
     <div className={classnames('modal fade', { 'd-block': show })}
@@ -74,7 +78,6 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
                     name='input'
                     value={input}
                     onChange={e=>onChange(e.target.value)}
-                    error=''
                     className="form-control"
                     type="text"   
                   />
