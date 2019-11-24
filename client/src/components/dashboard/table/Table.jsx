@@ -24,7 +24,8 @@ const Table = ({ target, breakfast, lunch, diner, snack }) => {
   // Update State CDU
   useEffect(() => {
     const { actual, diffrence } = doTheCalc(target, breakfast, lunch, diner, snack);
-    setState({ ...state, actual: { ...actual }, diffrence: { ...diffrence } })
+    setState({ ...state, actual, diffrence });
+    // eslint-disable-next-line
   },[target, breakfast, lunch, diner, snack])
 
   return (
