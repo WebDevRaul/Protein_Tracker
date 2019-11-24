@@ -41,6 +41,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
     const { errors, isValid } = validateAdmin(state);
     if(!isValid) return setError({ ...error, ...errors });
     saveItem(state);
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
   }
 
   return (

@@ -23,7 +23,7 @@ const Item = ({ data, onDelete }) => {
   };
 
   return (
-    <div className='border border-secondary mt-3 rounded shadow text-muted'>
+    <div className={classnames('border border-secondary mt-3 rounded shadow text-muted', {'border-success': temp})}>
       <div className={classnames('row no-gutters pl-2 pr-2', { 'blinking': temp })}>
         <div className='col-11 d-flex'>
           <div className='col p-0 text-truncate'>

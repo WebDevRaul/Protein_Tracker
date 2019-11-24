@@ -1,9 +1,5 @@
 do responsive for all
-items.map is  not a func admin
-create item scroll to item?
-arrow to scroll up?
 global Loading on reload
-open Table if items in meal-table
 modal validation
 add position to update items in modal
 clear the last 0 on actual/diffrence

@@ -16,7 +16,9 @@ const Admin = ({ updateAdmin, updateTarget, admin, target }) => {
     if(admin) updateAdmin();
     if(target) updateTarget();
     // eslint-disable-next-line
-  },[])
+  },[]);
+
+  const toScrollTop = () => window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   return (
     <section className='admin mt-5 mb-3'>
       <div className='row no-gutters'>
@@ -27,6 +29,11 @@ const Admin = ({ updateAdmin, updateTarget, admin, target }) => {
       <div className='row no-gutters'>
         <div className='col-11 col-md-10 col-lg-8 m-auto'>
           <List />
+        </div>
+      </div>
+      <div className='row no-gutters'>
+        <div className='col-11 col-md-10 col-lg-8 m-auto d-flex justify-content-end align-self-end'>
+          <i className="far fa-arrow-alt-circle-up fa-2x hover text-primary mt-4" onClick={toScrollTop}></i>
         </div>
       </div>
     </section>
