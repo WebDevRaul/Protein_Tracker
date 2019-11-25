@@ -11,7 +11,7 @@ import Input from '../../common/form/input/Input';
 import validateAdmin from './validation/validate';
 
 const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
-  const [state, setState] = useState({ _id: 'temp', name: 'Apple', qty: '1', type: 'pc.', cal: '100', prot : '10', fat: '10', carb: '25' });
+  const [state, setState] = useState({ _id: 'temp', name: 'Apple', qty: '1', type: 'pc.', cal: '1000', prot : '1000', fat: '1000', carb: '1000' });
   const [error, setError] = useState({ name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''});
   const { name, qty, cal, fat, prot, carb } = state;
 

@@ -12,7 +12,7 @@ import validateCalc from './validation/validate_calc';
 import doTheCalc from './DoTheCalc';
 
 const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
-  const [state, setState] = useState({ age: '20', gender: 'man', activity: '1.2', height: '170', weight: '80' });
+  const [state, setState] = useState({ age: '20', gender: 'Man', activity: '1.2', height: '170', weight: '80' });
   const [error, setError] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const { age, height, weight } = state;
 
@@ -71,11 +71,11 @@ const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
           <Select
             name='activity'
             value={[
-              { key: 'Little to no exercise', value: '1.2' },
-              { key: '1–3 days per week', value: '1.375' },
-              { key: '3–5 days per week', value: '1.55' },
-              { key: '6–7 days per week', value: '1.725' },
-              { key: 'Twice per day', value: '1.9' }
+              { key: '1.2', value: 'Little to no exercise' },
+              { key: '1.375', value: '1–3 days per week' },
+              { key: '1.55', value: '3–5 days per week' },
+              { key: '1.725', value: '6–7 days per week' },
+              { key: '1.9', value: 'Twice per day' }
             ]}
             label='Activity'
             error={error.activity}
