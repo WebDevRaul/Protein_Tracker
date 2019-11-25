@@ -54,7 +54,7 @@ Admin.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   target: state_target_isDefault,
-  meal: state_target_isDefault,
+  meal: state_meal_isDefault,
   admin: state_admin_isDefault
 });
 
