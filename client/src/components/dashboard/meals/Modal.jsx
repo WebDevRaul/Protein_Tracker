@@ -8,10 +8,11 @@ import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import doTheCalc from './utils/doTheCalc';
 import validateModal from './utils/validate_modal';
+import Input from '../../common/form/input/Input';
 
 const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
-  const [error, setError] = useState('');
+  const [error, setError] = useState({ qty: '' });
   const [input, setInput] = useState('');
   const { _id, name, qty, type, cal, prot, fat, carb } = modal;
 
@@ -34,21 +35,22 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
   }
 
   const onClick = () => setShow(!show);
-
-  const onChange = val => {
-    setInput(val);
+  const onChange = val => setInput(val);
+  const onFocus = () => {
+    const { qty } = error;
+    if(!qty) return null;
+    setError({ ...error, qty: '' });
   };
   
   const onSave = () => {
-    setState({ ...state, cal, prot, fat, carb, qty:input });
     const temp = { _id: 'temp', name, qty:input, type, cal, prot, fat, carb };
     const data = { _id, name, qty:input, type, cal, prot, fat, carb };
     const { errors, isValid } = validateModal(input);
-    if(!isValid) return setError(errors);
+    if(!isValid) return setError({ ...error, ...errors });
     updateItemsToTable({ data, title, temp, _id });
+    setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
   }
-  
 
   return (
     <div className={classnames('modal fade', { 'd-block': show })}
@@ -69,17 +71,24 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
               <div>Fat {fat}</div>
               <div>Carb. {carb}</div>
             </div>
-            <div className='d-flex justify-content-around pt-3 align-items-center'>
-              <div>Qty. {qty} {type}</div>
-              <div className='d-flex align-items-center'>
-                <i className='text-success mr-2'>NEW</i> Qty. 
-                <div className="input-group input-group-sm ml-2">
-                  <input 
+            <div className='row no-gutters'>
+              <div className='col-4'>
+                <div className='d-flex justify-content-center align-items-center h-100'>
+                  <div>Qty. {qty} {type}</div>
+                </div>
+              </div>
+              <div className='col-8 d-flex no-gutters'>
+                <div className='col-4 d-flex justify-content-center align-items-center h-100'>
+                  <span><i className='text-success mr-2'>NEW</i> Qty. </span>
+                </div>
+                <div className='col-8'>
+                  <Input 
                     name='input'
                     value={input}
+                    label=''
                     onChange={e=>onChange(e.target.value)}
-                    className="form-control"
-                    type="text"   
+                    onFocus={onFocus}
+                    error={error.qty}
                   />
                 </div>
               </div>

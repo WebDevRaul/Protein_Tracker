@@ -39,7 +39,7 @@ const Input = ({ name, value, label, icon, type, error, onChange, onFocus, capit
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   icon: PropTypes.string,
   type: PropTypes.string,
   error: PropTypes.string.isRequired,
