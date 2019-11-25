@@ -1,9 +1,8 @@
 const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
-const validateAdminForm = require('../../validation/admin_form');
+const validateItem = require('../../validation/validate_item');
 const Admin = require('../../models/Admin');
-const Items = require('./utils/Items');
 
 // @route   GET api/user/admin/update
 // @desc    Update
@@ -23,11 +22,11 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 router.post('/save-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
-  // Validate
-  const { errors, isValid } = validateAdminForm({ name, qty, type, cal, prot, fat, carb });
-  if (!isValid) return res.status(400).json(errors);
-  const payload = { name, qty, type, cal, prot, fat, carb }
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
 
+  if (!isValid) return res.status(400).json(errors);
+
+  const payload = { name, qty, type, cal, prot, fat, carb }
   Admin.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0 }, new: true, upsert: true  },

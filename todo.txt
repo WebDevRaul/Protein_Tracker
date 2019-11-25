@@ -1,5 +1,4 @@
 do responsive for all
-clear the last 0 on actual/diffrence
 image homepage
-backEnd validation
 onChange card select item
+backEnd validation

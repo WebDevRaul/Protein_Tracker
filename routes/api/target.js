@@ -22,8 +22,8 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 router.post('/set', passport.authenticate('jwt'), (req, res) => {
   const { cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
-  // Validation
   const { errors, isValid } = validateDashboardSet({ cal, prot, fat, carb });
+  
   if (!isValid) return res.status(400).json(errors);
 
   Target.findOneAndUpdate({ user: _id },

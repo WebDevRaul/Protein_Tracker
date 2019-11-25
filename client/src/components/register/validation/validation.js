@@ -12,44 +12,29 @@ const validateRegister = ({ first_name, last_name, email, password, password2 })
   password2 = !isEmpty(password2) ? password2 : '';
 
   // Validate Names
-  if (!Validator.isLength(first_name, { min:2, max: 30 })) {
-    errors.first_name = 'First name must be between 2 and 30 characters';
-  }
-  if (!Validator.isLength(last_name, { min:2, max: 30 })) {
-    errors.last_name = 'Last name must be between 2 and 30 characters';
-  }
+  if (!Validator.isLength(first_name, { min:2, max: 30 })) errors.first_name = 'First name must be between 2 and 30 characters';
+  
+  if (!Validator.isLength(last_name, { min:2, max: 30 })) errors.last_name = 'Last name must be between 2 and 30 characters';
+  
   // Validate email
-  if (!Validator.isEmail(email)) {
-    errors.email = 'Email is invalid';
-  }
+  if (!Validator.isEmail(email)) errors.email = 'Email is invalid';
+  
   // Validate password
-  if (!Validator.isLength(password, {min:6})) {
-    errors.password = 'Password must be at least 6 characters';
-  }
-  if (!Validator.isLength(password, {max:30})) {
-    errors.password = 'Password cant exceed 30 characters';
-  }
+  if (!Validator.isLength(password, {min:6, max: 30})) errors.password = 'Password must be at least 6 characters';
+  
   // Validate password to match password2
-  if (!Validator.equals(password, password2)) {
-    errors.password2 = 'Passwords must match';
-  }
+  if (!Validator.equals(password, password2)) errors.password2 = 'Passwords must match';
 
   // Validate Empty
-  if (Validator.isEmpty(first_name)) {
-    errors.first_name = 'First name field is required!'
-  }
-  if (Validator.isEmpty(last_name)) {
-    errors.last_name = 'Last name field is required!'
-  }
-  if (Validator.isEmpty(email)) {
-    errors.email = 'Email field is required!'
-  }
-  if (Validator.isEmpty(password)) {
-    errors.password = 'Password field is required!'
-  }
-  if (Validator.isEmpty(password2)) {
-    errors.password2 = 'Confirm Password field is required!'
-  }
+  if (Validator.isEmpty(first_name)) errors.first_name = 'First name field is required!';
+  
+  if (Validator.isEmpty(last_name)) errors.last_name = 'Last name field is required!';
+  
+  if (Validator.isEmpty(email)) errors.email = 'Email field is required!';
+  
+  if (Validator.isEmpty(password)) errors.password = 'Password field is required!';
+  
+  if (Validator.isEmpty(password2)) errors.password2 = 'Confirm Password field is required!';
 
   // Return errors
   return {
