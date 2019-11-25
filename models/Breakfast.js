@@ -43,6 +43,11 @@ const BreakfastSchema = new Schema({
         required: true,
         trim: true
       },
+      p: {
+        type: Number,
+        required: true,
+        trim: true
+      },
       _cal: {
         type: String,
         required: true,

@@ -11,12 +11,13 @@ const Item = ({ item, title, icon, onDelete }) => {
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
   const temp = _id === 'temp' ? true : false;
 
+  
   // Update state CDU
   useEffect(() => {
     setState({ ...item });
     // eslint-disable-next-line
   },[item])
-
+  
   const onRemove = () => {
     setLoading(true);
     onDelete({ _id, title })
@@ -26,7 +27,7 @@ const Item = ({ item, title, icon, onDelete }) => {
     if(temp || !icon) return;
     setShow(!show)
   };
-
+  
   return (
     <li className="list-group-item d-flex p-0">
        <div className={classnames('row no-gutters pl-2 pr-2 w-100', {'blinking': temp})}>

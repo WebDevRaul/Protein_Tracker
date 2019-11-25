@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import doSort from './utils/do_sort';
 
 const select_meal_state = state => state.meal;
 const select_isLoading_state = state => state.loading.meal.isLoading;
@@ -16,19 +17,19 @@ export const state_meal_isDefault = createSelector(
 
 export const state_breakfast = createSelector(
   [select_meal_state],
-  state => state.breakfast
+  state => doSort(state.breakfast)
 )
 export const state_lunch = createSelector(
   [select_meal_state],
-  state => state.lunch
+  state => doSort(state.lunch)
 )
 export const state_diner = createSelector(
   [select_meal_state],
-  state => state.diner
+  state => doSort(state.diner)
 )
 export const state_snack = createSelector(
   [select_meal_state],
-  state => state.snack
+  state => doSort(state.snack)
 )
 
 export const state_errors = createSelector(

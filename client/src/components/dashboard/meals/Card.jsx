@@ -10,21 +10,23 @@ import Select from '../../common/form/select/Select';
 
 const Card = ({ items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
   const [card, setCard] = useState([]);
-
+  const [p, setP] = useState(0);
+  
   // Update State CDU
   useEffect(() => {
     setCard([...items]);
     // eslint-disable-next-line
   },[items])
-
+  
   
   const onChange = e => {
-    const item = list.filter(i => i._id === e.target.value)[0];
-    const { _id, name, qty, type, cal, prot, fat, carb } = item;
-    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb };
-    const data = { _id, name, qty, type, cal, prot, fat, carb };
+    const { _id, name, qty, type, cal, prot, fat, carb } = list.filter(i => i._id === e.target.value)[0];
+    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb, p: p+1 };
+    const data = { _id, name, qty, type, cal, prot, fat, carb, p: p+1 };
     addItemToTable({ temp, data, title });
+    setP(p+1);
   };
+
 
   const onDelete = obj => deleteItemFromTable(obj)
 

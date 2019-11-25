@@ -14,7 +14,7 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [error, setError] = useState({ qty: '' });
   const [input, setInput] = useState('');
-  const { _id, name, qty, type, cal, prot, fat, carb } = modal;
+  const { _id, name, qty, type, cal, prot, fat, carb, p } = modal;
 
   // Update state CDU
   useEffect(() => {
@@ -43,8 +43,8 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
   };
   
   const onSave = () => {
-    const temp = { _id: 'temp', name, qty:input, type, cal, prot, fat, carb };
-    const data = { _id, name, qty:input, type, cal, prot, fat, carb };
+    const temp = { _id: 'temp', name, qty:input, type, cal, prot, fat, carb, p };
+    const data = { _id, name, qty:input, type, cal, prot, fat, carb, p };
     const { errors, isValid } = validateModal(input);
     if(!isValid) return setError({ ...error, ...errors });
     updateItemsToTable({ data, title, temp, _id });

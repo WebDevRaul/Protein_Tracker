@@ -1,5 +1,5 @@
 do responsive for all
 global Loading on reload
-add position to update items in modal
 clear the last 0 on actual/diffrence
 image homepage
+backEnd validation
