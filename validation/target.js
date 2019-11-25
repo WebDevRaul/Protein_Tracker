@@ -1,8 +1,9 @@
-import Validator from 'validator';
-import isEmpty from '../../../../common/utils/isEmpty';
-import {isIntAndMaxT, isIntAndMin} from '../../../../common/utils/isInteger';
+const Validator = require('validator');
+const isEmpty = require('./utils/isEmpty');
+const isIntAndMin = require('./utils/isInteger').isIntAndMin;
+const isIntAndMaxT = require('./utils/isInteger').isIntAndMaxT;
 
-const validateSet = ({ cal, prot, fat, carb }) => {
+module.exports = function validateTarget({ cal, prot, fat, carb }) {
   let errors = {};
 
   cal = !isEmpty(cal) ? cal : '';
@@ -47,5 +48,3 @@ const validateSet = ({ cal, prot, fat, carb }) => {
     isValid: isEmpty(errors)
   };
 };
-
-export default validateSet;

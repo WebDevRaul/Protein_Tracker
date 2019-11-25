@@ -1,7 +1,7 @@
 const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
-const validateDashboardSet = require('../../validation/dashboard_set');
+const validateTarget = require('../../validation/target');
 const Target = require('../../models/Target');
 
 // @route   GET api/user/table/update
@@ -22,7 +22,7 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 router.post('/set', passport.authenticate('jwt'), (req, res) => {
   const { cal, prot, fat, carb } = req.body;
   const { _id } = req.user;
-  const { errors, isValid } = validateDashboardSet({ cal, prot, fat, carb });
+  const { errors, isValid } = validateTarget({ cal, prot, fat, carb });
   
   if (!isValid) return res.status(400).json(errors);
 

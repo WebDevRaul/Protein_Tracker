@@ -13,7 +13,6 @@ module.exports = function validateRegister({ first_name, last_name, email, passw
 
   // Validate Names
   if (!Validator.isLength(first_name, { min:2, max: 30 })) errors.first_name = 'First name must be between 2 and 30 characters';
-  
   if (!Validator.isLength(last_name, { min:2, max: 30 })) errors.last_name = 'Last name must be between 2 and 30 characters';
   
   // Validate email
@@ -27,13 +26,9 @@ module.exports = function validateRegister({ first_name, last_name, email, passw
 
   // Validate Empty
   if (Validator.isEmpty(first_name)) errors.first_name = 'First name field is required!';
-  
   if (Validator.isEmpty(last_name)) errors.last_name = 'Last name field is required!';
-  
   if (Validator.isEmpty(email)) errors.email = 'Email field is required!';
-  
   if (Validator.isEmpty(password)) errors.password = 'Password field is required!';
-  
   if (Validator.isEmpty(password2)) errors.password2 = 'Confirm Password field is required!';
 
   return {

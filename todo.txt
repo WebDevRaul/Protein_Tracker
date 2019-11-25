@@ -1,4 +1,3 @@
 do responsive for all
 image homepage
 onChange card select item
-backEnd validation

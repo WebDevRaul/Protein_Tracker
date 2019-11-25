@@ -1,25 +1,16 @@
 import Validator from 'validator';
 import isEmpty from '../../../common/utils/isEmpty';
+import { isIntAndMin, isIntAndMax } from '../../../common/utils/isInteger';
 
-const validateModal = val => {
+const validateModal = qty => {
   let errors = {};
 
-  val = !isEmpty(val) ? val : '';
+  qty = !isEmpty(qty) ? qty : '';
   
-  
-  // Validate Min/Max
-  if(Validator.isInt(val, {min:-Infinity, max:0}))  errors.qty = 'Minimum QTY required is 1';
-  
-  if(Validator.isInt(val, {min:1000, max: Infinity})) errors.qty = 'Miximum QTY required is 1000';
-  
-  // Validate Intiger
-  if(!Validator.isInt(val, {allow_leading_zeroes: false})) errors.qty = 'Only numbers, no decimals allowed';
-  
-  // Validate Only Numbers
-  if(!Validator.isNumeric(val)) errors.qty = 'Only numbers allowed';
-  
-  // Validate Empty
-  if(Validator.isEmpty(val)) errors.qty = 'Field is required';
+  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
+  if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
+  if(isIntAndMin(qty)) errors.qty = 'Minimum Qty. is 1';
+  if(Validator.isEmpty(qty)) errors.qty = 'QTY field is required';
 
   return {
     errors,

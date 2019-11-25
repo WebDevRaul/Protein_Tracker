@@ -1,4 +1,3 @@
-import Validator from 'validator';
 import isEmpty from '../../../common/utils/isEmpty';
 
 const sumAll = (...args) => {

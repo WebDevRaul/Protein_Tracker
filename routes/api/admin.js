@@ -1,7 +1,7 @@
 const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
-const validateItem = require('../../validation/validate_item');
+const validateItem = require('../../validation/item');
 const Admin = require('../../models/Admin');
 
 // @route   GET api/user/admin/update

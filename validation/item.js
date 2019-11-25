@@ -22,9 +22,10 @@ module.exports = function validateItem({ name, qty, type, cal, prot, fat, carb }
   if(!Validator.isLength(name, { min:1, max: 50 })) errors.name = 'Product Name must be between 1 and 50 characters';
 
   // Validate QTY
-  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed'
+  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
   if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
   if(isIntAndMin(qty)) errors.qty = 'Minimum Qty. is 1';
+
 
   // Validate Cal
   if(isIntAndMin(cal)) errors.cal = 'Minimum Qty. is 0.1';
