@@ -1,6 +1,7 @@
 const express = require('express')
 const router  = express.Router();
 const passport = require('passport');
+const validateItem = require('../../validation/validate_item');
 const Breakfast = require('../../models/Breakfast');
 const Lunch = require('../../models/Lunch');
 const Diner = require('../../models/Diner');
@@ -76,8 +77,11 @@ router.get('/clear-all', passport.authenticate('jwt'), (req, res) => {
 router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb, p } = req.body;
   const { _id } = req.user;
-  // Validate here
-  const payload = { name, qty, type, cal, prot, fat, p, carb, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
+
+  const payload = { name, qty, type, cal, prot, fat, p, carb, _cal: cal, _prot: prot, _fat: fat, _carb: carb };
   Breakfast.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
@@ -93,7 +97,10 @@ router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
 router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb, p } = req.body;
   const { _id } = req.user;
-  // Validate here
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
+
   const payload = { name, qty, type, cal, prot, fat, carb, p, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Lunch.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
@@ -110,7 +117,10 @@ router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
 router.post('/Diner/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb, p } = req.body;
   const { _id } = req.user;
-  // Validate here
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
+
   const payload = { name, qty, type, cal, prot, fat, carb, p, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Diner.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
@@ -127,7 +137,10 @@ router.post('/Diner/add-item', passport.authenticate('jwt'), (req, res) => {
 router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
   const { name, qty, type, cal, prot, fat, carb, p } = req.body;
   const { _id } = req.user;
-  // Validate here
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
+
   const payload = { name, qty, type, cal, prot, fat, p, carb, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Snack.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
@@ -148,7 +161,10 @@ router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
 // @desc    Update Item
 // @access  Private
 router.post('/Breakfast/update-item', passport.authenticate('jwt'), (req, res) => {
-  const { _id, qty, cal, prot, fat, carb } = req.body;
+  const { _id, name, qty, type, cal, prot, fat, carb } = req.body;
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
 
   Breakfast.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
   {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
@@ -163,7 +179,10 @@ router.post('/Breakfast/update-item', passport.authenticate('jwt'), (req, res) =
 // @desc    Update Item
 // @access  Private
 router.post('/Lunch/update-item', passport.authenticate('jwt'), (req, res) => {
-  const { _id, qty, cal, prot, fat, carb } = req.body;
+  const { _id, name, qty, type, cal, prot, fat, carb } = req.body;
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
 
   Lunch.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
   {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
@@ -178,7 +197,10 @@ router.post('/Lunch/update-item', passport.authenticate('jwt'), (req, res) => {
 // @desc    Update Item
 // @access  Private
 router.post('/Diner/update-item', passport.authenticate('jwt'), (req, res) => {
-  const { _id, qty, cal, prot, fat, carb } = req.body;
+  const { _id, name, qty, type, cal, prot, fat, carb } = req.body;
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
 
   Diner.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
   {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},
@@ -193,7 +215,10 @@ router.post('/Diner/update-item', passport.authenticate('jwt'), (req, res) => {
 // @desc    Update Item
 // @access  Private
 router.post('/Snack/update-item', passport.authenticate('jwt'), (req, res) => {
-  const { _id, qty, cal, prot, fat, carb } = req.body;
+  const { _id, name, qty, type, cal, prot, fat, carb } = req.body;
+  const { errors, isValid } = validateItem({ name, qty, type, cal, prot, fat, carb });
+
+  if (!isValid) return res.status(400).json(errors);
 
   Snack.findOneAndUpdate({ user: req.user._id, 'items._id': req.body._id },
   {$set: { 'items.$.qty': qty, 'items.$.cal': cal, 'items.$.prot': prot, 'items.$.fat': fat, 'items.$.carb': carb }},

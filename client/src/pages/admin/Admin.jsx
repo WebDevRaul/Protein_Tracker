@@ -2,19 +2,22 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTarget } from '../../redux/actions/target';
+import { updateMeal } from '../../redux/actions/meal';
 import { updateAdmin } from '../../redux/actions/admin';
 import { createStructuredSelector } from 'reselect';
-import { state_admin_isDefault } from '../../redux/selectors/admin';
 import { state_target_isDefault } from '../../redux/selectors/target';
+import { state_meal_isDefault } from '../../redux/selectors/meal';
+import { state_admin_isDefault } from '../../redux/selectors/admin';
 
 import Form from '../../components/admin/fom/Form';
 import List from '../../components/admin/list/List';
 
-const Admin = ({ updateAdmin, updateTarget, admin, target }) => {
+const Admin = ({ updateTarget, updateMeal, updateAdmin, target, meal, admin }) => {
   // Update target CDM
   useEffect(() => {
     if(admin) updateAdmin();
     if(target) updateTarget();
+    if(meal) updateMeal();
     // eslint-disable-next-line
   },[]);
 
@@ -42,14 +45,17 @@ const Admin = ({ updateAdmin, updateTarget, admin, target }) => {
 
 Admin.propTypes = {
   updateTarget: PropTypes.func.isRequired,
+  updateMeal: PropTypes.func.isRequired,
   updateAdmin: PropTypes.func.isRequired,
-  admin: PropTypes.bool.isRequired,
-  target: PropTypes.bool.isRequired
+  target: PropTypes.bool.isRequired,
+  meal: PropTypes.bool.isRequired,
+  admin: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  admin: state_admin_isDefault,
-  target: state_target_isDefault
+  target: state_target_isDefault,
+  meal: state_target_isDefault,
+  admin: state_admin_isDefault
 });
 
-export default connect(mapStateToProps, { updateTarget, updateAdmin })(Admin);
+export default connect(mapStateToProps, { updateTarget, updateMeal, updateAdmin })(Admin);
