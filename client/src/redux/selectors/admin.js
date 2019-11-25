@@ -10,7 +10,7 @@ export const state_admin = createSelector(
   state => state.items
 );
 
-export const state_isLoading = createSelector(
+export const state_admin_isLoading = createSelector(
   [select_isLoading_state],
   state => state
 );

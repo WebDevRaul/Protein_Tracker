@@ -5,7 +5,7 @@ const select_meal_state = state => state.meal;
 const select_isLoading_state = state => state.loading.meal.isLoading;
 const select_errors_state = state => state.error.meal.error;
 
-export const state_isLoading = createSelector(
+export const state_meal_isLoading = createSelector(
   [select_isLoading_state],
   state => state
 );

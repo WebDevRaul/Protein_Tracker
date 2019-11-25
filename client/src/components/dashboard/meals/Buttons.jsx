@@ -4,6 +4,7 @@ import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
 
 const Buttons = ({ state, setState, onClear }) => {
+  const { Breakfast, Lunch, Diner, Snack } = state;
 
   const onChange = e => setState({ ...state, [e.target.value]: true });
   const toClear = () => {
@@ -29,7 +30,10 @@ const Buttons = ({ state, setState, onClear }) => {
         />
       </div>
       <div className='col d-flex m-auto justify-content-end'>
-        <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={toClear} />
+        {
+          (Breakfast || Lunch || Diner || Snack) &&
+          <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={toClear} />
+        }
       </div>
     </div>
   )

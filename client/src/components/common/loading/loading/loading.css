@@ -1,0 +1,15 @@
+.loading {
+  display: flex;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.bar {
+  display: flex;
+  background-image: linear-gradient(120deg, #afffff 0%, #0066ff 100%);
+  transition: width .6s ease;
+}

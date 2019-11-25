@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveItem, clearAdminErrors } from '../../../redux/actions/admin';
 import { createStructuredSelector } from 'reselect';
-import { state_errors, state_isLoading } from '../../../redux/selectors/admin';
+import { state_errors, state_admin_isLoading } from '../../../redux/selectors/admin';
 
 import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
@@ -148,7 +148,7 @@ Form.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLoading: state_isLoading,
+  isLoading: state_admin_isLoading,
   errors: state_errors
 });
 

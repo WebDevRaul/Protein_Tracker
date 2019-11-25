@@ -47,13 +47,13 @@ const Card = ({
             </div>
             <div className='col-8 col-sm-6 m-auto'>
               <Select
-                  name='select'
-                  value={options}
-                  label='Select product'
-                  isClass='text-uppercase font-weight-bold'
-                  onChange={onChange}
-                  error=''
-                />
+                name='select'
+                value={options}
+                label='Select product'
+                isClass='text-uppercase font-weight-bold'
+                onChange={onChange}
+                error=''
+              />
             </div>
           </div>
         </div>

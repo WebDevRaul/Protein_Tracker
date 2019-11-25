@@ -12,11 +12,13 @@ import NotFound from './pages/not_found/Not_Found';
 import Footer from './layout/footer/Footer';
 
 import './app.css';
+import WithLoading from './components/common/loading/With_Loading';
 
 
 const App = () => {
   return (
     <div className='app'>
+      <WithLoading />
       <Navbar />
       <Switch>
         <Route exact path='/home' component={Home} />

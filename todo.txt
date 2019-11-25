@@ -1,5 +1,5 @@
 do responsive for all
-global Loading on reload
 clear the last 0 on actual/diffrence
 image homepage
 backEnd validation
+onChange card select item
