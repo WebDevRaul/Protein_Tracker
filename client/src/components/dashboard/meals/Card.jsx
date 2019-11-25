@@ -8,7 +8,8 @@ import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 import Item from './Item';
 import Select from '../../common/form/select/Select';
 
-const Card = ({ items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
+const Card = ({ 
+  items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
   const [card, setCard] = useState([]);
   const [p, setP] = useState(0);
   
@@ -29,7 +30,6 @@ const Card = ({ items, title, options, list, state, setState, addItemToTable, de
 
 
   const onDelete = obj => deleteItemFromTable(obj)
-
   const onClose = () => setState({ ...state, [title]: false });
 
   return (
@@ -78,7 +78,7 @@ Card.propTypes = {
   options: PropTypes.array.isRequired,
   list: PropTypes.array.isRequired,
   addItemToTable: PropTypes.func.isRequired,
-  deleteItemFromTable: PropTypes.func.isRequired,
+  deleteItemFromTable: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({

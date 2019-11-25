@@ -23,6 +23,47 @@ router.get('/update', passport.authenticate('jwt'), (req, res) => {
 
 });
 
+// @route   GET api/user/meal/clear-all
+// @desc    Clear all items from Tables
+// @access  Private
+router.get('/clear-all', passport.authenticate('jwt'), (req, res) => {
+  const { _id } = req.user;
+  
+  const breakfast = Breakfast.findOneAndUpdate({ user: _id },
+    {$set: { items: [] }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true },
+    ((err, item) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+    }))
+
+  const lunch = Lunch.findOneAndUpdate({ user: _id },
+    {$set: { items: [] }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true },
+    ((err, item) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+    }))
+
+  const diner = Diner.findOneAndUpdate({ user: _id },
+    {$set: { items: [] }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true },
+    ((err, item) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+    }))
+
+  const snack = Snack.findOneAndUpdate({ user: _id },
+    {$set: { items: [] }},
+    { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true },
+    ((err, item) => {
+      if(err) return res.status(400).json({ error: 'Ooops'})
+    }))
+
+
+  Promise.all([breakfast, lunch, diner, snack])
+    .then(done => res.json({ success: true }))
+    .catch(err => res.status(400).json({ error: 'Ooops'}))
+
+});
+
 
 ////////////////////////////////////////////////////
 ////////////////////  ADD ITEM  ////////////////////

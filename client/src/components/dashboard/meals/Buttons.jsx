@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
 
-const Buttons = ({ state, setState }) => {
+const Buttons = ({ state, setState, onClear }) => {
 
   const onChange = e => setState({ ...state, [e.target.value]: true });
-  const onClear = () => setState({ one: false, two: false, tree: false, four: false });
+  const toClear = () => {
+    onClear();
+    setState({ one: false, two: false, tree: false, four: false });
+  }
   
   return (
     <div className='row no-gutters'>
@@ -26,7 +29,7 @@ const Buttons = ({ state, setState }) => {
         />
       </div>
       <div className='col d-flex m-auto justify-content-end'>
-        <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={onClear} />
+        <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={toClear} />
       </div>
     </div>
   )
@@ -34,7 +37,8 @@ const Buttons = ({ state, setState }) => {
 
 Buttons.propTypes = {
   state: PropTypes.object.isRequired,
-  setState: PropTypes.func.isRequired
+  setState: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired
 }
 
 export default Buttons;

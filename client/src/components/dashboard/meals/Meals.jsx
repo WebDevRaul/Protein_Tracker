@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { clearAll } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
 import { state_breakfast, state_lunch, state_diner, state_snack } from '../../../redux/selectors/meal';
 
@@ -8,7 +9,7 @@ import Card from './Card';
 import Buttons from './Buttons';
 import isEmpty from '../../common/utils/isEmpty';
 
-const Meals = ({ breakfast, lunch, diner, snack }) => {
+const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
   const [state, setState] = useState({ Breakfast: false, Lunch: false, Diner: false, Snack: false });
   const { Breakfast, Lunch, Diner, Snack } = state;
 
@@ -27,7 +28,7 @@ const Meals = ({ breakfast, lunch, diner, snack }) => {
   return (
     <div className='row no-gutters'>
       <div className='col-9 m-auto'>
-        <Buttons state={state} setState={setState} />
+        <Buttons state={state} setState={setState} onClear={() => clearAll()} />
         { Breakfast && 
           <Card 
             title='Breakfast' 
@@ -70,6 +71,7 @@ Meals.propTypes = {
   lunch: PropTypes.array.isRequired,
   diner: PropTypes.array.isRequired,
   snack: PropTypes.array.isRequired,
+  clearAll: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -79,4 +81,4 @@ const mapStateToProps = createStructuredSelector({
   snack: state_snack
 });
 
-export default connect(mapStateToProps, null)(Meals);
+export default connect(mapStateToProps, { clearAll })(Meals);

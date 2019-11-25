@@ -19,9 +19,9 @@ const meal = ( state=INITIAL_STATE, action ) => {
         diner: payload.filter(i => i.title === 'diner')[0].items,
         snack: payload.filter(i => i.title === 'snack')[0].items,
         isDefault: false 
-      }
-
-
+      };
+    case MEAL.CLEAR_ALL:
+      return { ...state, breakfast: [], lunch: [], diner: [], snack: [] }
     case BREAKFAST.ITEM_UPDATE_REDUX:
       return { ...state, breakfast: [ ...state.breakfast, payload ]};
     case BREAKFAST.ITEM_UPDATE:

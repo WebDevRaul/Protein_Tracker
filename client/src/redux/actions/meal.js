@@ -18,6 +18,19 @@ export const updateMeal = () => dispatch => {
     })
 }
 
+export const clearAll = () => dispatch => {
+  dispatch({ type: MEAL.LOADING });
+  axios.get(`${URL.meal}/clear-all`)
+    .then(() => {
+      dispatch({ type: MEAL.CLEAR_ALL });
+      dispatch({ type: MEAL.LOADED });
+    })
+    .catch(err => {
+      dispatch({ type: MEAL.ERROR, payload: err.response.data })
+      dispatch({ type: MEAL.LOADED });
+    })
+}
+
 
 ////////////////////////////////////////////////////
 ////////////////////  ADD ITEM  ////////////////////
