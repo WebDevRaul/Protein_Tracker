@@ -1,0 +1,63 @@
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  RESPONSIVE  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+
+@media only screen and (max-width : 1024px) {
+  
+}
+
+@media only screen and (max-width : 992px) {
+  
+}
+
+@media only screen and (max-width : 768px) {
+  .spinner {
+    height: 32px !important;
+  }
+}
+
+@media only screen and (max-width : 576px) {
+  .custom-select {
+    height: 36px !important;
+  }
+  .card-title {
+    font-size: 2em;
+    margin-bottom: 2px !important;
+  }
+  .spinner {
+    height: 28px !important;
+  }
+}
+
+@media only screen and (max-width : 425px) {
+  .custom-select {
+    height: 32px !important;
+  }
+  .card-title {
+    font-size: 1.8em;
+    margin-bottom: 6px !important;
+  }
+  .spinner {
+    height: 24px !important;
+  }
+}
+
+@media only screen and (max-width : 375px) {
+  .card-header {
+    padding: 4px 8px;
+  }
+  .close {
+    font-size: 2em;
+  }
+  .custom-select {
+    height: 27px !important;
+  }
+  .card-title {
+    font-size: 1.6em;
+    margin-bottom: 9px !important;
+  }
+  .spinner {
+    height: 20px !important;
+  }
+}

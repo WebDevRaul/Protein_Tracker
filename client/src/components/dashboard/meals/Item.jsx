@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Modal from './Modal';
 import Spinner from '../../common/spinner/Spinner';
 
-const Item = ({ item, title, icon, onDelete }) => {
+const Item = ({ item, title, onDelete }) => {
   const [state, setState] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -24,16 +24,16 @@ const Item = ({ item, title, icon, onDelete }) => {
   };
   
   const onModal = () => {
-    if(temp || !icon) return;
+    if(temp) return;
     setShow(!show)
   };
   
   return (
-    <li className="list-group-item d-flex p-0">
-       <div className={classnames('row no-gutters pl-2 pr-2 w-100', {'blinking': temp})}>
+    <li className="list-group-item d-flex p-0 border-success">
+       <div className={classnames('row no-gutters pl-2 w-100', {'blinking': temp})}>
         <div className='col-11 d-flex text-muted'>
           <div className='col p-0 text-truncate'>
-            <h5 className='mb-0 pr-2 pt-2 pb-2 text-truncate'>{name}</h5>
+            <p className='mb-0 pr-2 pt-2 pb-2 text-truncate'>{name}</p>
           </div>
           <div className='col p-0'>
             {
@@ -47,35 +47,32 @@ const Item = ({ item, title, icon, onDelete }) => {
                 title={title}
               />
             }
-            <p 
-              onClick={onModal}
-              className={classnames('mb-0 pt-2 pb-2 font-weight-bold', {'hover' : icon})}
+            <p onClick={onModal}
+              className='mb-0 pt-2 pb-2 hover font-weight-bold'
             >
               {qty}{type}
             </p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-2 pb-2 font-weight-bold'>{cal}</p>
+            <p className='mb-0 pt-2 pb-2'>{cal}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-2 pb-2 font-weight-bold'>{prot}</p>
+            <p className='mb-0 pt-2 pb-2'>{prot}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-2 pb-2 font-weight-bold'>{fat}</p>
+            <p className='mb-0 pt-2 pb-2'>{fat}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-2 pb-2 font-weight-bold'>{carb}</p>
+            <p className='mb-0 pt-2 pb-2'>{carb}</p>
           </div>
         </div>
         <div className='col-1 d-flex m-auto'>
           {
-            icon &&
             <>
               {
                 loading
-                ? <span className='d-flex m-auto'><Spinner height='40px' /></span>
+                ? <span className='d-flex m-auto'><Spinner isClass='spinner' /></span>
                 :  <i className='far fa-times-circle icon-responsive m-auto text-danger hover'
-                      style={{ fontSize: '1.4em' }}
                       onClick={onRemove}>
                     </i>
               }
@@ -90,7 +87,6 @@ const Item = ({ item, title, icon, onDelete }) => {
 Item.propTypes = {
   item: PropTypes.object.isRequired,
   title: PropTypes.string,
-  icon: PropTypes.bool.isRequired,
   onDelete: PropTypes.func
 }
 

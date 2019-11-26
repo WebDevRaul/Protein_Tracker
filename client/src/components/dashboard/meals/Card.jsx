@@ -7,6 +7,7 @@ import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 
 import Item from './Item';
 import Select from '../../common/form/select/Select';
+import Header from './Header';
 
 const Card = ({ 
   items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
@@ -35,17 +36,17 @@ const Card = ({
   return (
     <section>
       <div className="card mb-3">
-        <div className="card-header border border-primary text-center">
+        <div className="card-header bg-white border border-primary text-center">
           <div className='d-flex justify-content-end'>
             <button type="button" className="close justify-content-end d-flex" onClick={onClose} aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+              <span className='text-danger' aria-hidden="true">&times;</span>
             </button>
           </div>
           <div className='row no-gutters'>
-            <div className='col-8 col-sm-6 m-auto'>
-              <h5 className='mb-0 text- text-capitalize'>{title}</h5>
+            <div className='col-4 d-flex justify-content-center align-items-center m-auto'>
+              <h4 className='card-title text-capitalize text-primary mb-0'>{title}</h4>
             </div>
-            <div className='col-8 col-sm-6 m-auto'>
+            <div className='col-6 col-md-4 col-lg-3 m-auto'>
               <Select
                 name='select'
                 value={options}
@@ -59,12 +60,9 @@ const Card = ({
         </div>
         <div className='border border-top-0 border-success'>
           <ul className="list-group list-group-flush">
-            <Item 
-              item={{ name: 'Name', qty:'Qty', type:'.', cal:'Cal', prot:'Prot', fat:'Fat', carb: 'Carb' }}
-              icon={false}
-            />
+            <Header />
             {
-              card.map(i => <Item key={i._id} item={i} icon={true} title={title} onDelete={onDelete} />)
+              card.map(i => <Item key={i._id} item={i} title={title} onDelete={onDelete} />)
             }
           </ul>
         </div>

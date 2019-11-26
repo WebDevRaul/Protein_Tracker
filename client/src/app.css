@@ -3,6 +3,11 @@
   --secondary: rgb(255, 129, 6);
 }
 
+/* ////////// Sign-In ////////// */
+.sign-in {
+  min-height: calc(100vh - 264px);
+}
+
 /* ////////////////////////////////////////////////////// */
 /* ////////////////////  GLOBAL CSS  //////////////////// */
 /* ////////////////////////////////////////////////////// */
@@ -13,34 +18,33 @@
   box-sizing: border-box;
 }
 
-.is-scroll {
-  margin-right: 18px;
-}
 
 button:focus, input:focus, select:focus {
   outline: none !important;
   box-shadow: none !important;
 }
-
+a {
+  text-decoration: none;
+  color: unset;
+}
+a:hover {
+  text-decoration: none;
+  color: var(--secondary);
+}
 .is-invalid {
   padding-right: 16px !important;
 }
-
+.is-scroll {
+  margin-right: 18px;
+}
 .active {
   font-weight: 500;
 }
 .hover {
   cursor: pointer;
 }
-
-a {
-  text-decoration: none;
-  color: unset;
-}
-
-a:hover {
-  text-decoration: none;
-  color: var(--secondary);
+.spinner {
+  height: 40px;
 }
 
 .blinking {
@@ -53,35 +57,60 @@ a:hover {
   to {opacity: 1;}
 }
 
+/* ///////////////////////////////////////////////////// */
+/* ////////////////////  BOOTSTRAP  //////////////////// */
+/* ///////////////////////////////////////////////////// */
+
+.btn {
+  font-size: 1em;
+  min-height: 27px;
+  min-width: 100px;
+}
+
+
 /* ////////////////////////////////////////////////////// */
 /* ////////////////////  RESPONSIVE  //////////////////// */
 /* ////////////////////////////////////////////////////// */
 
 
-@media only screen and (max-width : 320px) {
-  
-}
-
-@media only screen and (max-width : 375px) {
-  
-}
-
-@media only screen and (max-width : 425px) {
-  
-}
-
-@media only screen and (max-width : 576px) {
-
-}
-
-@media only screen and (max-width : 768px) {
-  
+@media only screen and (max-width : 1024px) {
+  .app {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-width : 992px) {
-  
+  .app {
+    font-size: 15px;
+  }
 }
 
-@media only screen and (max-width : 1024px) {
-  
+@media only screen and (max-width : 768px) {
+  .app {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width : 576px) {
+  .app {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width : 425px) {
+  .app {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width : 375px) {
+  .app {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width : 320px) {
+  .app {
+    font-size: 8px;
+  }
 }

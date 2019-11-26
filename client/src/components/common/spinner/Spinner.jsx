@@ -1,8 +1,8 @@
 import React from 'react';
 import spinner from '../../../assets/spinner/spinner.gif';
 
-export default ({ height }) => {
+export default ({ isClass }) => {
   return (
-    <img src={spinner} style={{height: height}} alt='Loading...'/>
+    <img src={spinner} className={isClass} alt='Loading...'/>
   );
 };

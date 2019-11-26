@@ -7,12 +7,11 @@ import Spinner from '../spinner/Spinner';
 const CustomButton = ({ text, isClass, onClick, isLoading, type }) => {
   return (
     <button 
-      className={classnames(`btn mr-1 ${isClass}`, { 'p-0': isLoading })} 
-      style={{ minHeight: '48px', minWidth: '125px' }}
+      className={classnames(`btn mr-1 ${isClass}`, { 'p-0': isLoading })}
       type={type} 
       onClick={onClick}
     >
-      <div>{isLoading ? <Spinner height='46px' /> : text}</div>
+      <div>{isLoading ? <Spinner isClass='spinner' /> : <p className='mb-0'>{text}</p>}</div>
     </button>
   )
 }

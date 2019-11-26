@@ -2,7 +2,7 @@ import React from 'react';
 
 import Form from '../../components/sign_in/Form';
 
-import './responsive.css'
+import './responsive.css';
 
 const SignIn = () => {
   return (

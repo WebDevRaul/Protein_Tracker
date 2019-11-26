@@ -9,6 +9,8 @@ import Card from './Card';
 import Buttons from './Buttons';
 import isEmpty from '../../common/utils/isEmpty';
 
+import './responsive.css';
+
 const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
   const [state, setState] = useState({ Breakfast: false, Lunch: false, Diner: false, Snack: false });
   const { Breakfast, Lunch, Diner, Snack } = state;
@@ -27,7 +29,7 @@ const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
 
   return (
     <div className='row no-gutters'>
-      <div className='col-9 m-auto'>
+      <div className='col-11 col-md-9 col-lg-8 m-auto'>
         <Buttons state={state} setState={setState} onClear={() => clearAll()} />
         { Breakfast && 
           <Card 

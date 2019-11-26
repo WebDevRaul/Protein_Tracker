@@ -2,7 +2,7 @@ import React from 'react';
 
 const Links = () => {
   return (
-    <div className='d-flex mb-3'>
+    <div className='d-flex mb-3 ml-5'>
       <i className="far fa-2x fa-address-card text-secondary"></i>
       <div className='d-flex m-auto w-50'>
         <span className='ml-3 mr-auto'>

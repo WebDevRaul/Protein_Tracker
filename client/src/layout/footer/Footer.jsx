@@ -18,10 +18,10 @@ const Footer = () => {
           </div>
         </div>
         <div className='col-12 col-sm-6'>
-          <div className='footer-info pl-5'>
-            <h5 className='mb-3 mt-3'>
+          <div className='footer-info'>
+            <p className='mb-3 mt-3 ml-5'>
               <span className='border-bottom text-primary'>Contact Us</span>
-            </h5>
+            </p>
             <Links />
             <Mobile />
             <Email />
