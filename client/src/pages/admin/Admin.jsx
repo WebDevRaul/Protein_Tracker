@@ -9,7 +9,7 @@ import { state_target_isDefault } from '../../redux/selectors/target';
 import { state_meal_isDefault } from '../../redux/selectors/meal';
 import { state_admin_isDefault } from '../../redux/selectors/admin';
 
-import Form from '../../components/admin/fom/Form';
+import Form from '../../components/admin/form/Form';
 import List from '../../components/admin/list/List';
 
 const Admin = ({ updateTarget, updateMeal, updateAdmin, target, meal, admin }) => {

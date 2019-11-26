@@ -19,7 +19,7 @@ export const set = obj => dispatch => {
   axios.post(`${URL.target}/set`, obj)
     .then(({ data }) => {
       dispatch({ type: TARGET.SET, payload: data });
-      toastr.success('Success', '....');
+      toastr.success('Success', 'Daily target set');
       dispatch({ type: TARGET.LOADED_SET });
     })
     .catch(err => {
@@ -36,7 +36,7 @@ export const calc = obj => dispatch => {
     .then(({ data }) => {
       dispatch({ type: TARGET.CALC, payload: data });
       dispatch({ type: TARGET.LOADED_CALC });
-      toastr.success('Success!', '....');
+      toastr.success('Success!', 'Daily target set');
     })
     .catch(err => {
       dispatch({ type: TARGET.ERROR, payload: err.response.data })

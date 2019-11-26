@@ -3,14 +3,14 @@
   --secondary: rgb(255, 129, 6);
 }
 
-/* Global css */
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  GLOBAL CSS  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.app{
-  background: rgba(255, 254, 196, 0.534);
 }
 
 .is-scroll {
@@ -51,4 +51,37 @@ a:hover {
 @keyframes blink {
   from {opacity:0;}
   to {opacity: 1;}
+}
+
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  RESPONSIVE  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+
+@media only screen and (max-width : 320px) {
+  
+}
+
+@media only screen and (max-width : 375px) {
+  
+}
+
+@media only screen and (max-width : 425px) {
+  
+}
+
+@media only screen and (max-width : 576px) {
+
+}
+
+@media only screen and (max-width : 768px) {
+  
+}
+
+@media only screen and (max-width : 992px) {
+  
+}
+
+@media only screen and (max-width : 1024px) {
+  
 }

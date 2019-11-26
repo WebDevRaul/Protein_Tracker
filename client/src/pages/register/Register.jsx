@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Form from '../../components/register/Form';
 
+import './responsive.css';
+
 const Register = ({ history }) => {
   return (
     <section className='register'>
       <div className='row no-gutters'>
-        <div className='col-8 col-sm-6 col-md-4 m-auto'>
+        <div className='col col-sm-6 col-md-4 col-lg-3 m-auto'>
           <div className="card mt-4 mb-4">
             <div className="card-header d-flex justify-content-center">
               <i className="fas fa-user-plus fa-2x mr-3"></i> 

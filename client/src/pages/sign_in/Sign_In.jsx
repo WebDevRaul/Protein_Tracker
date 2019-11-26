@@ -2,14 +2,13 @@ import React from 'react';
 
 import Form from '../../components/sign_in/Form';
 
+import './responsive.css'
+
 const SignIn = () => {
   return (
-    <section className='sign-in d-flex flex-column justify-content-center' 
-      // Center the form and 19px for the scrollbar 
-      style={{ minHeight: 'calc(100vh - 264px)', paddingRight: '19px' }}
-    >
+    <section className='sign-in d-flex flex-column justify-content-center'>
       <div className='row no-gutters'>
-        <div className='col-8 col-sm-6 col-md-4 m-auto'>
+        <div className='col col-sm-6 col-md-4 col-lg-3 m-auto'>
           <div className="card mt-4 mb-4">
             <div className="card-header d-flex justify-content-center">
               <i className="fas fa-user fa-2x mr-3"></i> 

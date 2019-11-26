@@ -1,3 +1,2 @@
 image homepage
-onChange card select item
 do responsive for all

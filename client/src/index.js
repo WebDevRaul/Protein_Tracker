@@ -12,7 +12,6 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 
-import './index.css';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 // Check Token
