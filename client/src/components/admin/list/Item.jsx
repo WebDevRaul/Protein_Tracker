@@ -25,22 +25,22 @@ const Item = ({ data, onDelete }) => {
       <div className={classnames('row no-gutters pl-2 pr-2', { 'blinking': temp })}>
         <div className='col-11 d-flex'>
           <div className='col p-0 text-truncate'>
-            <h5 className='mb-0 pt-3 pb-3 pr-2 text-truncate'>{name}</h5>
+            <p className='mb-0 pt-3 pb-3 pr-2 text-truncate'>{name}</p>
           </div>
           <div className='col p-0'>
-          <p className='mb-0 pt-3 pb-3 font-weight-bold'>{qty}{type}</p>
+            <p className='mb-0 pt-3 pb-3'>{qty}{type}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-3 pb-3 font-weight-bold'>{cal}</p>
+            <p className='mb-0 pt-3 pb-3'>{cal}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-3 pb-3 font-weight-bold'>{prot}</p>
+            <p className='mb-0 pt-3 pb-3'>{prot}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-3 pb-3 font-weight-bold'>{fat}</p>
+            <p className='mb-0 pt-3 pb-3'>{fat}</p>
           </div>
           <div className='col p-0'>
-            <p className='mb-0 pt-3 pb-3 font-weight-bold'>{carb}</p>
+            <p className='mb-0 pt-3 pb-3'>{carb}</p>
           </div>
         </div>
         <div className='col-1 d-flex m-auto'>
@@ -54,18 +54,12 @@ const Item = ({ data, onDelete }) => {
             />
           }
           {
-            !icon &&
-            <>
-              {
-                loading
-                ? <span className='d-flex m-auto'><Spinner height='40px' /></span>
-                : <i 
-                    className='far fa-times-circle m-auto text-danger hover'
-                    style={{ fontSize: '1.4em' }}
-                    onClick={onClick}
-                  ></i>
-              }
-            </>
+            loading
+            ? <span className='d-flex m-auto'><Spinner isClass='spinner' /></span>
+            : <i 
+                className='far fa-times-circle m-auto text-danger hover'
+                onClick={onClick}
+              ></i>
           }
         </div>
       </div>

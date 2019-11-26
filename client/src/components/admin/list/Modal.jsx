@@ -17,9 +17,12 @@ const Modal = ({ state, setState, item, toDelete }) => {
     setState({ loading: false, modal: false });
   }
 
-  const onClick = () => setState({ loading: false, modal: false });
+  const onClick = () => setState({ ...state, loading: false, modal: false });
 
-  const onSave = () => toDelete();
+  const onSave = () => {
+    setState({ ...state, modal: false });
+    toDelete();
+  };
 
   return (
     <div className={classnames('modal fade', { 'd-block': true })}

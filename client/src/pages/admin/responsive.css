@@ -1,0 +1,36 @@
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  RESPONSIVE  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+@media only screen and (max-width : 768px) {
+  .spinner {
+    height: 32px !important;
+  }
+}
+
+@media only screen and (max-width : 576px) {
+  h2 {
+    font-size: 2.5em;
+  }
+  .spinner {
+    height: 28px !important;
+  }
+}
+
+@media only screen and (max-width : 425px) {
+  h2 {
+    font-size: 2.3em;
+  }
+  .spinner {
+    height: 24px !important;
+  }
+}
+
+@media only screen and (max-width : 375px) {
+  h2 {
+    font-size: 2em;
+  }
+  .spinner {
+    height: 20px !important;
+  }
+}

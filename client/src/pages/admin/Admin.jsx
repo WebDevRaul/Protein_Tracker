@@ -12,6 +12,8 @@ import { state_admin_isDefault } from '../../redux/selectors/admin';
 import Form from '../../components/admin/form/Form';
 import List from '../../components/admin/list/List';
 
+import './responsive.css';
+
 const Admin = ({ updateTarget, updateMeal, updateAdmin, target, meal, admin }) => {
   // Update target CDM
   useEffect(() => {

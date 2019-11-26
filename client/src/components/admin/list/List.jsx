@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { state_admin } from '../../../redux/selectors/admin';
 
 import Item from './Item';
+import Header from './Header';
 
 const List = ({ items, deleteItem }) => {
 
@@ -13,9 +14,14 @@ const List = ({ items, deleteItem }) => {
 
   return (
     <section>
-      <Item data={ {name:'Name:', qty:'Qty', type:'.', cal:'Cal.', prot:'Prot.', fat:'Fat.', carb:'Carb.', icon:'no'} } />
       {
-        items && items.map(i => <Item key={i._id} data={i} onDelete={onDelete} />)
+        items && 
+          <>
+            <Header />
+            {
+              items.map(i => <Item key={i._id} data={i} onDelete={onDelete} />)
+            }
+          </>
       }
     </section>
   )

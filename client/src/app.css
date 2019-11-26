@@ -30,6 +30,9 @@ a:hover {
   text-decoration: none;
   color: var(--secondary);
 }
+.btn-spinner {
+  height: 34px;
+}
 .is-invalid {
   padding-right: 16px !important;
 }
@@ -91,6 +94,9 @@ a:hover {
   .app {
     font-size: 14px;
   }
+  .btn-spinner {
+    height: 32px;
+  }
 }
 
 @media only screen and (max-width : 576px) {
@@ -102,6 +108,9 @@ a:hover {
     padding: 0 12px;
     font-size: 1.4em;
   }
+  .btn-spinner {
+    height: 30px;
+  }
 }
 
 @media only screen and (max-width : 425px) {
@@ -111,6 +120,9 @@ a:hover {
   .form-control {
     height: 32px !important;
   }
+  .btn-spinner {
+    height: 26px;
+  }
 }
 
 @media only screen and (max-width : 375px) {
@@ -119,6 +131,9 @@ a:hover {
   }
   .form-control {
     height: 27px !important;
+  }
+  .btn-spinner {
+    height: 24px;
   }
 }
 
