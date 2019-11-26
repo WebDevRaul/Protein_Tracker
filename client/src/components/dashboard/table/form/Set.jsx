@@ -91,7 +91,7 @@ const Set = ({ show, setShow, set, isLoading, errors, clearTargetErrors }) => {
           />
         </div>
       </div>
-      <div className='d-flex justify-content-between m-auto w-50'>
+      <div className='d-flex justify-content-around'>
         <CustomButton text='Cancel' onClick={onClick} isClass='btn-danger text-uppercase font-weight-bold' />
         <CustomButton 
           text='Save' 

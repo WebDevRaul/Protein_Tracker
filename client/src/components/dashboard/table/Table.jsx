@@ -30,7 +30,7 @@ const Table = ({ target, breakfast, lunch, diner, snack }) => {
 
   return (
     <div className='row no-gutters mt-5'>
-      <div className='col-11 col-sm-9 m-auto'>
+      <div className='col-11 col-md-9 col-lg-8 m-auto'>
         <Target {...target} />
         <Form />
         <Actual { ...actual } />

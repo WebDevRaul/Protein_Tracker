@@ -12,7 +12,7 @@ import validateCalc from './validation/validate_calc';
 import doTheCalc from './DoTheCalc';
 
 const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
-  const [state, setState] = useState({ age: '20', gender: 'Man', activity: '1.2', height: '170', weight: '80' });
+  const [state, setState] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const [error, setError] = useState({ age: '', gender: '', activity: '', height: '', weight: '' });
   const { age, height, weight } = state;
 
@@ -115,7 +115,7 @@ const Calc = ({ show, setShow, calc, isLoading, clearTargetErrors }) => {
       </div>
     </form>
   )
-}
+};
 
 Calc.propTypes = {
   setShow: PropTypes.func.isRequired,

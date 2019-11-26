@@ -24,7 +24,7 @@ const Buttons = ({ state, setState, onClear }) => {
             { key: 'Snack', value: 'Snack' }
           ]}
           label='Create table'
-          isClass='text-uppercase font-weight-bold'
+          isClass='text-uppercase'
           onChange={onChange}
           error=''
         />
