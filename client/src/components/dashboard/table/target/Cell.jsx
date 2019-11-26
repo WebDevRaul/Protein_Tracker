@@ -7,9 +7,9 @@ import { state_set_isLoading } from '../../../../redux/selectors/target';
 
 const Cell = ({ title, value, set_isLoading }) => {
   return (
-    <div className='w-25 d-flex flex-column align-items-center border border-primary rounded bg-white mr-1 ml-1 text-primary'>
-      <h5 className='p-2 border border-primary rounded position-absolute bg-white shadow' style={{ top: '-22px' }}>{title}</h5>
-      <h4 className={classnames('mt-4 pt-3 mb-4', { 'blinking': set_isLoading })}>{value}</h4>
+    <div className='target-cell w-25 d-flex flex-column align-items-center border border-primary rounded bg-white mr-1 ml-1 text-primary'>
+      <p className='mb-0 p-2 font-weight-bold border border-primary rounded position-absolute bg-white shadow text-center' style={{ top: '-19px', minWidth: '55px' }}>{title}</p>
+      <h5 className={classnames('mt-4 pt-3 mb-4', { 'blinking': set_isLoading })}>{value}</h5>
     </div>
   )
 }

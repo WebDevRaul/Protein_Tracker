@@ -1,6 +1,0 @@
-@media only screen and (max-width : 576px) {
-  .target > div > h5 {
-    font-size: 0.9em;
-    top: -17px !important;
-  }
-}

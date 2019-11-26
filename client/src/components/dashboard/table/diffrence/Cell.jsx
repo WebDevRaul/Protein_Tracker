@@ -6,7 +6,7 @@ const Cell = ({ value }) => {
   const negative = Math.sign(value) === -1 ? true : false
   return (
     <div className={
-      classnames('w-25 d-flex flex-column align-items-center border border-primary rounded mr-1 ml-1 text-danger p-2', { 'text-light border-danger bg-danger': negative, 'bg-white': !negative })
+      classnames('diffrence-cell w-25 d-flex flex-column align-items-center border border-primary rounded mr-1 ml-1 text-danger p-2', { 'text-light border-danger bg-danger': negative, 'bg-white': !negative })
     }>
       <h5 className='mb-0'>{value}</h5>
     </div>

@@ -1,0 +1,49 @@
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  RESPONSIVE  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+@media only screen and (max-width : 768px) {
+  .target-cell p {
+    min-width: 52px !important;
+  }
+}
+
+@media only screen and (max-width : 576px) {
+  .actual-cell h5, .diffrence-cell h5, .target-cell h5{
+    font-size: 1.4em;
+  }
+  .target-cell p {
+    top: -18px !important;
+    min-width: 48px !important;
+  }
+  .target-cell h5 {
+    margin: 20px 0 !important;
+    padding-top: 18px !important;
+  }
+}
+
+@media only screen and (max-width : 425px) {
+  .actual-cell h5, .diffrence-cell h5, .target-cell h5{
+    font-size: 1.2em;
+  }
+  .target-cell p {
+    top: -16px !important;
+  }
+  .target-cell h5 {
+    margin: 18px 0 !important;
+    padding-top: 16px !important;
+  }
+}
+
+@media only screen and (max-width : 375px) {
+  .actual-cell h5, .diffrence-cell h5, .target-cell h5{
+    font-size: 1em;
+  }
+  .target-cell p {
+    top: -15px !important;
+  }
+  .target-cell h5 {
+    margin: 15px 0 !important;
+    padding-top: 10px !important;
+  }
+}

@@ -12,7 +12,7 @@ import Diffrence from './diffrence/Diffrence';
 import doTheCalc from './utils/doTheCalc';
 
 
-import './table.css';
+import './responsive.css';
 
 const Table = ({ target, breakfast, lunch, diner, snack }) => {
   const [state, setState] = useState({ 
