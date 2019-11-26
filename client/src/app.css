@@ -4,7 +4,7 @@
 }
 
 /* ////////// Sign-In ////////// */
-.sign-in {
+.sign-in, .not-found {
   min-height: calc(100vh - 264px);
 }
 
@@ -31,7 +31,7 @@ a:hover {
   color: var(--secondary);
 }
 .btn-spinner {
-  height: 34px;
+  height: 44px;
 }
 .is-invalid {
   padding-right: 16px !important;
@@ -65,8 +65,10 @@ a:hover {
 
 .btn {
   font-size: 1em;
-  min-height: 27px;
+  min-height: 48px;
   min-width: 115px;
+  margin-bottom: 4px;
+  padding: 0px;
 }
 
 
@@ -95,7 +97,7 @@ a:hover {
     font-size: 14px;
   }
   .btn-spinner {
-    height: 32px;
+    height: 40px;
   }
 }
 
@@ -109,7 +111,13 @@ a:hover {
     font-size: 1.4em;
   }
   .btn-spinner {
-    height: 30px;
+    height: 36px;
+  }
+  .input-group-text {
+    padding: 4px 8px;
+  }
+  .btn {
+    min-height: 36px;
   }
 }
 
@@ -121,7 +129,10 @@ a:hover {
     height: 32px !important;
   }
   .btn-spinner {
-    height: 26px;
+    height: 32px;
+  }
+  .btn {
+    min-height: 32px;
   }
 }
 
@@ -133,7 +144,10 @@ a:hover {
     height: 27px !important;
   }
   .btn-spinner {
-    height: 24px;
+    height: 27px;
+  }
+  .btn {
+    min-height: 27px;
   }
 }
 

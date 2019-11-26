@@ -7,8 +7,8 @@ const Guest = ({ show, setShow }) => {
   const onClick = () => { show && setShow(!show) }
 
   return (
-    <ul className="navbar-nav ml-auto mr-5">
-      <li className="nav-item mr-3">
+    <ul className="navbar-nav ml-auto d-flex align-items-center text-center">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/home' 
           className='nav-link'
@@ -18,7 +18,7 @@ const Guest = ({ show, setShow }) => {
           Home
         </NavLink>
         </li>
-      <li className="nav-item mr-3">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/register' 
           className='nav-link'
@@ -28,7 +28,7 @@ const Guest = ({ show, setShow }) => {
           Register
         </NavLink>
       </li>
-      <li className="nav-item mr-3">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/sign-in' 
           className='nav-link'

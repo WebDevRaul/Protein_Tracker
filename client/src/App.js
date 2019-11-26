@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './Private_Route';
 
 import Navbar from './layout/navbar/Navbar';
@@ -21,6 +21,7 @@ const App = () => {
       <WithLoading />
       <Navbar />
       <Switch>
+        <Redirect exact from ='/' to='/home' />
         <Route exact path='/home' component={Home} />
         <Route exact path='/sign-in' component={Sign_In} />
         <Route exact path='/register' component={Register} />

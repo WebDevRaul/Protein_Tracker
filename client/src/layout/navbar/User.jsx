@@ -7,8 +7,8 @@ const User = ({ show, setShow, onSignOut }) => {
   const onClick = () => { show && setShow(!show) }
 
   return (
-    <ul className="navbar-nav ml-auto mr-5">
-      <li className="nav-item mr-3">
+    <ul className="navbar-nav ml-auto d-flex align-items-center text-center">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/home' 
           className='nav-link'
@@ -18,7 +18,7 @@ const User = ({ show, setShow, onSignOut }) => {
           Home
         </NavLink>
       </li>
-      <li className="nav-item mr-3">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/dashboard'
           className='nav-link'
@@ -28,7 +28,7 @@ const User = ({ show, setShow, onSignOut }) => {
           Dashboard
         </NavLink>
       </li>
-      <li className="nav-item mr-3">
+      <li className="nav-item" style={{ minWidth: '115px' }}>
         <NavLink 
           to='/admin'
           className='nav-link'
@@ -39,9 +39,9 @@ const User = ({ show, setShow, onSignOut }) => {
         </NavLink>
       </li>
       
-      <li className="nav-item mr-3">
+      <li className="nav-item">
         <button
-          className='nav-link btn'
+          className='nav-link btn d-flex justify-content-center m-auto'
           onClick={onSignOut}
         >
           Sign Out

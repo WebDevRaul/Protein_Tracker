@@ -7,7 +7,7 @@ import Modal from './Modal';
 const Item = ({ data, onDelete }) => {
   const [state, setState] = useState({ loading: false, modal: false });
   const { loading, modal } = state;
-  const { _id, name, qty, type, cal, prot, fat, carb, icon } = data;
+  const { _id, name, qty, type, cal, prot, fat, carb } = data;
   const temp = _id === 'temp' ? true : false;
 
   const onClick = () => {

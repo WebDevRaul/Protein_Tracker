@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register, clearUserErrors } from '../../redux/actions/user';
 import { createStructuredSelector } from 'reselect';
-import { state_isLoading, state_errors } from '../../redux/selectors/user';
+import { state_isLoading, state_errors, state_isAuth } from '../../redux/selectors/user';
 import validateRegister from './validation/validation';
 
 import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
 
-const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
+const Form = ({ register, isLoading, errors, clearUserErrors, history, isAuth }) => {
   const [state, setState] = useState({ first_name: 'John', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
   const [error, setError] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
   const { first_name, last_name, email, password, password2 } = state;
@@ -42,6 +43,8 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
     if(!isValid) return setError({ ...error, ...errors });
     register({ data: { ...state }, history });
   }
+  
+  if(isAuth) return <Redirect to='/dashboard' />;
 
   return (
     <form noValidate onSubmit={onSubmit}>
@@ -106,6 +109,7 @@ const Form = ({ register, isLoading, errors, clearUserErrors, history }) => {
 };
 
 Form.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
   register: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   errors: PropTypes.object.isRequired,
@@ -114,6 +118,7 @@ Form.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
+  isAuth: state_isAuth,
   isLoading: state_isLoading,
   errors: state_errors
 });

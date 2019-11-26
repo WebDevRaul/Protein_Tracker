@@ -32,10 +32,10 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <Router>
-        <>
+        <HttpsRedirect>
           <ReduxToastr position='bottom-right' transitionIn='fadeIn' transitionOut='fadeOut' />
           <App />
-        </>
+        </HttpsRedirect>
       </Router>
     </PersistGate>
   </Provider> 
