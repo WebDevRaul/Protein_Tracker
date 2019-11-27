@@ -1,2 +1,2 @@
 image homepage
-fix position
+update Items vals

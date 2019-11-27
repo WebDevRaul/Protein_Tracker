@@ -19,7 +19,7 @@ export const ADD_ITEM = ({
     const onError = error => {
       dispatch({ type: ERROR_TYPE, payload: error });
       dispatch({ type: LOADED });
-      toastr.error('Error!', 'Ooops, Try again pls');
+      toastr.error('Error!', 'Ooops, Item not saved');
     };
     try {
       dispatch({ type: LOADING });

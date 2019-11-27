@@ -13,22 +13,22 @@ module.exports = function validateTarget({ cal, prot, fat, carb }) {
   
   // Validate Cal
   if(!Validator.isInt(cal)) errors.cal = 'No decimals allowed';
-  if(isIntAndMin(cal)) errors.cal = 'Minimum Qty. is 0.1';
+  if(isIntAndMin(cal)) errors.cal = 'Minimum Qty. is 0';
   if(isIntAndMaxT(cal)) errors.cal = 'Maximum Qty. is 10000';
 
   // Validate Prot
   if(!Validator.isInt(prot)) errors.prot = 'No decimals allowed';
-  if(isIntAndMin(prot)) errors.prot = 'Minimum Qty. is 0.1';
+  if(isIntAndMin(prot)) errors.prot = 'Minimum Qty. is 0';
   if(isIntAndMaxT(prot)) errors.prot = 'Maximum Qty. is 10000';
 
   // Validate Fat
   if(!Validator.isInt(fat)) errors.prot = 'No decimals allowed';
-  if(isIntAndMin(fat)) errors.fat = 'Minimum Qty. is 0.1';
+  if(isIntAndMin(fat)) errors.fat = 'Minimum Qty. is 0';
   if(isIntAndMaxT(fat)) errors.fat = 'Maximum Qty. is 10000';
 
   // Validate Carb
   if(!Validator.isInt(carb)) errors.carb = 'No decimals allowed';
-  if(isIntAndMin(carb)) errors.carb = 'Minimum Qty. is 0.1';
+  if(isIntAndMin(carb)) errors.carb = 'Minimum Qty. is 0';
   if(isIntAndMaxT(carb)) errors.carb = 'Maximum Qty. is 10000';
 
   // Validate Numbers

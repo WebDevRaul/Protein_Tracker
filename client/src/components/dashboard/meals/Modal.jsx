@@ -47,7 +47,7 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
     const data = { _id, name, qty:input, type, cal, prot, fat, carb, p };
     const { errors, isValid } = validateModal({ qty:input, cal, prot, fat, carb });
     if(!isValid) return setError({ ...error, ...errors });
-    updateItemsToTable({ data, title, temp, _id });
+    updateItemsToTable({ data, title, temp, _id, item });
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
   }

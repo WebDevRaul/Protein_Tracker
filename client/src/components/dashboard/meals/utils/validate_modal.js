@@ -21,7 +21,7 @@ const validateModal = ({ qty, cal, prot, fat, carb }) => {
   if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
   if(!Validator.isNumeric(qty)) errors.qty = 'No characters allowed';
   if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
-  if(isIntAndMin(qty)) errors.qty = 'Minimum Qty. is 1';
+  if(Validator.isInt(qty) && Validator.isInt(qty, { min: -Infinity, max: 0 })) errors.qty = 'Minimum Qty. is 1';
   if(Validator.isEmpty(qty)) errors.qty = 'Qty field is required';
 
   return {

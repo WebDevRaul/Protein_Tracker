@@ -94,12 +94,13 @@ export const addItemToTable = ({ data, temp, title }) => {
 ///////////////////////////////////////////////////////
 
 
-export const updateItemsToTable = ({ data, title, temp, _id }) => {
+export const updateItemsToTable = ({ data, title, temp, _id, item }) => {
   if(title === 'Breakfast') {
     return UPDATE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
       TEMP: { temp, _id },
+      ITEM: item,
       LOADING: BREAKFAST.LOADING,
       REDUX: BREAKFAST.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: BREAKFAST.UPDATE_ITEM,
@@ -112,6 +113,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
       TEMP: { temp, _id },
+      ITEM: item,
       LOADING: LUNCH.LOADING,
       REDUX: LUNCH.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: LUNCH.UPDATE_ITEM,
@@ -124,6 +126,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
       TEMP: { temp, _id },
+      ITEM: item,
       LOADING: DINER.LOADING,
       REDUX: DINER.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: DINER.UPDATE_ITEM,
@@ -136,6 +139,7 @@ export const updateItemsToTable = ({ data, title, temp, _id }) => {
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
       TEMP: { temp, _id },
+      ITEM: item,
       LOADING: SNACK.LOADING,
       REDUX: SNACK.UPDATE_ITEM_REDUX,
       SUCCESS_TYPE: SNACK.UPDATE_ITEM,

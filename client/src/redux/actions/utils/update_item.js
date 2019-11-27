@@ -5,6 +5,7 @@ export const UPDATE_ITEM = ({
   ENDPOINT,
   DATA,
   TEMP,
+  ITEM,
   LOADING,
   REDUX,
   SUCCESS_TYPE,
@@ -19,7 +20,8 @@ export const UPDATE_ITEM = ({
     const onError = error => {
       dispatch({ type: ERROR_TYPE, payload: error });
       dispatch({ type: LOADED });
-      toastr.error('Error!', 'Ooops, Try again pls');
+      dispatch({ type: SUCCESS_TYPE, payload: ITEM });
+      toastr.error('Error!', 'Ooops, Item not saved');
     };
     try {
       dispatch({ type: LOADING });
