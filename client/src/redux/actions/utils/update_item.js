@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toastr } from 'react-redux-toastr';
 
 export const UPDATE_ITEM = ({
   ENDPOINT,
@@ -18,6 +19,7 @@ export const UPDATE_ITEM = ({
     const onError = error => {
       dispatch({ type: ERROR_TYPE, payload: error });
       dispatch({ type: LOADED });
+      toastr.error('Error!', 'Ooops, Try again pls');
     };
     try {
       dispatch({ type: LOADING });

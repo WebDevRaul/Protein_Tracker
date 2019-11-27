@@ -37,11 +37,12 @@ export const clearAll = () => dispatch => {
 ////////////////////////////////////////////////////
 
 
-export const addItemToTable = ({ data, title }) => {
+export const addItemToTable = ({ data, temp, title }) => {
   if(title === 'Breakfast') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
+      TEMP: temp,
       LOADING: BREAKFAST.LOADING,
       REDUX: BREAKFAST.ITEM_UPDATE_REDUX,
       SUCCESS_TYPE: BREAKFAST.ITEM_UPDATE,
@@ -53,6 +54,7 @@ export const addItemToTable = ({ data, title }) => {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
+      TEMP: temp,
       LOADING: LUNCH.LOADING,
       REDUX: LUNCH.ITEM_UPDATE_REDUX,
       SUCCESS_TYPE: LUNCH.ITEM_UPDATE,
@@ -64,6 +66,7 @@ export const addItemToTable = ({ data, title }) => {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
+      TEMP: temp,
       LOADING: DINER.LOADING,
       REDUX: DINER.ITEM_UPDATE_REDUX,
       SUCCESS_TYPE: DINER.ITEM_UPDATE,
@@ -75,6 +78,7 @@ export const addItemToTable = ({ data, title }) => {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
+      TEMP: temp,
       LOADING: SNACK.LOADING,
       REDUX: SNACK.ITEM_UPDATE_REDUX,
       SUCCESS_TYPE: SNACK.ITEM_UPDATE,
@@ -190,8 +194,24 @@ export const deleteItemFromTable = ({ title, _id }) => {
   }
 }
 
+///////////////////////////////////////////////////////////////////////
+////////////////////  DELETE ITEM ONLY FROM REDUX  ////////////////////
+///////////////////////////////////////////////////////////////////////
 
-export const clearMealErrors = () => {
-
-
+export const deleteItemFromREDUX = ({ title, _id }) => dispatch => {
+  if(title === 'Breakfast') {
+    return dispatch({ type: BREAKFAST.DELETE_ITEM, payload: _id })
+  }
+  if(title === 'Lunch') {
+    return dispatch({ type: LUNCH.DELETE_ITEM, payload: _id })
+  }
+  if(title === 'Diner') {
+    return dispatch({ type: DINER.DELETE_ITEM, payload: _id })
+  }
+  if(title === 'Snack') {
+    return dispatch({ type: SNACK.DELETE_ITEM, payload: _id })
+  }
 }
+
+
+export const clearMealErrors = () => {}

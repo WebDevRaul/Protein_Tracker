@@ -9,9 +9,8 @@ const Item = ({ item, title, onDelete }) => {
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const {_id, name, qty, type, cal, prot, fat, carb } = state;
-  const temp = _id === 'temp' ? true : false;
+  const temp = item._id.startsWith('temp')  ? true : false;
 
-  
   // Update state CDU
   useEffect(() => {
     setState({ ...item });
@@ -20,7 +19,7 @@ const Item = ({ item, title, onDelete }) => {
   
   const onRemove = () => {
     setLoading(true);
-    onDelete({ _id, title })
+    onDelete({ _id, title });
   };
   
   const onModal = () => {

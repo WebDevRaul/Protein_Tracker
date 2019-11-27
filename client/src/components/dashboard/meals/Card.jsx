@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addItemToTable, deleteItemFromTable } from '../../../redux/actions/meal';
+import { addItemToTable, deleteItemFromTable, deleteItemFromREDUX } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
 import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 
@@ -11,7 +11,7 @@ import Header from './Header';
 import setPosition from './utils/setPosition';
 
 const Card = ({ 
-  items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
+  items, title, options, list, state, setState, addItemToTable, deleteItemFromTable, deleteItemFromREDUX }) => {
   const [card, setCard] = useState([]);
   const [p, setP] = useState(0);
 
@@ -29,13 +29,16 @@ const Card = ({
   
   const onChange = e => {
     const { _id, name, qty, type, cal, prot, fat, carb } = list.filter(i => i._id === e.target.value)[0];
-    const temp = { _id: 'temp', name, qty, type, cal, prot, fat, carb, p: p+1 };
+    const temp = { _id: `temp${_id}`, name, qty, type, cal, prot, fat, carb, p: p+1 };
     const data = { _id, name, qty, type, cal, prot, fat, carb, p: p+1 };
     addItemToTable({ temp, data, title });
     setP(p+1);
   };
 
-  const onDelete = obj => deleteItemFromTable(obj)
+  const onDelete = ({ _id, title }) => {
+    if(_id.startsWith('temp')) return deleteItemFromREDUX({ _id, title });
+    deleteItemFromTable({ _id, title })
+  }
   const onClose = () => setState({ ...state, [title]: false });
 
   return (
@@ -81,7 +84,8 @@ Card.propTypes = {
   options: PropTypes.array.isRequired,
   list: PropTypes.array.isRequired,
   addItemToTable: PropTypes.func.isRequired,
-  deleteItemFromTable: PropTypes.func.isRequired
+  deleteItemFromTable: PropTypes.func.isRequired,
+  deleteItemFromREDUX: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -89,4 +93,4 @@ const mapStateToProps = createStructuredSelector({
   list: state_admin
 });
 
-export default connect( mapStateToProps, { addItemToTable, deleteItemFromTable } )(Card);
+export default connect( mapStateToProps, { addItemToTable, deleteItemFromTable, deleteItemFromREDUX } )(Card);
