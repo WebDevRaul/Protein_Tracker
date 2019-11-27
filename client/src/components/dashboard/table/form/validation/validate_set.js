@@ -1,6 +1,6 @@
 import Validator from 'validator';
 import isEmpty from '../../../../common/utils/isEmpty';
-import {isIntAndMaxT, isIntAndMin} from '../../../../common/utils/isInteger';
+import {isIntAndMaxT} from '../../../../common/utils/isInteger';
 import {isValidNumber, isIntAndNoLeadingZero} from '../../../../common/utils/isNumber';
 
 const validateSet = ({ cal, prot, fat, carb }) => {

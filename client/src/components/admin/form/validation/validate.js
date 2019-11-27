@@ -23,8 +23,8 @@ const validateAdmin = ({ name, qty, type, cal, prot, fat, carb }) => {
 
   // Validate QTY
   if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
-  if(Validator.isInt(qty) && Validator.isInt(qty, { min: -Infinity, max: 0 })) errors.qty = 'Minimum Qty. is 1';
-  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
+  if(Validator.isInt(qty) && Validator.isInt(qty, { min: -Infinity, max: 0 })) errors.qty = 'Minimum Qty. is 0.1';
+  if(isFloatAndMax(cal)) errors.cal = 'Maximum Qty. is 1000';
   if(isIntAndNoLeadingZero(qty)) errors.qty = 'Enter a valid number';
   if(isValidNumber(qty)) errors.qty = 'Enter a valid number';
 
