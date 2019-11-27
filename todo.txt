@@ -1,3 +1,2 @@
 image homepage
-do responsive for all
-modal, set & calc responsive
+fix position

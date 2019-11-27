@@ -29,7 +29,7 @@ const meal = ( state=INITIAL_STATE, action ) => {
     case BREAKFAST.UPDATE_ITEM_REDUX:
       return { ...state, breakfast: [ ...state.breakfast.filter(i => i._id !== payload._id), payload.temp ] }
     case BREAKFAST.UPDATE_ITEM:
-      return { ...state, breakfast: [...state.breakfast.filter(i => i._id !== 'temp'), payload] }
+      return { ...state, breakfast: [...state.breakfast.filter(i => i._id !== `temp${payload._id}`), payload] }
     case BREAKFAST.DELETE_ITEM:
       return { ...state, breakfast: [...state.breakfast.filter(i => i._id !== payload)] }
 
@@ -41,7 +41,7 @@ const meal = ( state=INITIAL_STATE, action ) => {
     case LUNCH.UPDATE_ITEM_REDUX:
       return { ...state, lunch: [ ...state.lunch.filter(i => i._id !== payload._id), payload.temp ] }
     case LUNCH.UPDATE_ITEM:
-      return { ...state, lunch: [...state.lunch.filter(i => i._id !== 'temp'), payload] }
+      return { ...state, lunch: [...state.lunch.filter(i => i._id !== `temp${payload._id}`), payload] }
     case LUNCH.DELETE_ITEM:
       return { ...state, lunch: [...state.lunch.filter(i => i._id !== payload)] }
 
@@ -53,7 +53,7 @@ const meal = ( state=INITIAL_STATE, action ) => {
     case DINER.UPDATE_ITEM_REDUX:
         return { ...state, diner: [ ...state.diner.filter(i => i._id !== payload._id), payload.temp ] }
     case DINER.UPDATE_ITEM:
-      return { ...state, diner: [...state.diner.filter(i => i._id !== 'temp'), payload] }
+      return { ...state, diner: [...state.diner.filter(i => i._id !== `temp${payload._id}`), payload] }
     case DINER.DELETE_ITEM:
         return { ...state, diner: [...state.diner.filter(i => i._id !== payload)] }
 
@@ -65,7 +65,7 @@ const meal = ( state=INITIAL_STATE, action ) => {
     case SNACK.UPDATE_ITEM_REDUX:
       return { ...state, snack: [ ...state.snack.filter(i => i._id !== payload._id), payload.temp ] }
     case SNACK.UPDATE_ITEM:
-      return { ...state, snack: [...state.snack.filter(i => i._id !== 'temp'), payload] }
+      return { ...state, snack: [...state.snack.filter(i => i._id !== `temp${payload._id}`), payload] }
     case SNACK.DELETE_ITEM:
         return { ...state, snack: [...state.snack.filter(i => i._id !== payload)] }
 

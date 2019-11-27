@@ -8,11 +8,17 @@ import { state_select_keys, state_admin } from '../../../redux/selectors/admin'
 import Item from './Item';
 import Select from '../../common/form/select/Select';
 import Header from './Header';
+import setPosition from './utils/setPosition';
 
 const Card = ({ 
   items, title, options, list, state, setState, addItemToTable, deleteItemFromTable }) => {
   const [card, setCard] = useState([]);
   const [p, setP] = useState(0);
+
+  useEffect(() => {
+    const { num } = setPosition(items);
+    setP(num);
+  },[items])
   
   // Update State CDU
   useEffect(() => {
@@ -28,7 +34,6 @@ const Card = ({
     addItemToTable({ temp, data, title });
     setP(p+1);
   };
-
 
   const onDelete = obj => deleteItemFromTable(obj)
   const onClose = () => setState({ ...state, [title]: false });
