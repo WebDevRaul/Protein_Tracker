@@ -1,5 +1,6 @@
 import Validator from 'validator';
 import isEmpty from '../../../../common/utils/isEmpty';
+import { isValidNumber, isIntAndNoLeadingZero } from '../../../../common/utils/isNumber';
 
 const validateCalc = ({ age, gender, activity, height, weight }) => {
   let errors = [];
@@ -11,31 +12,31 @@ const validateCalc = ({ age, gender, activity, height, weight }) => {
   weight = !isEmpty(weight) ? weight : '';
 
 
-  // Validate Numbers
-  if(!Validator.isNumeric(age)) errors.age = 'Only numbers allowed';
-  if(!Validator.isNumeric(height)) errors.height = 'Only numbers allowed';
-  if(!Validator.isNumeric(weight)) errors.weight = 'Only numbers allowed';
-
-
   // Validate Age
   if(Validator.isInt(age, {min:-Infinity, max:17})) errors.age = 'Minimum age must be 18';
   if(Validator.isInt(age, {min:100, max:Infinity})) errors.age = 'Miximum age required is 99';
+  if(!Validator.isInt(age)) errors.age = 'No decimals allowed';
+  if(isIntAndNoLeadingZero(age)) errors.age = 'Enter a valid number';
+  if(isValidNumber(age)) errors.age = 'Enter a valid number';
   
   // Validate Height
   if(Validator.isInt(height, {min:-Infinity, max:0})) errors.height = 'Minimum height required is 1';
   if(Validator.isInt(height, {min:301, max: Infinity})) errors.height = 'Miximum height required is 300';
+  if(!Validator.isInt(height)) errors.height = 'No decimals allowed';
+  if(isIntAndNoLeadingZero(height)) errors.height = 'Enter a valid number';
+  if(isValidNumber(height)) errors.height = 'Enter a valid number';
   
   // Validate Weight
   if(Validator.isInt(weight, {min:-Infinity, max:0})) errors.weight = 'Minimum weight required is 1';
   if(Validator.isInt(weight, {min:1001, max: Infinity})) errors.weight = 'Miximum weight required is 1000';
+  if(!Validator.isInt(weight)) errors.weight = 'No decimals allowed';
+  if(isIntAndNoLeadingZero(weight)) errors.weight = 'Enter a valid number';
+  if(isValidNumber(weight)) errors.weight = 'Enter a valid number';
 
-
-  // Validate allow_leading_zeroes: false
-  if(!Validator.isInt(age, {allow_leading_zeroes: false})) errors.age = 'Only valid numbers allowed';
-  if(!Validator.isInt(height, {allow_leading_zeroes: false})) errors.height = 'Only valid numbers allowed';
-  if(!Validator.isInt(weight, {allow_leading_zeroes: false})) errors.weight = 'Only valid numbers allowed';
-
-
+  // Validate Numbers
+  if(!Validator.isNumeric(age)) errors.age = 'No characters allowed';
+  if(!Validator.isNumeric(height)) errors.height = 'No characters allowed';
+  if(!Validator.isNumeric(weight)) errors.weight = 'No characters allowed';
 
   // Validate Empty
   if(Validator.isEmpty(age)) errors.age = 'Age field is required';

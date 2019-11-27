@@ -1,7 +1,8 @@
 import Validator from 'validator';
 import isEmpty from '../../../common/utils/isEmpty';
-import { isIntAndMin, isIntAndMax } from '../../../common/utils/isInteger';
+import { isIntAndMax } from '../../../common/utils/isInteger';
 import { isFloatAndMax } from '../../../common/utils/isFloat';
+import { isValidNumber, isIntAndNoLeadingZero } from '../../../common/utils/isNumber';
 
 const validateModal = ({ qty, cal, prot, fat, carb }) => {
   let errors = {};
@@ -18,10 +19,12 @@ const validateModal = ({ qty, cal, prot, fat, carb }) => {
   if(isFloatAndMax(fat)) errors.qty = 'Maximum Fat. is 1000';
   if(isFloatAndMax(carb)) errors.qty = 'Maximum Carb. is 1000';
   
-  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
-  if(!Validator.isNumeric(qty)) errors.qty = 'No characters allowed';
   if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
   if(Validator.isInt(qty) && Validator.isInt(qty, { min: -Infinity, max: 0 })) errors.qty = 'Minimum Qty. is 1';
+  if(!Validator.isInt(qty)) errors.qty = 'No decimals allowed';
+  if(isIntAndNoLeadingZero(qty)) errors.qty = 'Enter a valid number';
+  if(isValidNumber(qty)) errors.qty = 'Enter a valid number';
+  if(!Validator.isNumeric(qty)) errors.qty = 'No characters allowed';
   if(Validator.isEmpty(qty)) errors.qty = 'Qty field is required';
 
   return {
