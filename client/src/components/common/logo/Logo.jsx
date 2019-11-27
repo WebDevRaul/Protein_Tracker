@@ -21,7 +21,7 @@ const Logo = () => {
       <div className='logo-div text-uppercase'>
         <Link to='/home'>
           <p>{squer}</p>
-          <p>Macro</p>
+          <p className='text-white'>Macro</p>
           <p>{squer}</p>
         </Link>
       </div>

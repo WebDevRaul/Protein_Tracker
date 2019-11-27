@@ -44,7 +44,7 @@ const User = ({ show, setShow, onSignOut }) => {
           className='nav-link btn d-flex justify-content-center m-auto'
           onClick={onSignOut}
         >
-          Sign Out
+          <span className='special'>Sign Out</span>
         </button>
       </li>
     </ul>

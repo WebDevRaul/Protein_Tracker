@@ -3,14 +3,20 @@
   --secondary: rgb(255, 129, 6);
 }
 
-/* ////////// Sign-In ////////// */
-.sign-in, .not-found {
-  min-height: calc(100vh - 264px);
+.sign-in, .not-found, .home {
+  min-height: calc(100vh - 248px);
 }
 
+.home {
+  background-image: url('./assets/images/plate.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 /* ////////////////////////////////////////////////////// */
 /* ////////////////////  GLOBAL CSS  //////////////////// */
 /* ////////////////////////////////////////////////////// */
+
 
 * {
   margin: 0;
@@ -37,7 +43,7 @@ a:hover {
   padding-right: 16px !important;
 }
 .is-scroll {
-  margin-right: 18px;
+  padding-right: 33px;
 }
 .active {
   font-weight: 500;
@@ -90,6 +96,12 @@ a:hover {
   .form-group label {
     font-size: .8em;
   }
+  .sign-in, .not-found, .home {
+    min-height: calc(100vh - 260px);
+  }
+  a, .special {
+    font-size: 1.3em;
+  }
 }
 
 @media only screen and (max-width : 768px) {
@@ -98,6 +110,15 @@ a:hover {
   }
   .btn-spinner {
     height: 40px;
+  }
+  .form-control {
+    height: 40px !important;
+  }
+  .btn-spinner {
+    height: 40px;
+  }
+  .btn {
+    min-height: 40px;
   }
 }
 
@@ -119,40 +140,19 @@ a:hover {
   .btn {
     min-height: 36px;
   }
+  .custom-select {
+    height: 36px !important;
+  }
 }
 
 @media only screen and (max-width : 425px) {
   .app {
     font-size: 10px;
   }
-  .form-control {
-    height: 32px !important;
-  }
-  .btn-spinner {
-    height: 32px;
-  }
-  .btn {
-    min-height: 32px;
-  }
 }
 
 @media only screen and (max-width : 375px) {
   .app {
-    font-size: 9px;
-  }
-  .form-control {
-    height: 27px !important;
-  }
-  .btn-spinner {
-    height: 27px;
-  }
-  .btn {
-    min-height: 27px;
-  }
-}
-
-@media only screen and (max-width : 320px) {
-  .app {
-    font-size: 8px;
+    font-size: 11px;
   }
 }

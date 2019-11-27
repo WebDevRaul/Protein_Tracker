@@ -6,7 +6,7 @@ const passport = require('passport');
 const User = require('./models/User');
 require('dotenv').config();
 const db = require('./config/keys').MONGO_DB;
-require('./config/Passport')(passport);
+require('./config/passport')(passport);
 
 
 

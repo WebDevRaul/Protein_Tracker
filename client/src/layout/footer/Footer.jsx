@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className='col-12 col-sm-6'>
           <div className='footer-info'>
-            <p className='mb-3 mt-3 ml-5'>
+            <p className='mb-2 mt-3 ml-5'>
               <span className='border-bottom text-primary'>Contact Us</span>
             </p>
             <Links />

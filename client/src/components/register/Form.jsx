@@ -11,7 +11,7 @@ import Input from '../common/form/input/Input';
 import CustomButton from '../common/button/Custom_Button';
 
 const Form = ({ register, isLoading, errors, clearUserErrors, history, isAuth }) => {
-  const [state, setState] = useState({ first_name: 'John', last_name: 'Doe', email: 'Jdoe@test.com', password: '123456', password2: '123456'});
+  const [state, setState] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
   const [error, setError] = useState({ first_name: '', last_name: '', email: '', password: '', password2: ''});
   const { first_name, last_name, email, password, password2 } = state;
 

@@ -1,0 +1,30 @@
+/* ////////////////////////////////////////////////////// */
+/* ////////////////////  RESPONSIVE  //////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+@media only screen and (max-width : 576px) {
+  .home h3{
+    font-size: 1.9em;
+  }
+  .home h5 {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width : 425px) {
+  .home h3{
+    font-size: 1.8em;
+  }
+  .home h5 {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width : 375px) {
+  .home h3{
+    font-size: 1.4em;
+  }
+  .home h5 {
+    font-size: .925em;
+  }
+}

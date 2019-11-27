@@ -1,21 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Home = () => {
+import './responsive.css';
+
+const Home = ({ history }) => {
   return (
-    <div className='home d-flex flex-column justify-content-center align-items-center' 
-      style={{ minHeight: 'calc(100vh - 264px)' }}>
-      <>
-        <h2 className='mb-4 mt-4'>Macro Calculator</h2>
+    <div className='home m-2 d-flex flex-column justify-content-center align-items-center'>
+      <div className='ml-3 text-center'>
+        <h3 className='mb-4 mt-4'>Macro Calculator</h3>
         <h5>New member?</h5>
-        <h5>
-          <i><Link to='/register'> - Register - </Link></i>
+        <h5 className='mt-3'>
+          <i onClick={() => history.push('/register')}>- Register -</i>
           or
-          <i><Link to='/sign-in'> - Sign in - </Link></i>
+          <i onClick={() => history.push('/sign-in')}> - Sign in - </i>
         </h5>
-      </>
+      </div>
     </div>
   )
 }
 
-export default Home;
+export default withRouter(Home);

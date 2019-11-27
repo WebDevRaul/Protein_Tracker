@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CustomButton from '../../common/button/Custom_Button';
 import Select from '../../common/form/select/Select';
 
-const Buttons = ({ state, setState, onClear }) => {
-  const { Breakfast, Lunch, Diner, Snack } = state;
+const SelectCard = ({ state, setState }) => {
 
   const onChange = e => setState({ ...state, [e.target.value]: true });
-  const toClear = () => {
-    onClear();
-    setState({ one: false, two: false, tree: false, four: false });
-  }
   
   return (
     <div className='row no-gutters'>
@@ -29,20 +23,13 @@ const Buttons = ({ state, setState, onClear }) => {
           error=''
         />
       </div>
-      <div className='col d-flex m-auto justify-content-end'>
-        {
-          (Breakfast || Lunch || Diner || Snack) &&
-          <CustomButton text='Clear all' isClass='btn-outline-danger text-uppercase font-weight-bold' onClick={toClear} />
-        }
-      </div>
     </div>
   )
 }
 
-Buttons.propTypes = {
+SelectCard.propTypes = {
   state: PropTypes.object.isRequired,
-  setState: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired
+  setState: PropTypes.func.isRequired
 }
 
-export default Buttons;
+export default SelectCard;

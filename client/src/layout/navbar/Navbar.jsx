@@ -13,13 +13,13 @@ import User from './User';
 
 const Navbar = ({ isAuth, signOut, history: { location: { pathname } } }) => {
   const [show, setShow] = useState(false);
-  const plus18px = pathname === '/home' || pathname === '/sign-in' ? true : false;
+  const plus18px = (pathname === '/home' || pathname === '/sign-in') && ( window.innerWidth > 992 ) ? true : false;
 
   const onClick = () => setShow(!show);
   const onSignOut = () => { signOut(); setShow(!show) };
 
   return (
-    <nav className={classnames('navbar navbar-expand-lg navbar-light', {'is-scroll': plus18px})}>
+    <nav className={classnames('navbar navbar-expand-lg navbar-dark bg-dark', {'is-scroll': plus18px})}>
       <Logo />
       <button
         className="navbar-toggler" 

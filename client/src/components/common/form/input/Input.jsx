@@ -7,7 +7,7 @@ const Input = ({ name, value, label, icon, type, error, onChange, onFocus, capit
   return (
     <div className='form-group'>
       <label 
-        className={classnames('ml-1 mb-0 text-primary font-weight-bold', { 'text-danger': error })} 
+        className={classnames('ml-1 mb-0 text-primary', { 'text-danger': error, 'font-weight-bold': !error })} 
         htmlFor={name}
       >
         { error ? error: label }

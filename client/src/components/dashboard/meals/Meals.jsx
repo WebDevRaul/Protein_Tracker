@@ -6,7 +6,8 @@ import { createStructuredSelector } from 'reselect';
 import { state_breakfast, state_lunch, state_diner, state_snack } from '../../../redux/selectors/meal';
 
 import Card from './Card';
-import Buttons from './Buttons';
+import SelectCard from './Select_Card';
+import ClearAll from './Clear_All';
 import isEmpty from '../../common/utils/isEmpty';
 
 import './responsive.css';
@@ -30,7 +31,7 @@ const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
   return (
     <div className='row no-gutters'>
       <div className='col-11 col-md-9 col-lg-8 m-auto'>
-        <Buttons state={state} setState={setState} onClear={() => clearAll()} />
+        <SelectCard state={state} setState={setState} onClear={() => clearAll()} />
         { Breakfast && 
           <Card 
             title='Breakfast' 
@@ -63,6 +64,7 @@ const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
             items={snack}
           />
         }
+        <ClearAll state={state} setState={setState} onClear={() => clearAll()} />
       </div>
     </div>
   )
