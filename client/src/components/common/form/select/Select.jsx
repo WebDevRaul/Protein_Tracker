@@ -8,7 +8,7 @@ const Select = ({ name, value, label, isClass, error, onChange, onFocus}) => {
     <div className='form-group'>
       <label 
         style={{ fontSize: '.8em' }}
-        className={classnames(`ml-1 mb-0 text-primary font-weight-bold ${isClass}`, { 'text-danger': error })} 
+        className={classnames(`ml-1 mb-0 text-primary ${isClass}`, { 'text-danger': error, 'font-weight-bold': !error  })} 
         htmlFor={name} 
         >
         { error ? error: label }
