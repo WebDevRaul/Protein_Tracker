@@ -42,6 +42,7 @@ const Form = ({ saveItem, isLoading, errors, clearAdminErrors }) => {
     if(!isValid) return setError({ ...error, ...errors });
     saveItem(state);
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    setState({ _id: 'temp', name: '', qty: '', type: '', cal: '', prot : '', fat: '', carb: ''  });
   }
 
   return (

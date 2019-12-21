@@ -7,13 +7,17 @@ const isIntAndMin = value =>
 const isIntAndMax = value =>
   Validator.isInt(value) &&
   Validator.isInt(value, { min: 1001, max: Infinity });
-
-const isIntAndMinOne = value =>
+  
+  const isIntAndMinOne = value =>
   Validator.isInt(value) &&
   Validator.isInt(value, { min: -Infinity, max: 0.1 });
+  
+  const isIntAndMaxOneT = value =>
+    Validator.isInt(value) &&
+    Validator.isInt(value, { min: 1000, max: Infinity });
 
 const isIntAndMaxT = value =>
   Validator.isInt(value) &&
   Validator.isInt(value, { min: 10001, max: Infinity });
 
-export { isIntAndMax, isIntAndMin, isIntAndMinOne, isIntAndMaxT }
+export { isIntAndMax, isIntAndMin, isIntAndMinOne, isIntAndMaxOneT, isIntAndMaxT }

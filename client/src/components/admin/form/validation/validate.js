@@ -1,7 +1,7 @@
 import Validator from 'validator';
 import isEmpty from '../../../common/utils/isEmpty';
 import isOneDecimal from '../../../common/utils/isOneDecimal';
-import { isIntAndMax, isIntAndMin, isIntAndMinOne } from '../../../common/utils/isInteger';
+import { isIntAndMax, isIntAndMin, isIntAndMinOne, isIntAndMaxOneT } from '../../../common/utils/isInteger';
 import { isFloatAndMin, isFloatAndMax } from '../../../common/utils/isFloat';
 import { isValidNumber, isIntAndNoLeadingZero, isValidNumberAll } from '../../../common/utils/isNumber';
 
@@ -22,8 +22,10 @@ const validateAdmin = ({ name, qty, type, cal, prot, fat, carb }) => {
   if(!Validator.isLength(name, { min:1, max: 50 })) errors.name = 'Product Name must be between 1 and 50 characters';
 
   // Validate QTY
-  if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
+  if(isIntAndMaxOneT(qty)) errors.qty = 'Maximum Qty. is 999';
   if(isIntAndMinOne(qty)) errors.qty = 'Minimum Qty. is 1';
+  if(type === 'pc.' && qty !== '1') errors.qty = 'Minimum Qty. is 1';
+  if(type === 'pc.' && qty > '1') errors.qty = 'Maximum Qty. is 1';
   if(isValidNumberAll(qty)) errors.qty = 'Enter a valid number';
 
 

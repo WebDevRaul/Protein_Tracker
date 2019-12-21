@@ -10,10 +10,13 @@ const doTheCalc = ({ qty, type, _cal, _prot, _carb, _fat, input, state_qty }) =>
     fat = _fat * val;
     carb = _carb * val;
   } else {
-    cal = (_cal * val) / 100;
-    prot = (_prot * val) / 100;
-    fat = (_fat * val) / 100;
-    carb = (_carb * val) / 100;
+    console.log(qty, 'qty');
+    console.log(state_qty, 'state_qty');
+    console.log(input, 'input');
+    cal = (_cal * val) / '100'.slice(0, _cal.length);
+    prot = (_prot * val) / '100'.slice(0, _prot.length);
+    fat = (_fat * val) / '100'.slice(0, _fat.length);
+    carb = (_carb * val) / '100'.slice(0, _carb.length);
   }
 
   cal = cal.toFixed(1).toString();
