@@ -29,14 +29,19 @@ const Table = ({ target, breakfast, lunch, dinner, snack }) => {
   },[target, breakfast, lunch, dinner, snack])
 
   return (
-    <div className='row no-gutters mt-5'>
-      <div className='col-11 col-md-9 col-lg-8 m-auto'>
-        <Target {...target} />
-        <Form />
-        <Actual { ...actual } />
-        <Diffrence { ...diffrence } />
+    <>
+      <h5 className='text-center mt-4 text-primary'>Today's Target</h5>
+      <div className='row no-gutters mt-5'>
+        <div className='col-11 col-md-9 col-lg-8 m-auto'>
+          <Target {...target} />
+          <Form />
+          <h5 className='m-2 mb-4 text-success'>Eaten</h5>
+          <Actual { ...actual } />
+          <h5 className='m-2 mb-4 text-warning'>Left</h5>
+          <Diffrence { ...diffrence } />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

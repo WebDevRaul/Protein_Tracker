@@ -5,10 +5,10 @@ import Cell from './Cell';
 const Diffrence = ({ cal, prot, fat, carb  }) => {
   return (
     <div className='d-flex mb-2'>
-      <Cell value={cal} />
-      <Cell value={prot} />
-      <Cell value={fat} />
-      <Cell value={carb} />
+      <Cell value={cal} title='Cal.' />
+      <Cell value={prot} title='Prot.' />
+      <Cell value={fat} title='Fat.' />
+      <Cell value={carb} title='Carb.' />
     </div>
   )
 }
