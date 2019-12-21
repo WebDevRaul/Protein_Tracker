@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const DinerSchema = new Schema({
+const DinnerSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'user' },
   title: { type: String, required: true, trim: true, maxlength: 10, },
   items: [
@@ -72,4 +72,4 @@ const DinerSchema = new Schema({
   ]
 });
 
-module.exports = Diner = mongoose.model('diner', DinerSchema);
+module.exports = Dinner = mongoose.model('dinner', DinnerSchema);

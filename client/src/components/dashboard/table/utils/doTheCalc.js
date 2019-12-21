@@ -6,7 +6,7 @@ const sumAll = (...args) => {
   return sum;
 };
 
-const doTheCalc = (target, breakfast, lunch, diner, snack) => {
+const doTheCalc = (target, breakfast, lunch, dinner, snack) => {
   const actual = {};
   const diffrence = {};
   
@@ -21,7 +21,7 @@ const doTheCalc = (target, breakfast, lunch, diner, snack) => {
 //////////////////////////////////////////////////
 
   // Collect all data
-  [breakfast, lunch, diner, snack].map(el => {
+  [breakfast, lunch, dinner, snack].map(el => {
     return el.map(item => {
       if(isEmpty(item)) return item;
       const { cal, prot, fat, carb } = item;

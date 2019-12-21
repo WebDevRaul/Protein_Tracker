@@ -7,7 +7,7 @@ const User = require('../../models/User');
 const Target = require('../../models/Target');
 const Breakfast = require('../../models/Breakfast');
 const Lunch = require('../../models/Lunch');
-const Diner = require('../../models/Diner');
+const Dinner = require('../../models/Dinner');
 const Snack = require('../../models/Snack');
 const Admin = require('../../models/Admin');
 const Items = require('./utils/Items');
@@ -39,10 +39,10 @@ router.post('/register', (req, res) => {
             const target = new Target({ user: _id }).save();
             const breakfast = new Breakfast({ user: _id, title: 'breakfast' }).save();
             const lunch = new Lunch({ user: _id, title: 'lunch' }).save();
-            const diner = new Diner({ user: _id, title: 'diner' }).save();
+            const dinner = new Dinner({ user: _id, title: 'dinner' }).save();
             const snack = new Snack({ user: _id, title: 'snack' }).save();
             const admin = new Admin({ user: _id }).save();
-            Promise.all([breakfast, lunch, diner, snack, target, admin])
+            Promise.all([breakfast, lunch, dinner, snack, target, admin])
               .then(() => {
                 Admin.findOne({user: _id})
                   .then(table => {

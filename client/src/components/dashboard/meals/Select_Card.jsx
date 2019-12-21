@@ -14,7 +14,7 @@ const SelectCard = ({ state, setState }) => {
           value={[
             { key: 'Breakfast', value: 'Breakfast' },
             { key: 'Lunch', value: 'Lunch' },
-            { key: 'Diner', value: 'Diner' },
+            { key: 'Dinner', value: 'Dinner' },
             { key: 'Snack', value: 'Snack' }
           ]}
           label='Create table'

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MEAL, BREAKFAST, LUNCH, DINER, SNACK } from './types';
+import { MEAL, BREAKFAST, LUNCH, DINNER, SNACK } from './types';
 import { ADD_ITEM } from './utils/add_item';
 import { UPDATE_ITEM } from './utils/update_item';
 import { DELETE_ITEM } from './utils/delete_item';
@@ -62,16 +62,16 @@ export const addItemToTable = ({ data, temp, title }) => {
       LOADED: LUNCH.LOADED
     })
   }
-  if(title === 'Diner') {
+  if(title === 'Dinner') {
     return ADD_ITEM({
       ENDPOINT: `${URL.meal}/${title}/add-item`,
       DATA: data,
       TEMP: temp,
-      LOADING: DINER.LOADING,
-      REDUX: DINER.ITEM_UPDATE_REDUX,
-      SUCCESS_TYPE: DINER.ITEM_UPDATE,
+      LOADING: DINNER.LOADING,
+      REDUX: DINNER.ITEM_UPDATE_REDUX,
+      SUCCESS_TYPE: DINNER.ITEM_UPDATE,
       ERROR_TYPE: MEAL.ERROR,
-      LOADED: DINER.LOADED
+      LOADED: DINNER.LOADED
     })
   }
   if(title === 'Snack') {
@@ -121,17 +121,17 @@ export const updateItemsToTable = ({ data, title, temp, _id, item }) => {
       LOADED: LUNCH.LOADED
     })
   }
-  if(title === 'Diner') {
+  if(title === 'Dinner') {
     return UPDATE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/update-item`,
       DATA: data,
       TEMP: { temp, _id },
       ITEM: item,
-      LOADING: DINER.LOADING,
-      REDUX: DINER.UPDATE_ITEM_REDUX,
-      SUCCESS_TYPE: DINER.UPDATE_ITEM,
+      LOADING: DINNER.LOADING,
+      REDUX: DINNER.UPDATE_ITEM_REDUX,
+      SUCCESS_TYPE: DINNER.UPDATE_ITEM,
       ERROR_TYPE: MEAL.ERROR,
-      LOADED: DINER.LOADED
+      LOADED: DINNER.LOADED
     })
   }
   if(title === 'Snack') {
@@ -176,14 +176,14 @@ export const deleteItemFromTable = ({ title, _id }) => {
       LOADED: LUNCH.LOADED
     })
   }
-  if(title === 'Diner') {
+  if(title === 'Dinner') {
     return DELETE_ITEM({
       ENDPOINT: `${URL.meal}/${title}/delete-item`,
       ID: _id,
-      LOADING: DINER.LOADING,
-      SUCCESS_TYPE: DINER.DELETE_ITEM,
+      LOADING: DINNER.LOADING,
+      SUCCESS_TYPE: DINNER.DELETE_ITEM,
       ERROR_TYPE: MEAL.ERROR,
-      LOADED: DINER.LOADED
+      LOADED: DINNER.LOADED
     })
   }
   if(title === 'Snack') {
@@ -209,8 +209,8 @@ export const deleteItemFromREDUX = ({ title, _id }) => dispatch => {
   if(title === 'Lunch') {
     return dispatch({ type: LUNCH.DELETE_ITEM, payload: _id })
   }
-  if(title === 'Diner') {
-    return dispatch({ type: DINER.DELETE_ITEM, payload: _id })
+  if(title === 'Dinner') {
+    return dispatch({ type: DINNER.DELETE_ITEM, payload: _id })
   }
   if(title === 'Snack') {
     return dispatch({ type: SNACK.DELETE_ITEM, payload: _id })

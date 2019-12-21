@@ -8,23 +8,23 @@ import { state_admin_isLoading } from '../../../../redux/selectors/admin';
 import './loading.css';
 
 
-const Loading = ({ admin, loading }) => {
+const Loading = ({ meal, admin }) => {
   const [width, setWidth] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const random = Math.ceil(Math.random() * 10) + 5;
 
   useEffect(() => {
     const isLoading = setTimeout(() => {
-      setLoaded(false);
+      if(loaded) return;
 
       // start loading
-      if((admin || loading) && width < 80) setWidth(width => width + random);
+      if((meal || admin) && width < 80) setWidth(width => width + random);
 
       // load 2% if loading is still true & width is over 80%
-      if((admin || loading) && width >= 80 && width < 95) setWidth(width => width + 2);
+      if((meal || admin) && width >= 80 && width < 95) setWidth(width => width + 2);
 
       // load complete
-      if(!(admin || loading) && width > 5) setWidth(100);
+      if(!(meal || admin) && width > 5) setWidth(100);
 
     }, 500);
 
@@ -34,7 +34,7 @@ const Loading = ({ admin, loading }) => {
 
     return () => {
       clearTimeout(isLoading, isLoaded);
-      if(!(admin || loading) && width === 100) {
+      if(!(meal || admin) && width === 100) {
         setWidth(0);
         setLoaded(true);
       }

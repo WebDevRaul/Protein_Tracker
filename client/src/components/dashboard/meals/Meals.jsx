@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { clearAll } from '../../../redux/actions/meal';
 import { createStructuredSelector } from 'reselect';
-import { state_breakfast, state_lunch, state_diner, state_snack } from '../../../redux/selectors/meal';
+import { state_breakfast, state_lunch, state_dinner, state_snack } from '../../../redux/selectors/meal';
 
 import Card from './Card';
 import SelectCard from './Select_Card';
@@ -12,21 +12,21 @@ import isEmpty from '../../common/utils/isEmpty';
 
 import './responsive.css';
 
-const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
-  const [state, setState] = useState({ Breakfast: false, Lunch: false, Diner: false, Snack: false });
-  const { Breakfast, Lunch, Diner, Snack } = state;
+const Meals = ({ breakfast, lunch, dinner, snack, clearAll }) => {
+  const [state, setState] = useState({ Breakfast: false, Lunch: false, Dinner: false, Snack: false });
+  const { Breakfast, Lunch, Dinner, Snack } = state;
 
   // Update State CDU
   useEffect(() => {
     let updates = {};
     if (!isEmpty(breakfast)) updates.Breakfast = true;
     if (!isEmpty(lunch)) updates.Lunch = true;
-    if (!isEmpty(diner)) updates.Diner = true;
+    if (!isEmpty(dinner)) updates.Dinner = true;
     if (!isEmpty(snack)) updates.Snack = true;
   
     setState({ ...state, ...updates });
     // eslint-disable-next-line
-  }, [breakfast, lunch, diner, snack]);
+  }, [breakfast, lunch, dinner, snack]);
 
   return (
     <div className='row no-gutters'>
@@ -48,12 +48,12 @@ const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
             items={lunch}
           /> 
         }
-        { Diner && 
+        { Dinner && 
           <Card 
-            title='Diner' 
+            title='Dinner' 
             state={state} 
             setState={setState}
-            items={diner}
+            items={dinner}
           />
         }
         { Snack && 
@@ -73,7 +73,7 @@ const Meals = ({ breakfast, lunch, diner, snack, clearAll }) => {
 Meals.propTypes = {
   breakfast: PropTypes.array.isRequired,
   lunch: PropTypes.array.isRequired,
-  diner: PropTypes.array.isRequired,
+  dinner: PropTypes.array.isRequired,
   snack: PropTypes.array.isRequired,
   clearAll: PropTypes.func.isRequired
 };
@@ -81,7 +81,7 @@ Meals.propTypes = {
 const mapStateToProps = createStructuredSelector({
   breakfast: state_breakfast,
   lunch: state_lunch,
-  diner: state_diner,
+  dinner: state_dinner,
   snack: state_snack
 });
 

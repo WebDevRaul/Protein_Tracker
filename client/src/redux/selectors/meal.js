@@ -23,9 +23,9 @@ export const state_lunch = createSelector(
   [select_meal_state],
   state => doSort(state.lunch)
 )
-export const state_diner = createSelector(
+export const state_dinner = createSelector(
   [select_meal_state],
-  state => doSort(state.diner)
+  state => doSort(state.dinner)
 )
 export const state_snack = createSelector(
   [select_meal_state],
