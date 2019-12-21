@@ -1,9 +1,9 @@
 import Validator from 'validator';
 import isEmpty from '../../../common/utils/isEmpty';
 import isOneDecimal from '../../../common/utils/isOneDecimal';
-import {isIntAndMax, isIntAndMin} from '../../../common/utils/isInteger';
+import { isIntAndMax, isIntAndMin, isIntAndMinOne } from '../../../common/utils/isInteger';
 import { isFloatAndMin, isFloatAndMax } from '../../../common/utils/isFloat';
-import { isValidNumber, isIntAndNoLeadingZero } from '../../../common/utils/isNumber';
+import { isValidNumber, isIntAndNoLeadingZero, isValidNumberAll } from '../../../common/utils/isNumber';
 
 const validateAdmin = ({ name, qty, type, cal, prot, fat, carb }) => {
   let errors = [];
@@ -23,10 +23,8 @@ const validateAdmin = ({ name, qty, type, cal, prot, fat, carb }) => {
 
   // Validate QTY
   if(isIntAndMax(qty)) errors.qty = 'Maximum Qty. is 1000';
-  if(Validator.isInt(qty) && Validator.isInt(qty, { min: -Infinity, max: 0 })) errors.qty = 'Minimum Qty. is 0.1';
-  if(isFloatAndMax(cal)) errors.cal = 'Maximum Qty. is 1000';
-  if(isIntAndNoLeadingZero(qty)) errors.qty = 'Enter a valid number';
-  if(isValidNumber(qty)) errors.qty = 'Enter a valid number';
+  if(isIntAndMinOne(qty)) errors.qty = 'Minimum Qty. is 1';
+  if(isValidNumberAll(qty)) errors.qty = 'Enter a valid number';
 
 
   // Validate Cal

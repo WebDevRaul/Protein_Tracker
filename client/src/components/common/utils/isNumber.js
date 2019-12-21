@@ -8,5 +8,10 @@ const isIntAndNoLeadingZero = value =>
 const isValidNumber = value =>
   value.includes('+') ||
   value.includes('-');
+
+const isValidNumberAll = value =>
+  value.includes('+') ||
+  value.includes('-') ||
+  value.includes('.')
   
-export { isValidNumber, isIntAndNoLeadingZero }
+export { isValidNumber, isIntAndNoLeadingZero, isValidNumberAll }
