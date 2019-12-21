@@ -24,7 +24,7 @@ const Dashboard = ({ updateTarget, updateMeal, updateAdmin, target, meal, admin 
       <Table />
       <div className='row no-gutters mt-2 mb-2'>
         <div className='col-11 m-auto'>
-          <p className='mb-0 text-muted font-weight-bold text-center'>Choise your meal of the day!</p>
+          <p className='mb-0 text-muted font-weight-bold text-center'>Choose your meal of the day!</p>
         </div>
       </div>
       <Meals />

@@ -30,7 +30,7 @@ const Table = ({ target, breakfast, lunch, dinner, snack }) => {
 
   return (
     <>
-      <h5 className='text-center mt-4 text-primary'>Today's Target</h5>
+      <h5 className='text-center mt-4 text-primary'>Today's Goal</h5>
       <div className='row no-gutters mt-5'>
         <div className='col-11 col-md-9 col-lg-8 m-auto'>
           <Target {...target} />
