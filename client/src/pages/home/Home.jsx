@@ -12,9 +12,9 @@ const Home = ({ history }) => {
         <h3 className='mb-2'>Macro Calculator</h3>
         <h5>New member?</h5>
         <h5 className='mt-2'>
-          <i onClick={() => history.push('/register')}>Register - </i>
+          <i className='hover' onClick={() => history.push('/register')}>Register - </i>
           or
-          <i onClick={() => history.push('/sign-in')}> - Sign in</i>
+          <i className='hover' onClick={() => history.push('/sign-in')}> - Sign in</i>
         </h5>
       </div>
     </div>
