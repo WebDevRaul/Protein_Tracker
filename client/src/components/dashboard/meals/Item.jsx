@@ -42,7 +42,6 @@ const Item = ({ item, title, onDelete }) => {
                 setShow={setShow} 
                 state={state}
                 setState={setState}
-                item={item}
                 title={title}
               />
             }

@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateItemsToTable } from '../../../redux/actions/meal';
-import { createStructuredSelector } from 'reselect';
-import {  } from '../../../redux/selectors/meal'
 import classnames from 'classnames';
 import CustomButton from '../../common/button/Custom_Button';
 import doTheCalc from './utils/doTheCalc';
 import validateModal from './utils/validate_modal';
 import Input from '../../common/form/input/Input';
 
-const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable }) => {
+const Modal = ({ show, setShow, state, setState, title, updateItemsToTable }) => {
   const [modal, setModal] = useState({ _id: '', name: '', qty: '', type: '', cal: '', prot: '', fat: '', carb: '' });
   const [error, setError] = useState({ qty: '' });
   const [input, setInput] = useState('');
   const { _id, name, qty, type, cal, prot, fat, carb, p } = modal;
 
+
   // Update state CDU
   useEffect(() => {
-    const { cal, prot, fat, carb } = doTheCalc({...item, input, state_qty: state.qty});
+    const { cal, prot, fat, carb } = doTheCalc({...state, input });
     setModal({ ...state, cal, prot, fat, carb });
     // eslint-disable-next-line
   },[input]);
@@ -47,7 +46,7 @@ const Modal = ({ show, setShow, state, setState, item, title, updateItemsToTable
     const data = { _id, name, qty:input, type, cal, prot, fat, carb, p };
     const { errors, isValid } = validateModal({ qty:input, cal, prot, fat, carb });
     if(!isValid) return setError({ ...error, ...errors });
-    updateItemsToTable({ data, title, temp, _id, item });
+    updateItemsToTable({ data, title, temp, _id, state });
     setState({ ...state, cal, prot, fat, carb, qty:input });
     setShow(!show);
   }
@@ -109,13 +108,8 @@ Modal.propTypes = {
   setShow: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   setState: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   updateItemsToTable: PropTypes.func.isRequired
 }
 
-const mapStateToProps = createStructuredSelector({
-
-});
-
-export default connect( mapStateToProps, { updateItemsToTable } )(Modal);
+export default connect( null, { updateItemsToTable } )(Modal);

@@ -81,7 +81,7 @@ router.post('/Breakfast/add-item', passport.authenticate('jwt'), (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  const payload = { name, qty, type, cal, prot, fat, p, carb, _cal: cal, _prot: prot, _fat: fat, _carb: carb };
+  const payload = { name, qty, type, cal, prot, fat, p, carb, _qty: qty, _cal: cal, _prot: prot, _fat: fat, _carb: carb };
   Breakfast.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
@@ -101,7 +101,7 @@ router.post('/Lunch/add-item', passport.authenticate('jwt'), (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  const payload = { name, qty, type, cal, prot, fat, carb, p, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
+  const payload = { name, qty, type, cal, prot, fat, carb, p ,_qty: qty, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Lunch.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
@@ -121,7 +121,7 @@ router.post('/Dinner/add-item', passport.authenticate('jwt'), (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  const payload = { name, qty, type, cal, prot, fat, carb, p, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
+  const payload = { name, qty, type, cal, prot, fat, carb, p, _qty: qty, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Dinner.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },
@@ -141,7 +141,7 @@ router.post('/Snack/add-item', passport.authenticate('jwt'), (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  const payload = { name, qty, type, cal, prot, fat, p, carb, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
+  const payload = { name, qty, type, cal, prot, fat, carb, p, _qty: qty, _cal: cal, _prot: prot, _fat: fat, _carb: carb }
   Snack.findOneAndUpdate({ user: _id },
     { $push: { 'items': payload }},
     { select: { user: 0, __v: 0, _id: 0, title: 0 }, new: true, upsert: true  },

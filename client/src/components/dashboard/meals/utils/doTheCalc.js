@@ -1,8 +1,8 @@
 import isEmpty from "../../../common/utils/isEmpty";
 
-const doTheCalc = ({ qty, type, _cal, _prot, _carb, _fat, input, state_qty }) => {
+const doTheCalc = ({ qty, type, _qty, _cal, _prot, _carb, _fat, input }) => {
   let cal, prot, fat, carb;
-  const val = isEmpty(input) ? (state_qty!==qty) ? state_qty : qty : input;
+  const val = isEmpty(input) ? qty : input;
   
   if(type === 'pc.') {
     cal = _cal * val;
@@ -10,7 +10,8 @@ const doTheCalc = ({ qty, type, _cal, _prot, _carb, _fat, input, state_qty }) =>
     fat = _fat * val;
     carb = _carb * val;
   } else {
-    const length = qty.length === 1 ? 1 : qty.length === 2 ? 2 : 3;
+    const length = _qty.length === 1 ? 1 : _qty.length === 2 ? 2 : 3;
+
     cal = (_cal * val) / '100'.slice(0, length);
     prot = (_prot * val) / '100'.slice(0, length);
     fat = (_fat * val) / '100'.slice(0, length);
