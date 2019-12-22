@@ -12,9 +12,9 @@ Clear all button.
 On admin page you can create your own product.
 
 ## Screenshots
-| 1 | 2 | 3 | 4 |
+| Today`s Goal | Add New Product | Delete Product | Update Product |
 |:----:|:----:|:----:|:-------:|
-|![](image/) | ![](image/) | ![](image/)| ![](image/)
+|![](image/Today.jpg) | ![](image/addProduct.jpg) | ![](image/DeleteProduct.jpg)| ![](image/UpdateProduct.jpg)
 
 ## Built With
 - Backend
